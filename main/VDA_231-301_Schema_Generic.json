@@ -1,0 +1,1215 @@
+{
+  "$id": "https://github.com/VDA231-301/Draft_VDA231-301/blob/v0.0.2/main/VDA_231-301_Schema_Generic.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "VDA 231-301 TestReport JSON schema",
+  "type": "object",
+  "additionalProperties": false,
+  "description": "This is the Generic Schema which validates the structure of the file",
+  "properties": {
+    "_id": {
+      "$ref": "#/$defs/Generic.Identifier"
+    },
+    "_type": {
+      "const": "TestReport",
+      "type": "string"
+    },
+    "_schemaVersion": {
+      "const": "0.0.2",
+      "description": "The schema version on which the structure of the test report is based on."
+    },
+    "Title": {
+      "$ref": "#/$defs/Generic.RestrictedString"
+    },
+    "Client": {
+      "$ref": "#/$defs/Generic.Location"
+    },
+    "ClientOrderNumber": {
+      "$ref": "#/$defs/Generic.RestrictedString"
+    },
+    "Contractor": {
+      "$ref": "#/$defs/Generic.TestingCenter"
+    },
+    "LaboratoryOrderNumber": {
+      "$ref": "#/$defs/Generic.RestrictedString"
+    },
+    "OrderDate": {
+      "$ref": "#/$defs/Generic.Date"
+    },
+    "OrderReference": {
+      "$ref": "#/$defs/Generic.RestrictedString"
+    },
+    "ReportDate": {
+      "$ref": "#/$defs/Generic.Date"
+    },
+    "Signatory": {
+      "$ref": "#/$defs/Generic.ProperNameString"
+    },
+    "RemarkValidity": {
+      "$ref": "#/$defs/Generic.LongString"
+    },
+    "RemarkDeviation": {
+      "$ref": "#/$defs/Generic.LongString"
+    },
+    "RemarkInterpretations": {
+      "$ref": "#/$defs/Generic.LongString"
+    },
+    "Components": {
+      "items": {
+        "$ref": "#/$defs/Generic.Component"
+      },
+      "minItems": 1,
+      "type": "array"
+    },
+    "TestSeries": {
+      "items": {
+        "$ref": "#/$defs/Generic.TestSeries"
+      },
+      "minItems": 1,
+      "type": "array"
+    }
+  },
+  "required": [
+    "_id",
+    "_type",
+    "_schemaVersion",
+    "ClientOrderNumber",
+    "LaboratoryOrderNumber",
+    "OrderReference",
+    "OrderDate",
+    "ReportDate",
+    "Signatory",
+    "Client",
+    "Contractor",
+    "Components",
+    "TestSeries"
+  ],
+  "$defs": {
+    "Generic.ArraySpec": {
+      "additionalProperties": false,
+      "properties": {
+        "Property": {
+          "$ref": "#/$defs/Generic.RestrictedString"
+        },
+        "Rounding": {
+          "$ref": "#/$defs/Generic.RestrictedString"
+        },
+        "RoundingAccuracy": {
+          "type": "number"
+        },
+        "ValueResolution": {
+          "type": "number"
+        },
+        "LimitOfDetermination": {
+          "type": "number"
+        },
+        "MeasurementInaccuracy": {
+          "type": "number"
+        },
+        "Symbol": {
+          "$ref": "#/$defs/Generic.RestrictedString"
+        },
+        "Unit": {
+          "$ref": "#/$defs/Generic.Unit"
+        },
+        "ValueType": {
+          "$ref": "#/$defs/Generic.RestrictedString"
+        }
+      },
+      "required": [
+        "Property"
+      ],
+      "type": "object"
+    },
+    "Generic.ArrayValue": {
+      "description": "An array that can contain strings, numbers, objects, arrays and null.",
+      "items": {
+        "$ref": "#/$defs/Generic.Value"
+      },
+      "minItems": 1,
+      "type": "array"
+    },
+    "Generic.Value": {
+      "description": "A generic value. Specific sub-schemas may restrict the type of the value.",
+      "anyOf": [
+        {
+          "description": "A string value.",
+          "example": "example string",
+          "type": "string"
+        },
+        {
+          "description": "A numerical value.",
+          "example": 42,
+          "type": "number"
+        },
+        {
+          "description": "An object value.",
+          "example": {
+            "key": "value"
+          },
+          "type": "object"
+        },
+        {
+          "description": "A boolean value.",
+          "type": "boolean"
+        },
+        {
+          "description": "An array of values",
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Generic.Value"
+          }
+        },
+        {
+          "$ref": "#/$defs/Generic.NumberWithTolerance"
+        },
+        {
+          "description": "A null value",
+          "type": "null"
+        }
+      ]
+    },
+    "Generic.Attachment": {
+      "additionalProperties": false,
+      "properties": {
+        "_id": {
+          "$ref": "#/$defs/Generic.RestrictedString"
+        },
+        "_type": {
+          "const": "Attachment",
+          "type": "string"
+        },
+        "Data": {
+          "$ref": "#/$defs/Generic.Base64Encoding"
+        },
+        "FileName": {
+          "$ref": "#/$defs/Generic.RestrictedString"
+        },
+        "MimeType": {
+          "$ref": "#/$defs/Generic.RestrictedString"
+        },
+        "Encoding": {
+          "const": "base64",
+          "type": "string"
+        },
+        "Hashes": {
+          "items": {
+            "$ref": "#/$defs/Generic.Hash"
+          },
+          "type": "array"
+        },
+        "Designation": {
+          "$ref": "#/$defs/Generic.RestrictedString"
+        }
+      },
+      "type": "object",
+      "required": [
+        "_id",
+        "_type",
+        "Data",
+        "FileName",
+        "MimeType",
+        "Encoding",
+        "Hashes",
+        "Designation"
+      ]
+    },
+    "Generic.Base64Encoding": {
+      "description": "A Base64 encoded string.",
+      "example": "U29tZSBzYW1wbGUgZGF0YQ==",
+      "pattern": "^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=)?$",
+      "type": "string"
+    },
+    "Generic.Certification": {
+      "additionalProperties": false,
+      "properties": {
+        "_id": {
+          "$ref": "#/$defs/Generic.Identifier"
+        },
+        "_type": {
+          "const": "Certification",
+          "type": "string"
+        },
+        "AccreditationDate": {
+          "$ref": "#/$defs/Generic.Date"
+        },
+        "Specification": {
+          "$ref": "#/$defs/Generic.Specification"
+        },
+        "ValidUntil": {
+          "$ref": "#/$defs/Generic.Date"
+        }
+      },
+      "required": [
+        "_id",
+        "_type",
+        "Specification",
+        "AccreditationDate"
+      ],
+      "type": "object"
+    },
+    "Generic.Location": {
+      "additionalProperties": false,
+      "properties": {
+        "_id": {
+          "$ref": "#/$defs/Generic.Identifier"
+        },
+        "_type": {
+          "const": "Location",
+          "type": "string"
+        },
+        "Identification": {
+          "$ref": "#/$defs/Generic.LocationIdentification"
+        },
+        "Name": {
+          "$ref": "#/$defs/Generic.RestrictedString"
+        },
+        "Address": {
+          "$ref": "#/$defs/Generic.ContactDetails"
+        }
+      },
+      "required": [
+        "_id",
+        "_type",
+        "Identification"
+      ],
+      "type": "object"
+    },
+    "Generic.ConsolidatedCharacteristicValue": {
+      "unevaluatedProperties": false,
+      "allOf": [
+        {
+          "$ref": "#/$defs/Generic.InformationPoint"
+        },
+        {
+          "properties": {
+            "_id": {
+              "$ref": "#/$defs/Generic.Identifier"
+            },
+            "_type": {
+              "const": "ConsolidatedCharacteristicValue",
+              "type": "string"
+            },
+            "Aggregation": {
+              "$ref": "#/$defs/Generic.RestrictedString"
+            },
+            "Comment": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "CriterionType": {
+              "$ref": "#/$defs/Generic.RestrictedString"
+            },
+            "Attachment": {
+              "$ref": "#/$defs/Generic.Attachment"
+            }
+          }
+        }
+      ],
+      "required": [
+        "_id",
+        "_type",
+        "Aggregation"
+      ],
+      "type": "object"
+    },
+    "Generic.ContactDetails": {
+      "additionalProperties": false,
+      "properties": {
+        "_id": {
+          "$ref": "#/$defs/Generic.Identifier"
+        },
+        "_type": {
+          "const": "ContactDetails",
+          "type": "string"
+        },
+        "Street": {
+          "$ref": "#/$defs/Generic.ProperNameString"
+        },
+        "HouseNumber": {
+          "$ref": "#/$defs/Generic.RestrictedString"
+        },
+        "AdditionToAddress": {
+          "$ref": "#/$defs/Generic.RestrictedString"
+        },
+        "ZipCode": {
+          "$ref": "#/$defs/Generic.RestrictedString"
+        },
+        "City": {
+          "$ref": "#/$defs/Generic.RestrictedString"
+        },
+        "StateRegion": {
+          "$ref": "#/$defs/Generic.RestrictedString"
+        },
+        "Country": {
+          "$ref": "#/$defs/Generic.RestrictedString"
+        },
+        "EMail": {
+          "format": "email",
+          "type": "string"
+        },
+        "Fax": {
+          "$ref": "#/$defs/Generic.RestrictedString"
+        },
+        "Phone": {
+          "$ref": "#/$defs/Generic.RestrictedString"
+        }
+      },
+      "required": [
+        "_id",
+        "_type",
+        "Phone",
+        "EMail"
+      ],
+      "type": "object"
+    },
+    "Generic.Date": {
+      "additionalProperties": false,
+      "properties": {
+        "Date": {
+          "description": "Date field that adheres to the ISO 8601 format (2000-02-01) or the European style (01.02.2000)",
+          "pattern": "^((\\d{4}-\\d{2}-\\d{2})|(\\d{2}\\.\\d{2}\\.\\d{4}))$",
+          "type": "string"
+        },
+        "Timestamp": {
+          "description": "Unix timestamp; time since January 1st 1970 UTC in seconds",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "Date"
+      ],
+      "type": "object"
+    },
+    "Generic.NumberWithTolerance": {
+      "prefixItems": [
+        {
+          "type": "number"
+        },
+        {
+          "properties": {
+            "MaxTolerance": {
+              "description": "The maximum tolerance value.",
+              "example": 0.5,
+              "type": "number"
+            },
+            "MinTolerance": {
+              "description": "The minimum tolerance value.",
+              "example": 0.1,
+              "type": "number"
+            }
+          },
+          "type": "object"
+        }
+      ],
+      "type": "array"
+    },
+    "Generic.DateMonth": {
+      "type": "string",
+      "pattern": "^\\d{4}-\\d{2}$",
+      "description": "Date string that only stores year and month in the ISO 8601 format 'YYYY-MM'"
+    },
+    "Generic.LocationIdentification": {
+      "description": "One or more identifiers for a location.",
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/Generic.LocationIdentifier"
+      }
+    },
+    "Generic.LocationIdentifier": {
+      "type": "object",
+      "properties": {
+        "Identifier": {
+          "$ref": "#/$defs/Generic.RestrictedString"
+        },
+        "Type": {
+          "$ref": "#/$defs/Generic.RestrictedString"
+        }
+      },
+      "required": [
+        "Identifier",
+        "Type"
+      ]
+    },
+    "Generic.TestExecution": {
+      "additionalProperties": false,
+      "properties": {
+        "_id": {
+          "$ref": "#/$defs/Generic.Identifier"
+        },
+        "_type": {
+          "const": "TestExecution",
+          "type": "string"
+        },
+        "Designation": {
+          "$ref": "#/$defs/Generic.RestrictedString"
+        },
+        "Numerator": {
+          "minimum": 1,
+          "type": "integer"
+        },
+        "Tester": {
+          "$ref": "#/$defs/Generic.Person",
+          "description": "The person who executed the test."
+        },
+        "StartTime": {
+          "$ref": "#/$defs/Generic.Date",
+          "description": "The date the execution of the test began."
+        },
+        "MeasurementSystems": {
+          "items": {
+            "$ref": "#/$defs/Generic.MeasurementSystem"
+          },
+          "type": "array"
+        },
+        "RawData": {
+          "items": {
+            "$ref": "#/$defs/Generic.InformationSet"
+          },
+          "type": "array"
+        },
+        "SingleResults": {
+          "items": {
+            "$ref": "#/$defs/Generic.SingleResult"
+          },
+          "type": "array"
+        },
+        "Specimen": {
+          "$ref": "#/$defs/Generic.Specimen"
+        },
+        "TestParameters": {
+          "$ref": "#/$defs/Generic.InformationSet"
+        }
+      },
+      "required": [
+        "_id",
+        "_type",
+        "Designation",
+        "Numerator",
+        "Specimen",
+        "MeasurementSystems",
+        "RawData",
+        "SingleResults"
+      ],
+      "type": "object"
+    },
+    "Generic.Extraction": {
+      "additionalProperties": false,
+      "properties": {
+        "_id": {
+          "$ref": "#/$defs/Generic.Identifier"
+        },
+        "_type": {
+          "const": "Extraction",
+          "type": "string"
+        },
+        "Position": {
+          "$ref": "#/$defs/Generic.RestrictedString"
+        },
+        "Specification": {
+          "$ref": "#/$defs/Generic.Specification"
+        },
+        "Method": {
+          "$ref": "#/$defs/Generic.RestrictedString"
+        },
+        "Date": {
+          "$ref": "#/$defs/Generic.Date"
+        },
+        "Comment": {
+          "$ref": "#/$defs/Generic.RestrictedString"
+        },
+        "Attachment": {
+          "$ref": "#/$defs/Generic.Attachment"
+        }
+      },
+      "required": [
+        "_id",
+        "_type",
+        "Method",
+        "Position",
+        "Specification"
+      ],
+      "type": "object"
+    },
+    "Generic.Hash": {
+      "additionalProperties": false,
+      "properties": {
+        "Type": {
+          "$ref": "#/$defs/Generic.RestrictedString"
+        },
+        "Value": {
+          "$ref": "#/$defs/Generic.RestrictedString"
+        }
+      },
+      "type": "object"
+    },
+    "Generic.Identifier": {
+      "description": "Universally Unique Identifier (UUID) as a 128-bit value in hexadecimal coding, noted in five groups, standardised by RFC 4122[1].",
+      "pattern": "^[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}$",
+      "type": "string"
+    },
+    "Generic.InformationPoint": {
+      "properties": {
+        "Property": {
+          "$ref": "#/$defs/Generic.RestrictedString"
+        },
+        "Rounding": {
+          "$ref": "#/$defs/Generic.RestrictedString"
+        },
+        "RoundingAccuracy": {
+          "type": "number"
+        },
+        "ValueResolution": {
+          "type": "number"
+        },
+        "LimitOfDetermination": {
+          "type": "number"
+        },
+        "MeasurementInaccuracy": {
+          "type": "number"
+        },
+        "Symbol": {
+          "$ref": "#/$defs/Generic.RestrictedString"
+        },
+        "Unit": {
+          "$ref": "#/$defs/Generic.Unit"
+        },
+        "ValueType": {
+          "oneOf": [
+            {
+              "const": "NumberWithTolerance"
+            },
+            {
+              "const": "Text"
+            },
+            {
+              "const": "Number"
+            },
+            {
+              "const": "List"
+            }
+          ]
+        },
+        "Value": {
+          "$ref": "#/$defs/Generic.Value"
+        },
+        "LocalizedText": {
+          "$ref": "#/$defs/Generic.ProperNameString"
+        }
+      },
+      "required": [
+        "Property",
+        "Value"
+      ],
+      "type": "object"
+    },
+    "Generic.InformationSet": {
+      "additionalProperties": false,
+      "properties": {
+        "_id": {
+          "$ref": "#/$defs/Generic.Identifier"
+        },
+        "_type": {
+          "const": "InformationSet",
+          "type": "string"
+        },
+        "ArraySpec": {
+          "items": {
+            "$ref": "#/$defs/Generic.ArraySpec"
+          },
+          "minItems": 1,
+          "type": "array"
+        },
+        "ArrayValue": {
+          "items": {
+            "$ref": "#/$defs/Generic.ArrayValue"
+          },
+          "minItems": 1,
+          "type": "array"
+        },
+        "Attributes": {
+          "items": {
+            "$ref": "#/$defs/Generic.InformationPoint",
+            "unevaluatedProperties": false
+          },
+          "minItems": 1,
+          "type": "array"
+        },
+        "Designation": {
+          "$ref": "#/$defs/Generic.RestrictedString"
+        },
+        "Comment": {
+          "$ref": "#/$defs/Generic.LongString"
+        },
+        "Attachment": {
+          "$ref": "#/$defs/Generic.Attachment"
+        }
+      },
+      "required": [
+        "_id",
+        "_type"
+      ],
+      "anyOf": [
+        {
+          "required": [
+            "Attributes"
+          ]
+        },
+        {
+          "required": [
+            "ArraySpec",
+            "ArrayValue"
+          ]
+        }
+      ],
+      "type": "object"
+    },
+    "Generic.LongString": {
+      "description": "A string with a maximum length of 240 and no leading or trailing whitespaces.",
+      "maxLength": 240,
+      "pattern": "^(?!\\s).*(?<!\\s)$",
+      "type": "string"
+    },
+    "Generic.MeasurementSystem": {
+      "additionalProperties": false,
+      "properties": {
+        "_id": {
+          "$ref": "#/$defs/Generic.Identifier"
+        },
+        "_type": {
+          "const": "MeasurementSystem",
+          "type": "string"
+        },
+        "Designation": {
+          "$ref": "#/$defs/Generic.RestrictedString"
+        },
+        "SystemType": {
+          "$ref": "#/$defs/Generic.RestrictedString"
+        },
+        "Location": {
+          "$ref": "#/$defs/Generic.RestrictedString"
+        },
+        "MeasurementSetup": {
+          "$ref": "#/$defs/Generic.Attachment"
+        },
+        "Specification": {
+          "$ref": "#/$defs/Generic.Specification"
+        },
+        "Accuracy": {
+          "$ref": "#/$defs/Generic.InformationSet"
+        },
+        "CalibrationData": {
+          "items": {
+            "$ref": "#/$defs/Generic.Calibration"
+          },
+          "type": "array"
+        }
+      },
+      "required": [
+        "_id",
+        "_type",
+        "Designation",
+        "SystemType"
+      ],
+      "type": "object"
+    },
+    "Generic.Calibration": {
+      "additionalProperties": false,
+      "properties": {
+        "_id": {
+          "$ref": "#/$defs/Generic.Identifier"
+        },
+        "_type": {
+          "const": "Calibration",
+          "type": "string"
+        },
+        "Attachment": {
+          "$ref": "#/$defs/Generic.Attachment"
+        },
+        "Date": {
+          "$ref": "#/$defs/Generic.Date"
+        },
+        "ValidUntil": {
+          "$ref": "#/$defs/Generic.Date"
+        }
+      },
+      "required": [
+        "_id",
+        "_type"
+      ],
+      "type": "object"
+    },
+    "Generic.ProcessStep": {
+      "additionalProperties": false,
+      "description": "A schema representing a single step in a process, including its index and associated specification.",
+      "properties": {
+        "_id": {
+          "$ref": "#/$defs/Generic.Identifier"
+        },
+        "_type": {
+          "const": "ProcessStep",
+          "type": "string"
+        },
+        "Specification": {
+          "$ref": "#/$defs/Generic.Specification",
+          "description": "The specification associated with this process step."
+        },
+        "Index": {
+          "description": "The sequential index of the process step.",
+          "example": 1,
+          "type": "integer"
+        },
+        "ProcessData": {
+          "$ref": "#/$defs/Generic.InformationSet",
+          "description": "The information set related to this process step."
+        },
+        "Comment": {
+          "$ref": "#/$defs/Generic.LongString"
+        },
+        "Attachment": {
+          "$ref": "#/$defs/Generic.Attachment"
+        }
+      },
+      "required": [
+        "_id",
+        "_type",
+        "Index"
+      ],
+      "type": "object"
+    },
+    "Generic.PropertyWithTolerance": {
+      "additionalProperties": false,
+      "description": "A schema representing a property with its value, unit, and tolerance.",
+      "properties": {
+        "MaxTolerance": {
+          "description": "The maximum tolerance value.",
+          "example": 0.5,
+          "type": "number"
+        },
+        "MinTolerance": {
+          "description": "The minimum tolerance value.",
+          "example": 0.1,
+          "type": "number"
+        },
+        "Property": {
+          "$ref": "#/$defs/Generic.RestrictedString",
+          "description": "The name of the property."
+        },
+        "Unit": {
+          "$ref": "#/$defs/Generic.Unit",
+          "description": "The unit of measurement for the property value."
+        },
+        "Value": {
+          "description": "The value of the property.",
+          "example": 100.0,
+          "type": "number"
+        },
+        "ValueType": {
+          "$ref": "#/$defs/Generic.RestrictedString",
+          "description": "The type of the property value."
+        }
+      },
+      "required": [
+        "Property",
+        "Value",
+        "Unit"
+      ],
+      "type": "object"
+    },
+    "Generic.Specification": {
+      "additionalProperties": false,
+      "properties": {
+        "Authority": {
+          "$ref": "#/$defs/Generic.RestrictedString"
+        },
+        "Type": {
+          "$ref": "#/$defs/Generic.RestrictedString"
+        },
+        "Number": {
+          "$ref": "#/$defs/Generic.RestrictedString"
+        },
+        "SubNumber": {
+          "$ref": "#/$defs/Generic.RestrictedString"
+        },
+        "IssueDate": {
+          "$ref": "#/$defs/Generic.DateMonth"
+        },
+        "Title": {
+          "$ref": "#/$defs/Generic.LongString"
+        },
+        "FeatureText": {
+          "$ref": "#/$defs/Generic.RestrictedString"
+        },
+        "FeatureList": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Generic.RestrictedString"
+          },
+          "example": [ "23", "R", "6/4" ]
+        },
+        "DOI": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "Type",
+        "Number",
+        "IssueDate"
+      ],
+      "type": "object"
+    },
+    "Generic.SingleResult": {
+      "unevaluatedProperties": false,
+      "allOf": [
+        {
+          "$ref": "#/$defs/Generic.InformationPoint"
+        },
+        {
+          "properties": {
+            "_id": {
+              "$ref": "#/$defs/Generic.Identifier"
+            },
+            "_type": {
+              "const": "SingleResult",
+              "type": "string"
+            },
+            "ConsolidatedValueID": {
+              "$ref": "#/$defs/Generic.Identifier"
+            },
+            "Comment": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "Attachment": {
+              "$ref": "#/$defs/Generic.Attachment"
+            }
+          }
+        }
+      ],
+      "type": "object"
+    },
+    "Generic.Specimen": {
+      "additionalProperties": false,
+      "properties": {
+        "_id": {
+          "$ref": "#/$defs/Generic.Identifier"
+        },
+        "_type": {
+          "const": "Specimen",
+          "type": "string"
+        },
+        "Designation": {
+          "$ref": "#/$defs/Generic.LongString"
+        },
+        "Flagging": {
+          "$ref": "#/$defs/Generic.RestrictedString"
+        },
+        "Comment": {
+          "$ref": "#/$defs/Generic.LongString"
+        },
+        "ComponentID": {
+          "$ref": "#/$defs/Generic.Identifier"
+        },
+        "Attachment": {
+          "$ref": "#/$defs/Generic.Attachment"
+        },
+        "AdditionalProperties": {
+          "$ref": "#/$defs/Generic.InformationSet"
+        },
+        "Extraction": {
+          "$ref": "#/$defs/Generic.Extraction"
+        },
+        "ProcessHistory": {
+          "description": "An array of processing steps.",
+          "items": {
+            "$ref": "#/$defs/Generic.ProcessStep"
+          },
+          "type": "array"
+        }
+      },
+      "required": [
+        "_id",
+        "_type",
+        "ComponentID",
+        "Designation"
+      ],
+      "type": "object"
+    },
+    "Generic.TestingCenter": {
+      "additionalProperties": false,
+      "properties": {
+        "_id": {
+          "$ref": "#/$defs/Generic.Identifier"
+        },
+        "_type": {
+          "const": "TestingCenter",
+          "type": "string"
+        },
+        "Location": {
+          "$ref": "#/$defs/Generic.Location"
+        },
+        "TestingManager": {
+          "$ref": "#/$defs/Generic.Person"
+        },
+        "Certifications": {
+          "items": {
+            "$ref": "#/$defs/Generic.Certification"
+          },
+          "type": "array"
+        },
+        "VatId": {
+          "$ref": "#/$defs/Generic.RestrictedString"
+        }
+      },
+      "required": [
+        "_id",
+        "_type",
+        "Location",
+        "TestingManager",
+        "Certifications"
+      ],
+      "type": "object"
+    },
+    "Generic.Person": {
+      "additionalProperties": false,
+      "properties": {
+        "_id": {
+          "$ref": "#/$defs/Generic.Identifier"
+        },
+        "_type": {
+          "const": "Person",
+          "type": "string"
+        },
+        "FirstName": {
+          "$ref": "#/$defs/Generic.ProperNameString"
+        },
+        "MiddleName": {
+          "$ref": "#/$defs/Generic.ProperNameString"
+        },
+        "LastName": {
+          "$ref": "#/$defs/Generic.ProperNameString"
+        },
+        "Title": {
+          "$ref": "#/$defs/Generic.RestrictedString"
+        },
+        "OrganizationIdentification": {
+          "$ref": "#/$defs/Generic.LocationIdentification"
+        },
+        "ID-Number": {
+          "$ref": "#/$defs/Generic.RestrictedString"
+        },
+        "EMail": {
+          "format": "email",
+          "type": "string"
+        }
+      },
+      "required": [
+        "_id",
+        "_type"
+      ],
+      "type": "object"
+    },
+    "Generic.Component": {
+      "properties": {
+        "_id": {
+          "$ref": "#/$defs/Generic.Identifier"
+        },
+        "_type": {
+          "const": "Component",
+          "type": "string"
+        },
+        "PartNumber": {
+          "$ref": "#/$defs/Generic.RestrictedString"
+        },
+        "Color": {
+          "$ref": "#/$defs/Generic.RestrictedString"
+        },
+        "ProductionSite": {
+          "$ref": "#/$defs/Generic.Location"
+        },
+        "Machine": {
+          "$ref": "#/$defs/Generic.RestrictedString"
+        },
+        "Tool": {
+          "$ref": "#/$defs/Generic.RestrictedString"
+        },
+        "Cavity": {
+          "$ref": "#/$defs/Generic.RestrictedString"
+        },
+        "SerialNumber": {
+          "$ref": "#/$defs/Generic.RestrictedString"
+        },
+        "ProductionBatchNumber": {
+          "$ref": "#/$defs/Generic.RestrictedString"
+        },
+        "ProductionDate": {
+          "$ref": "#/$defs/Generic.Date"
+        },
+        "MaterialGroup": {
+          "$ref": "#/$defs/Generic.RestrictedString",
+          "description": "According to VDA 231-106"
+        },
+        "MaterialClass": {
+          "$ref": "#/$defs/Generic.RestrictedString",
+          "description": "According to VDA 231-200"
+        },
+        "MaterialName": {
+          "$ref": "#/$defs/Generic.RestrictedString"
+        },
+        "LayerSequence": {
+          "$ref": "#/$defs/Generic.InformationSet"
+        },
+        "DateOfReceipt": {
+          "$ref": "#/$defs/Generic.Date"
+        },
+        "Attachments": {
+          "items": {
+            "$ref": "#/$defs/Generic.Attachment"
+          },
+          "type": "array"
+        }
+      },
+      "required": [
+        "_id",
+        "_type"
+      ],
+      "type": "object"
+    },
+    "Generic.TestSeries": {
+      "additionalProperties": false,
+      "properties": {
+        "_id": {
+          "$ref": "#/$defs/Generic.Identifier"
+        },
+        "_type": {
+          "const": "TestSeries",
+          "type": "string"
+        },
+        "Specification": {
+          "$ref": "#/$defs/Generic.Specification"
+        },
+        "TestType": {
+          "$ref": "#/$defs/Generic.RestrictedString"
+        },
+        "AdditionalInformation": {
+          "$ref": "#/$defs/Generic.InformationSet",
+          "additionalProperties": false
+        },
+        "NumberOfExecutions": {
+          "minimum": 1,
+          "type": "integer"
+        },
+        "Assessment": {
+          "type": "string"
+        },
+        "PredecessorId": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "SuccessorId": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "TestingCenter": {
+          "$ref": "#/$defs/Generic.TestingCenter"
+        },
+        "Comment": {
+          "$ref": "#/$defs/Generic.RestrictedString"
+        },
+        "Executions": {
+          "items": {
+            "$ref": "#/$defs/Generic.TestExecution"
+          },
+          "type": "array"
+        },
+        "ConsolidatedCharacteristicValues": {
+          "items": {
+            "$ref": "#/$defs/Generic.ConsolidatedCharacteristicValue"
+          },
+          "minItems": 1,
+          "type": "array"
+        }
+      },
+      "required": [
+        "_id",
+        "_type",
+        "Specification",
+        "NumberOfExecutions",
+        "PredecessorId",
+        "SuccessorId",
+        "TestingCenter",
+        "ConsolidatedCharacteristicValues"
+      ],
+      "type": "object"
+    },
+    "Generic.RestrictedString": {
+      "allOf": [
+        {
+          "not": {
+            "pattern": "^\\s"
+          }
+        },
+        {
+          "not": {
+            "pattern": "\\s$"
+          }
+        }
+      ],
+      "description": "A string with max length of 45, no leading or trailing whitespace, and only 7-bit ASCII characters",
+      "maxLength": 45,
+      "minLength": 0,
+      "pattern": "^[\\x20-\\x7E]*$",
+      "type": "string"
+    },
+    "Generic.Unit": {
+      "allOf": [
+        {
+          "not": {
+            "pattern": "^\\s"
+          }
+        },
+        {
+          "not": {
+            "pattern": "\\s$"
+          }
+        }
+      ],
+      "description": "A string with max length of 20, no leading or trailing whitespace, and only 7-bit ASCII characters plus Ω and µ",
+      "maxLength": 20,
+      "minLength": 0,
+      "pattern": "^[°Ωµ\\x20-\\x7E]*$",
+      "type": "string",
+      "examples": [
+        "Ω",
+        "µg*m^-3"
+      ]
+    },
+    "Generic.ProperNameString": {
+      "allOf": [
+        {
+          "not": {
+            "pattern": "^\\s"
+          }
+        },
+        {
+          "not": {
+            "pattern": "\\s$"
+          }
+        }
+      ],
+      "description": "A string with max length of 80, no leading or trailing whitespace, and only the Unicode code pages Basic Latin & Latin-1 Supplement",
+      "maxLength": 80,
+      "minLength": 0,
+      "pattern": "^[\\u0020-\\u00FF]*$",
+      "type": "string"
+    }
+  }
+}

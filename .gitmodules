@@ -1,0 +1,9 @@
+[submodule "main/SEP_1240"]
+	path = main/SEP_1240
+	url = https://github.com/VDA231-301/SEP_1240
+[submodule "main/VDA_270"]
+	path = main/VDA_270
+	url = https://github.com/VDA231-301/VDA_270
+[submodule "main/VDA_278"]
+	path = main/VDA_278
+	url = https://github.com/VDA231-301/VDA_278
