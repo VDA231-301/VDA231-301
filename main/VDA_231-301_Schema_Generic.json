@@ -207,10 +207,7 @@
         "_type",
         "Data",
         "FileName",
-        "MimeType",
-        "Encoding",
-        "Hashes",
-        "Designation"
+        "Encoding"
       ]
     },
     "Generic.Base64Encoding": {
@@ -265,6 +262,9 @@
         },
         "Address": {
           "$ref": "#/$defs/Generic.ContactDetails"
+        },
+        "AddressNativeLanguage": {
+          "$ref": "#/$defs/Generic.ContactDetailsNative"
         }
       },
       "required": [
@@ -293,10 +293,7 @@
               "$ref": "#/$defs/Generic.RestrictedString"
             },
             "Comment": {
-              "type": [
-                "string",
-                "null"
-              ]
+              "$ref": "#/$defs/Generic.RestrictedText"
             },
             "CriterionType": {
               "$ref": "#/$defs/Generic.RestrictedString"
@@ -325,6 +322,12 @@
           "type": "string"
         },
         "Street": {
+          "$ref": "#/$defs/Generic.ProperNameString"
+        },
+        "Street2": {
+          "$ref": "#/$defs/Generic.ProperNameString"
+        },
+        "Street3": {
           "$ref": "#/$defs/Generic.ProperNameString"
         },
         "HouseNumber": {
@@ -361,6 +364,59 @@
         "_type",
         "Phone",
         "EMail"
+      ],
+      "type": "object"
+    },
+    "Generic.ContactDetailsNative": {
+      "additionalProperties": false,
+      "properties": {
+        "_id": {
+          "$ref": "#/$defs/Generic.Identifier"
+        },
+        "_type": {
+          "const": "ContactDetailsNative",
+          "type": "string"
+        },
+        "Street": {
+          "$ref": "#/$defs/Generic.LongString"
+        },
+        "Street2": {
+          "$ref": "#/$defs/Generic.LongString"
+        },
+        "Street3": {
+          "$ref": "#/$defs/Generic.LongString"
+        },
+        "HouseNumber": {
+          "$ref": "#/$defs/Generic.LongString"
+        },
+        "AdditionToAddress": {
+          "$ref": "#/$defs/Generic.LongString"
+        },
+        "ZipCode": {
+          "$ref": "#/$defs/Generic.LongString"
+        },
+        "City": {
+          "$ref": "#/$defs/Generic.LongString"
+        },
+        "StateRegion": {
+          "$ref": "#/$defs/Generic.LongString"
+        },
+        "Country": {
+          "$ref": "#/$defs/Generic.LongString"
+        },
+        "EMail": {
+          "format": "email",
+          "type": "string"
+        },
+        "Fax": {
+          "$ref": "#/$defs/Generic.LongString"
+        },
+        "Phone": {
+          "$ref": "#/$defs/Generic.LongString"
+        }
+      },
+      "required": [
+        "_type"
       ],
       "type": "object"
     },
@@ -672,6 +728,13 @@
       "pattern": "^(?!\\s).*(?<!\\s)$",
       "type": "string"
     },
+    "Generic.RestrictedText": {
+      "description": "A string with max length of 1000 and only 7-bit ASCII characters",
+      "maxLength": 1000,
+      "minLength": 0,
+      "pattern": "^[\\x20-\\x7E]*$",
+      "type": "string"
+    },
     "Generic.MeasurementSystem": {
       "additionalProperties": false,
       "properties": {
@@ -766,7 +829,7 @@
           "description": "The information set related to this process step."
         },
         "Comment": {
-          "$ref": "#/$defs/Generic.LongString"
+          "$ref": "#/$defs/Generic.RestrictedText"
         },
         "Attachment": {
           "$ref": "#/$defs/Generic.Attachment"
@@ -840,14 +903,18 @@
           "$ref": "#/$defs/Generic.LongString"
         },
         "FeatureText": {
-          "$ref": "#/$defs/Generic.RestrictedString"
+          "$ref": "#/$defs/Generic.LongString"
         },
         "FeatureList": {
           "type": "array",
           "items": {
             "$ref": "#/$defs/Generic.RestrictedString"
           },
-          "example": [ "23", "R", "6/4" ]
+          "example": [
+            "23",
+            "R",
+            "6/4"
+          ]
         },
         "DOI": {
           "type": "string"
@@ -879,10 +946,7 @@
               "$ref": "#/$defs/Generic.Identifier"
             },
             "Comment": {
-              "type": [
-                "string",
-                "null"
-              ]
+              "$ref": "#/$defs/Generic.RestrictedText"
             },
             "Attachment": {
               "$ref": "#/$defs/Generic.Attachment"
@@ -909,7 +973,7 @@
           "$ref": "#/$defs/Generic.RestrictedString"
         },
         "Comment": {
-          "$ref": "#/$defs/Generic.LongString"
+          "$ref": "#/$defs/Generic.RestrictedText"
         },
         "ComponentID": {
           "$ref": "#/$defs/Generic.Identifier"
@@ -1060,6 +1124,18 @@
         "MaterialName": {
           "$ref": "#/$defs/Generic.RestrictedString"
         },
+        "MaterialIdentifiers": {
+          "items": {
+            "$ref": "#/$defs/Generic.RestrictedString"
+          },
+          "type": "array"
+        },
+        "SurfaceIdentifiers": {
+          "items": {
+            "$ref": "#/$defs/Generic.RestrictedString"
+          },
+          "type": "array"
+        },
         "LayerSequence": {
           "$ref": "#/$defs/Generic.InformationSet"
         },
@@ -1071,6 +1147,18 @@
             "$ref": "#/$defs/Generic.Attachment"
           },
           "type": "array"
+        },
+        "DeviationSpecificationText": {
+          "$ref": "#/$defs/Generic.RestrictedText",
+          "description": "The text describing allowed deviation from the specification."
+        },
+        "DeviationSpecificationCodeFile": {
+          "$ref": "#/$defs/Generic.Attachment",
+          "description": "The JSON file containing the deviation specification code."
+        },
+        "Comment": {
+          "$ref": "#/$defs/Generic.RestrictedText",
+          "description": "Additional information about the component."
         }
       },
       "required": [
@@ -1122,7 +1210,7 @@
           "$ref": "#/$defs/Generic.TestingCenter"
         },
         "Comment": {
-          "$ref": "#/$defs/Generic.RestrictedString"
+          "$ref": "#/$defs/Generic.RestrictedText"
         },
         "Executions": {
           "items": {
@@ -1164,7 +1252,7 @@
         }
       ],
       "description": "A string with max length of 45, no leading or trailing whitespace, and only 7-bit ASCII characters",
-      "maxLength": 45,
+      "maxLength": 50,
       "minLength": 0,
       "pattern": "^[\\x20-\\x7E]*$",
       "type": "string"

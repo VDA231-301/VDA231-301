@@ -163,6 +163,10 @@
         <stop stop-opacity="1" stop-color="rgb(198,198,198)" offset="0%"/>
         <stop stop-opacity="1" stop-color="rgb(198,198,198)" offset="100%"/>
       </linearGradient>
+      <linearGradient x1="252.1941" gradientUnits="userSpaceOnUse" x2="402.2781" y1="899.6763" y2="939.6763" id="linearGradient41" spreadMethod="reflect">
+        <stop stop-opacity="1" stop-color="rgb(198,198,198)" offset="0%"/>
+        <stop stop-opacity="1" stop-color="rgb(198,198,198)" offset="100%"/>
+      </linearGradient>
       <clipPath clipPathUnits="userSpaceOnUse" id="clipPath1">
         <path d="M0 0 L1302 0 L1302 1491 L0 1491 L0 0 Z"/>
       </clipPath>
@@ -586,6 +590,13 @@
     <g text-rendering="geometricPrecision" stroke-miterlimit="1.45" shape-rendering="geometricPrecision" transform="matrix(1,0,0,1,-130,448)" stroke-linecap="butt">
       <path fill="none" d="M258.8621 774.4788 L395.6101 774.4788 L395.6101 813.18 L258.8621 813.18 Z" clip-path="url(#clipPath2)"/>
       <text x="268.8709" xml:space="preserve" y="798.5433" clip-path="url(#clipPath2)" font-family="sans-serif" stroke="none"> [Standortidentifikator]</text>
+    </g>
+    <g fill="url(#linearGradient41)" text-rendering="geometricPrecision" shape-rendering="geometricPrecision" transform="matrix(1,0,0,1,-130,448)" stroke="url(#linearGradient41)">
+      <path d="M252.1941 899.6763 L402.2781 899.6763 L402.2781 939.6763 L252.1941 939.6763 Z" stroke="none" clip-path="url(#clipPath2)"/>
+    </g>
+    <g text-rendering="geometricPrecision" stroke-miterlimit="1.45" shape-rendering="geometricPrecision" transform="matrix(1,0,0,1,-130,448)" stroke-linecap="butt">
+      <path fill="none" d="M252.1941 899.6763 L402.2781 899.6763 L402.2781 939.6763 L252.1941 939.6763 Z" clip-path="url(#clipPath2)"/>
+      <text x="259.1941" xml:space="preserve" y="924.3902" clip-path="url(#clipPath2)" font-family="sans-serif" stroke="none"> [AdresseLandessprache]</text>
     </g>
     <g text-rendering="geometricPrecision" stroke-miterlimit="1.45" shape-rendering="geometricPrecision" transform="matrix(1,0,0,1,-130,448)" stroke-linecap="butt">
       <path fill="none" d="M560.768 110.5083 L560.768 65.1391 L709.3097 65.1391" clip-path="url(#clipPath2)"/>
