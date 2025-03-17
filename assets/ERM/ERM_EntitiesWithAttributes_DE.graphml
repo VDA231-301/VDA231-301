@@ -730,7 +730,7 @@ Null}*<y:LabelModel><y:ErdAttributesNodeLabelModel/></y:LabelModel><y:ModelParam
           <y:NodeLabel alignment="left" autoSizePolicy="content" configuration="com.yworks.entityRelationship.label.attributes" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="312.724609375" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="top" visible="true" width="227.458984375" x="2.0" xml:space="preserve" y="30.701171875">ID*
 Anhang [Anhang]
 Abweichungsbeschreibung
-Abweichungscode-File [Attachment]
+Abweichungscode-File [Anhang]
 Teilenummer
 Farbe
 Produktionswerk [Standort]
