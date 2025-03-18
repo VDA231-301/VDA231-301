@@ -143,10 +143,10 @@ Startzeitpunk [Zeitpunkt]*
     <node id="n6">
       <data key="d5">
         <y:GenericNode configuration="com.yworks.entityRelationship.big_entity">
-          <y:Geometry height="189.712890625" width="253.23266090297795" x="638.9746781940437" y="315.63506939767626"/>
+          <y:Geometry height="204.4140625" width="276.81640625" x="627.1828055205326" y="308.28448346017626"/>
           <y:Fill color="#FFFFFF" transparent="false"/>
           <y:BorderStyle color="#000000" type="line" width="1.0"/>
-          <y:NodeLabel alignment="center" autoSizePolicy="content" backgroundColor="#EDEDED" configuration="com.yworks.entityRelationship.label.name" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasLineColor="false" height="18.701171875" horizontalTextPosition="center" iconTextGap="4" modelName="internal" modelPosition="t" textColor="#000000" verticalTextPosition="bottom" visible="true" width="52.017578125" x="100.60754138898892" xml:space="preserve" y="4.0">Prüfserie</y:NodeLabel>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" backgroundColor="#EDEDED" configuration="com.yworks.entityRelationship.label.name" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasLineColor="false" height="18.701171875" horizontalTextPosition="center" iconTextGap="4" modelName="internal" modelPosition="t" textColor="#000000" verticalTextPosition="bottom" visible="true" width="52.017578125" x="112.3994140625" xml:space="preserve" y="4.0">Prüfserie</y:NodeLabel>
           <y:NodeLabel alignment="left" autoSizePolicy="content" configuration="com.yworks.entityRelationship.label.attributes" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="151.01171875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="top" visible="true" width="239.44140625" x="2.0" xml:space="preserve" y="30.701171875">ID*
 Spezifikation [Spezifikation]*
 Prüfungstyp
@@ -723,11 +723,11 @@ Null}*<y:LabelModel><y:ErdAttributesNodeLabelModel/></y:LabelModel><y:ModelParam
     <node id="n40">
       <data key="d5">
         <y:GenericNode configuration="com.yworks.entityRelationship.big_entity">
-          <y:Geometry height="351.42578125" width="237.458984375" x="286.712311943142" y="276.4699323529063"/>
+          <y:Geometry height="366.126953125" width="237.458984375" x="286.712311943142" y="269.1193464154063"/>
           <y:Fill color="#FFFFFF" transparent="false"/>
           <y:BorderStyle color="#000000" type="line" width="1.0"/>
           <y:NodeLabel alignment="center" autoSizePolicy="content" backgroundColor="#EDEDED" configuration="com.yworks.entityRelationship.label.name" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasLineColor="false" height="18.701171875" horizontalTextPosition="center" iconTextGap="4" modelName="internal" modelPosition="t" textColor="#000000" verticalTextPosition="bottom" visible="true" width="72.05078125" x="82.7041015625" xml:space="preserve" y="4.0">Komponente</y:NodeLabel>
-          <y:NodeLabel alignment="left" autoSizePolicy="content" configuration="com.yworks.entityRelationship.label.attributes" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="312.724609375" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="top" visible="true" width="227.458984375" x="2.0" xml:space="preserve" y="30.701171875">ID*
+          <y:NodeLabel alignment="left" autoSizePolicy="content" configuration="com.yworks.entityRelationship.label.attributes" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="327.42578125" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="top" visible="true" width="227.458984375" x="2.0" xml:space="preserve" y="30.701171875">ID*
 Anhang [Anhang]
 Abweichungsbeschreibung
 Abweichungscode-File [Anhang]
@@ -745,6 +745,7 @@ Werkstoffklasse (VDA 231-200)
 Werkstoffname
 Materialidentifikatoren (VDA 231-300)
 Oberflächenidentifikatoren (VDA 231-300)
+Spezifikationen (Liste von [Spezifikation])
 Schichtfolge [Informationssatz]
 Eingangsdatum [Zeitpunkt]
 Kommentar<y:LabelModel><y:ErdAttributesNodeLabelModel/></y:LabelModel><y:ModelParameter><y:ErdAttributesNodeLabelModelParameter/></y:ModelParameter></y:NodeLabel>
@@ -876,7 +877,7 @@ Telefonnummer<y:LabelModel><y:ErdAttributesNodeLabelModel/></y:LabelModel><y:Mod
     <edge id="e0" source="n40" target="n3">
       <data key="d9">
         <y:PolyLineEdge>
-          <y:Path sx="0.6815043077376199" sy="-146.60917980699898" tx="0.0" ty="0.0">
+          <y:Path sx="0.6815043077376199" sy="-152.74227210070922" tx="0.0" ty="0.0">
             <y:Point x="406.0316577384576" y="156.01788664745447"/>
           </y:Path>
           <y:LineStyle color="#000000" type="line" width="1.0"/>
@@ -908,7 +909,7 @@ Telefonnummer<y:LabelModel><y:ErdAttributesNodeLabelModel/></y:LabelModel><y:Mod
     <edge id="e3" source="n4" target="n6">
       <data key="d9">
         <y:PolyLineEdge>
-          <y:Path sx="0.0" sy="0.0" tx="-125.68869250886664" ty="0.0">
+          <y:Path sx="0.0" sy="0.0" tx="-137.39417357343183" ty="0.0">
             <y:Point x="1286.937255869356" y="403.264322766571"/>
           </y:Path>
           <y:LineStyle color="#000000" type="line" width="1.0"/>
@@ -1023,7 +1024,7 @@ Telefonnummer<y:LabelModel><y:ErdAttributesNodeLabelModel/></y:LabelModel><y:Mod
           </y:Path>
           <y:LineStyle color="#999999" type="dashed" width="1.0"/>
           <y:Arrows source="none" target="standard"/>
-          <y:EdgeLabel alignment="center" configuration="AutoFlippingLabel" distance="2.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" preferredPlacement="anywhere" ratio="0.5" textColor="#808080" verticalTextPosition="bottom" visible="true" width="34.673828125" x="-29.938385428754657" xml:space="preserve" y="-114.18586476317432">via ID<y:LabelModel><y:SmartEdgeLabelModel autoRotationEnabled="false" defaultAngle="0.0" defaultDistance="10.0"/></y:LabelModel><y:ModelParameter><y:SmartEdgeLabelModelParameter angle="0.0" distance="18.606291153494002" distanceToCenter="true" position="right" ratio="0.4672446735436765" segment="-1"/></y:ModelParameter><y:PreferredPlacementDescriptor angle="0.0" angleOffsetOnRightSide="0" angleReference="absolute" angleRotationOnRightSide="co" distance="-1.0" frozen="true" placement="anywhere" side="anywhere" sideReference="relative_to_edge_flow"/></y:EdgeLabel>
+          <y:EdgeLabel alignment="center" configuration="AutoFlippingLabel" distance="2.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" preferredPlacement="anywhere" ratio="0.5" textColor="#808080" verticalTextPosition="bottom" visible="true" width="34.673828125" x="-29.938385428754657" xml:space="preserve" y="-110.75134263645248">via ID<y:LabelModel><y:SmartEdgeLabelModel autoRotationEnabled="false" defaultAngle="0.0" defaultDistance="10.0"/></y:LabelModel><y:ModelParameter><y:SmartEdgeLabelModelParameter angle="0.0" distance="18.606291153494002" distanceToCenter="true" position="right" ratio="0.4672446735436765" segment="-1"/></y:ModelParameter><y:PreferredPlacementDescriptor angle="0.0" angleOffsetOnRightSide="0" angleReference="absolute" angleRotationOnRightSide="co" distance="-1.0" frozen="true" placement="anywhere" side="anywhere" sideReference="relative_to_edge_flow"/></y:EdgeLabel>
           <y:BendStyle smoothed="false"/>
         </y:PolyLineEdge>
       </data>
