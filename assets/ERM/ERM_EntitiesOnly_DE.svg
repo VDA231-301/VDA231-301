@@ -79,7 +79,7 @@
         <stop stop-opacity="1" stop-color="rgb(198,198,198)" offset="0%"/>
         <stop stop-opacity="1" stop-color="rgb(198,198,198)" offset="100%"/>
       </linearGradient>
-      <linearGradient x1="278.4361" gradientUnits="userSpaceOnUse" x2="376.0361" y1="843.18" y2="883.18" id="linearGradient20" spreadMethod="reflect">
+      <linearGradient x1="277.2361" gradientUnits="userSpaceOnUse" x2="377.2361" y1="843.8294" y2="882.5306" id="linearGradient20" spreadMethod="reflect">
         <stop stop-opacity="1" stop-color="rgb(198,198,198)" offset="0%"/>
         <stop stop-opacity="1" stop-color="rgb(198,198,198)" offset="100%"/>
       </linearGradient>
@@ -163,7 +163,7 @@
         <stop stop-opacity="1" stop-color="rgb(198,198,198)" offset="0%"/>
         <stop stop-opacity="1" stop-color="rgb(198,198,198)" offset="100%"/>
       </linearGradient>
-      <linearGradient x1="252.1941" gradientUnits="userSpaceOnUse" x2="402.2781" y1="899.6763" y2="939.6763" id="linearGradient41" spreadMethod="reflect">
+      <linearGradient x1="238.8435" gradientUnits="userSpaceOnUse" x2="415.6287" y1="900.3257" y2="939.0269" id="linearGradient41" spreadMethod="reflect">
         <stop stop-opacity="1" stop-color="rgb(198,198,198)" offset="0%"/>
         <stop stop-opacity="1" stop-color="rgb(198,198,198)" offset="100%"/>
       </linearGradient>
@@ -430,11 +430,11 @@
       <text x="1007.3602" xml:space="preserve" y="661.2064" clip-path="url(#clipPath2)" font-family="sans-serif" stroke="none"> [Zeitpunkt]</text>
     </g>
     <g fill="url(#linearGradient20)" text-rendering="geometricPrecision" shape-rendering="geometricPrecision" transform="matrix(1,0,0,1,-130,448)" stroke="url(#linearGradient20)">
-      <path d="M278.4361 843.18 L376.0361 843.18 L376.0361 883.18 L278.4361 883.18 Z" stroke="none" clip-path="url(#clipPath2)"/>
+      <path d="M277.2361 843.8294 L377.2361 843.8294 L377.2361 882.5306 L277.2361 882.5306 Z" stroke="none" clip-path="url(#clipPath2)"/>
     </g>
     <g text-rendering="geometricPrecision" stroke-miterlimit="1.45" shape-rendering="geometricPrecision" transform="matrix(1,0,0,1,-130,448)" stroke-linecap="butt">
-      <path fill="none" d="M278.4361 843.18 L376.0361 843.18 L376.0361 883.18 L278.4361 883.18 Z" clip-path="url(#clipPath2)"/>
-      <text x="300.2244" xml:space="preserve" y="867.8939" clip-path="url(#clipPath2)" font-family="sans-serif" stroke="none"> [Adresse]</text>
+      <path fill="none" d="M277.2361 843.8294 L377.2361 843.8294 L377.2361 882.5306 L277.2361 882.5306 Z" clip-path="url(#clipPath2)"/>
+      <text x="286.8738" xml:space="preserve" y="867.8939" clip-path="url(#clipPath2)" font-family="sans-serif" stroke="none"> [Kontaktdaten]</text>
     </g>
     <g fill="url(#linearGradient21)" text-rendering="geometricPrecision" shape-rendering="geometricPrecision" transform="matrix(1,0,0,1,-130,448)" stroke="url(#linearGradient21)">
       <path d="M425.6101 706.4925 L523.2101 706.4925 L523.2101 746.4925 L425.6101 746.4925 Z" stroke="none" clip-path="url(#clipPath2)"/>
@@ -592,11 +592,11 @@
       <text x="268.8709" xml:space="preserve" y="798.5433" clip-path="url(#clipPath2)" font-family="sans-serif" stroke="none"> [Standortidentifikator]</text>
     </g>
     <g fill="url(#linearGradient41)" text-rendering="geometricPrecision" shape-rendering="geometricPrecision" transform="matrix(1,0,0,1,-130,448)" stroke="url(#linearGradient41)">
-      <path d="M252.1941 899.6763 L402.2781 899.6763 L402.2781 939.6763 L252.1941 939.6763 Z" stroke="none" clip-path="url(#clipPath2)"/>
+      <path d="M238.8435 900.3257 L415.6287 900.3257 L415.6287 939.0269 L238.8435 939.0269 Z" stroke="none" clip-path="url(#clipPath2)"/>
     </g>
     <g text-rendering="geometricPrecision" stroke-miterlimit="1.45" shape-rendering="geometricPrecision" transform="matrix(1,0,0,1,-130,448)" stroke-linecap="butt">
-      <path fill="none" d="M252.1941 899.6763 L402.2781 899.6763 L402.2781 939.6763 L252.1941 939.6763 Z" clip-path="url(#clipPath2)"/>
-      <text x="259.1941" xml:space="preserve" y="924.3902" clip-path="url(#clipPath2)" font-family="sans-serif" stroke="none"> [AdresseLandessprache]</text>
+      <path fill="none" d="M238.8435 900.3257 L415.6287 900.3257 L415.6287 939.0269 L238.8435 939.0269 Z" clip-path="url(#clipPath2)"/>
+      <text x="245.8435" xml:space="preserve" y="924.3902" clip-path="url(#clipPath2)" font-family="sans-serif" stroke="none"> [KontaktdatenLandessprache]</text>
     </g>
     <g text-rendering="geometricPrecision" stroke-miterlimit="1.45" shape-rendering="geometricPrecision" transform="matrix(1,0,0,1,-130,448)" stroke-linecap="butt">
       <path fill="none" d="M560.768 110.5083 L560.768 65.1391 L709.3097 65.1391" clip-path="url(#clipPath2)"/>

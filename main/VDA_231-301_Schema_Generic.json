@@ -1136,6 +1136,13 @@
           },
           "type": "array"
         },
+        "Specifications": {
+          "items": {
+            "$ref": "#/$defs/Generic.Specification"
+          },
+          "type": "array",
+          "description": "A list of associated specifications regarding this component."
+        },
         "LayerSequence": {
           "$ref": "#/$defs/Generic.InformationSet"
         },
