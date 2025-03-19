@@ -1128,13 +1128,15 @@
           "items": {
             "$ref": "#/$defs/Generic.RestrictedString"
           },
-          "type": "array"
+          "type": "array",
+          "description": "According to VDA 231-300"
         },
         "SurfaceIdentifiers": {
           "items": {
             "$ref": "#/$defs/Generic.RestrictedString"
           },
-          "type": "array"
+          "type": "array",
+          "description": "According to VDA 231-300"
         },
         "Specifications": {
           "items": {
