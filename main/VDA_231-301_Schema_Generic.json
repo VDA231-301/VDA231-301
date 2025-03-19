@@ -163,6 +163,9 @@
           "$ref": "#/$defs/Generic.NumberWithTolerance"
         },
         {
+          "$ref": "#/$defs/Generic.Date"
+        },
+        {
           "description": "A null value",
           "type": "null"
         }
