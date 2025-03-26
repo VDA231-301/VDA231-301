@@ -1263,7 +1263,7 @@
           }
         }
       ],
-      "description": "A string with max length of 45, no leading or trailing whitespace, and only 7-bit ASCII characters",
+      "description": "A string with max length of 50, no leading or trailing whitespace, and only 7-bit ASCII characters",
       "maxLength": 50,
       "minLength": 0,
       "pattern": "^[\\x20-\\x7E]*$",
