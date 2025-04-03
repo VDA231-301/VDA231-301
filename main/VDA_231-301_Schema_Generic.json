@@ -1207,15 +1207,23 @@
           "type": "string"
         },
         "PredecessorId": {
-          "type": [
-            "string",
-            "null"
+          "oneOf": [
+            {
+              "$ref": "#/$defs/Generic.Identifier"
+            },
+            {
+              "type": "null"
+            }
           ]
         },
         "SuccessorId": {
-          "type": [
-            "string",
-            "null"
+          "oneOf": [
+            {
+              "$ref": "#/$defs/Generic.Identifier"
+            },
+            {
+              "type": "null"
+            }
           ]
         },
         "TestingCenter": {
