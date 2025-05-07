@@ -4,7 +4,7 @@ Welcome to the **VDA 231-301 JSON Schema Repository**, the official home for the
 Developed jointly by the German Association of the Automotive Industry (www.vda.de), as well as the Institute for Engineering Design and Industrial Design (IKTD) at the University of Stuttgart (www.iktd.uni-stuttgart.de) and many contributors from the automotive industry.
 
 **DISCLAIMER**: We are constantly working to improve the VDA 231-301. If there are any differences between JSON schemas on GitHub and the published document by the VDA, the PDF on the VDA website is valid. 
-The current version of the official VDA 231-301 document can be found in the VDA Webshop ([German](https://webshop.vda.de/VDA/de/search?q=231-301) / [English](https://webshop.vda.de/VDA/en/search?q=231-301)).
+The current version of the official VDA 231-301 document can be found in the VDA Webshop ([German](https://webshop.vda.de/VDA/de/vda-231-301-022025) / [English](https://webshop.vda.de/VDA/en/vda-231-301-022025)).
 
 # JSON Schemas
 The main goal of the VDA 231-301 JSON schema is to provide a standardized format for the digital exchange of material test results. The schema is designed to be generic and extensible, allowing for the representation of various test results across different standards. Of Scope of the schema is the exchange of target values.
@@ -17,7 +17,7 @@ Specific **sub-schemas** can be created for individual standards, further restri
  
 **Generic schema**
 - Schema: [VDA_231-301_Schema_Generic.json](./main/VDA_231-301_Schema_Generic.json)
-- Version: 0.0.2
+- Version: 1.0.0
 
 Currently, the following sub-schemas are available:
 - **VDA 270** 
@@ -25,19 +25,19 @@ Currently, the following sub-schemas are available:
   - Schema: [VDA_231-301_Schema_VDA_270.json](https://github.com/VDA231-301/VDA_231-301__VDA_270/blob/main/VDA_231-301_Schema_VDA_270.json)
   - Example test report JSON: [VDA_231-301_Example_VDA_270.json](./main/VDA_270/VDA_231-301_Example_VDA_270.json)
   - Standard source: https://webshop.vda.de/VDA/de/vda-270-052022
-  - Version: 0.0.2
+  - Version: 1.0.0
 - **VDA 278** 
   - Title: "Thermal Desorption Analysis of Organic Emissions for the Characterization of Non-Metallic Materials for Automobiles"
   - Schema: [VDA_231-301_Schema_VDA_278.json](./main/VDA_278/VDA_231-301_Schema_VDA_278.json)
   - Example test report JSON: [VDA_231-301_Example_VDA_278.json](./main/VDA_278/VDA_231-301_Example_VDA_278.json)
   - Standard source: https://webshop.vda.de/VDA/de/vda-278-05-2016
-  - Version: TBD
+  - Version: 1.0.0
 - **SEP 1240**
   - Title: "Testing and Documentation Guideline for the Experimental Determination of Mechanical Properties of Steel Sheets for CAE-Calculations"
   - Schema: [VDA_231-301_Schema_SEP_1240_plasticity.json](./main/SEP_1240/VDA_231-301_Schema_SEP_1240_plasticity.json)
   - Example test report JSON: [VDA_231-301_Example_TensileTesting.json](./main/SEP_1240/VDA_231-301_Example_TensileTesting.json)
   - Standard source: https://matplus.shop/product/sep-1240?lang=en
-  - Version: 0.0.1
+  - Version: 1.0.0
 
 # How to contribute
 
@@ -62,7 +62,7 @@ The schema and its sub-schemas are versioned and collaboratively developed here 
 ## Getting Started
 
 ## VDA 231-301 recommendation
-The latest version of the VDA 231-301 recommendation can be found on the VDA Webshop ([German](https://webshop.vda.de/VDA/de/search?q=231-301) / [English](https://webshop.vda.de/VDA/en/search?q=231-301)).
+The latest version of the VDA 231-301 recommendation can be found on the VDA Webshop ([German](https://webshop.vda.de/VDA/de/vda-231-301-022025) / [English](https://webshop.vda.de/VDA/de/vda-231-301-022025)).
 
 ### Using the Schema
 
