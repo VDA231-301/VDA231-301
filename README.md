@@ -23,13 +23,13 @@ Currently, the following sub-schemas are available:
 - **VDA 270** 
   - Title: "Determination of the odour characteristics of trim materials in motor vehicles" 
   - Schema: [VDA_231-301_Schema_VDA_270.json](https://github.com/VDA231-301/VDA_231-301__VDA_270/blob/main/VDA_231-301_Schema_VDA_270.json)
-  - Example test report JSON: [VDA_231-301_Example_VDA_270.json](./main/VDA_270/VDA_231-301_Example_VDA_270.json)
+  - Example test report JSON: [VDA_231-301_Example_VDA_270.json](https://github.com/VDA231-301/VDA_231-301__VDA_270/blob/main/VDA_231-301_Example_VDA_270.json)
   - Standard source: https://webshop.vda.de/VDA/de/vda-270-052022
   - Version: 0.0.2
 - **VDA 278** 
   - Title: "Thermal Desorption Analysis of Organic Emissions for the Characterization of Non-Metallic Materials for Automobiles"
-  - Schema: [VDA_231-301_Schema_VDA_278.json](./main/VDA_278/VDA_231-301_Schema_VDA_278.json)
-  - Example test report JSON: [VDA_231-301_Example_VDA_278.json](./main/VDA_278/VDA_231-301_Example_VDA_278.json)
+  - Schema: [VDA_231-301_Schema_VDA_278.json](https://github.com/VDA231-301/VDA_231-301__VDA_278/blob/main/VDA_231-301_Schema_VDA_278.json)
+  - Example test report JSON: [VDA_231-301_Example_VDA_278.json](https://github.com/VDA231-301/VDA_231-301__VDA_278/blob/main/VDA_231-301_Example_VDA_278.json)
   - Standard source: https://webshop.vda.de/VDA/de/vda-278-05-2016
   - Version: TBD
 - **SEP 1240**
