@@ -266,8 +266,8 @@
         "Address": {
           "$ref": "#/$defs/Generic.ContactDetails"
         },
-        "AddressNativeLanguage": {
-          "$ref": "#/$defs/Generic.ContactDetailsNative"
+        "AddressRestricted": {
+          "$ref": "#/$defs/Generic.ContactDetailsRestricted"
         }
       },
       "required": [
@@ -314,14 +314,14 @@
       ],
       "type": "object"
     },
-    "Generic.ContactDetails": {
+    "Generic.ContactDetailsRestricted": {
       "additionalProperties": false,
       "properties": {
         "_id": {
           "$ref": "#/$defs/Generic.Identifier"
         },
         "_type": {
-          "const": "ContactDetails",
+          "const": "ContactDetailsRestricted",
           "type": "string"
         },
         "Street": {
@@ -370,14 +370,14 @@
       ],
       "type": "object"
     },
-    "Generic.ContactDetailsNative": {
+    "Generic.ContactDetails": {
       "additionalProperties": false,
       "properties": {
         "_id": {
           "$ref": "#/$defs/Generic.Identifier"
         },
         "_type": {
-          "const": "ContactDetailsNative",
+          "const": "ContactDetails",
           "type": "string"
         },
         "Street": {
