@@ -1,7 +1,7 @@
 {
-  "$id": "https://github.com/VDA231-301/Draft_VDA231-301/blob/v0.0.2/main/VDA_231-301_Schema_Generic.json",
+  "$id": "https://vda231-301.github.io/schemas/generic/VDA_231-301_generic_v0.1.0.schema.json",
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "title": "VDA 231-301 TestReport JSON schema",
+  "title": "VDA 231-301 TestingProject JSON schema",
   "type": "object",
   "additionalProperties": false,
   "description": "This is the Generic Schema which validates the structure of the file",
@@ -10,12 +10,12 @@
       "$ref": "#/$defs/Generic.Identifier"
     },
     "_type": {
-      "const": "TestReport",
+      "const": "TestingProject",
       "type": "string"
     },
     "_schemaVersion": {
-      "const": "0.0.2",
-      "description": "The schema version on which the structure of the test report is based on."
+      "const": "0.1.0",
+      "description": "The generic schema version on which the structure of the testing project is based on."
     },
     "Title": {
       "$ref": "#/$defs/Generic.RestrictedString"
@@ -53,9 +53,9 @@
     "RemarkInterpretations": {
       "$ref": "#/$defs/Generic.LongString"
     },
-    "Components": {
+    "ComponentDefinitions": {
       "items": {
-        "$ref": "#/$defs/Generic.Component"
+        "$ref": "#/$defs/Generic.ComponentDefinition"
       },
       "minItems": 1,
       "type": "array"
@@ -80,7 +80,7 @@
     "Signatory",
     "Client",
     "Contractor",
-    "Components",
+    "ComponentDefinitions",
     "TestSeries"
   ],
   "$defs": {
@@ -277,7 +277,21 @@
       ],
       "type": "object"
     },
-    "Generic.ConsolidatedCharacteristicValue": {
+    "Generic.CharacteristicValues": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/Generic.InformationSet"
+        },
+        {
+          "items": {
+            "$ref": "#/$defs/Generic.CharacteristicValuePoint"
+          },
+          "minItems": 1,
+          "type": "array"
+        }
+      ]
+    },
+    "Generic.CharacteristicValuePoint": {
       "unevaluatedProperties": false,
       "allOf": [
         {
@@ -530,10 +544,7 @@
           "type": "array"
         },
         "SingleResults": {
-          "items": {
-            "$ref": "#/$defs/Generic.SingleResult"
-          },
-          "type": "array"
+          "$ref": "#/$defs/Generic.SingleResults"
         },
         "Specimen": {
           "$ref": "#/$defs/Generic.Specimen"
@@ -929,7 +940,21 @@
       ],
       "type": "object"
     },
-    "Generic.SingleResult": {
+    "Generic.SingleResults": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/Generic.InformationSet"
+        },
+        {
+          "items": {
+            "$ref": "#/$defs/Generic.SingleResultPoint"
+          },
+          "minItems": 1,
+          "type": "array"
+        }
+      ]
+    },
+    "Generic.SingleResultPoint": {
       "unevaluatedProperties": false,
       "allOf": [
         {
@@ -941,7 +966,7 @@
               "$ref": "#/$defs/Generic.Identifier"
             },
             "_type": {
-              "const": "SingleResult",
+              "const": "SingleResultPoint",
               "type": "string"
             },
             "ConsolidatedValueID": {
@@ -977,7 +1002,7 @@
         "Comment": {
           "$ref": "#/$defs/Generic.RestrictedText"
         },
-        "ComponentID": {
+        "ComponentInstanceID": {
           "$ref": "#/$defs/Generic.Identifier"
         },
         "Attachment": {
@@ -1000,7 +1025,7 @@
       "required": [
         "_id",
         "_type",
-        "ComponentID",
+        "ComponentInstanceID",
         "Designation"
       ],
       "type": "object"
@@ -1079,41 +1104,27 @@
       ],
       "type": "object"
     },
-    "Generic.Component": {
+    "Generic.ComponentDefinition": {
       "properties": {
         "_id": {
           "$ref": "#/$defs/Generic.Identifier"
         },
         "_type": {
-          "const": "Component",
+          "const": "ComponentDefinition",
           "type": "string"
+        },
+        "Instances": {
+          "items": {
+            "$ref": "#/$defs/Generic.ComponentInstance"
+          },
+          "type": "array",
+          "description": "A list of instances of this component."
         },
         "PartNumber": {
           "$ref": "#/$defs/Generic.RestrictedString"
         },
         "Color": {
           "$ref": "#/$defs/Generic.RestrictedString"
-        },
-        "ProductionSite": {
-          "$ref": "#/$defs/Generic.Location"
-        },
-        "Machine": {
-          "$ref": "#/$defs/Generic.RestrictedString"
-        },
-        "Tool": {
-          "$ref": "#/$defs/Generic.RestrictedString"
-        },
-        "Cavity": {
-          "$ref": "#/$defs/Generic.RestrictedString"
-        },
-        "SerialNumber": {
-          "$ref": "#/$defs/Generic.RestrictedString"
-        },
-        "ProductionBatchNumber": {
-          "$ref": "#/$defs/Generic.RestrictedString"
-        },
-        "ProductionDate": {
-          "$ref": "#/$defs/Generic.Date"
         },
         "MaterialGroup": {
           "$ref": "#/$defs/Generic.RestrictedString",
@@ -1150,9 +1161,6 @@
         "LayerSequence": {
           "$ref": "#/$defs/Generic.InformationSet"
         },
-        "DateOfReceipt": {
-          "$ref": "#/$defs/Generic.Date"
-        },
         "Attachments": {
           "items": {
             "$ref": "#/$defs/Generic.Attachment"
@@ -1166,6 +1174,57 @@
         "DeviationSpecificationCodeFile": {
           "$ref": "#/$defs/Generic.Attachment",
           "description": "The JSON file containing the deviation specification code."
+        },
+        "Comment": {
+          "$ref": "#/$defs/Generic.RestrictedText",
+          "description": "Additional information about the component."
+        }
+      },
+      "required": [
+        "_id",
+        "_type",
+        "Instances"
+      ],
+      "type": "object"
+    },
+    "Generic.ComponentInstance": {
+      "properties": {
+        "_id": {
+          "$ref": "#/$defs/Generic.Identifier"
+        },
+        "_type": {
+          "const": "ComponentInstance",
+          "type": "string"
+        },
+        "ProductionSite": {
+          "$ref": "#/$defs/Generic.Location"
+        },
+        "Machine": {
+          "$ref": "#/$defs/Generic.RestrictedString"
+        },
+        "Tool": {
+          "$ref": "#/$defs/Generic.RestrictedString"
+        },
+        "Cavity": {
+          "$ref": "#/$defs/Generic.RestrictedString"
+        },
+        "SerialNumber": {
+          "$ref": "#/$defs/Generic.RestrictedString"
+        },
+        "ProductionBatchNumber": {
+          "$ref": "#/$defs/Generic.RestrictedString"
+        },
+        "ProductionDate": {
+          "$ref": "#/$defs/Generic.Date"
+        },
+        "DateOfReceipt": {
+          "$ref": "#/$defs/Generic.Date"
+        },
+        "Attachments": {
+          "items": {
+            "$ref": "#/$defs/Generic.Attachment"
+          },
+          "type": "array"
         },
         "Comment": {
           "$ref": "#/$defs/Generic.RestrictedText",
@@ -1193,6 +1252,9 @@
         },
         "TestType": {
           "$ref": "#/$defs/Generic.RestrictedString"
+        },
+        "ComponentDefinitionID": {
+          "$ref": "#/$defs/Generic.Identifier"
         },
         "AdditionalInformation": {
           "$ref": "#/$defs/Generic.InformationSet",
@@ -1238,11 +1300,10 @@
           "type": "array"
         },
         "ConsolidatedCharacteristicValues": {
-          "items": {
-            "$ref": "#/$defs/Generic.ConsolidatedCharacteristicValue"
-          },
-          "minItems": 1,
-          "type": "array"
+          "$ref": "#/$defs/Generic.CharacteristicValues"
+        },
+        "TargetCharacteristicValues": {
+          "$ref": "#/$defs/Generic.CharacteristicValues"
         }
       },
       "required": [
@@ -1253,7 +1314,8 @@
         "PredecessorId",
         "SuccessorId",
         "TestingCenter",
-        "ConsolidatedCharacteristicValues"
+        "ConsolidatedCharacteristicValues",
+        "ComponentDefinitionID"
       ],
       "type": "object"
     },
