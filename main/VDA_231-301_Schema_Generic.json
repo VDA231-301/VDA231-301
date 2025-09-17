@@ -1,5 +1,5 @@
 {
-  "$id": "https://vda231-301.github.io/schemas/generic/VDA_231-301_generic_v0.1.0.schema.json",
+  "$id": "https://vda231-301.github.io/schemas/generic/VDA_231-301_generic_v0.1.1.schema.json",
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "title": "VDA 231-301 TestingProject JSON schema",
   "type": "object",
@@ -14,7 +14,7 @@
       "type": "string"
     },
     "_schemaVersion": {
-      "const": "0.1.0",
+      "const": "0.1.1",
       "description": "The generic schema version on which the structure of the testing project is based on."
     },
     "Title": {
@@ -161,6 +161,9 @@
         },
         {
           "$ref": "#/$defs/Generic.NumberWithTolerance"
+        },
+        {
+          "$ref": "#/$defs/Generic.Range"
         },
         {
           "$ref": "#/$defs/Generic.Date"
@@ -478,6 +481,21 @@
       ],
       "type": "array"
     },
+    "Generic.Range": {
+      "properties": {
+        "minValue": {
+          "description": "The maximum tolerance value.",
+          "example": 0.5,
+          "type": "number"
+        },
+        "maxValue": {
+          "description": "The minimum tolerance value.",
+          "example": 0.6,
+          "type": "number"
+        }
+      },
+      "type": "object"
+    },
     "Generic.DateMonth": {
       "type": "string",
       "pattern": "^\\d{4}-\\d{2}$",
@@ -649,6 +667,9 @@
           "oneOf": [
             {
               "const": "NumberWithTolerance"
+            },
+            {
+              "const": "Range"
             },
             {
               "const": "Text"
@@ -1377,7 +1398,7 @@
       "description": "A string with max length of 80, no leading or trailing whitespace, and only the Unicode code pages Basic Latin & Latin-1 Supplement",
       "maxLength": 80,
       "minLength": 0,
-      "pattern": "^[\\u0020-\\u00FF]*$",
+      "pattern": "^[\\x20-\\xFF]*$",
       "type": "string"
     }
   }
