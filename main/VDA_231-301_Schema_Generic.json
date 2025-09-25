@@ -53,9 +53,9 @@
     "RemarkInterpretations": {
       "$ref": "#/$defs/Generic.LongString"
     },
-    "ComponentDefinitions": {
+    "ComponentMasters": {
       "items": {
-        "$ref": "#/$defs/Generic.ComponentDefinition"
+        "$ref": "#/$defs/Generic.ComponentMaster"
       },
       "minItems": 1,
       "type": "array"
@@ -80,7 +80,7 @@
     "Signatory",
     "Client",
     "Contractor",
-    "ComponentDefinitions",
+    "ComponentMasters",
     "TestSeries"
   ],
   "$defs": {
@@ -1125,13 +1125,13 @@
       ],
       "type": "object"
     },
-    "Generic.ComponentDefinition": {
+    "Generic.ComponentMaster": {
       "properties": {
         "_id": {
           "$ref": "#/$defs/Generic.Identifier"
         },
         "_type": {
-          "const": "ComponentDefinition",
+          "const": "ComponentMaster",
           "type": "string"
         },
         "Instances": {
@@ -1274,7 +1274,7 @@
         "TestType": {
           "$ref": "#/$defs/Generic.RestrictedString"
         },
-        "ComponentDefinitionID": {
+        "ComponentMasterID": {
           "$ref": "#/$defs/Generic.Identifier"
         },
         "AdditionalInformation": {
@@ -1336,7 +1336,7 @@
         "SuccessorId",
         "TestingCenter",
         "ConsolidatedCharacteristicValues",
-        "ComponentDefinitionID"
+        "ComponentMasterID"
       ],
       "type": "object"
     },
