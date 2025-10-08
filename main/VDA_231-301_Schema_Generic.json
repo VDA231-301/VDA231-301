@@ -1,5 +1,5 @@
 {
-  "$id": "https://vda231-301.github.io/schemas/generic/VDA_231-301_generic_v0.1.1.schema.json",
+  "$id": "https://vda231-301.github.io/schemas/generic/VDA_231-301_generic_v0.2.0.schema.json",
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "title": "VDA 231-301 TestingProject JSON schema",
   "type": "object",
@@ -14,7 +14,7 @@
       "type": "string"
     },
     "_schemaVersion": {
-      "const": "0.1.1",
+      "const": "0.2.0",
       "description": "The generic schema version on which the structure of the testing project is based on."
     },
     "Title": {
@@ -264,13 +264,16 @@
           "$ref": "#/$defs/Generic.LocationIdentification"
         },
         "Name": {
-          "$ref": "#/$defs/Generic.RestrictedString"
+          "$ref": "#/$defs/Generic.LongString"
+        },
+        "NameSimplifiedEnglish": {
+          "$ref": "#/$defs/Generic.ProperNameString"
         },
         "Address": {
           "$ref": "#/$defs/Generic.ContactDetails"
         },
-        "AddressRestricted": {
-          "$ref": "#/$defs/Generic.ContactDetailsRestricted"
+        "AddressSimplifiedEnglish": {
+          "$ref": "#/$defs/Generic.ContactDetailsSimplifiedEnglish"
         }
       },
       "required": [
@@ -318,6 +321,12 @@
             "CriterionType": {
               "$ref": "#/$defs/Generic.RestrictedString"
             },
+            "SingleResultIDs":{
+              "items": {
+                "$ref": "#/$defs/Generic.Identifier"
+              },
+              "type": "array"
+            },
             "Attachment": {
               "$ref": "#/$defs/Generic.Attachment"
             }
@@ -331,14 +340,14 @@
       ],
       "type": "object"
     },
-    "Generic.ContactDetailsRestricted": {
+    "Generic.ContactDetailsSimplifiedEnglish": {
       "additionalProperties": false,
       "properties": {
         "_id": {
           "$ref": "#/$defs/Generic.Identifier"
         },
         "_type": {
-          "const": "ContactDetailsRestricted",
+          "const": "ContactDetailsSimplifiedEnglish",
           "type": "string"
         },
         "Street": {
@@ -990,9 +999,6 @@
               "const": "SingleResultPoint",
               "type": "string"
             },
-            "ConsolidatedValueID": {
-              "$ref": "#/$defs/Generic.Identifier"
-            },
             "Comment": {
               "$ref": "#/$defs/Generic.RestrictedText"
             },
@@ -1141,8 +1147,13 @@
           "type": "array",
           "description": "A list of instances of this component."
         },
-        "PartNumber": {
-          "$ref": "#/$defs/Generic.RestrictedString"
+        "CustomerPartNumber": {
+          "$ref": "#/$defs/Generic.RestrictedString",
+          "description": "Part number of the customer (OEM)"
+        },
+        "SupplierPartNumber": {
+          "$ref": "#/$defs/Generic.RestrictedString",
+          "description": "Tier-N part number"
         },
         "Color": {
           "$ref": "#/$defs/Generic.RestrictedString"
