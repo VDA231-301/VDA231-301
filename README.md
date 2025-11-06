@@ -34,8 +34,8 @@ Currently, the following sub-schemas are available:
   - Version: 1.0.0
 - **SEP 1240**
   - Title: "Testing and Documentation Guideline for the Experimental Determination of Mechanical Properties of Steel Sheets for CAE-Calculations"
-  - Schema: [VDA_231-301_Schema_SEP_1240_plasticity.json](./main/SEP_1240/VDA_231-301_Schema_SEP_1240_plasticity.json)
-  - Example test report JSON: [VDA_231-301_Example_TensileTesting.json](./main/SEP_1240/VDA_231-301_Example_TensileTesting.json)
+  - Schema: [VDA_231-301_Schema_SEP_1240_plasticity.json](https://github.com/VDA231-301/VDA_231-301__SEP_1240/blob/main/VDA_231-301_Schema_SEP_1240_plasticity.json)
+  - Example test report JSON: [VDA_231-301_Example_TensileTesting.json](https://github.com/VDA231-301/VDA_231-301__SEP_1240/blob/main/VDA_231-301_Example_TensileTesting.json)
   - Standard source: https://matplus.shop/product/sep-1240?lang=en
   - Version: 1.0.0
 
@@ -70,6 +70,9 @@ You can use the schema to:
 - Validate your material test data.
 - Integrate it into existing software tools.
 - Develop converters, editors, or validators for the standard.
+
+### Creating new subschemas
+See the [Guidelines  for creating subschemas](./guidelines_for_creating_subschemas_VDA231-301.md) (English & German)
 
 ### Entity relationship diagram
 
