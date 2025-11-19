@@ -32,12 +32,12 @@ Currently, the following sub-schemas are available:
   - Example test report JSON: [VDA_231-301_Example_VDA_278.json](https://github.com/VDA231-301/VDA_231-301__VDA_278/blob/main/VDA_231-301_Example_VDA_278.json)
   - Standard source: https://webshop.vda.de/VDA/de/vda-278-05-2016
   - Version: 1.0.0
-- **SEP 1240**
+- **SEP 1240 - OUTDATED**
   - Title: "Testing and Documentation Guideline for the Experimental Determination of Mechanical Properties of Steel Sheets for CAE-Calculations"
   - Schema: [VDA_231-301_Schema_SEP_1240_plasticity.json](https://github.com/VDA231-301/VDA_231-301__SEP_1240/blob/main/VDA_231-301_Schema_SEP_1240_plasticity.json)
   - Example test report JSON: [VDA_231-301_Example_TensileTesting.json](https://github.com/VDA231-301/VDA_231-301__SEP_1240/blob/main/VDA_231-301_Example_TensileTesting.json)
   - Standard source: https://matplus.shop/product/sep-1240?lang=en
-  - Version: 1.0.0
+  - Version: 0.2.0
 
 # How to contribute
 
