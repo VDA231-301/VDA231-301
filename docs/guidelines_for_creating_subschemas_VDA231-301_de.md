@@ -122,55 +122,45 @@ Freigegebene Versionen aller Schemata werden im [Schemas-Repository](https://git
     }
   }
   ```
-
----
-
-## 4. Bedingte Logik
-
-> TODO MP
-- Bedingungen können auf bestimmte Werte oder das Vorhandensein von Attributen im Hauptschema basieren.
-- Die Logik wird mit den Schlüsselwörtern `if`, `then`, `else` im Schema abgebildet.
-
 ---
 
 ## 5. Technische Umsetzung
 
-Freigegebene Subschemata werden auf GitHub versioniert und gehostet:  
-https://vda231-301.github.io/schemas/
+### Referenz auf das generische Schema
+Subschemata müssen die Version des generischen Schemas, auf dem sie basieren, mittels JSON-Zeigern (`$ref`) referenzieren.
+Die Wurzel des Subschemas muss `allOf` verwenden, um das Basisschema einzubinden, und kann dann zusätzliche Eigenschaften oder Einschränkungen definieren.
 
-Referenzen auf andere Schemata erfolgen über JSON-Zeiger (`$ref`).
-
-Die freigegebenen Versionen des Basisschemas finden sich im Verzeichnis "generic":
-https://vda231-301.github.io/schemas/generic
-
-### Beispiel für die Benennung eines Subschemas
-
-Wichtig: Die $id Eigenschaft muss das folgende Format haben:
-
-`https://vda231-301.github.io/schemas/{KENNUNG}/VDA_231-301_{KENNUNG}_v{VERSION}.schema.json`
+Beispiel:
 
 ```json
 {
   "$id": "https://vda231-301.github.io/schemas/VDA_278/VDA_231-301_VDA_278_v0.1.0.schema.json",
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "title": "VDA 231-301 TestReport JSON schema for VDA 278"
+  "title": "VDA 231-301 TestReport JSON schema for VDA 278",
+  "allOf": [
+    {
+      "$ref": "https://vda231-301.github.io/schemas/generic/VDA_231-301_generic_v0.2.0.schema.json"
+    }
+  ],
+  "type": "object",
+  "properties": {
+    ...
+  }
 }
 ```
 
-```json
-{
-  "$id": "https://vda231-301.github.io/schemas/EN_10204/VDA_231-301_EN_10204_2004_Certificate_3.1_v0.2.0.schema.json",
-  "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "title": "VDA 231-301 TestReport JSON schema for EN_10204_2004_Certificate_3.1"
-}
-```
+### Bedingte Logik für die Anwendbarkeit des Subschemas
+
+Ziel: Das Subschema sollte nur gelten, wenn der Prüfbericht Daten für die spezifische Norm enthält. Das bedeutet, wenn eine Prüfbericht-JSON erfolgreich gegen das Subschema validiert wird, enthält sie Daten für die angegebene Norm.
+
+Dies wird in Kürze dokumentiert.
 
 ---
 
 ## 6. Veröffentlichung und Review
 
 - Neue Subschemata können jederzeit der Projektgruppe (PG) im VDA vorgeschlagen werden.
-- Der Prozess zur Einreichung ist im Repository dokumentiert.
+- Der Einreichungsprozess ist im Repository dokumentiert: [Prozessablaufdiagramm](./assets/process%20flows/process_flow_release_of_new_specialised_schemas_EN.svg)
 - Nach erfolgreicher Prüfung durch die PG erfolgt die Veröffentlichung.
 
 ---
