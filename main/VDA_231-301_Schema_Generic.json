@@ -614,7 +614,7 @@
           "$ref": "#/$defs/Generic.Date"
         },
         "Comment": {
-          "$ref": "#/$defs/Generic.RestrictedString"
+          "$ref": "#/$defs/Generic.RestrictedText"
         },
         "Attachment": {
           "$ref": "#/$defs/Generic.Attachment"
@@ -740,7 +740,7 @@
           "$ref": "#/$defs/Generic.RestrictedString"
         },
         "Comment": {
-          "$ref": "#/$defs/Generic.LongString"
+          "$ref": "#/$defs/Generic.RestrictedText"
         },
         "Attachment": {
           "$ref": "#/$defs/Generic.Attachment"
