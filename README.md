@@ -33,7 +33,7 @@ Specific **sub-schemas** can be created for individual standards, further restri
  
 **Generic schema**
 - Repository: [VDA231-301](https://github.com/VDA231-301/VDA231-301) (this repository)
-- Latest version: 0.2.0
+- Latest version: 1.0.0
 - Downloads: [schemas repository](https://vda231-301.github.io/schemas/#/generic)
 
 ### Sub-schemas
@@ -53,12 +53,12 @@ Currently, the following sub-schemas are available:
   - Title: "Thermal Desorption Analysis of Organic Emissions for the Characterization of Non-Metallic Materials for Automobiles"
   - Repository: [VDA_231-301__VDA_278](https://github.com/VDA231-301/VDA_231-301__VDA_278)
   - Standard source: https://webshop.vda.de/VDA/de/vda-278-05-2016
-  - Latest version: 0.0.1
+  - Latest version: not released yet
 - **SEP 1240**
   - Title: "Testing and Documentation Guideline for the Experimental Determination of Mechanical Properties of Steel Sheets for CAE-Calculations"
   - Repository: [VDA_231-301__SEP_1240](https://github.com/VDA231-301/VDA_231-301__SEP_1240)
   - Standard source: https://matplus.shop/product/sep-1240?lang=en
-  - Latest version: 0.0.1
+  - Latest version: not released yet
 
 # How to contribute
 
