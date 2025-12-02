@@ -157,7 +157,33 @@ This will be documented soon.
 
 ---
 
-## 6. Publication and Review
+## 6. AI-Assisted Creation of sub-schemas
+AI tools can be used to assist in the creation of sub-schemas. They can help with:
+- Generating initial drafts based on the standard's documentation.
+- Suggesting property names and structures.
+- Generating example JSON files.
+
+However, it is crucial to have human oversight to ensure accuracy, compliance with the guidelines, and proper representation of the standard.
+
+### Example prompt for AI tools:
+```
+There is a project based on JSON schema that aims to provide a standard way for digital test results to be represented and exchanged. 
+Here's the link to the project:
+https://raw.githubusercontent.com/VDA231-301/VDA231-301/refs/heads/main/README.md
+Look especially at this guide: https://raw.githubusercontent.com/VDA231-301/VDA231-301/refs/heads/main/docs/guidelines_for_creating_subschemas_VDA231-301_en.md
+And this specific sub-schema:
+https://vda231-301.github.io/schemas/EN_10204/VDA_231-301_EN_10204_2004_Certificate_3.1_v0.2.0.schema.json
+Now I want you to create a new sub-schema for the standard "<Insert name / title of you standard here>".
+I will upload the PDF document for this standard.
+I will also provide a sample test report PDF document based on the standard to help you create the sub-schema and example files.
+Please make sure the sub-schema follows the guidelines provided in the link above and captures all relevant information from the <Insert name of your standard here> standard.
+Create a JSON schema document and an example JSON test report file based on the new sub-schema.
+The example must validate against the created sub-schema, which also means it must validate against the generic VDA 231-301 schema found here: https://vda231-301.github.io/schemas/generic/VDA_231-301_generic_v0.2.0.schema.json (This requirement is crucial and listed in the guidelines, it must be achieved via "allOf" referencing the generic schema).
+```
+
+> **Note:** When using this prompt, please replace `<Insert name / title of you standard here>` and `<Insert name of your standard here>` with the actual name of the standard you are working on and attach two PDF documents: one for the standard and one for a sample test report based on that standard.
+
+## 7. Publication and Review
 
 - New sub-schemas can be proposed to the project group (PG) in the VDA at any time.
 - The submission process is documented in the repository: [Contribution process diagram](./assets/process%20flows/process_flow_release_of_new_specialised_schemas_EN.svg)

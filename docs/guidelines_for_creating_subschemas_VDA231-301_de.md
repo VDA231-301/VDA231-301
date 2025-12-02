@@ -157,7 +157,31 @@ Dies wird in Kürze dokumentiert.
 
 ---
 
-## 6. Veröffentlichung und Review
+## 6. KI-gestützte Erstellung von Subschemata
+KI-Tools können zur Unterstützung bei der Erstellung von Subschemata verwendet werden. Sie können helfen bei:
+- Erstellung von ersten Entwürfen basierend auf der Dokumentation der Norm.
+- Vorschlägen für Eigenschaftsnamen und Strukturen.
+- Erstellung von Beispiel-JSON-Dateien.
+
+Es ist jedoch entscheidend, dass menschliche Aufsicht gewährleistet ist, um Genauigkeit, Einhaltung der Richtlinien und korrekte Repräsentation der Norm sicherzustellen.
+
+### Beispiel-Prompt für KI-Tools:
+```
+There is a project based on JSON schema that aims to provide a standard way for digital test results to be represented and exchanged.
+Here's the link to the project:
+https://raw.githubusercontent.com/VDA231-301/VDA231-301/refs/heads/main/README.md
+Look especially at this guide: https://raw.githubusercontent.com/VDA231-301/VDA231-301/refs/heads/main/docs/guidelines_for_creating_subschemas_VDA231-301_en.md
+And this specific sub-schema:
+https://vda231-301.github.io/schemas/EN_10204/VDA_231-301_EN_10204_2004_Certificate_3.1_v0.2.0.schema.json
+Now I want you to create a new sub-schema for the standard "<Insert name / title of you standard here>".
+I will upload the PDF document for this standard.
+I will also provide a sample test report PDF document based on the standard to help you create the sub-schema and example files.
+Please make sure the sub-schema follows the guidelines provided in the link above and captures all relevant information from the <Insert name of your standard here> standard.
+Create a JSON schema document and an example JSON test report file based on the new sub-schema.
+The example must validate against the created sub-schema, which also means it must validate against the generic VDA 231-301 schema found here: https://vda231-301.github.io/schemas/generic/VDA_231-301_generic_v0.2.0.schema.json (This requirement is crucial and listed in the guidelines, it must be achieved via "allOf" referencing the generic schema).
+```
+
+## 7. Veröffentlichung und Review
 
 - Neue Subschemata können jederzeit der Projektgruppe (PG) im VDA vorgeschlagen werden.
 - Der Einreichungsprozess ist im Repository dokumentiert: [Prozessablaufdiagramm](./assets/process%20flows/process_flow_release_of_new_specialised_schemas_EN.svg)
