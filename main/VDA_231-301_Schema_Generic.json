@@ -1,5 +1,5 @@
 {
-  "$id": "https://vda231-301.github.io/schemas/generic/VDA_231-301_generic_v0.2.0.schema.json",
+  "$id": "https://vda231-301.github.io/schemas/generic/VDA_231-301_generic_v1.0.0.schema.json",
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "title": "VDA 231-301 TestingProject JSON schema",
   "type": "object",
@@ -14,7 +14,7 @@
       "type": "string"
     },
     "_schemaVersion": {
-      "const": "0.2.0",
+      "const": "1.0.0",
       "description": "The generic schema version on which the structure of the testing project is based on."
     },
     "Title": {
