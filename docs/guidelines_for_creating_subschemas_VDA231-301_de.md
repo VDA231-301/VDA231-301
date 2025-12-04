@@ -153,7 +153,135 @@ Beispiel:
 
 Ziel: Das Subschema sollte nur gelten, wenn der Prüfbericht Daten für die spezifische Norm enthält. Das bedeutet, wenn eine Prüfbericht-JSON erfolgreich gegen das Subschema validiert wird, enthält sie Daten für die angegebene Norm.
 
-Dies wird in Kürze dokumentiert.
+Subschemata validieren das Vorhandensein erforderlicher Prüfdaten durch Prüfung des `TestSeries`-Arrays. Es gibt zwei primäre Ansätze für diese Validierung:
+
+#### Ansatz 1: Abgleich über TestType
+
+Wenn die Norm bestimmte Prüfarten definiert, verwenden Sie die `TestType`-Eigenschaft, um relevante Prüfserien zu identifizieren:
+```json
+{
+  "allOf": [
+    {
+      "$ref": "https://vda231-301.github.io/schemas/generic/VDA_231-301_generic_v0.2.0.schema.json"
+    },
+    {
+      "properties": {
+        "TestSeries": {
+          "type": "array",
+          "contains": {
+            "type": "object",
+            "properties": {
+              "TestType": {
+                "const": "Thermodesorption"
+              }
+            },
+            "required": ["TestType"]
+          }
+        }
+      }
+    }
+  ]
+}
+```
+
+Für Normen, die mehrere Prüfarten erfordern (z.B. EN 10204, die sowohl chemische Zusammensetzung als auch Zugversuch erfordert), verwenden Sie `allOf` mit mehreren `contains`:
+```json
+{
+  "properties": {
+    "TestSeries": {
+      "type": "array",
+      "allOf": [
+        {
+          "contains": {
+            "type": "object",
+            "properties": {
+              "TestType": {
+                "const": "Optical Emission Spectroscopy"
+              }
+            },
+            "required": ["TestType"]
+          }
+        },
+        {
+          "contains": {
+            "type": "object",
+            "properties": {
+              "TestType": {
+                "const": "Tensile testing"
+              }
+            },
+            "required": ["TestType"]
+          }
+        }
+      ]
+    }
+  }
+}
+```
+
+#### Ansatz 2: Abgleich über Specification
+
+Wenn Prüfserien durch die Norm-Spezifikation selbst identifiziert werden, führen Sie den Abgleich gegen das `Specification`-Objekt durch:
+```json
+{
+  "properties": {
+    "TestSeries": {
+      "type": "array",
+      "contains": {
+        "type": "object",
+        "properties": {
+          "Specification": {
+            "type": "object",
+            "properties": {
+              "Authority": { "const": "VDA" },
+              "Number": { "const": "278" }
+            },
+            "required": ["Authority", "Number"]
+          }
+        },
+        "required": ["Specification"]
+      }
+    }
+  }
+}
+```
+
+#### Ansatz 3: Abgleich über TestType UND Specification
+
+Für eine strengere Validierung können sowohl TestType- als auch Specification-Eigenschaften gleichzeitig abgeglichen werden:
+```json
+{
+  "properties": {
+    "TestSeries": {
+      "type": "array",
+      "contains": {
+        "type": "object",
+        "properties": {
+          "TestType": { "const": "Thermodesorption" },
+          "Specification": {
+            "type": "object",
+            "properties": {
+              "Authority": { "const": "VDA" },
+              "Number": { "const": "278" }
+            },
+            "required": ["Authority", "Number"]
+          }
+        },
+        "required": ["TestType", "Specification"]
+      }
+    }
+  }
+}
+```
+
+Dieser Ansatz gewährleistet maximale Konsistenz, indem sowohl die Prüfart als auch die Norm-Spezifikation explizit definiert und mit den erwarteten Werten abgeglichen werden müssen.
+
+
+#### Wichtige Hinweise:
+- Die `required`-Eigenschaft ist in jedem `contains`-Block unerlässlich, um sicherzustellen, dass die übereinstimmenden Objekte tatsächlich die angegebenen Eigenschaften haben
+- Das Schlüsselwort `contains` stellt sicher, dass mindestens ein Array-Element den Kriterien entspricht
+- Die Verwendung von `allOf` mit mehreren `contains` erfordert, dass alle angegebenen Prüfarten vorhanden sind
+- Subschemata können diese Bedingungen mit zusätzlichen Eigenschaftsbeschränkungen kombinieren, indem sie `$ref` verwenden, um detaillierte Prüfserien-Definitionen zu referenzieren
 
 ---
 

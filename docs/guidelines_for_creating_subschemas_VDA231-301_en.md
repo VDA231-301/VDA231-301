@@ -153,7 +153,135 @@ Example:
 
 Goal: The sub-schema should only apply if the test report contains data for the specific standard. That means if a test report JSON is successfully validated against the sub-schema, it contains data for the specified standard.
 
-This will be documented soon.
+Sub-schemas validate the presence of required test data by checking the `TestSeries` array. There are two primary approaches for this validation:
+
+#### Approach 1: Matching by TestType
+
+When the standard defines specific test types, use the `TestType` property to identify relevant test series:
+```json
+{
+  "allOf": [
+    {
+      "$ref": "https://vda231-301.github.io/schemas/generic/VDA_231-301_generic_v0.2.0.schema.json"
+    },
+    {
+      "properties": {
+        "TestSeries": {
+          "type": "array",
+          "contains": {
+            "type": "object",
+            "properties": {
+              "TestType": {
+                "const": "Thermodesorption"
+              }
+            },
+            "required": ["TestType"]
+          }
+        }
+      }
+    }
+  ]
+}
+```
+
+For standards requiring multiple test types (e.g., EN 10204 requiring both chemical composition and tensile testing), use `allOf` with multiple `contains`:
+```json
+{
+  "properties": {
+    "TestSeries": {
+      "type": "array",
+      "allOf": [
+        {
+          "contains": {
+            "type": "object",
+            "properties": {
+              "TestType": {
+                "const": "Optical Emission Spectroscopy"
+              }
+            },
+            "required": ["TestType"]
+          }
+        },
+        {
+          "contains": {
+            "type": "object",
+            "properties": {
+              "TestType": {
+                "const": "Tensile testing"
+              }
+            },
+            "required": ["TestType"]
+          }
+        }
+      ]
+    }
+  }
+}
+```
+
+#### Approach 2: Matching by Specification
+
+When test series are identified by the standard specification itself, match against the `Specification` object:
+```json
+{
+  "properties": {
+    "TestSeries": {
+      "type": "array",
+      "contains": {
+        "type": "object",
+        "properties": {
+          "Specification": {
+            "type": "object",
+            "properties": {
+              "Authority": { "const": "VDA" },
+              "Number": { "const": "278" }
+            },
+            "required": ["Authority", "Number"]
+          }
+        },
+        "required": ["Specification"]
+      }
+    }
+  }
+}
+```
+
+#### Approach 3: Matching by both TestType AND Specification
+
+For stricter validation, require matching on both TestType and Specification properties simultaneously:
+```json
+{
+  "properties": {
+    "TestSeries": {
+      "type": "array",
+      "contains": {
+        "type": "object",
+        "properties": {
+          "TestType": { "const": "Thermodesorption" },
+          "Specification": {
+            "type": "object",
+            "properties": {
+              "Authority": { "const": "VDA" },
+              "Number": { "const": "278" }
+            },
+            "required": ["Authority", "Number"]
+          }
+        },
+        "required": ["TestType", "Specification"]
+      }
+    }
+  }
+}
+```
+
+This approach ensures maximum consistency by requiring both the test type and the standard specification to be explicitly defined and match the expected values.
+
+
+#### Important Notes:
+- The `required` property is essential in each `contains` block to ensure the matched objects actually have the specified properties
+- The `contains` keyword ensures at least one array item matches the criteria
+- Using `allOf` with multiple `contains` requires all specified test types to be present
+- Sub-schemas can combine these conditions with additional property restrictions using `$ref` to reference detailed test series definitions
 
 ---
 
