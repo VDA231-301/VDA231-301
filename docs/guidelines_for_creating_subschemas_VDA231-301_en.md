@@ -291,6 +291,8 @@ AI tools can be used to assist in the creation of sub-schemas. They can help wit
 - Suggesting property names and structures.
 - Generating example JSON files.
 
+If the underlying standard cannot be read or interpreted, the AI process must be terminated. Do not make assumptions or estimations.
+
 However, it is crucial to have human oversight to ensure accuracy, compliance with the guidelines, and proper representation of the standard.
 
 ### Example prompt for AI tools:
