@@ -309,6 +309,8 @@ Create a JSON schema document and an example JSON test report file based on the 
 The example must validate against the created sub-schema, which also means it must validate against the generic VDA 231-301 schema found here: https://vda231-301.github.io/schemas/generic/VDA_231-301_generic_v0.2.0.schema.json (This requirement is crucial and listed in the guidelines, it must be achieved via "allOf" referencing the generic schema).
 ```
 
+> **Hinweis:** Wenn Sie diesen Prompt verwenden, ersetzen Sie bitte `<Insert name / title of you standard here>` und `<Insert name of your standard here>` durch den tatsächlichen Namen der Norm, an der Sie arbeiten, und fügen Sie zwei PDF-Dokumente bei: eines für die Norm und eines für einen Beispiel-Prüfbericht basierend auf dieser Norm.
+
 ## 7. Veröffentlichung und Review
 
 - Neue Subschemata können jederzeit der Projektgruppe (PG) im VDA vorgeschlagen werden.
