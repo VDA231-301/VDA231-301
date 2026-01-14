@@ -291,7 +291,8 @@ KI-Tools können zur Unterstützung bei der Erstellung von Subschemata verwendet
 - Vorschlägen für Eigenschaftsnamen und Strukturen.
 - Erstellung von Beispiel-JSON-Dateien.
 
-Es ist jedoch entscheidend, dass menschliche Aufsicht gewährleistet ist, um Genauigkeit, Einhaltung der Richtlinien und korrekte Repräsentation der Norm sicherzustellen.
+Beim Nutzen eines KI-Tools ist sicherzustellen, dass die Inhalte der Norm nicht frei verfügbar gemacht werden. Deshalb sind ausschließlich geschütze KI-Tools zu verwenden.
+Es ist entscheidend, dass menschliche Durchsicht gewährleistet ist, um Genauigkeit, Einhaltung der Richtlinien und korrekte Repräsentation der Norm sicherzustellen.
 
 ### Beispiel-Prompt für KI-Tools:
 ```
