@@ -315,7 +315,7 @@ The example must validate against the created sub-schema, which also means it mu
 ## 7. Veröffentlichung und Review
 
 - Neue Subschemata können jederzeit der Projektgruppe (PG) im VDA vorgeschlagen werden.
-- Der Einreichungsprozess ist im Repository dokumentiert: [Prozessablaufdiagramm](./assets/process%20flows/process_flow_release_of_new_specialised_schemas_EN.svg)
+- Der Einreichungsprozess ist im Repository dokumentiert: [Prozessablaufdiagramm](../assets/process%20flows/process_flow_release_of_new_specialised_schemas_EN.svg)
 - Nach erfolgreicher Prüfung durch die PG erfolgt die Veröffentlichung.
 
 ---
