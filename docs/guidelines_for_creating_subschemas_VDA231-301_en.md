@@ -317,7 +317,7 @@ The example must validate against the created sub-schema, which also means it mu
 ## 7. Publication and Review
 
 - New sub-schemas can be proposed to the project group (PG) in the VDA at any time.
-- The submission process is documented in the repository: [Contribution process diagram](./assets/process%20flows/process_flow_release_of_new_specialised_schemas_DE.svg)
+- The submission process is documented in the repository: (./assets/process%20flows/process_flow_release_of_new_specialised_schemas_DE.svg)
 - Publication takes place after successful review by the PG.
 
 ---
