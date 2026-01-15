@@ -67,7 +67,7 @@ The VDA 231-301 JSON schemas are released under the MIT license, which allows ev
 If you work for a VDA member, ask your contact person if you can join the working group. Everyone is free to raise issues or suggest new improvements to the protocol.
 
 The process of releasing new specialised schemas is shown in the following diagram:
-<img src="./assets/process flows/process_flow_release_of_new_specialised_schemas_EN.svg" alt="Contribution process">
+<img src="./assets/process%20flows/process_flow_release_of_new_specialised_schemas_DE.svg" alt="Contribution process">
 
 Contribution process diagram: [German](./assets/process%20flows/process_flow_release_of_new_specialised_schemas_DE.svg) / [English](./assets/process%20flows/process_flow_release_of_new_specialised_schemas_EN.svg)
 
