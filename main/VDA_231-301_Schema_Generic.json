@@ -1045,7 +1045,8 @@
           "$ref": "#/$defs/Generic.RestrictedText"
         },
         "ComponentInstanceID": {
-          "$ref": "#/$defs/Generic.Identifier"
+          "$ref": "#/$defs/Generic.Identifier",
+          "description": "A reference to the component instance used. The _id of the component instance should be used as the identifier."
         },
         "Attachment": {
           "$ref": "#/$defs/Generic.Attachment"
@@ -1306,7 +1307,8 @@
           "$ref": "#/$defs/Generic.RestrictedString"
         },
         "ComponentMasterID": {
-          "$ref": "#/$defs/Generic.Identifier"
+          "$ref": "#/$defs/Generic.Identifier",
+          "description": "A reference to the component master used. The _id of the component master should be used as the identifier."
         },
         "AdditionalInformation": {
           "$ref": "#/$defs/Generic.InformationSet"
