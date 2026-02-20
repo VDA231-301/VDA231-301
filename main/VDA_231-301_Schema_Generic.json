@@ -7,7 +7,8 @@
   "description": "This is the Generic Schema which validates the structure of the file",
   "properties": {
     "_id": {
-      "$ref": "#/$defs/Generic.Identifier"
+      "$ref": "#/$defs/Generic.Identifier",
+      "description": "This field is used to assign a unique UUID to this object within the file for this transfer and to reference it within the file."
     },
     "_type": {
       "const": "TestingProject",
@@ -178,7 +179,8 @@
       "additionalProperties": false,
       "properties": {
         "_id": {
-          "$ref": "#/$defs/Generic.RestrictedString"
+          "$ref": "#/$defs/Generic.Identifier",
+          "description": "This field is used to assign a unique UUID to this object within the file for this transfer and to reference it within the file."
         },
         "_type": {
           "const": "Attachment",
@@ -226,7 +228,8 @@
       "additionalProperties": false,
       "properties": {
         "_id": {
-          "$ref": "#/$defs/Generic.Identifier"
+          "$ref": "#/$defs/Generic.Identifier",
+          "description": "This field is used to assign a unique UUID to this object within the file for this transfer and to reference it within the file."
         },
         "_type": {
           "const": "Certification",
@@ -254,7 +257,8 @@
       "additionalProperties": false,
       "properties": {
         "_id": {
-          "$ref": "#/$defs/Generic.Identifier"
+          "$ref": "#/$defs/Generic.Identifier",
+          "description": "This field is used to assign a unique UUID to this object within the file for this transfer and to reference it within the file."
         },
         "_type": {
           "const": "Location",
@@ -306,7 +310,8 @@
         {
           "properties": {
             "_id": {
-              "$ref": "#/$defs/Generic.Identifier"
+              "$ref": "#/$defs/Generic.Identifier",
+              "description": "This field is used to assign a unique UUID to this object within the file for this transfer and to reference it within the file."
             },
             "_type": {
               "const": "ConsolidatedCharacteristicValue",
@@ -344,7 +349,8 @@
       "additionalProperties": false,
       "properties": {
         "_id": {
-          "$ref": "#/$defs/Generic.Identifier"
+          "$ref": "#/$defs/Generic.Identifier",
+          "description": "This field is used to assign a unique UUID to this object within the file for this transfer and to reference it within the file."
         },
         "_type": {
           "const": "ContactDetailsSimplifiedEnglish",
@@ -400,7 +406,8 @@
       "additionalProperties": false,
       "properties": {
         "_id": {
-          "$ref": "#/$defs/Generic.Identifier"
+          "$ref": "#/$defs/Generic.Identifier",
+          "description": "This field is used to assign a unique UUID to this object within the file for this transfer and to reference it within the file."
         },
         "_type": {
           "const": "ContactDetails",
@@ -537,7 +544,8 @@
       "additionalProperties": false,
       "properties": {
         "_id": {
-          "$ref": "#/$defs/Generic.Identifier"
+          "$ref": "#/$defs/Generic.Identifier",
+          "description": "This field is used to assign a unique UUID to this object within the file for this transfer and to reference it within the file."
         },
         "_type": {
           "const": "TestExecution",
@@ -595,7 +603,8 @@
       "additionalProperties": false,
       "properties": {
         "_id": {
-          "$ref": "#/$defs/Generic.Identifier"
+          "$ref": "#/$defs/Generic.Identifier",
+          "description": "This field is used to assign a unique UUID to this object within the file for this transfer and to reference it within the file."
         },
         "_type": {
           "const": "Extraction",
@@ -642,7 +651,7 @@
       "type": "object"
     },
     "Generic.Identifier": {
-      "description": "Universally Unique Identifier (UUID) as a 128-bit value in hexadecimal coding, noted in five groups, standardised by RFC 4122[1].",
+      "description": "This structure is used to assign a unique UUID to objects within this file. Universally Unique Identifier (UUID) as a 128-bit value in hexadecimal coding, noted in five groups, standardised by RFC 4122[1].",
       "pattern": "^[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}$",
       "type": "string"
     },
@@ -708,7 +717,8 @@
       "additionalProperties": false,
       "properties": {
         "_id": {
-          "$ref": "#/$defs/Generic.Identifier"
+          "$ref": "#/$defs/Generic.Identifier",
+          "description": "This field is used to assign a unique UUID to this object within the file for this transfer and to reference it within the file."
         },
         "_type": {
           "const": "InformationSet",
@@ -782,7 +792,8 @@
       "additionalProperties": false,
       "properties": {
         "_id": {
-          "$ref": "#/$defs/Generic.Identifier"
+          "$ref": "#/$defs/Generic.Identifier",
+          "description": "This field is used to assign a unique UUID to this object within the file for this transfer and to reference it within the file."
         },
         "_type": {
           "const": "MeasurementSystem",
@@ -825,7 +836,8 @@
       "additionalProperties": false,
       "properties": {
         "_id": {
-          "$ref": "#/$defs/Generic.Identifier"
+          "$ref": "#/$defs/Generic.Identifier",
+          "description": "This field is used to assign a unique UUID to this object within the file for this transfer and to reference it within the file."
         },
         "_type": {
           "const": "Calibration",
@@ -852,7 +864,8 @@
       "description": "A schema representing a single step in a process, including its index and associated specification.",
       "properties": {
         "_id": {
-          "$ref": "#/$defs/Generic.Identifier"
+          "$ref": "#/$defs/Generic.Identifier",
+          "description": "This field is used to assign a unique UUID to this object within the file for this transfer and to reference it within the file."
         },
         "_type": {
           "const": "ProcessStep",
@@ -993,7 +1006,8 @@
         {
           "properties": {
             "_id": {
-              "$ref": "#/$defs/Generic.Identifier"
+              "$ref": "#/$defs/Generic.Identifier",
+              "description": "This field is used to assign a unique UUID to this object within the file for this transfer and to reference it within the file."
             },
             "_type": {
               "const": "SingleResultPoint",
@@ -1014,7 +1028,8 @@
       "additionalProperties": false,
       "properties": {
         "_id": {
-          "$ref": "#/$defs/Generic.Identifier"
+          "$ref": "#/$defs/Generic.Identifier",
+          "description": "This field is used to assign a unique UUID to this object within the file for this transfer and to reference it within the file."
         },
         "_type": {
           "const": "Specimen",
@@ -1061,7 +1076,8 @@
       "additionalProperties": false,
       "properties": {
         "_id": {
-          "$ref": "#/$defs/Generic.Identifier"
+          "$ref": "#/$defs/Generic.Identifier",
+          "description": "This field is used to assign a unique UUID to this object within the file for this transfer and to reference it within the file."
         },
         "_type": {
           "const": "TestingCenter",
@@ -1096,7 +1112,8 @@
       "additionalProperties": false,
       "properties": {
         "_id": {
-          "$ref": "#/$defs/Generic.Identifier"
+          "$ref": "#/$defs/Generic.Identifier",
+          "description": "This field is used to assign a unique UUID to this object within the file for this transfer and to reference it within the file."
         },
         "_type": {
           "const": "Person",
@@ -1134,7 +1151,8 @@
     "Generic.ComponentMaster": {
       "properties": {
         "_id": {
-          "$ref": "#/$defs/Generic.Identifier"
+          "$ref": "#/$defs/Generic.Identifier",
+          "description": "This field is used to assign a unique UUID to this object within the file for this transfer and to reference it within the file."
         },
         "_type": {
           "const": "ComponentMaster",
@@ -1222,7 +1240,8 @@
     "Generic.ComponentInstance": {
       "properties": {
         "_id": {
-          "$ref": "#/$defs/Generic.Identifier"
+          "$ref": "#/$defs/Generic.Identifier",
+          "description": "This field is used to assign a unique UUID to this object within the file for this transfer and to reference it within the file."
         },
         "_type": {
           "const": "ComponentInstance",
@@ -1273,7 +1292,8 @@
       "additionalProperties": false,
       "properties": {
         "_id": {
-          "$ref": "#/$defs/Generic.Identifier"
+          "$ref": "#/$defs/Generic.Identifier",
+          "description": "This field is used to assign a unique UUID to this object within the file for this transfer and to reference it within the file."
         },
         "_type": {
           "const": "TestSeries",
