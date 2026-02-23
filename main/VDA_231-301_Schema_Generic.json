@@ -656,9 +656,6 @@
     },
     "Generic.InformationPoint": {
       "properties": {
-        "Identification": {
-          "$ref": "#/$defs/Generic.GenericIdentification"
-        },
         "Property": {
           "$ref": "#/$defs/Generic.RestrictedString"
         },
@@ -724,9 +721,6 @@
         "_type": {
           "const": "InformationSet",
           "type": "string"
-        },
-        "Identification": {
-          "$ref": "#/$defs/Generic.GenericIdentification"
         },
         "ArraySpec": {
           "items": {
@@ -1144,33 +1138,6 @@
         "_type"
       ],
       "type": "object"
-    },
-    "Generic.GenericIdentifier": {
-      "type": "object",
-      "additionalProperties": false,
-      "description": "A typed identifier. 'Type' selects the identifier scheme (e.g., 'VatId', 'ProductId', 'GMID') and 'Identifier' contains the corresponding value for that scheme.",
-      "properties": {
-        "Type": {
-          "$ref": "#/$defs/Generic.RestrictedString",
-          "description": "Identifier namespace, e.g. 'VatId', 'internal product id', 'global material id'."
-        },
-        "Identifier": {
-          "$ref": "#/$defs/Generic.RestrictedString",
-          "description": "Identifier value within the given Type."
-        }
-      },
-      "required": [
-        "Type",
-        "Identifier"
-      ]
-    },
-    "Generic.GenericIdentification": {
-      "type": "array",
-      "description": "Additional identifiers (0..n).",
-      "items": {
-        "$ref": "#/$defs/Generic.GenericIdentifier"
-      },
-      "minItems": 0
     },
     "Generic.ComponentMaster": {
       "properties": {
