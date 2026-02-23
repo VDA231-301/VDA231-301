@@ -1046,7 +1046,7 @@
         },
         "ComponentInstanceID": {
           "$ref": "#/$defs/Generic.Identifier",
-          "description": "A reference to the component instance used. The _id of the component instance should be used as the identifier."
+          "description": "Reference to the component instance used, expressed as its transmission-scoped identifier (_id) within this transmission file."
         },
         "Attachment": {
           "$ref": "#/$defs/Generic.Attachment"
