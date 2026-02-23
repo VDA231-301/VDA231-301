@@ -8,7 +8,7 @@
   "properties": {
     "_id": {
       "$ref": "#/$defs/Generic.Identifier",
-      "description": "This field is used to assign a unique UUID to this object within the file for this transfer and to reference it within the file."
+      "description": "A transmission-scoped UUID assigned to the dataset within the transmission file solely for internal cross-referencing during transfer; not intended for external or persistent identification."
     },
     "_type": {
       "const": "TestingProject",
@@ -180,7 +180,7 @@
       "properties": {
         "_id": {
           "$ref": "#/$defs/Generic.Identifier",
-          "description": "This field is used to assign a unique UUID to this object within the file for this transfer and to reference it within the file."
+          "description": "A transmission-scoped UUID assigned to the dataset within the transmission file solely for internal cross-referencing during transfer; not intended for external or persistent identification."
         },
         "_type": {
           "const": "Attachment",
@@ -229,7 +229,7 @@
       "properties": {
         "_id": {
           "$ref": "#/$defs/Generic.Identifier",
-          "description": "This field is used to assign a unique UUID to this object within the file for this transfer and to reference it within the file."
+          "description": "A transmission-scoped UUID assigned to the dataset within the transmission file solely for internal cross-referencing during transfer; not intended for external or persistent identification."
         },
         "_type": {
           "const": "Certification",
@@ -258,7 +258,7 @@
       "properties": {
         "_id": {
           "$ref": "#/$defs/Generic.Identifier",
-          "description": "This field is used to assign a unique UUID to this object within the file for this transfer and to reference it within the file."
+          "description": "A transmission-scoped UUID assigned to the dataset within the transmission file solely for internal cross-referencing during transfer; not intended for external or persistent identification."
         },
         "_type": {
           "const": "Location",
@@ -311,7 +311,7 @@
           "properties": {
             "_id": {
               "$ref": "#/$defs/Generic.Identifier",
-              "description": "This field is used to assign a unique UUID to this object within the file for this transfer and to reference it within the file."
+              "description": "A transmission-scoped UUID assigned to the dataset within the transmission file solely for internal cross-referencing during transfer; not intended for external or persistent identification."
             },
             "_type": {
               "const": "ConsolidatedCharacteristicValue",
@@ -350,7 +350,7 @@
       "properties": {
         "_id": {
           "$ref": "#/$defs/Generic.Identifier",
-          "description": "This field is used to assign a unique UUID to this object within the file for this transfer and to reference it within the file."
+          "description": "A transmission-scoped UUID assigned to the dataset within the transmission file solely for internal cross-referencing during transfer; not intended for external or persistent identification."
         },
         "_type": {
           "const": "ContactDetailsSimplifiedEnglish",
@@ -407,7 +407,7 @@
       "properties": {
         "_id": {
           "$ref": "#/$defs/Generic.Identifier",
-          "description": "This field is used to assign a unique UUID to this object within the file for this transfer and to reference it within the file."
+          "description": "A transmission-scoped UUID assigned to the dataset within the transmission file solely for internal cross-referencing during transfer; not intended for external or persistent identification."
         },
         "_type": {
           "const": "ContactDetails",
@@ -545,7 +545,7 @@
       "properties": {
         "_id": {
           "$ref": "#/$defs/Generic.Identifier",
-          "description": "This field is used to assign a unique UUID to this object within the file for this transfer and to reference it within the file."
+          "description": "A transmission-scoped UUID assigned to the dataset within the transmission file solely for internal cross-referencing during transfer; not intended for external or persistent identification."
         },
         "_type": {
           "const": "TestExecution",
@@ -604,7 +604,7 @@
       "properties": {
         "_id": {
           "$ref": "#/$defs/Generic.Identifier",
-          "description": "This field is used to assign a unique UUID to this object within the file for this transfer and to reference it within the file."
+          "description": "A transmission-scoped UUID assigned to the dataset within the transmission file solely for internal cross-referencing during transfer; not intended for external or persistent identification."
         },
         "_type": {
           "const": "Extraction",
@@ -651,7 +651,7 @@
       "type": "object"
     },
     "Generic.Identifier": {
-      "description": "This structure is used to assign a unique UUID to objects within this file. Universally Unique Identifier (UUID) as a 128-bit value in hexadecimal coding, noted in five groups, standardised by RFC 4122[1].",
+      "description": "Universally Unique Identifier (UUID) per RFC 4122, used only within the transmission file to uniquely identify objects and support internal references during transfer. This value is created for the transmission and is not a persistent identifier.",
       "pattern": "^[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}$",
       "type": "string"
     },
@@ -718,7 +718,7 @@
       "properties": {
         "_id": {
           "$ref": "#/$defs/Generic.Identifier",
-          "description": "This field is used to assign a unique UUID to this object within the file for this transfer and to reference it within the file."
+          "description": "A transmission-scoped UUID assigned to the dataset within the transmission file solely for internal cross-referencing during transfer; not intended for external or persistent identification."
         },
         "_type": {
           "const": "InformationSet",
@@ -793,7 +793,7 @@
       "properties": {
         "_id": {
           "$ref": "#/$defs/Generic.Identifier",
-          "description": "This field is used to assign a unique UUID to this object within the file for this transfer and to reference it within the file."
+          "description": "A transmission-scoped UUID assigned to the dataset within the transmission file solely for internal cross-referencing during transfer; not intended for external or persistent identification."
         },
         "_type": {
           "const": "MeasurementSystem",
@@ -837,7 +837,7 @@
       "properties": {
         "_id": {
           "$ref": "#/$defs/Generic.Identifier",
-          "description": "This field is used to assign a unique UUID to this object within the file for this transfer and to reference it within the file."
+          "description": "A transmission-scoped UUID assigned to the dataset within the transmission file solely for internal cross-referencing during transfer; not intended for external or persistent identification."
         },
         "_type": {
           "const": "Calibration",
@@ -865,7 +865,7 @@
       "properties": {
         "_id": {
           "$ref": "#/$defs/Generic.Identifier",
-          "description": "This field is used to assign a unique UUID to this object within the file for this transfer and to reference it within the file."
+          "description": "A transmission-scoped UUID assigned to the dataset within the transmission file solely for internal cross-referencing during transfer; not intended for external or persistent identification."
         },
         "_type": {
           "const": "ProcessStep",
@@ -1007,7 +1007,7 @@
           "properties": {
             "_id": {
               "$ref": "#/$defs/Generic.Identifier",
-              "description": "This field is used to assign a unique UUID to this object within the file for this transfer and to reference it within the file."
+              "description": "A transmission-scoped UUID assigned to the dataset within the transmission file solely for internal cross-referencing during transfer; not intended for external or persistent identification."
             },
             "_type": {
               "const": "SingleResultPoint",
@@ -1029,7 +1029,7 @@
       "properties": {
         "_id": {
           "$ref": "#/$defs/Generic.Identifier",
-          "description": "This field is used to assign a unique UUID to this object within the file for this transfer and to reference it within the file."
+          "description": "A transmission-scoped UUID assigned to the dataset within the transmission file solely for internal cross-referencing during transfer; not intended for external or persistent identification."
         },
         "_type": {
           "const": "Specimen",
@@ -1078,7 +1078,7 @@
       "properties": {
         "_id": {
           "$ref": "#/$defs/Generic.Identifier",
-          "description": "This field is used to assign a unique UUID to this object within the file for this transfer and to reference it within the file."
+          "description": "A transmission-scoped UUID assigned to the dataset within the transmission file solely for internal cross-referencing during transfer; not intended for external or persistent identification."
         },
         "_type": {
           "const": "TestingCenter",
@@ -1114,7 +1114,7 @@
       "properties": {
         "_id": {
           "$ref": "#/$defs/Generic.Identifier",
-          "description": "This field is used to assign a unique UUID to this object within the file for this transfer and to reference it within the file."
+          "description": "A transmission-scoped UUID assigned to the dataset within the transmission file solely for internal cross-referencing during transfer; not intended for external or persistent identification."
         },
         "_type": {
           "const": "Person",
@@ -1153,7 +1153,7 @@
       "properties": {
         "_id": {
           "$ref": "#/$defs/Generic.Identifier",
-          "description": "This field is used to assign a unique UUID to this object within the file for this transfer and to reference it within the file."
+          "description": "A transmission-scoped UUID assigned to the dataset within the transmission file solely for internal cross-referencing during transfer; not intended for external or persistent identification."
         },
         "_type": {
           "const": "ComponentMaster",
@@ -1242,7 +1242,7 @@
       "properties": {
         "_id": {
           "$ref": "#/$defs/Generic.Identifier",
-          "description": "This field is used to assign a unique UUID to this object within the file for this transfer and to reference it within the file."
+          "description": "A transmission-scoped UUID assigned to the dataset within the transmission file solely for internal cross-referencing during transfer; not intended for external or persistent identification."
         },
         "_type": {
           "const": "ComponentInstance",
@@ -1294,7 +1294,7 @@
       "properties": {
         "_id": {
           "$ref": "#/$defs/Generic.Identifier",
-          "description": "This field is used to assign a unique UUID to this object within the file for this transfer and to reference it within the file."
+          "description": "A transmission-scoped UUID assigned to the dataset within the transmission file solely for internal cross-referencing during transfer; not intended for external or persistent identification."
         },
         "_type": {
           "const": "TestSeries",
