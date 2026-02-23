@@ -27,7 +27,14 @@
       "$ref": "#/$defs/Generic.RestrictedString"
     },
     "Contractor": {
-      "$ref": "#/$defs/Generic.TestingCenter"
+      "$ref": "#/$defs/Generic.Identifier"
+    },
+    "TestingCenters": {
+      "items": {
+        "$ref": "#/$defs/Generic.TestingCenter"
+      },
+      "minItems": 1,
+      "type": "array"
     },
     "LaboratoryOrderNumber": {
       "$ref": "#/$defs/Generic.RestrictedString"
@@ -80,6 +87,7 @@
     "Signatory",
     "Client",
     "Contractor",
+    "TestingCenters",
     "ComponentMasters",
     "TestSeries"
   ],
@@ -321,7 +329,7 @@
             "CriterionType": {
               "$ref": "#/$defs/Generic.RestrictedString"
             },
-            "SingleResultIDs":{
+            "SingleResultIDs": {
               "items": {
                 "$ref": "#/$defs/Generic.Identifier"
               },
@@ -648,6 +656,9 @@
     },
     "Generic.InformationPoint": {
       "properties": {
+        "Identification": {
+          "$ref": "#/$defs/Generic.GenericIdentification"
+        },
         "Property": {
           "$ref": "#/$defs/Generic.RestrictedString"
         },
@@ -713,6 +724,9 @@
         "_type": {
           "const": "InformationSet",
           "type": "string"
+        },
+        "Identification": {
+          "$ref": "#/$defs/Generic.GenericIdentification"
         },
         "ArraySpec": {
           "items": {
@@ -1131,6 +1145,33 @@
       ],
       "type": "object"
     },
+    "Generic.GenericIdentifier": {
+      "type": "object",
+      "additionalProperties": false,
+      "description": "A typed identifier. 'Type' selects the identifier scheme (e.g., 'VatId', 'ProductId', 'GMID') and 'Identifier' contains the corresponding value for that scheme.",
+      "properties": {
+        "Type": {
+          "$ref": "#/$defs/Generic.RestrictedString",
+          "description": "Identifier namespace, e.g. 'VatId', 'internal product id', 'global material id'."
+        },
+        "Identifier": {
+          "$ref": "#/$defs/Generic.RestrictedString",
+          "description": "Identifier value within the given Type."
+        }
+      },
+      "required": [
+        "Type",
+        "Identifier"
+      ]
+    },
+    "Generic.GenericIdentification": {
+      "type": "array",
+      "description": "Additional identifiers (0..n).",
+      "items": {
+        "$ref": "#/$defs/Generic.GenericIdentifier"
+      },
+      "minItems": 0
+    },
     "Generic.ComponentMaster": {
       "properties": {
         "_id": {
@@ -1318,8 +1359,8 @@
             }
           ]
         },
-        "TestingCenter": {
-          "$ref": "#/$defs/Generic.TestingCenter"
+        "TestingCenterID": {
+          "$ref": "#/$defs/Generic.Identifier"
         },
         "Comment": {
           "$ref": "#/$defs/Generic.RestrictedText"
@@ -1344,7 +1385,7 @@
         "NumberOfExecutions",
         "PredecessorId",
         "SuccessorId",
-        "TestingCenter",
+        "TestingCenterID",
         "ConsolidatedCharacteristicValues",
         "ComponentMasterID"
       ],
