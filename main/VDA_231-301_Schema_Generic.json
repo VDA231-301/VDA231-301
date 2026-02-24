@@ -1355,7 +1355,7 @@
         "NumberOfExecutions",
         "PredecessorId",
         "SuccessorId",
-        "TestingCenterID",
+        "TestingCenter",
         "ConsolidatedCharacteristicValues",
         "ComponentMasterID"
       ],
