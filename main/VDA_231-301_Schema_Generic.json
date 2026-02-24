@@ -1288,7 +1288,7 @@
         },
         "ComponentMasterID": {
           "$ref": "#/$defs/Generic.Identifier",
-          "description": "A reference to the component master used. The _id of the component master should be used as the identifier."
+          "description": "Reference to the component master used, expressed as its transmission-scoped identifier (_id) within this transmission file."
         },
         "AdditionalInformation": {
           "$ref": "#/$defs/Generic.InformationSet"
