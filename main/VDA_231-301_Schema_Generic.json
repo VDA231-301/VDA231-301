@@ -27,13 +27,15 @@
       "$ref": "#/$defs/Generic.RestrictedString"
     },
     "Contractor": {
-      "$ref": "#/$defs/Generic.Identifier"
+      "$ref": "#/$defs/Generic.Identifier",
+      "description": "Reference to the TestingCenter acting as contractor, expressed as its transmission-scoped identifier (_id) within this transmission file."
     },
     "TestingCenters": {
       "items": {
         "$ref": "#/$defs/Generic.TestingCenter"
       },
       "minItems": 1,
+      "description": "List of all TestingCenters used in this transmission file as reference targets for internal links via their transmission-scoped identifiers (_id).",
       "type": "array"
     },
     "LaboratoryOrderNumber": {
@@ -329,7 +331,7 @@
             "CriterionType": {
               "$ref": "#/$defs/Generic.RestrictedString"
             },
-            "SingleResultIDs": {
+            "SingleResultIDs":{
               "items": {
                 "$ref": "#/$defs/Generic.Identifier"
               },
@@ -1326,8 +1328,9 @@
             }
           ]
         },
-        "TestingCenterID": {
-          "$ref": "#/$defs/Generic.Identifier"
+        "TestingCenter": {
+          "$ref": "#/$defs/Generic.Identifier",
+          "description": "Reference to the TestingCenter responsible for this TestSeries, expressed as its transmission-scoped identifier (_id) within this transmission file."
         },
         "Comment": {
           "$ref": "#/$defs/Generic.RestrictedText"
