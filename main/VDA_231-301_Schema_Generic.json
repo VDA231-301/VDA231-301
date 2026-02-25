@@ -178,7 +178,7 @@
       "additionalProperties": false,
       "properties": {
         "_id": {
-          "$ref": "#/$defs/Generic.RestrictedString"
+          "$ref": "#/$defs/Generic.Identifier"
         },
         "_type": {
           "const": "Attachment",
@@ -642,7 +642,7 @@
       "type": "object"
     },
     "Generic.Identifier": {
-      "description": "Universally Unique Identifier (UUID) as a 128-bit value in hexadecimal coding, noted in five groups, standardised by RFC 4122[1].",
+      "description": "Universally Unique Identifier (UUID) per RFC 4122, used only within the transmission file to uniquely identify objects and support internal references during transfer. This value is created for the transmission and is not a persistent identifier.",
       "pattern": "^[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}$",
       "type": "string"
     },
@@ -1030,7 +1030,8 @@
           "$ref": "#/$defs/Generic.RestrictedText"
         },
         "ComponentInstanceID": {
-          "$ref": "#/$defs/Generic.Identifier"
+          "$ref": "#/$defs/Generic.Identifier",
+          "description": "Reference to the component instance used, expressed as its transmission-scoped identifier (_id) within this transmission file."
         },
         "Attachment": {
           "$ref": "#/$defs/Generic.Attachment"
@@ -1286,7 +1287,8 @@
           "$ref": "#/$defs/Generic.RestrictedString"
         },
         "ComponentMasterID": {
-          "$ref": "#/$defs/Generic.Identifier"
+          "$ref": "#/$defs/Generic.Identifier",
+          "description": "Reference to the component master used, expressed as its transmission-scoped identifier (_id) within this transmission file."
         },
         "AdditionalInformation": {
           "$ref": "#/$defs/Generic.InformationSet"
