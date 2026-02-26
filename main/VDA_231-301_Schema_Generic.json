@@ -26,8 +26,17 @@
     "ClientOrderNumber": {
       "$ref": "#/$defs/Generic.RestrictedString"
     },
-    "Contractor": {
-      "$ref": "#/$defs/Generic.TestingCenter"
+    "ContractorID": {
+      "$ref": "#/$defs/Generic.Identifier",
+      "description": "Reference to the TestingCenter acting as contractor, expressed as its transmission-scoped identifier (_id) within this transmission file."
+    },
+    "TestingCenters": {
+      "items": {
+        "$ref": "#/$defs/Generic.TestingCenter"
+      },
+      "minItems": 1,
+      "description": "List of all TestingCenters used in this transmission file as reference targets for internal links via their transmission-scoped identifiers (_id).",
+      "type": "array"
     },
     "LaboratoryOrderNumber": {
       "$ref": "#/$defs/Generic.RestrictedString"
@@ -79,7 +88,8 @@
     "ReportDate",
     "Signatory",
     "Client",
-    "Contractor",
+    "ContractorID",
+    "TestingCenters",
     "ComponentMasters",
     "TestSeries"
   ],
@@ -1320,8 +1330,9 @@
             }
           ]
         },
-        "TestingCenter": {
-          "$ref": "#/$defs/Generic.TestingCenter"
+        "TestingCenterID": {
+          "$ref": "#/$defs/Generic.Identifier",
+          "description": "Reference to the TestingCenter responsible for this TestSeries, expressed as its transmission-scoped identifier (_id) within this transmission file."
         },
         "Comment": {
           "$ref": "#/$defs/Generic.RestrictedText"
@@ -1346,7 +1357,7 @@
         "NumberOfExecutions",
         "PredecessorId",
         "SuccessorId",
-        "TestingCenter",
+        "TestingCenterID",
         "ConsolidatedCharacteristicValues",
         "ComponentMasterID"
       ],
