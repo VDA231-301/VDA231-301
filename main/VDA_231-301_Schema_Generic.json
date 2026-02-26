@@ -26,7 +26,7 @@
     "ClientOrderNumber": {
       "$ref": "#/$defs/Generic.RestrictedString"
     },
-    "Contractor": {
+    "ContractorID": {
       "$ref": "#/$defs/Generic.Identifier",
       "description": "Reference to the TestingCenter acting as contractor, expressed as its transmission-scoped identifier (_id) within this transmission file."
     },
@@ -1328,7 +1328,7 @@
             }
           ]
         },
-        "TestingCenter": {
+        "TestingCenterID": {
           "$ref": "#/$defs/Generic.Identifier",
           "description": "Reference to the TestingCenter responsible for this TestSeries, expressed as its transmission-scoped identifier (_id) within this transmission file."
         },
@@ -1355,7 +1355,7 @@
         "NumberOfExecutions",
         "PredecessorId",
         "SuccessorId",
-        "TestingCenter",
+        "TestingCenterID",
         "ConsolidatedCharacteristicValues",
         "ComponentMasterID"
       ],
