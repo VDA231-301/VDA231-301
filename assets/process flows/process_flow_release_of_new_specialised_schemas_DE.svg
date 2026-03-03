@@ -263,7 +263,7 @@
     </g>
     <g text-rendering="geometricPrecision" stroke-miterlimit="1.45" shape-rendering="geometricPrecision" transform="matrix(1,0,0,1,-91,-69)" stroke-linecap="butt">
       <path fill="none" d="M797 715.8792 L895 778.8792 L797 841.8792 L699 778.8792 Z" clip-path="url(#clipPath2)"/>
-      <text x="730.2998" xml:space="preserve" y="776.2424" clip-path="url(#clipPath2)" font-family="sans-serif" stroke="none">Entwurf von AP Freigabe</text>
+      <text x="736.3027" xml:space="preserve" y="776.2424" clip-path="url(#clipPath2)" font-family="sans-serif" stroke="none">Entwurf von AP Github</text>
       <text x="760.3086" xml:space="preserve" y="790.9436" clip-path="url(#clipPath2)" font-family="sans-serif" stroke="none">angenommen</text>
     </g>
     <g fill="url(#linearGradient9)" text-rendering="geometricPrecision" shape-rendering="geometricPrecision" transform="matrix(1,0,0,1,-91,-69)" stroke="url(#linearGradient9)">
