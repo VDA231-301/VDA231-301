@@ -1089,7 +1089,7 @@
           },
           "type": "array"
         },
-        "VatID": {
+        "VatId": {
           "$ref": "#/$defs/Generic.RestrictedString"
         }
       },
