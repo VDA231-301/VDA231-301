@@ -1089,7 +1089,7 @@
           },
           "type": "array"
         },
-        "VatId": {
+        "VatID": {
           "$ref": "#/$defs/Generic.RestrictedString"
         }
       },
@@ -1308,7 +1308,7 @@
         "Assessment": {
           "type": "string"
         },
-        "PredecessorId": {
+        "PredecessorID": {
           "oneOf": [
             {
               "$ref": "#/$defs/Generic.Identifier"
@@ -1318,7 +1318,7 @@
             }
           ]
         },
-        "SuccessorId": {
+        "SuccessorID": {
           "oneOf": [
             {
               "$ref": "#/$defs/Generic.Identifier"
@@ -1353,8 +1353,8 @@
         "_type",
         "Specification",
         "NumberOfExecutions",
-        "PredecessorId",
-        "SuccessorId",
+        "PredecessorID",
+        "SuccessorID",
         "TestingCenterID",
         "ConsolidatedCharacteristicValues",
         "ComponentMasterID"
