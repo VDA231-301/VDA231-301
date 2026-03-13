@@ -835,6 +835,19 @@
         </y:GenericNode>
       </data>
     </node>
+    <node id="n55">
+      <data key="d5">
+        <y:GenericNode configuration="com.yworks.entityRelationship.small_entity">
+          <y:Geometry height="40.0" width="90.60000000000036" x="991.7408435158491" y="706.4924639769454"/>
+          <y:Fill color="#C6C6C6" color2="#C6C6C6" transparent="false"/>
+          <y:BorderStyle color="#000000" type="line" width="1.0"/>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" horizontalTextPosition="center" iconTextGap="4" modelName="internal" modelPosition="c" textColor="#000000" verticalTextPosition="bottom" visible="true" width="83.37109375" x="3.614453125000182" xml:space="preserve" y="10.6494140625"> [BusinessKey]</y:NodeLabel>
+          <y:StyleProperties>
+            <y:Property class="java.lang.Boolean" name="y.view.ShadowNodePainter.SHADOW_PAINTING" value="false"/>
+          </y:StyleProperties>
+        </y:GenericNode>
+      </data>
+    </node>
     <edge id="e0" source="n48" target="n3">
       <data key="d9">
         <y:PolyLineEdge>
@@ -1256,7 +1269,6 @@
       </data>
     </edge>
     <edge id="e35" source="n49" target="n50">
-      <data key="d8"/>
       <data key="d9">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -1267,7 +1279,6 @@
       </data>
     </edge>
     <edge id="e36" source="n51" target="n49">
-      <data key="d8"/>
       <data key="d9">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -1278,7 +1289,6 @@
       </data>
     </edge>
     <edge id="e37" source="n52" target="n53">
-      <data key="d8"/>
       <data key="d9">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -1289,7 +1299,6 @@
       </data>
     </edge>
     <edge id="e38" source="n54" target="n52">
-      <data key="d8"/>
       <data key="d9">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
