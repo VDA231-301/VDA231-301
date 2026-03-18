@@ -1,10 +1,10 @@
 # VDA 231-301 JSON Schema
 
-Welcome to the **VDA 231-301 JSON Schema Repository**, the official home for the JSON schema standard for the digital exchange of material test results. This repository is maintained as part of the VDA initiative to enable an open, collaborative standard that supports various industry needs.
+Welcome to the **VDA 231-301 JSON Schema Repository**, the official home for the JSON schema recommendation for the digital exchange of material test results. This repository is maintained as part of the VDA initiative to enable an open, collaborative recommendation that supports various industry needs.
 Developed jointly by the German Association of the Automotive Industry (www.vda.de), as well as the Institute for Engineering Design and Industrial Design (IKTD) at the University of Stuttgart (www.iktd.uni-stuttgart.de) and many contributors from the automotive industry.
 
 **DISCLAIMER**: We are constantly working to improve the VDA 231-301. 
-The current version of the official VDA 231-301 document can be found in the VDA Webshop ([German](https://webshop.vda.de/VDA/de/vda-231-301-022025) / [English](https://webshop.vda.de/VDA/en/vda-231-301-022025)). It contains additional information about the standard that is not part of this repository. 
+The current version of the official VDA 231-301 document can be found in the VDA Webshop ([German](https://webshop.vda.de/VDA/de/vda-231-301-022025) / [English](https://webshop.vda.de/VDA/en/vda-231-301-022025)). It contains additional information about the recommendation that is not part of this repository. 
 
 This repository contains the generic schema and tracks changes and issues. All official releases of the generic schema and the sub-schemas are available in the [schemas repository](https://github.com/VDA231-301/schemas).
 
@@ -23,11 +23,11 @@ See the **guidelines  for creating sub-schemas**:
 - [German](./docs/guidelines_for_creating_subschemas_VDA231-301_de.md)
 
 # Goals and Structure of the VDA 231-301 JSON Schema
-The main goal of the VDA 231-301 JSON schema is to provide a standardized format for the digital exchange of material test results. The schema is designed to be generic and extensible, allowing for the representation of various test results across different standards. Of Scope of the schema is the exchange of target values.
+The main goal of the VDA 231-301 JSON schema is to provide a standardized format for the digital exchange of material test results. The schema is designed to be generic and extensible, allowing for the representation of various test results across different standards and recommendations. 
 
 The **generic schema** defines the basic structure of the data that all digital test reports should follow. 
 
-Specific **sub-schemas** can be created for individual standards, further restricting the general format to ensure that test results for the same standard can always be exchanged in the same format.
+Specific **sub-schemas** can be created for individual standards or recommendations, further restricting the general format to ensure that test results for the same standard can always be exchanged in the same format.
 
 ### Schemas
  
@@ -70,7 +70,7 @@ The responsible body for the development and maintenance of VDA 231-301 and VDA 
 Further information on the VDA's organization and its expert groups can be found here:
 VDA Expert Group Technical Regulations https://www.vda.de/de/der-vda/organisation/fachabteilungen/fahrzeugtechnologien-und-eco-systeme/fachgruppe-technische-vorschriften
 
-The AP Freigabe (AP Release) serves as a technically contributing group, supporting the project group in its work.
+The AP Github serves as a technically contributing group, supporting the project group in its work.
 
 The process of releasing new specialised schemas is shown in the following diagram:
 <img src="./assets/process%20flows/process_flow_release_of_new_specialised_schemas_DE.svg" alt="Contribution process">
@@ -79,7 +79,7 @@ Contribution process diagram: [German](./assets/process%20flows/process_flow_rel
 
 ## Goals
 
-The VDA 231-301 standard defines a generic and extensible data model for representing test results in a digital, machine-readable format. Its goals include:
+The VDA 231-301 recommendation defines a generic and extensible data model for representing test results in a digital, machine-readable format. Its goals include:
 
 - **Interoperability:** Ensure seamless data exchange across OEMs, suppliers, laboratories, and vendors.
 - **Flexibility:** Allow specific norms and test protocols to define their extensions through sub-schemas.
