@@ -8,6 +8,19 @@ The current version of the official VDA 231-301 document can be found in the VDA
 
 This repository contains the generic schema and tracks changes and issues. All official releases of the generic schema and the sub-schemas are available in the [schemas repository](https://github.com/VDA231-301/schemas).
 
+## Scope and Relation to the Official VDA Recommendation
+
+This GitHub repository provides the **technical JSON Schema implementation** of the VDA 231-301 **recommendation** for the digital exchange of material sampling test results.  
+It supports software vendors, laboratories, suppliers, and OEMs in implementing, validating, and exchanging test data in a structured and machine-readable format.
+
+> [!IMPORTANT]
+> ⚠️ **Important note:**  
+This repository **does not replace and does not compete with** the official VDA 231-301 recommendation.  
+The **normative and legally binding content** is published exclusively by the VDA and is available via the **VDA Webshop**.
+
+The purpose of this repository is to provide an **open and collaborative technical reference**, including the generic schema and its evolution.  
+Any changes intended to become part of the official VDA recommendation must follow the formal VDA committee and release process.
+
 # Getting Started
 
 ## Using the Schema
