@@ -1211,24 +1211,24 @@
         },
         "Mass": {
           "type": "object",
+          "required": [
+            "Value",
+            "Unit"
+          ],
           "properties": {
             "Value": {
-              "type": "number"
+              "type": "number",
+              "minimum": 0
             },
             "Unit": {
-              "type": "string",
-              "enum": [
-                "t",
-                "kg",
-                "g",
-                "mg"
-              ]
+              "$ref": "#/$defs/Generic.Unit"
             }
           }
         },
         "NumberOfParts": {
           "type": "integer",
-          "description": "Number of parts that are represented by this component master. This can be used when multiple identical components are present."
+          "description": "Number of parts that are represented by this component master. This can be used when multiple identical components are present.",
+          "minimum": 1
         },
         "MaterialGroup": {
           "$ref": "#/$defs/Generic.RestrictedString",
@@ -1508,7 +1508,7 @@
       "type": "string"
     },
     "Generic.SpecificationCustomizations": {
-      "description": "",
+      "description": "A list of customizations to the specifications that apply for this component, which can include deviations from the original specifications or further specifications that also apply.",
       "type": "array",
       "items": {
         "$ref": "#/$defs/Generic.SpecificationCustomization"
@@ -1677,6 +1677,7 @@
       "type": "array"
     },
     "Generic.Stack.ArrayValue": {
+      "type": "array",
       "description": "An array value for a stack, which contains the values for each layer in the stack according to the defined ArraySpec.",
       "prefixItems": [
         {
