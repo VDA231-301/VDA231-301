@@ -1243,7 +1243,12 @@
         },
         "OemIdentifier": {
           "$ref": "#/$defs/Generic.RestrictedString",
-          "description": "Part number of the owner of the MaterialIdentifiers / SurfaceIdentifiers (e.g. which OEM company the identifiers refer to), if applicable."
+          "description": "Owner of the MaterialIdentifiers / SurfaceIdentifiers (e.g. which OEM company the identifiers refer to), if applicable.",
+          "examples": [
+            "BMW",
+            "VW",
+            "MB"
+          ]
         },
         "MaterialIdentifiers": {
           "items": {
