@@ -23,6 +23,10 @@ Any changes intended to become part of the official VDA recommendation must foll
 
 # Getting Started
 
+## Contributing
+
+This repository follows the organization-wide contribution and governance rules:  
+https://github.com/VDA231-301/.github/blob/main/CONTRIBUTING.md
 ## Using the Schema
 
 You can use the schema to:
