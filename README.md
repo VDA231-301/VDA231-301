@@ -216,7 +216,7 @@ All examples must:
 
 ### 6. Using and Generating IDs
 
-IDs must be **unique and stable**.They are generated according to the pattern `<prefix>-<sequential-number>`. 
+IDs must be **unique and stable**.They are generated They are generated using UUID v4. 
 
 ### Requirements
 
