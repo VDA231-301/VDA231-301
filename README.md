@@ -19,12 +19,15 @@ The Generic Schema is designed to remain stable over time and to minimize breaki
 
 ---
 
-## Using the Schema
+## How to Use the Generic Schema
 
-You can use the schema to:
-- Validate your material test data.
-- Integrate it into existing software tools.
-- Develop converters, editors, or validators for the standard.
+The Generic Schema can be used to:
+- understand the core concepts of the VDA 231‑301 data model  
+- implement compatible data structures in IT systems  
+- develop or extend subschemas  
+- validate consistency of material‑related data exchanges  
+
+It is intended as a reference for OEMs, suppliers, laboratories, software providers and other stakeholders.
 
 ---
 
@@ -109,17 +112,6 @@ Its evolution is coordinated through dedicated VDA project groups and aligned wi
 
 ---
 
-## How to Use the Generic Schema
-
-The Generic Schema can be used to:
-- understand the core concepts of the VDA 231‑301 data model  
-- implement compatible data structures in IT systems  
-- develop or extend subschemas  
-- validate consistency of material‑related data exchanges  
-
-It is intended as a reference for OEMs, suppliers, laboratories, software providers and other stakeholders.
-
----
 
 ## Contribution and Further Development
 
@@ -152,17 +144,15 @@ German content may be added where appropriate.
 Specific **sub-schemas** can be created for individual standards or recommendations, further restricting the general format to ensure that test results for the same standard can always be exchanged in the same format.
 
 
-### Disclaimer on Standard Copyright
+### 1. Creating New Sub‑Schemas
 
-The content and references in this repository are based on standards whose copyrights belong to the respective standardization organizations  
-(e.g. **DIN, ISO, VDA**).
-
-⚠️ **Full standard texts must not be reproduced or published without permission.**  
-Please ensure that you have the appropriate licenses when working with standard documents.
+Guidelines for creating new sub‑schemas are available in:
+- [English](https://github.com/VDA231-301/VDA231-301/blob/main/docs/guidelines_for_creating_subschemas_VDA231-301_en.md)
+- [German](https://github.com/VDA231-301/VDA231-301/blob/main/docs/guidelines_for_creating_subschemas_VDA231-301_de.md)
 
 ---
 
-### 1. General Information
+### 2. General Information
 
 This section describes the **subschema workflow repository** and the **lifecycle of subschemas** from conception to official publication.
 
@@ -191,15 +181,6 @@ This includes:
 ---
 
 
-
-### 2. Creating New Sub‑Schemas
-
-Guidelines for creating new sub‑schemas are available in:
-- [English](https://github.com/VDA231-301/VDA231-301/blob/main/docs/guidelines_for_creating_subschemas_VDA231-301_en.md)
-- [German](https://github.com/VDA231-301/VDA231-301/blob/main/docs/guidelines_for_creating_subschemas_VDA231-301_de.md)
-
----
-
 ### 3. Level of Detail for Standards
 
 The level of detail in a subschema may vary:
@@ -213,7 +194,7 @@ The JSON Schema supports **both variants** and enables flexible implementation.
 
 ---
 
-## 4. Versioning of Schemas
+### 4. Versioning of Schemas
 
 Each schema must have **clear versioning**.
 
@@ -225,7 +206,7 @@ This ensures **consistency, traceability, and transparency**.
 
 ---
 
-## 5. Branching
+### 5. Branching
 
 All examples must:
 - include the appropriate `if` condition to represent correct logic,
@@ -233,7 +214,7 @@ All examples must:
 
 ---
 
-## 6. Using and Generating IDs
+### 6. Using and Generating IDs
 
 IDs must be **unique and stable**.They are generated according to the pattern `<prefix>-<sequential-number>`. 
 
@@ -282,3 +263,17 @@ The base schema provides `$defs` for `UuidV4` and `UuidV4Ref`. Subschemas includ
   "_id": "123e4567-e89b-12d3-a456-426655440000",
   "instrumentRef": "987e6543-e21b-43d3-a456-426655440999"
 }
+```
+
+---
+
+
+### 7. Disclaimer on Standard Copyright
+
+The content and references in this repository are based on standards whose copyrights belong to the respective standardization organizations  
+(e.g. **DIN, ISO, VDA**).
+
+⚠️ **Full standard texts must not be reproduced or published without permission.**  
+Please ensure that you have the appropriate licenses when working with standard documents.
+
+---
