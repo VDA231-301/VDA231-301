@@ -1,12 +1,12 @@
 ---
 name: Subschema request
-about: Request a specific subschema for a standard (ISO/DIN/VDA/etc.)
+about: Request a specific subschema for a material related use case.
 labels: subschema
 ---
 
 ## Standard/protocol
 
-Which standard (e.g., ISO 17025, DIN, VDA) does this request relate to?
+Which standard (e.g., ISO 17025, DIN, VDA) or protocols does this request relate to (if applicable)?
 
 ## Intended use
 
