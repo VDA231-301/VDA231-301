@@ -350,7 +350,7 @@
             "CriterionType": {
               "$ref": "#/$defs/Generic.RestrictedString"
             },
-            "SingleResultIDs":{
+            "SingleResultIDs": {
               "items": {
                 "$ref": "#/$defs/Generic.Identifier"
               },
@@ -1209,9 +1209,30 @@
         "Color": {
           "$ref": "#/$defs/Generic.RestrictedString"
         },
+        "Mass": {
+          "type": "object",
+          "required": [
+            "Value",
+            "Unit"
+          ],
+          "properties": {
+            "Value": {
+              "type": "number",
+              "minimum": 0
+            },
+            "Unit": {
+              "$ref": "#/$defs/Generic.Unit"
+            }
+          }
+        },
+        "NumberOfParts": {
+          "type": "integer",
+          "description": "Number of parts that are represented by this component master. This can be used when multiple identical components are present.",
+          "minimum": 1
+        },
         "MaterialGroup": {
           "$ref": "#/$defs/Generic.RestrictedString",
-          "description": "According to VDA 231-106"
+          "description": "According to VDA 231-106. IMDS calls this 'Material Classification'."
         },
         "MaterialClass": {
           "$ref": "#/$defs/Generic.RestrictedString",
@@ -1220,19 +1241,37 @@
         "MaterialName": {
           "$ref": "#/$defs/Generic.RestrictedString"
         },
+        "OemIdentifier": {
+          "$ref": "#/$defs/Generic.RestrictedString",
+          "description": "Owner of the MaterialIdentifiers / SurfaceIdentifiers (e.g. which OEM company the identifiers refer to), if applicable.",
+          "examples": [
+            "BMW",
+            "VW",
+            "MB"
+          ]
+        },
         "MaterialIdentifiers": {
           "items": {
             "$ref": "#/$defs/Generic.RestrictedString"
           },
           "type": "array",
-          "description": "According to VDA 231-300"
+          "description": "According to VDA 231-300",
+          "examples": [
+            "XYZ111ABC123",
+            "QEV111BCD234",
+            "8A1U76"
+          ]
         },
         "SurfaceIdentifiers": {
           "items": {
             "$ref": "#/$defs/Generic.RestrictedString"
           },
           "type": "array",
-          "description": "According to VDA 231-300"
+          "description": "According to VDA 231-300",
+          "examples": [
+            "SUR111ABC123",
+            "SUR111BCD234"
+          ]
         },
         "Specifications": {
           "items": {
@@ -1241,8 +1280,8 @@
           "type": "array",
           "description": "A list of associated specifications regarding this component."
         },
-        "LayerSequence": {
-          "$ref": "#/$defs/Generic.InformationSet"
+        "Stack": {
+          "$ref": "#/$defs/Generic.Stack"
         },
         "Attachments": {
           "items": {
@@ -1250,13 +1289,9 @@
           },
           "type": "array"
         },
-        "DeviationSpecificationText": {
-          "$ref": "#/$defs/Generic.RestrictedText",
-          "description": "The text describing allowed deviation from the specification."
-        },
-        "DeviationSpecificationCodeFile": {
-          "$ref": "#/$defs/Generic.Attachment",
-          "description": "The JSON file containing the deviation specification code."
+        "SpecificationCustomizations": {
+          "$ref": "#/$defs/Generic.SpecificationCustomizations",
+          "description": "The specification customizations that should apply for this component. This can be used to add further specification or override properties in existing specifications."
         },
         "Comment": {
           "$ref": "#/$defs/Generic.RestrictedText",
@@ -1272,8 +1307,7 @@
       },
       "required": [
         "_id",
-        "_type",
-        "Instances"
+        "_type"
       ],
       "type": "object"
     },
@@ -1477,6 +1511,215 @@
       "minLength": 0,
       "pattern": "^[\\x20-\\xFF]*$",
       "type": "string"
+    },
+    "Generic.SpecificationCustomizations": {
+      "description": "A list of customizations to the specifications that apply for this component. Customizations can be deviations from normative requirements, additional OEM requirements, or optional normative requirements that are made mandatory by the OEM.",
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/Generic.SpecificationCustomization"
+      }
+    },
+    "Generic.SpecificationCustomization": {
+      "additionalProperties": false,
+      "type": "object",
+      "required": [
+        "_id",
+        "_type",
+        "CustomizationType",
+        "Specification"
+      ],
+      "properties": {
+        "_id": {
+          "$ref": "#/$defs/Generic.Identifier"
+        },
+        "_type": {
+          "const": "SpecificationCustomization",
+          "type": "string"
+        },
+        "CustomizationType": {
+          "enum": [
+            "SpecificationDeviation",
+            "FurtherSpecification",
+            "NormativeOptionRequired"
+          ],
+          "description": "The type of specification customization. 'SpecificationDeviation' is used when a normative requirement is changed. 'FurtherSpecification' is used when an additional OEM requirement is introduced that is not an optional clause in the referenced standard or specification. 'NormativeOptionRequired' is used when the referenced standard or specification contains an optional requirement that is made mandatory by the OEM."
+        },
+        "Description": {
+          "$ref": "#/$defs/Generic.LongString",
+          "description": "A detailed description of the specification customization."
+        },
+        "Specification": {
+          "$ref": "#/$defs/Generic.Specification",
+          "description": "The specification that is being customized or further specified."
+        },
+        "LayerNumber": {
+          "type": "integer",
+          "minimum": 1,
+          "description": "The layer number of the stack that this specification customization applies to, starting with 1 for the bottom layer. This is only applicable if the Specification being customized is related to a stack."
+        },
+        "DeviatingProperties": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Generic.DeviatingProperty"
+          },
+          "description": "A list of properties that deviate from the original specification, including their values and tolerances."
+        }
+      }
+    },
+    "Generic.DeviatingProperty": {
+      "additionalProperties": false,
+      "properties": {
+        "_id": {
+          "$ref": "#/$defs/Generic.Identifier"
+        },
+        "_type": {
+          "const": "DeviatingProperty",
+          "type": "string"
+        },
+        "Property": {
+          "$ref": "#/$defs/Generic.RestrictedString",
+          "description": "The name of the property that deviates from the original specification."
+        },
+        "OriginalValue": {
+          "description": "The original value of the property as specified in the original specification (optional).",
+          "$ref": "#/$defs/Generic.InformationPoint"
+        },
+        "DeviatingValue": {
+          "description": "The new value of the property that deviates from the original specification.",
+          "$ref": "#/$defs/Generic.InformationPoint"
+        }
+      },
+      "required": [
+        "_id",
+        "_type",
+        "Property",
+        "DeviatingValue"
+      ],
+      "type": "object"
+    },
+    "Generic.Stack.Material": {
+      "properties": {
+        "Property": {
+          "const": "Material"
+        }
+      },
+      "required": [
+        "Property"
+      ],
+      "type": "object"
+    },
+    "Generic.Stack.MaterialValue": {
+      "$ref": "#/$defs/Generic.RestrictedString"
+    },
+    "Generic.Stack.LayerNumber": {
+      "properties": {
+        "Property": {
+          "const": "LayerNumber"
+        }
+      },
+      "required": [
+        "Property"
+      ],
+      "type": "object",
+      "description": "The layer number of the stack, starting with 1 for the bottom layer."
+    },
+    "Generic.Stack.LayerNumberValue": {
+      "type": "integer",
+      "minimum": 1,
+      "description": "The layer number of the stack, starting with 1 for the bottom layer."
+    },
+    "Generic.Stack.Mass": {
+      "properties": {
+        "Property": {
+          "const": "Mass"
+        },
+        "Unit": {
+          "$ref": "#/$defs/Generic.Unit"
+        }
+      },
+      "required": [
+        "Property"
+      ],
+      "type": "object"
+    },
+    "Generic.Stack.MassValue": {
+      "type": "number",
+      "description": "The mass of the layer. The unit is defined in the corresponding Stack.Mass entry."
+    },
+    "Generic.Stack.Thickness": {
+      "properties": {
+        "Property": {
+          "const": "Thickness"
+        },
+        "Unit": {
+          "$ref": "#/$defs/Generic.Unit"
+        }
+      },
+      "required": [
+        "Property"
+      ],
+      "type": "object"
+    },
+    "Generic.Stack.ThicknessValue": {
+      "type": "number",
+      "description": "The thickness of the layer. The unit is defined in the corresponding Stack.Thickness entry."
+    },
+    "Generic.Stack.ArraySpec": {
+      "description": "Specification of a stack array, which defines the properties of each layer in the stack.",
+      "prefixItems": [
+        {
+          "$ref": "#/$defs/Generic.Stack.LayerNumber"
+        },
+        {
+          "$ref": "#/$defs/Generic.Stack.Material"
+        },
+        {
+          "$ref": "#/$defs/Generic.Stack.Mass"
+        },
+        {
+          "$ref": "#/$defs/Generic.Stack.Thickness"
+        }
+      ],
+      "type": "array"
+    },
+    "Generic.Stack.ArrayValue": {
+      "type": "array",
+      "description": "An array value for a stack, which contains the values for each layer in the stack according to the defined ArraySpec.",
+      "prefixItems": [
+        {
+          "$ref": "#/$defs/Generic.Stack.LayerNumberValue"
+        },
+        {
+          "$ref": "#/$defs/Generic.Stack.MaterialValue"
+        },
+        {
+          "$ref": "#/$defs/Generic.Stack.MassValue"
+        },
+        {
+          "$ref": "#/$defs/Generic.Stack.ThicknessValue"
+        }
+      ]
+    },
+    "Generic.Stack": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/Generic.InformationSet"
+        },
+        {
+          "properties": {
+            "ArraySpec": {
+              "$ref": "#/$defs/Generic.Stack.ArraySpec"
+            },
+            "ArrayValue": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/Generic.Stack.ArrayValue"
+              }
+            }
+          }
+        }
+      ],
+      "type": "object"
     }
   }
 }
