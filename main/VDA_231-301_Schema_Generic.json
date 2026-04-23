@@ -1513,7 +1513,7 @@
       "type": "string"
     },
     "Generic.SpecificationCustomizations": {
-      "description": "A list of customizations to the specifications that apply for this component, which can include deviations from the original specifications or further specifications that also apply.",
+      "description": "A list of customizations to the specifications that apply for this component. Customizations can be deviations from normative requirements, additional OEM requirements, or optional normative requirements that are made mandatory by the OEM.",
       "type": "array",
       "items": {
         "$ref": "#/$defs/Generic.SpecificationCustomization"
@@ -1539,9 +1539,10 @@
         "CustomizationType": {
           "enum": [
             "SpecificationDeviation",
-            "FurtherSpecification"
+            "FurtherSpecification",
+            "NormativeOptionRequired"
           ],
-          "description": "The type of the specification customization, indicating whether it is a deviation from the original specification or a further specification that also applies."
+          "description": "The type of specification customization. 'SpecificationDeviation' is used when a normative requirement is changed. 'FurtherSpecification' is used when an additional OEM requirement is introduced that is not an optional clause in the referenced standard or specification. 'NormativeOptionRequired' is used when the referenced standard or specification contains an optional requirement that is made mandatory by the OEM."
         },
         "Description": {
           "$ref": "#/$defs/Generic.LongString",

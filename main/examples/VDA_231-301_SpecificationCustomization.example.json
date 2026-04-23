@@ -1,0 +1,267 @@
+{
+  "_id": "b1a2c3d4-5e6f-7a8b-9c0d-e1f2a3b4c5d6",
+  "_type": "TestingProject",
+  "_schemaVersion": "2.0.0",
+  "Title": "Specification Customization Example",
+  "Signatory": "Max Mustermann",
+  "Client": {
+    "_id": "a1b2c3d4-1001-4a2b-8c3d-e4f5a6b7c8d9",
+    "_type": "Location",
+    "Identification": [
+      {
+        "Identifier": "987654321",
+        "Type": "DUNS"
+      }
+    ],
+    "Name": "Automotive OEM GmbH"
+  },
+  "ClientOrderNumber": "CLI-2025-0099",
+  "ContractorID": "a1b2c3d4-2002-4a2b-8c3d-e4f5a6b7c8d9",
+  "LaboratoryOrderNumber": "LAB-2025-SC-0120",
+  "OrderDate": {
+    "Date": "2025-10-01"
+  },
+  "OrderReference": "Brake bracket - specification customizations",
+  "ReportDate": {
+    "Date": "2025-10-15"
+  },
+  "ComponentMasters": [
+    {
+      "_id": "c0a1b2c3-d4e5-4f6a-8b7c-d8e9f0a1b2c3",
+      "_type": "ComponentMaster",
+      "SupplierPartNumber": "BB-4710",
+      "Designation": "Brake Bracket",
+      "MaterialName": "S355J2",
+      "Mass": {
+        "Value": 1250,
+        "Unit": "g"
+      },
+      "NumberOfParts": 1,
+      "Instances": [
+        {
+          "_id": "d0a1b2c3-d4e5-4f6a-8b7c-d8e9f0a1b2c3",
+          "_type": "ComponentInstance",
+          "SerialNumber": "BB-4710-001",
+          "ProductionBatchNumber": "PB-2025-Q4-001"
+        }
+      ],
+      "Stack": {
+        "_type": "InformationSet",
+        "_id": "e0a1b2c3-d4e5-4f6a-8b7c-d8e9f0a1b2c3",
+        "ArraySpec": [
+          {
+            "Property": "LayerNumber"
+          },
+          {
+            "Property": "Material"
+          },
+          {
+            "Property": "Mass",
+            "Unit": "g"
+          },
+          {
+            "Property": "Thickness",
+            "Unit": "µm"
+          }
+        ],
+        "ArrayValue": [
+          [1, "Zinc", 8, 10],
+          [2, "Cr(III) Passivation", 2, 0.5]
+        ]
+      },
+      "SpecificationCustomizations": [
+        {
+          "_id": "f1a1b2c3-d4e5-4f6a-8b7c-d8e9f0a1b2c3",
+          "_type": "SpecificationCustomization",
+          "CustomizationType": "SpecificationDeviation",
+          "Description": "Customer-approved deviation: zinc coating thickness reduced from 12 µm to 10 µm due to dimensional constraints at mounting interface.",
+          "Specification": {
+            "Type": "DIN",
+            "Number": "EN ISO 2081",
+            "IssueDate": "2018-07",
+            "Title": "Metallic and other inorganic coatings - Electroplated coatings of zinc with supplementary treatment on iron or steel"
+          },
+          "LayerNumber": 1,
+          "DeviatingProperties": [
+            {
+              "_id": "f1a1b2c3-d4e5-4f6a-8b7c-000000000001",
+              "_type": "DeviatingProperty",
+              "Property": "Thickness",
+              "OriginalValue": {
+                "Property": "Thickness",
+                "Unit": "µm",
+                "Value": {"minValue": 12}
+              },
+              "DeviatingValue": {
+                "Property": "Thickness",
+                "Unit": "µm",
+                "Value": {"minValue": 10}
+              }
+            }
+          ]
+        },
+        {
+          "_id": "f2a1b2c3-d4e5-4f6a-8b7c-d8e9f0a1b2c3",
+          "_type": "SpecificationCustomization",
+          "CustomizationType": "SpecificationDeviation",
+          "Description": "Passivation layer thickness increased to meet extended corrosion resistance target of 120h salt spray.",
+          "Specification": {
+            "Type": "DIN",
+            "Number": "EN ISO 19598",
+            "IssueDate": "2017-03",
+            "Title": "Metallic coatings - Electroplated coatings of zinc and zinc alloys - Passivation"
+          },
+          "LayerNumber": 2,
+          "DeviatingProperties": [
+            {
+              "_id": "f2a1b2c3-d4e5-4f6a-8b7c-000000000001",
+              "_type": "DeviatingProperty",
+              "Property": "Thickness",
+              "OriginalValue": {
+                "Property": "Thickness",
+                "Unit": "µm",
+                "Value": {"minValue": 0.3, "maxValue": 0.5}
+              },
+              "DeviatingValue": {
+                "Property": "Thickness",
+                "Unit": "µm",
+                "Value": {"minValue": 0.5, "maxValue": 0.8}
+              }
+            }
+          ]
+        },
+        {
+          "_id": "f3a1b2c3-d4e5-4f6a-8b7c-d8e9f0a1b2c3",
+          "_type": "SpecificationCustomization",
+          "CustomizationType": "NormativeOptionRequired",
+          "Description": "OEM mandates an optional EN 10025-2 requirement: Charpy V-notch impact energy testing at -20 C with a minimum value of 27 J is required for this component.",
+          "Specification": {
+            "Type": "DIN",
+            "Number": "EN 10025-2",
+            "IssueDate": "2019-10",
+            "Title": "Hot rolled products of structural steels - Part 2: Technical delivery conditions for non-alloy structural steels"
+          },
+          "DeviatingProperties": [
+            {
+              "_id": "f3a1b2c3-d4e5-4f6a-8b7c-000000000001",
+              "_type": "DeviatingProperty",
+              "Property": "ImpactEnergyKV",
+              "DeviatingValue": {
+                "Property": "ImpactEnergyKV",
+                "Unit": "J",
+                "Value": {
+                  "minValue": 27
+                }
+              }
+            }
+          ]
+        },
+        {
+          "_id": "f4a1b2c3-d4e5-4f6a-8b7c-d8e9f0a1b2c3",
+          "_type": "SpecificationCustomization",
+          "CustomizationType": "FurtherSpecification",
+          "Description": "OEM drawing specification: tightened flatness tolerance for mounting surface beyond DIN EN ISO 1101 standard values.",
+          "Specification": {
+            "Type": "DIN",
+            "Number": "EN ISO 1101",
+            "IssueDate": "2017-04",
+            "Title": "Geometrical product specifications (GPS) - Geometrical tolerancing"
+          },
+          "DeviatingProperties": [
+            {
+              "_id": "f4a1b2c3-d4e5-4f6a-8b7c-000000000001",
+              "_type": "DeviatingProperty",
+              "Property": "Flatness",
+              "DeviatingValue": {
+                "Property": "Flatness",
+                "Unit": "mm",
+                "Value": {"maxValue": 0.05}
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "TestSeries": [
+    {
+      "_id": "a0b1c2d3-e4f5-4a6b-8c7d-e8f9a0b1c2d3",
+      "_type": "TestSeries",
+      "TestType": "Coating Thickness Measurement",
+      "ComponentMasterID": "c0a1b2c3-d4e5-4f6a-8b7c-d8e9f0a1b2c3",
+      "Comment": "Verification of zinc and passivation layer thickness on brake bracket BB-4710",
+      "NumberOfExecutions": 1,
+      "Specification": {
+        "Type": "DIN",
+        "Number": "EN ISO 2178",
+        "IssueDate": "2016-11",
+        "Title": "Non-magnetic coatings on magnetic substrates - Measurement of coating thickness - Magnetic method"
+      },
+      "PredecessorID": null,
+      "SuccessorID": null,
+      "TestingCenterID": "b0c1d2e3-f4a5-4b6c-8d7e-f8a9b0c1d2e3",
+      "ConsolidatedCharacteristicValues": {
+        "_id": "a0b1c2d3-e4f5-4a6b-8c7d-000000000001",
+        "_type": "InformationSet",
+        "ArraySpec": [
+          {
+            "Property": "Layer"
+          },
+          {
+            "Property": "Thickness",
+            "Unit": "µm"
+          },
+          {
+            "Property": "Assessment"
+          }
+        ],
+        "ArrayValue": [
+          ["Zinc", 10.2, "Pass"],
+          ["Cr(III) Passivation", 0.6, "Pass"]
+        ]
+      }
+    }
+  ],
+  "TestingCenters": [
+    {
+      "_id": "b0c1d2e3-f4a5-4b6c-8d7e-f8a9b0c1d2e3",
+      "_type": "TestingCenter",
+      "Certifications": [
+        {
+          "_id": "b0c1d2e3-f4a5-4b6c-8d7e-000000000001",
+          "_type": "Certification",
+          "Specification": {
+            "Type": "DIN",
+            "Number": "EN ISO/IEC 17025",
+            "IssueDate": "2018-03",
+            "Title": "General requirements for the competence of testing and calibration laboratories"
+          },
+          "AccreditationDate": {
+            "Date": "2023-06-15"
+          },
+          "ValidUntil": {
+            "Date": "2028-06-14"
+          }
+        }
+      ],
+      "Location": {
+        "_id": "b0c1d2e3-f4a5-4b6c-8d7e-000000000002",
+        "_type": "Location",
+        "Identification": [
+          {
+            "Identifier": "112233445",
+            "Type": "DUNS"
+          }
+        ],
+        "Name": "Materialprüfanstalt Stuttgart"
+      },
+      "TestingManager": {
+        "_id": "b0c1d2e3-f4a5-4b6c-8d7e-000000000003",
+        "_type": "Person",
+        "FirstName": "Anna",
+        "LastName": "Weber",
+        "Title": "Dr."
+      }
+    }
+  ]
+}
