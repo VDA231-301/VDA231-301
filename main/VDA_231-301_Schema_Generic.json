@@ -303,6 +303,9 @@
         },
         "AddressSimplifiedEnglish": {
           "$ref": "#/$defs/Generic.ContactDetailsSimplifiedEnglish"
+        },
+        "GeoData": {
+          "$ref": "#/$defs/Generic.GeoData"
         }
       },
       "required": [
@@ -311,6 +314,47 @@
         "Identification"
       ],
       "type": "object"
+    },
+    "Generic.GeoData": {
+      "type": "FeatureCollection",
+      "features": {
+        "type": "array",
+        "items": {
+          "$ref": "#/$defs/Generic.GeoJSONFeature"
+        }
+      },
+      "required": [
+        "features"
+      ]
+    },
+    "Generic.GeoJSONFeature": {
+      "type": "Feature",
+      "geometry": {
+        "type": "string",
+        "enum": [
+          "Point",
+          "LineString",
+          "Polygon",
+          "MultiPoint",
+          "MultiLineString",
+          "MultiPolygon"
+        ],
+        "coordinates": {
+          "description": "A position is an array of numbers. There MUST be two or more elements. The first two elements are longitude and latitude, or easting and northing, precisely in that order and using decimal numbers.",
+          "type": "array",
+          "minItems": 2,
+          "maxItems": 2,
+          "items": {
+            "type": "number"
+          }
+        }
+      },
+      "properties": {
+        "type": "object"
+      },
+      "required": [
+        "geometry"
+      ]
     },
     "Generic.CharacteristicValues": {
       "anyOf": [
