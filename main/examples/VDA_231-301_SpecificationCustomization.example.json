@@ -253,7 +253,19 @@
             "Type": "DUNS"
           }
         ],
-        "Name": "Materialprüfanstalt Stuttgart"
+        "Name": "Materialprüfanstalt Stuttgart",
+        "GeoData": {
+          "type": "FeatureCollection",
+          "features": [
+            {
+              "type": "Feature",
+              "geometry": {
+                "type": "Point",
+                "coordinates": [10.960222, 49.455973]
+              }
+            }
+          ]
+        }
       },
       "TestingManager": {
         "_id": "b0c1d2e3-f4a5-4b6c-8d7e-000000000003",

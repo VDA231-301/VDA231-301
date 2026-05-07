@@ -303,6 +303,10 @@
         },
         "AddressSimplifiedEnglish": {
           "$ref": "#/$defs/Generic.ContactDetailsSimplifiedEnglish"
+        },
+        "GeoData": {
+          "$ref": "#/$defs/Generic.GeoData",
+          "description": "GeoJSON data describing the location of facilities such as testing laboratories or production sites. When sharing geospatial data, data providers should consider whether the precision of the coordinates is appropriate for the intended use case. Highly precise locations of laboratories, machinery, or other sensitive infrastructure may constitute sensitive geodata (see IMAGI guidance on sensitive geodata - https://imagi.de/). Data providers and receiving contractual partners are responsible for ensuring appropriate protection and secure handling of the shared data."
         }
       },
       "required": [
@@ -311,6 +315,75 @@
         "Identification"
       ],
       "type": "object"
+    },
+    "Generic.GeoData": {
+      "additionalProperties": false,
+      "description": "A GeoJSON FeatureCollection object as defined in RFC 7946.",
+      "type": "object",
+      "properties": {
+        "type": {
+          "const": "FeatureCollection",
+          "type": "string"
+        },
+        "features": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Generic.GeoJSONFeature"
+          }
+        }
+      },
+      "required": [
+        "type",
+        "features"
+      ]
+    },
+    "Generic.GeoJSONFeature": {
+      "additionalProperties": false,
+      "description": "A GeoJSON Feature object as defined in RFC 7946.",
+      "type": "object",
+      "properties": {
+        "type": {
+          "const": "Feature",
+          "type": "string"
+        },
+        "geometry": {
+          "$ref": "#/$defs/Generic.GeoJSONGeometry"
+        },
+        "properties": {
+          "type": "object"
+        }
+      },
+      "required": [
+        "type",
+        "geometry"
+      ]
+    },
+    "Generic.GeoJSONGeometry": {
+      "additionalProperties": false,
+      "description": "A GeoJSON Geometry object as defined in RFC 7946.",
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": [
+            "Point",
+            "LineString",
+            "Polygon",
+            "MultiPoint",
+            "MultiLineString",
+            "MultiPolygon"
+          ]
+        },
+        "coordinates": {
+          "description": "A position is an array of numbers. There MUST be two or more elements. The first two elements are longitude and latitude, or easting and northing, precisely in that order and using decimal numbers. The structure varies by geometry type.",
+          "type": "array",
+          "minItems": 2
+        }
+      },
+      "required": [
+        "type",
+        "coordinates"
+      ]
     },
     "Generic.CharacteristicValues": {
       "anyOf": [
