@@ -14,7 +14,7 @@
       "type": "string"
     },
     "_schemaVersion": {
-      "const": "2.0.0",
+      "const": "2.1.0",
       "description": "The generic schema version on which the structure of the testing project is based on."
     },
     "Title": {
@@ -1264,12 +1264,21 @@
           "const": "ComponentMaster",
           "type": "string"
         },
+        "Designation": {
+          "type": "string"
+        },
         "Instances": {
           "items": {
             "$ref": "#/$defs/Generic.ComponentInstance"
           },
           "type": "array",
           "description": "A list of instances of this component."
+        },
+        "SubComponents": {
+          "items": {
+            "$ref": "#/$defs/Generic.ComponentMaster"
+          },
+          "type": "array"
         },
         "CustomerPartNumber": {
           "$ref": "#/$defs/Generic.RestrictedString",
