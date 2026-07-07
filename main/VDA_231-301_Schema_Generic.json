@@ -1,5 +1,5 @@
 {
-  "$id": "https://vda231-301.github.io/schemas/generic/VDA_231-301_generic_v2.0.0.schema.json",
+  "$id": "https://vda231-301.github.io/schemas/generic/VDA_231-301_generic_v2.1.0.schema.json",
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "title": "VDA 231-301 TestingProject JSON schema",
   "type": "object",
@@ -1265,7 +1265,7 @@
           "type": "string"
         },
         "Designation": {
-          "type": "string"
+          "$ref": "#/$defs/Generic.RestrictedString"
         },
         "Instances": {
           "items": {
@@ -1279,6 +1279,10 @@
             "$ref": "#/$defs/Generic.ComponentMaster"
           },
           "type": "array"
+        },
+        "NGIDPath": {
+          "type": "string",
+          "description": "A Siemens JT Next Generation Identifier (NGID) path locating this component's occurrence within the source CAD assembly structure, per the 'NGID Identifiers' specification (e.g. $$NGID<chain>=\"__CAD_INST_UID\"\\0AssemblyName.asm;version;instanceId:\\0PartName.asm;version;instanceId:\\0\\0)."
         },
         "CustomerPartNumber": {
           "$ref": "#/$defs/Generic.RestrictedString",
