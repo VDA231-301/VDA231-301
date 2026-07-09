@@ -1474,6 +1474,13 @@
           "$ref": "#/$defs/Generic.Identifier",
           "description": "Reference to the component master used, expressed as its transmission-scoped identifier (_id) within this transmission file."
         },
+        "AlsoApplicableComponentMasterIDs": {
+          "description": "Other component masters this test series is also applicable to, e.g. because the parts are identical or mirrored. Does not include the primary ComponentMasterID.",
+          "items": {
+            "$ref": "#/$defs/Generic.Identifier"
+          },
+          "type": "array"
+        },
         "AdditionalInformation": {
           "$ref": "#/$defs/Generic.InformationSet"
         },
