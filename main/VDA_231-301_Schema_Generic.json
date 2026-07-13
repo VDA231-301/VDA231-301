@@ -3,14 +3,18 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "title": "VDA 231-301 TestingProject JSON schema",
   "type": "object",
-  "additionalProperties": false,
+  "additionalProperties": true,
   "description": "This is the Generic Schema which validates the structure of the file",
   "properties": {
     "_id": {
       "$ref": "#/$defs/Generic.Identifier"
     },
     "_type": {
-      "const": "TestingProject",
+      "enum": [
+        "TestingProject",
+        "SubstanceDeclaration",
+        "DigitalProductPassport"
+      ],
       "type": "string"
     },
     "_schemaVersion": {
@@ -19,79 +23,13 @@
     },
     "Title": {
       "$ref": "#/$defs/Generic.RestrictedString"
-    },
-    "Client": {
-      "$ref": "#/$defs/Generic.Location"
-    },
-    "ClientOrderNumber": {
-      "$ref": "#/$defs/Generic.RestrictedString"
-    },
-    "ContractorID": {
-      "$ref": "#/$defs/Generic.Identifier",
-      "description": "Reference to the TestingCenter acting as contractor, expressed as its transmission-scoped identifier (_id) within this transmission file."
-    },
-    "TestingCenters": {
-      "items": {
-        "$ref": "#/$defs/Generic.TestingCenter"
-      },
-      "minItems": 1,
-      "description": "List of all TestingCenters used in this transmission file as reference targets for internal links via their transmission-scoped identifiers (_id).",
-      "type": "array"
-    },
-    "LaboratoryOrderNumber": {
-      "$ref": "#/$defs/Generic.RestrictedString"
-    },
-    "OrderDate": {
-      "$ref": "#/$defs/Generic.Date"
-    },
-    "OrderReference": {
-      "$ref": "#/$defs/Generic.RestrictedString"
-    },
-    "ReportDate": {
-      "$ref": "#/$defs/Generic.Date"
-    },
-    "Signatory": {
-      "$ref": "#/$defs/Generic.ProperNameString"
-    },
-    "RemarkValidity": {
-      "$ref": "#/$defs/Generic.LongString"
-    },
-    "RemarkDeviation": {
-      "$ref": "#/$defs/Generic.LongString"
-    },
-    "RemarkInterpretations": {
-      "$ref": "#/$defs/Generic.LongString"
-    },
-    "ComponentMasters": {
-      "items": {
-        "$ref": "#/$defs/Generic.ComponentMaster"
-      },
-      "minItems": 1,
-      "type": "array"
-    },
-    "TestSeries": {
-      "items": {
-        "$ref": "#/$defs/Generic.TestSeries"
-      },
-      "minItems": 1,
-      "type": "array"
     }
   },
   "required": [
     "_id",
     "_type",
     "_schemaVersion",
-    "ClientOrderNumber",
-    "LaboratoryOrderNumber",
-    "OrderReference",
-    "OrderDate",
-    "ReportDate",
-    "Signatory",
-    "Client",
-    "ContractorID",
-    "TestingCenters",
-    "ComponentMasters",
-    "TestSeries"
+    "Title"
   ],
   "$defs": {
     "Generic.ArraySpec": {
