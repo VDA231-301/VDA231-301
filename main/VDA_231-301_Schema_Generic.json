@@ -73,9 +73,9 @@
       "minItems": 1,
       "type": "array"
     },
-    "TestSeries": {
+    "DeclarationObject": {
       "items": {
-        "$ref": "#/$defs/Generic.TestSeries"
+        "$ref": "#/$defs/Generic.DeclarationObject"
       },
       "minItems": 1,
       "type": "array"
@@ -1448,14 +1448,18 @@
       ],
       "type": "object"
     },
-    "Generic.TestSeries": {
+    "Generic.DeclarationObject": {
       "additionalProperties": false,
       "properties": {
         "_id": {
           "$ref": "#/$defs/Generic.Identifier"
         },
         "_type": {
-          "const": "TestSeries",
+          "enum": [
+            "TestSeries",
+            "SubstanceDeclaration",
+            "MeterialCertificate"
+          ],
           "type": "string"
         },
         "Specification": {
