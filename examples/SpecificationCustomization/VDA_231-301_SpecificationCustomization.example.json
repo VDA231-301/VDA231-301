@@ -36,6 +36,38 @@
         "Value": 1250,
         "Unit": "g"
       },
+      "AlternativeMaterials":{
+        "_type": "InformationSet",
+        "_id": "c0a1b2c3-d4e5-4f6a-8b7c-d8e9f0a1b2c4",
+        "ArraySpec": [
+          {
+            "Property": "Name"
+          },
+          {
+            "Property": "Standard"
+          },
+          {
+            "Property": "Supplier"
+          },
+          {
+            "Property": "TradeName"
+          }
+        ],
+        "ArrayValue": [
+          ["S355J2+N", "EN 10025-2", "ThyssenKrupp", "XAR 400"],
+          ["S355K2", "EN 10025-2", "ArcelorMittal", "ARMOX 500T"]
+        ]
+      },
+      "Colors": [
+        {
+         "ColorCode": "#C0C0C0",
+          "ColorName": "Metallic Silver",
+          "AdditionalInformation": {
+            "_type": "InformationSet",
+            "_id": "c0a1b2c3-d4e5-4f6a-8b7c-d8e9f0a1b2c3"
+          }
+        }
+      ],
       "NumberOfParts": 1,
       "Instances": [
         {
