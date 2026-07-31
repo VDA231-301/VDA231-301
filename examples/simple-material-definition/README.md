@@ -21,11 +21,26 @@ After reviewing this example, the reader should understand:
 
 ## Relevant Entities
 
-To be completed.
+### ComponentMaster
+
+The central entity used to describe the material and its associated metadata.
+
+### Specification
+
+Reference to the applicable material specification.
+
+### Material Identifier
+
+Identifier used to uniquely identify the material within the business context.
 
 ## Relevant Attributes
 
-To be completed.
+This example focuses on the following attributes:
+
+- ComponentMaster.MaterialName
+- ComponentMaster.MaterialIdentifiers
+- ComponentMaster.SupplierPartNumber
+- ComponentMaster.Specification
 
 ## Modelling Decisions
 
