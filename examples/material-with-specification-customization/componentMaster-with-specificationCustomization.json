@@ -1,0 +1,64 @@
+{
+  "_id": "44444444-4444-4444-8444-444444444444",
+  "_type": "ComponentMaster",
+
+  "Designation": "Interior Trim Component",
+
+  "MaterialName": "PP-GF30",
+
+  "OemIdentifier": "OEM",
+
+  "MaterialIdentifiers": [
+    "MAT-PPGF30-001"
+  ],
+
+  "Specifications": [
+    {
+      "Type": "MaterialRequirementSpecification",
+      "Number": "OEM-MATERIAL-REQ-001",
+      "IssueDate": "2026-01",
+      "Title": "Example OEM material requirement including odor evaluation according to VDA 270"
+    }
+  ],
+
+  "SpecificationCustomizations": [
+    {
+      "_id": "55555555-5555-4555-8555-555555555555",
+      "_type": "SpecificationCustomization",
+
+      "CustomizationType": "SpecificationDeviation",
+
+      "Specification": {
+        "Type": "MaterialRequirementSpecification",
+        "Number": "OEM-MATERIAL-REQ-001",
+        "IssueDate": "2026-01",
+        "Title": "Example OEM material requirement including odor evaluation according to VDA 270"
+      },
+
+      "Description": "The referenced OEM material requirement specification contains an odor rating requirement based on VDA 270. The original requirement limits the odor rating to 4.0. For this specific application the OEM accepts an odor rating up to 4.5.",
+
+      "DeviatingProperties": [
+        {
+          "_id": "66666666-6666-4666-8666-666666666666",
+          "_type": "DeviatingProperty",
+
+          "Property": "VDA270_OdorRating",
+
+          "OriginalValue": {
+            "Property": "VDA270_OdorRating",
+            "ValueType": "Number",
+            "Value": 4.0
+          },
+
+          "DeviatingValue": {
+            "Property": "VDA270_OdorRating",
+            "ValueType": "Number",
+            "Value": 4.5
+          }
+        }
+      ]
+    }
+  ],
+
+  "Comment": "Example demonstrating how an OEM-specific deviation from a referenced requirement specification can be documented separately. The OEM requirement references odor evaluation according to VDA 270 while the referenced specification remains unchanged."
+}
