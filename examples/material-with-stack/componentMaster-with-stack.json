@@ -1,0 +1,42 @@
+{
+  "_id": "77777777-7777-4777-8777-777777777777",
+  "_type": "ComponentMaster",
+
+  "Designation": "Interior Trim Component",
+
+  "MaterialName": "Layered Interior Material",
+
+  "MaterialIdentifiers": [
+    "MAT-STACK-001"
+  ],
+
+  "Stack": {
+    "_id": "88888888-8888-4888-8888-888888888888",
+    "_type": "InformationSet",
+
+    "ArraySpec": [
+      {
+        "Property": "LayerNumber"
+      },
+      {
+        "Property": "Material"
+      },
+      {
+        "Property": "Mass",
+        "Unit": "g"
+      },
+      {
+        "Property": "Thickness",
+        "Unit": "mm"
+      }
+    ],
+
+    "ArrayValue": [
+      [1, "PP-GF30", 900, 2.5],
+      [2, "Primer", 50, 0.05],
+      [3, "Paint", 20, 0.03]
+    ]
+  },
+
+  "Comment": "Example demonstrating a simple three-layer material stack."
+}
