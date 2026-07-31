@@ -76,6 +76,18 @@ The agent should be capable of generating new examples based on:
 
 The Example Library serves as guidance and training material but does not limit the generation of future examples.
 
+## Quality Criteria
+
+A generated example should:
+
+- be internally consistent
+- use realistic business scenarios
+- use schema-compliant structures where possible
+- clearly identify draft proposals
+- explain modelling decisions
+- avoid unnecessary complexity
+- support learning and onboarding
+
 
 ## Agent Output Files
 
