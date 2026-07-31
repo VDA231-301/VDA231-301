@@ -136,3 +136,40 @@ Potential future examples may include:
 - complete minimal TestingProject
 - test series with consolidated characteristic values
 - specification hierarchy and test method references
+
+
+## How to Create a VDA 231-301 Example
+
+Every example should contain the following sections:
+
+1. Business Scenario
+2. Objective
+3. Learning Goals
+4. Relevant Entities
+5. Relevant Attributes
+6. Modelling Decisions
+7. JSON Example
+8. Validation Status
+9. Related Examples
+10. Architectural References
+
+### General Principles
+
+Examples should:
+
+- focus on one modelling topic
+- be technically plausible
+- use anonymized information
+- avoid company confidential information
+- explain modelling decisions
+- distinguish clearly between released schema examples and draft proposals
+- use realistic automotive use cases where possible
+
+### Recommended File Structure
+
+Each example should use the following structure:
+
+```text
+example-name/
+├── README.md
+└── example.json
