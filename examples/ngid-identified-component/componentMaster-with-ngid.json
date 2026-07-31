@@ -1,0 +1,16 @@
+{
+  "_id": "99999999-9999-4999-8999-999999999999",
+  "_type": "ComponentMaster",
+
+  "Designation": "Interior Trim Component",
+
+  "MaterialName": "PP-GF30",
+
+  "MaterialIdentifiers": [
+    "MAT-PPGF30-001"
+  ],
+
+  "NGIDPath": "$$NGID<chain>=\"COMPONENT_INSTANCE_UID\"\\0VehicleAssembly.asm;1;1001:\\0DoorTrim.asm;1;2001:\\0\\0",
+
+  "Comment": "Example demonstrating identification of a component occurrence within a CAD assembly by using NGIDPath."
+}
