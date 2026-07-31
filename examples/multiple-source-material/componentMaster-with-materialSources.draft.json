@@ -1,0 +1,49 @@
+{
+  "_id": "11111111-1111-4111-8111-111111111111",
+  "_type": "ComponentMaster",
+
+  "Designation": "Multiple Source PP-GF30 Material Example",
+
+  "MaterialName": "PP-GF30",
+
+  "MaterialIdentifiers": [
+    "MAT-PPGF30-001"
+  ],
+
+  "MaterialSources": [
+    {
+      "_id": "22222222-2222-4222-8222-222222222222",
+
+      "MaterialName": "PP-GF30",
+
+      "TradeName": "Example PP-GF30 A",
+
+      "Supplier": {
+        "Name": "Supplier A"
+      },
+
+      "Specification": {
+        "Type": "MaterialSpecification",
+        "Number": "OEM-PP-GF30-SPEC-A",
+        "IssueDate": "2026-01"
+      }
+    },
+    {
+      "_id": "33333333-3333-4333-8333-333333333333",
+
+      "MaterialName": "PP-GF30",
+
+      "TradeName": "Example PP-GF30 B",
+
+      "Supplier": {
+        "Name": "Supplier B"
+      },
+
+      "Specification": {
+        "Type": "MaterialSpecification",
+        "Number": "OEM-PP-GF30-SPEC-B",
+        "IssueDate": "2026-01"
+      }
+    }
+  ]
+}
