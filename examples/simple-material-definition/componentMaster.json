@@ -1,1 +1,31 @@
+{
+  "_id": "77777777-7777-4777-8777-777777777777",
+  "_type": "ComponentMaster",
 
+  "Designation": "Simple PP-GF30 Material Example",
+
+  "SupplierPartNumber": "SUP-PPGF30-001",
+
+  "MaterialGroup": "Thermoplastics",
+
+  "MaterialClass": "Glass Fibre Reinforced Polypropylene",
+
+  "MaterialName": "PP-GF30",
+
+  "OemIdentifier": "OEM",
+
+  "MaterialIdentifiers": [
+    "MAT-PPGF30-001"
+  ],
+
+  "Specifications": [
+    {
+      "Type": "MaterialSpecification",
+      "Number": "OEM-PP-GF30-SPEC",
+      "IssueDate": "2026-01",
+      "Title": "Example OEM specification"
+    }
+  ],
+
+  "Comment": "Example material used for VDA 231-301 documentation."
+}
