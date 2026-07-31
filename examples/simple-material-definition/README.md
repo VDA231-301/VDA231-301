@@ -40,7 +40,7 @@ This example focuses on the following attributes:
 - ComponentMaster.MaterialName
 - ComponentMaster.MaterialIdentifiers
 - ComponentMaster.SupplierPartNumber
-- ComponentMaster.Specification
+- ComponentMaster.SpecificationS
 
 ## Modelling Decisions
 
