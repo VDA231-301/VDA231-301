@@ -56,7 +56,7 @@ The objective is to provide the simplest possible example for new users.
 
 ## JSON Example
 
-To be completed.
+Draft example based on the current generic schema draft for the upcoming release.
 
 ## Validation Status
 
