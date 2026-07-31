@@ -165,11 +165,36 @@ Examples should:
 - distinguish clearly between released schema examples and draft proposals
 - use realistic automotive use cases where possible
 
-### Recommended File Structure
 
-Each example should use the following structure:
+### Recommended File Structure
 
 ```text
 example-name/
 ├── README.md
 └── example.json
+```
+
+Example:
+
+```text
+simple-material-definition/
+├── README.md
+└── componentMaster.json
+```
+
+### Naming Conventions
+
+Folder names:
+
+- lower-case-with-hyphens
+
+JSON files:
+
+- componentMaster.json
+- componentMaster-with-materialSources.draft.json
+- componentMaster-with-specificationCustomization.json
+
+Draft examples should use the suffix:
+
+- .draft.json
+
