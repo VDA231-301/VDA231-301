@@ -77,3 +77,7 @@ To be completed.
 ## Architectural References
 
 To be completed.
+
+This example illustrates a proposed modelling approach for multiple approved material sources.
+ 
+The MaterialSources entity is currently under discussion and is not yet part of the officially released generic schema.
