@@ -35,9 +35,28 @@ Alternative approved material source definitions.
 
 Material specifications applicable to a material source.
 
+### Location
+
+Supplier information for an approved material source.
+
 ## Relevant Attributes
 
-To be completed.
+This example focuses on the following proposed attributes:
+
+- ComponentMaster.MaterialName
+- ComponentMaster.MaterialIdentifiers
+- ComponentMaster.MaterialSources
+---------
+  
+- MaterialSources.MaterialName
+- MaterialSources.TradeName
+- MaterialSources.Supplier
+- MaterialSources.Specification
+-------
+  
+- Specification.Type
+- Specification.Number
+- Specification.IssueDate
 
 ## Modelling Decisions
 
