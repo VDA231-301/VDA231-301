@@ -96,3 +96,22 @@ For each generated example the agent should create:
 - README.md
 - one or more JSON files
 - validation notes
+
+## Current Status
+
+Status: Concept
+
+The agent documentation currently describes:
+
+- expected behaviour
+- workflow
+- example classification
+- example mapping
+- system prompt
+- implementation approach
+- validation prompts
+
+The next step is the implementation of a prototype using Copilot Studio or another AI agent framework.
+
+The Example Library serves as the primary knowledge source for the agent.
+``
