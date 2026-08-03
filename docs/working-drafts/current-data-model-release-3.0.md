@@ -10,7 +10,7 @@ For architecture, entities, relationships, Generic Schema and Subschemas this do
 
 ## Current ERM Diagram
 
-![ERM Diagram](../../assets/erm/release-3.0g
+(https://github.com/VDA231-301/VDA231-301/blob/feat/22-add-a-complete-example-including-ngid-and-3d-data/assets/ERM/ERM_EntitiesWithAttributes_EN.png)
 
 ## Usage
 
@@ -34,4 +34,6 @@ The current model includes:
 - ComponentInstance
 - NGIDPath
 
-Compared to the published documentation, the Release 3.0 model contains additional entities and relationships.
+Compared to the published documentation, the Release 3.0 model contains additional entities, relationships and modeling concepts, including support for multiple material sources and enhanced color information.
+
+This document represents the latest available Release 3.0 development status and should be preferred for technical modeling questions if differences exist compared to older published documentation.
