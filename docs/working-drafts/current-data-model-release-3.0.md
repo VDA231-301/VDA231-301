@@ -10,6 +10,8 @@ For architecture, entities, relationships, Generic Schema and Subschemas this do
 
 ## Current ERM Diagram
 
+The current ERM Diagram is available here:
+
 (https://github.com/VDA231-301/VDA231-301/blob/feat/22-add-a-complete-example-including-ngid-and-3d-data/assets/ERM/ERM_EntitiesWithAttributes_EN.png)
 
 ## Usage
