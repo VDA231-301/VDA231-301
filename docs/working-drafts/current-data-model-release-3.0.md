@@ -39,3 +39,5 @@ The current model includes:
 Compared to the published documentation, the Release 3.0 model contains additional entities, relationships and modeling concepts, including support for multiple material sources and enhanced color information.
 
 This document represents the latest available Release 3.0 development status and should be preferred for technical modeling questions if differences exist compared to older published documentation.
+
+For technical modeling questions, this document shall be considered the authoritative source for the current Release 3.0 development status.
