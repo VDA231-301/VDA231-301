@@ -8,6 +8,79 @@ This model is not yet part of the officially released documentation.
 
 For architecture, entities, relationships, Generic Schema and Subschemas this document supersedes older ERM diagrams contained in published documentation.
 
+## Release 3.0 Changes
+
+### Component
+
+The current Release 3.0 data model defines the following ComponentMaster attributes:
+
+- ID*
+- Designation
+- CustomerPartNumber
+- SupplierPartNumber
+- MaterialGroup (VDA 231-106)
+- MaterialClass (VDA 231-200)
+- MaterialName
+- OemIdentifier
+- MaterialIdentifiers (VDA 231-300)
+- SurfaceIdentifiers (VDA 231-300)
+- Specifications [List of Specification]
+- Stack [Stack]
+- SpecificationCustomizations [SpecificationCustomizations]
+- Attachment [Attachment]
+- Comment
+- BusinessKeys [BusinessKey]
+- Mass [Mass]
+- NumberOfParts
+- NGIDPath
+ 
+The Release 3.0 model additionally supports:
+
+- Colors
+- MaterialSources
+- ComponentInstances
+- SubComponents
+
+### Colors
+
+Attributes:
+
+- ID
+- ColorName
+- ColorCode
+- ColorCodeAuthority
+- AdditionalProperties [InformationSet]
+
+### MaterialSources
+
+Attributes:
+
+- ID
+- MaterialName
+- TradeName
+- Supplier [Location]
+- Specification [Specification]
+- AdditionalProperties [InformationSet]
+
+### ComponentInstance
+
+Attributes:
+
+- ID*
+- ProductionSite [Location]
+- Machine
+- Tool
+- Cavity
+- SerialNumber
+- ProductionLotNumber
+- ProductionDate [Date]
+- DateOfReceipt [Date]
+- Attachment [Attachment]
+- Comment
+- BusinessKeys [BusinessKey]
+- MaterialSourceID
+- ColorID
+
 ## Current ERM Diagram
 
 The current ERM Diagram is available here:
