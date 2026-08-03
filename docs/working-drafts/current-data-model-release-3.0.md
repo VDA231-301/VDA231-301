@@ -10,6 +10,107 @@ For architecture, entities, relationships, Generic Schema and Subschemas this do
 
 ## Release 3.0 Changes
 
+## Component-related Entities in Release 3.0
+
+For questions about components, component attributes, component instances, colors or material sources, the Release 3.0 development model distinguishes between:
+
+- ComponentMaster
+- ComponentInstance
+- Colors
+- MaterialSources
+
+The term "component" may therefore refer either to the general component master data or to a specific produced component instance. The answer should clarify this distinction.
+
+## Current ComponentMaster Entity
+
+The current Release 3.0 development model defines the following attributes for ComponentMaster:
+
+- ID*
+- Designation
+- CustomerPartNumber
+- SupplierPartNumber
+- MaterialGroup (VDA 231-106)
+- MaterialClass (VDA 231-200)
+- MaterialName
+- OemIdentifier
+- MaterialIdentifiers (VDA 231-300)
+- SurfaceIdentifiers (VDA 231-300)
+- Specifications [List of Specification]
+- Stack [Stack]
+- SpecificationCustomizations [SpecificationCustomizations]
+- Attachment [Attachment]
+- Comment
+- BusinessKeys [BusinessKey]
+- Mass [Mass]
+- NumberOfParts
+- NGIDPath
+
+Compared to the published VDA 231-301 documentation, the Release 3.0 development model additionally introduces a clearer distinction between component master data and component instance data.
+
+## Colors
+
+The current Release 3.0 development model defines the following attributes for Colors:
+
+- ID
+- ColorName
+- ColorCode
+- ColorCodeAuthority
+- AdditionalProperties [InformationSet]
+
+Colors are associated with components via identifiers and allow a more detailed description of color-dependent material or component information.
+
+## MaterialSources
+
+The current Release 3.0 development model defines the following attributes for MaterialSources:
+
+- ID
+- MaterialName
+- TradeName
+- Supplier [Location]
+- Specification [Specification]
+- AdditionalProperties [InformationSet]
+
+MaterialSources support the modeling of multiple possible material sources for a component or component-related material information.
+
+## ComponentInstance
+
+The current Release 3.0 development model defines the following attributes for ComponentInstance:
+
+- ID*
+- ProductionSite [Location]
+- Machine
+- Tool
+- Cavity
+- SerialNumber
+- ProductionLotNumber
+- ProductionDate [Date]
+- DateOfReceipt [Date]
+- Attachment [Attachment]
+- Comment
+- BusinessKeys [BusinessKey]
+- MaterialSourceID
+- ColorID
+
+ComponentInstance represents a concrete produced or supplied component instance. It links production-specific information to the ComponentMaster and can reference MaterialSources and Colors.
+
+## Guidance for Agent Answers
+
+When users ask questions such as:
+
+- Which attributes does a component have?
+- Which attributes must a component provide?
+- What information belongs to a component?
+- What are component master data and component instance data?
+
+the answer shall first describe the Release 3.0 development model and explicitly mention ComponentMaster, ComponentInstance, Colors and MaterialSources.
+
+The published VDA 231-301 documentation may be mentioned as the older officially released state. However, for current modeling questions, this Release 3.0 development documentation shall be preferred.
+
+Important distinction:
+
+- Published documentation: official released state
+- Current Data Model Release 3.0: current development state for modeling questions
+
 ### Component
 
 The current Release 3.0 data model defines the following ComponentMaster attributes:
