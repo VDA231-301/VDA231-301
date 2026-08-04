@@ -1,7 +1,7 @@
 {
-  "$id": "https://vda231-301.github.io/schemas/generic/VDA_231-301_generic_v2.1.0.schema.json",
+  "$id": "https://vda231-301.github.io/schemas/generic/VDA_231-301_generic_v3.0.0.schema.json",
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "title": "VDA 231-301 TestingProject JSON schema",
+  "title": "VDA 231-301 Generic JSON schema",
   "type": "object",
   "additionalProperties": false,
   "description": "This is the Generic Schema which validates the structure of the file",
@@ -18,14 +18,11 @@
       "type": "string"
     },
     "_schemaVersion": {
-      "const": "2.1.0",
+      "const": "3.0.0",
       "description": "The generic schema version on which the structure of the testing project is based on."
     },
     "Title": {
       "$ref": "#/$defs/Generic.RestrictedString"
-    },
-    "Client": {
-      "$ref": "#/$defs/Generic.Location"
     },
     "ClientOrderNumber": {
       "$ref": "#/$defs/Generic.RestrictedString"
@@ -34,12 +31,12 @@
       "$ref": "#/$defs/Generic.Identifier",
       "description": "Reference to the TestingCenter acting as contractor, expressed as its transmission-scoped identifier (_id) within this transmission file."
     },
-    "TestingCenters": {
+    "Entities": {
       "items": {
-        "$ref": "#/$defs/Generic.TestingCenter"
+        "$ref": "#/$defs/Generic.Entity"
       },
       "minItems": 1,
-      "description": "List of all TestingCenters used in this transmission file as reference targets for internal links via their transmission-scoped identifiers (_id).",
+      "description": "List of all Entities used in this transmission file as reference targets for internal links via their transmission-scoped identifiers (_id).",
       "type": "array"
     },
     "LaboratoryOrderNumber": {
@@ -73,9 +70,9 @@
       "minItems": 1,
       "type": "array"
     },
-    "DeclarationObject": {
+    "Topics": {
       "items": {
-        "$ref": "#/$defs/Generic.DeclarationObject"
+        "$ref": "#/$defs/Generic.Topics"
       },
       "minItems": 1,
       "type": "array"
@@ -636,7 +633,7 @@
         "Type"
       ]
     },
-    "Generic.TestExecution": {
+    "Generic.Execution": {
       "additionalProperties": false,
       "properties": {
         "_id": {
@@ -1175,20 +1172,30 @@
       ],
       "type": "object"
     },
-    "Generic.TestingCenter": {
+    "Generic.Entity": {
       "additionalProperties": false,
       "properties": {
         "_id": {
           "$ref": "#/$defs/Generic.Identifier"
         },
         "_type": {
-          "const": "TestingCenter",
+          "const": "Entity",
+          "type": "string"  
+        },
+        "Role": {
+          "enum": [
+            "TestingCenter",
+            "Supplier",
+            "Client",
+            "Laboratory",
+            "Contractor"
+          ],
           "type": "string"
         },
         "Location": {
           "$ref": "#/$defs/Generic.Location"
         },
-        "TestingManager": {
+        "EntityManager": {
           "$ref": "#/$defs/Generic.Person"
         },
         "Certifications": {
@@ -1205,8 +1212,7 @@
         "_id",
         "_type",
         "Location",
-        "TestingManager",
-        "Certifications"
+        "EntityManager"
       ],
       "type": "object"
     },
@@ -1448,7 +1454,7 @@
       ],
       "type": "object"
     },
-    "Generic.DeclarationObject": {
+    "Generic.Topics": {
       "additionalProperties": false,
       "properties": {
         "_id": {
@@ -1458,14 +1464,15 @@
           "enum": [
             "TestSeries",
             "SubstanceDeclaration",
-            "MeterialCertificate"
+            "DPP_Topic",
+            "MaterialCertificate"
           ],
           "type": "string"
         },
         "Specification": {
           "$ref": "#/$defs/Generic.Specification"
         },
-        "TestType": {
+        "TopicType": {
           "$ref": "#/$defs/Generic.RestrictedString"
         },
         "ComponentMasterID": {
@@ -1474,10 +1481,6 @@
         },
         "AdditionalInformation": {
           "$ref": "#/$defs/Generic.InformationSet"
-        },
-        "NumberOfExecutions": {
-          "minimum": 1,
-          "type": "integer"
         },
         "Assessment": {
           "type": "string"
@@ -1502,23 +1505,19 @@
             }
           ]
         },
-        "TestingCenterID": {
-          "$ref": "#/$defs/Generic.Identifier",
-          "description": "Reference to the TestingCenter responsible for this TestSeries, expressed as its transmission-scoped identifier (_id) within this transmission file."
-        },
         "Comment": {
           "$ref": "#/$defs/Generic.RestrictedText"
         },
         "Executions": {
           "items": {
-            "$ref": "#/$defs/Generic.TestExecution"
+            "$ref": "#/$defs/Generic.Execution"
           },
           "type": "array"
         },
-        "ConsolidatedCharacteristicValues": {
+        "ReportedProperties": {
           "$ref": "#/$defs/Generic.CharacteristicValues"
         },
-        "TargetCharacteristicValues": {
+        "TargetProperties": {
           "$ref": "#/$defs/Generic.CharacteristicValues"
         }
       },
@@ -1526,12 +1525,8 @@
         "_id",
         "_type",
         "Specification",
-        "NumberOfExecutions",
-        "PredecessorID",
-        "SuccessorID",
-        "TestingCenterID",
-        "ConsolidatedCharacteristicValues",
-        "ComponentMasterID"
+        "ComponentMasterID",
+        "ReportedProperties"
       ],
       "type": "object"
     },
