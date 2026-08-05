@@ -1,7 +1,7 @@
 {
-  "$id": "https://vda231-301.github.io/schemas/generic/VDA_231-301_generic_v2.1.0.schema.json",
+  "$id": "https://vda231-301.github.io/schemas/generic/VDA_231-301_generic_v3.0.0.schema.json",
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "title": "VDA 231-301 TestingProject JSON schema",
+  "title": "VDA 231-301 Generic JSON schema",
   "type": "object",
   "additionalProperties": false,
   "description": "This is the Generic Schema which validates the structure of the file",
@@ -10,17 +10,24 @@
       "$ref": "#/$defs/Generic.Identifier"
     },
     "_type": {
-      "const": "TestingProject",
+      "enum": [
+        "TestingProject",
+        "SubstanceDeclaration",
+        "DigitalProductPassport"
+      ],
       "type": "string"
     },
     "_schemaVersion": {
-      "const": "2.1.0",
+      "const": "3.0.0",
       "description": "The generic schema version on which the structure of the testing project is based on."
     },
     "Title": {
       "$ref": "#/$defs/Generic.RestrictedString"
     },
     "Client": {
+      "$ref": "#/$defs/Generic.Location"
+    },
+    "Contractor": {
       "$ref": "#/$defs/Generic.Location"
     },
     "ClientOrderNumber": {
@@ -69,9 +76,9 @@
       "minItems": 1,
       "type": "array"
     },
-    "TestSeries": {
+    "Topics": {
       "items": {
-        "$ref": "#/$defs/Generic.TestSeries"
+        "$ref": "#/$defs/Generic.Topics"
       },
       "minItems": 1,
       "type": "array"
@@ -79,19 +86,7 @@
   },
   "required": [
     "_id",
-    "_type",
-    "_schemaVersion",
-    "ClientOrderNumber",
-    "LaboratoryOrderNumber",
-    "OrderReference",
-    "OrderDate",
-    "ReportDate",
-    "Signatory",
-    "Client",
-    "ContractorID",
-    "TestingCenters",
-    "ComponentMasters",
-    "TestSeries"
+    "_type"
   ],
   "$defs": {
     "Generic.ArraySpec": {
@@ -1189,7 +1184,7 @@
         },
         "_type": {
           "const": "TestingCenter",
-          "type": "string"
+          "type": "string"  
         },
         "Location": {
           "$ref": "#/$defs/Generic.Location"
@@ -1211,8 +1206,7 @@
         "_id",
         "_type",
         "Location",
-        "TestingManager",
-        "Certifications"
+        "TestingManager"
       ],
       "type": "object"
     },
@@ -1454,14 +1448,18 @@
       ],
       "type": "object"
     },
-    "Generic.TestSeries": {
+    "Generic.Topics": {
       "additionalProperties": false,
       "properties": {
         "_id": {
           "$ref": "#/$defs/Generic.Identifier"
         },
         "_type": {
-          "const": "TestSeries",
+          "enum": [
+            "TestSeries",
+            "SubstanceDeclaration",
+            "Claims"
+          ],
           "type": "string"
         },
         "Specification": {
@@ -1478,8 +1476,12 @@
           "$ref": "#/$defs/Generic.InformationSet"
         },
         "NumberOfExecutions": {
-          "minimum": 1,
-          "type": "integer"
+          "type": "integer",
+          "minimum": 1
+        },
+        "TestingCenterID":{
+          "$ref": "#/$defs/Generic.Identifier",
+          "description": "Reference to the testing center responsible for this test series, expressed as its transmission-scoped identifier (_id) within this transmission file."
         },
         "Assessment": {
           "type": "string"
@@ -1504,10 +1506,6 @@
             }
           ]
         },
-        "TestingCenterID": {
-          "$ref": "#/$defs/Generic.Identifier",
-          "description": "Reference to the TestingCenter responsible for this TestSeries, expressed as its transmission-scoped identifier (_id) within this transmission file."
-        },
         "Comment": {
           "$ref": "#/$defs/Generic.RestrictedText"
         },
@@ -1517,23 +1515,24 @@
           },
           "type": "array"
         },
-        "ConsolidatedCharacteristicValues": {
+        "ReportedProperties": {
           "$ref": "#/$defs/Generic.CharacteristicValues"
         },
-        "TargetCharacteristicValues": {
+        "TargetProperties": {
           "$ref": "#/$defs/Generic.CharacteristicValues"
+        },
+        "Conditions": {
+        },
+        "TestExecution": {
+          "items": {
+            "$ref": "#/$defs/Generic.TestExecution"
+          },
+          "type": "array"
         }
       },
       "required": [
         "_id",
-        "_type",
-        "Specification",
-        "NumberOfExecutions",
-        "PredecessorID",
-        "SuccessorID",
-        "TestingCenterID",
-        "ConsolidatedCharacteristicValues",
-        "ComponentMasterID"
+        "_type"
       ],
       "type": "object"
     },
