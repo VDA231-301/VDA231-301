@@ -24,6 +24,12 @@
     "Title": {
       "$ref": "#/$defs/Generic.RestrictedString"
     },
+    "Client": {
+      "$ref": "#/$defs/Generic.Location"
+    },
+    "Contractor": {
+      "$ref": "#/$defs/Generic.Location"
+    },
     "ClientOrderNumber": {
       "$ref": "#/$defs/Generic.RestrictedString"
     },
@@ -31,12 +37,12 @@
       "$ref": "#/$defs/Generic.Identifier",
       "description": "Reference to the TestingCenter acting as contractor, expressed as its transmission-scoped identifier (_id) within this transmission file."
     },
-    "Entities": {
+    "TestingCenters": {
       "items": {
-        "$ref": "#/$defs/Generic.Entity"
+        "$ref": "#/$defs/Generic.TestingCenter"
       },
       "minItems": 1,
-      "description": "List of all Entities used in this transmission file as reference targets for internal links via their transmission-scoped identifiers (_id).",
+      "description": "List of all TestingCenters used in this transmission file as reference targets for internal links via their transmission-scoped identifiers (_id).",
       "type": "array"
     },
     "LaboratoryOrderNumber": {
@@ -80,9 +86,7 @@
   },
   "required": [
     "_id",
-    "_type",
-    "_schemaVersion",
-    "Title"
+    "_type"
   ],
   "$defs": {
     "Generic.ArraySpec": {
@@ -633,7 +637,7 @@
         "Type"
       ]
     },
-    "Generic.Execution": {
+    "Generic.TestExecution": {
       "additionalProperties": false,
       "properties": {
         "_id": {
@@ -1172,30 +1176,20 @@
       ],
       "type": "object"
     },
-    "Generic.Entity": {
+    "Generic.TestingCenter": {
       "additionalProperties": false,
       "properties": {
         "_id": {
           "$ref": "#/$defs/Generic.Identifier"
         },
         "_type": {
-          "const": "Entity",
+          "const": "TestingCenter",
           "type": "string"  
-        },
-        "Role": {
-          "enum": [
-            "TestingCenter",
-            "Supplier",
-            "Client",
-            "Laboratory",
-            "Contractor"
-          ],
-          "type": "string"
         },
         "Location": {
           "$ref": "#/$defs/Generic.Location"
         },
-        "EntityManager": {
+        "TestingManager": {
           "$ref": "#/$defs/Generic.Person"
         },
         "Certifications": {
@@ -1212,7 +1206,7 @@
         "_id",
         "_type",
         "Location",
-        "EntityManager"
+        "TestingManager"
       ],
       "type": "object"
     },
@@ -1464,15 +1458,14 @@
           "enum": [
             "TestSeries",
             "SubstanceDeclaration",
-            "DPP_Topic",
-            "MaterialCertificate"
+            "Claims"
           ],
           "type": "string"
         },
         "Specification": {
           "$ref": "#/$defs/Generic.Specification"
         },
-        "TopicType": {
+        "TestType": {
           "$ref": "#/$defs/Generic.RestrictedString"
         },
         "ComponentMasterID": {
@@ -1481,6 +1474,14 @@
         },
         "AdditionalInformation": {
           "$ref": "#/$defs/Generic.InformationSet"
+        },
+        "NumberOfExecutions": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "TestingCenterID":{
+          "$ref": "#/$defs/Generic.Identifier",
+          "description": "Reference to the testing center responsible for this test series, expressed as its transmission-scoped identifier (_id) within this transmission file."
         },
         "Assessment": {
           "type": "string"
@@ -1510,7 +1511,7 @@
         },
         "Executions": {
           "items": {
-            "$ref": "#/$defs/Generic.Execution"
+            "$ref": "#/$defs/Generic.TestExecution"
           },
           "type": "array"
         },
@@ -1519,14 +1520,19 @@
         },
         "TargetProperties": {
           "$ref": "#/$defs/Generic.CharacteristicValues"
+        },
+        "Conditions": {
+        },
+        "TestExecution": {
+          "items": {
+            "$ref": "#/$defs/Generic.TestExecution"
+          },
+          "type": "array"
         }
       },
       "required": [
         "_id",
-        "_type",
-        "Specification",
-        "ComponentMasterID",
-        "ReportedProperties"
+        "_type"
       ],
       "type": "object"
     },
