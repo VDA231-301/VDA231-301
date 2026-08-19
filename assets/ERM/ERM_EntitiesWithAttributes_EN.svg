@@ -758,13 +758,13 @@
       <text x="145.5494" xml:space="preserve" y="172.2731" clip-path="url(#clipPath2)" stroke="none">OemIdentifier</text>
       <text x="145.5494" xml:space="preserve" y="186.9742" clip-path="url(#clipPath2)" stroke="none">OemVersion</text>
       <text x="145.5494" xml:space="preserve" y="201.6754" clip-path="url(#clipPath2)" stroke="none">MaterialIdentifiers (VDA 231-300) (List of String)</text>
-      <text x="145.5494" xml:space="preserve" y="216.3766" clip-path="url(#clipPath2)" stroke="none">SurfaceIdentifiers (VDA 231-300)</text>
+      <text x="145.5494" xml:space="preserve" y="216.3766" clip-path="url(#clipPath2)" stroke="none">SurfaceIdentifiers (VDA 231-300) (List of String)</text>
       <text x="145.5494" xml:space="preserve" y="231.0778" clip-path="url(#clipPath2)" stroke="none">Specifications (List of [Specification])</text>
       <text x="145.5494" xml:space="preserve" y="245.7789" clip-path="url(#clipPath2)" stroke="none">Stack [Stack]</text>
       <text x="145.5494" xml:space="preserve" y="260.4801" clip-path="url(#clipPath2)" stroke="none">SpecificationCustomizations [SpecificationCustomizations]</text>
       <text x="145.5494" xml:space="preserve" y="275.1813" clip-path="url(#clipPath2)" stroke="none">Attachment [Attachment]</text>
       <text x="145.5494" xml:space="preserve" y="289.8824" clip-path="url(#clipPath2)" stroke="none">Comment</text>
-      <text x="145.5494" xml:space="preserve" y="304.5836" clip-path="url(#clipPath2)" stroke="none">BusinessKeys [BusinessKey]</text>
+      <text x="145.5494" xml:space="preserve" y="304.5836" clip-path="url(#clipPath2)" stroke="none">BusinessKeys (List of [BusinessKey])</text>
       <text x="145.5494" xml:space="preserve" y="319.2848" clip-path="url(#clipPath2)" stroke="none">Mass (List of [Mass])</text>
       <text x="145.5494" xml:space="preserve" y="333.986" clip-path="url(#clipPath2)" stroke="none">NumberOfParts</text>
       <text x="145.5494" xml:space="preserve" y="348.6871" clip-path="url(#clipPath2)" stroke="none">NGIDPath (external element references)</text>
