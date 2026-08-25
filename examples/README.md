@@ -1,6 +1,7 @@
 # VDA 231-301 Example Library
 
-This folder contains example files illustrating typical modelling patterns for the VDA 231-301 data model.
+This folder contains example files illustrating typical modelling patterns for
+the VDA 231-301 data model.
 
 The examples are intended to support:
 
@@ -8,193 +9,141 @@ The examples are intended to support:
 - discussion of modelling approaches
 - documentation of recommended usage patterns
 - preparation of validation and tooling examples
-- future AI-assisted example generation
 
 ## Purpose
 
-The examples are not meant to replace the JSON Schema documentation.
-
-Instead, they show how selected parts of the data model can be applied in realistic business scenarios.
+The examples are not meant to replace the JSON Schema documentation. Instead,
+they show how selected parts of the data model can be applied in realistic
+business scenarios.
 
 Each example contains:
 
 - a `README.md` explaining the business scenario and modelling decisions
 - one or more JSON files illustrating the corresponding data structure
 
+All examples are aligned with the generic schema v3.0.0.
+
 ## Available Examples
 
-### Simple Material Definition
+### simple-material-definition
 
-Folder:
+The minimal "hello world" example. Describes a component and its material using
+a `ComponentMaster` with a referenced specification.
 
-`simple-material-definition`
+File: `componentMaster.json`
 
-This example demonstrates how a simple material can be represented using a `ComponentMaster`.
+### color-definition
 
-It focuses on:
+Shows how approved colors are defined at `ComponentMaster` level via `Colors`
+and how each produced `ComponentInstance` references its actual color via
+`ColorID`.
 
-- material name
-- material identifiers
-- supplier part number
-- specification references
+File: `componentMaster-with-color.json`
 
-Status:
+### multiple-source-material
 
-Schema-oriented reference example.
+Shows how approved material sources are defined at `ComponentMaster` level via
+`MaterialSources` and how each produced `ComponentInstance` references its actual
+source via `MaterialSourceID`.
 
-### Multiple Source Material
+File: `componentMaster-with-materialSources.json`
 
-Folder:
+### component-instance-traceability
 
-`multiple-source-material`
+Shows how individually produced parts are represented as `ComponentInstance`
+objects within a `ComponentMaster`, each carrying its own production traceability
+information (batch, site, machine, tool, cavity).
 
-This example illustrates a proposed modelling approach for documenting multiple approved material sources.
+File: `componentInstance.json`
 
-It focuses on:
+### material-with-stack
 
-- alternative approved material sources
-- supplier-specific material information
-- trade names
-- source-specific specifications
+Shows how a layered material structure is represented using the `Stack` property
+with `ArraySpec` and `ArrayValue` (LayerNumber, Material, Mass, Thickness).
 
-Status:
+File: `componentMaster-with-stack.json`
 
-Draft example.
+### material-with-specification-customization
 
-The `MaterialSources` structure is currently shown as a proposed modelling approach and is not yet part of the officially released generic schema.
+Shows how an OEM-specific deviation from a referenced specification is documented
+using `SpecificationCustomizations` and `DeviatingProperty`, without changing the
+referenced specification itself.
 
-### Material with Specification Customization
+File: `componentMaster-with-specificationCustomization.json`
 
-Folder:
+### ngid-identified-component
 
-`material-with-specification-customization`
+Shows how a `ComponentMaster` is linked to its occurrence in a CAD assembly
+structure using `NGIDPath`, following the Siemens NGID specification.
 
-This example demonstrates how an OEM-specific customization of a referenced specification can be represented.
+File: `componentMaster-with-ngid.json`
 
-It focuses on:
+### component-master-hierarchy
 
-- `SpecificationCustomizations`
-- `SpecificationDeviation`
-- `DeviatingProperty`
-- original and deviating requirement values
+Shows how a component hierarchy is modelled using `ComponentMaster.SubComponents`,
+where each subcomponent is itself a `ComponentMaster`. Demonstrates that a
+component can be a top-level node or a subcomponent depending on its position in
+the tree (containment relationship).
 
-The example uses an odor rating requirement based on VDA 270 as an illustrative use case.
+File: `componentMaster-with-subComponents.json`
 
-Status:
+### specification-hierarchy
 
-Draft example based on the current generic schema draft.
+Shows how a specification can reference other specifications via
+`Specification.ReferencedSpecifications`, so that a higher-level specification
+references several sub-specifications (reference relationship). Complements the
+component hierarchy example by contrasting "reference" with "containment".
 
-## Example Status
+File: `componentMaster-with-specificationHierarchy.json`
 
-Examples may have different maturity levels:
+## Conventions
 
-### Reference example
+The examples follow a set of shared conventions. Key architectural decisions are
+documented as Architectural Decision Records (ADRs) in `docs/adr`:
 
-The example follows the current schema structure and is intended as a recommended usage pattern.
+- Definition sets are held on the `ComponentMaster`, concrete assignments on the
+  `ComponentInstance` (e.g. `Colors` / `ColorID`, `MaterialSources` /
+  `MaterialSourceID`).
+- `ComponentMaster.Version` (drawing / change status, ZGS) is included in every
+  component example.
+- Stack layers are numbered starting with 1 for the bottom (substrate) layer.
+- `NGIDPath` examples use the `JT_PROP_NAME` identifier with CADID-formatted node
+  values.
 
-### Draft example
+## Self-referencing structures
 
-The example illustrates a modelling proposal or a structure that is still under discussion.
+Two examples illustrate self-referencing (recursive) structures, which are a
+common source of confusion:
 
-Draft examples are useful for discussion but may not validate against the currently released schema.
+- `component-master-hierarchy` uses `ComponentMaster.SubComponents`. This is a
+  **containment** relationship: a parent component contains its subcomponents.
+- `specification-hierarchy` uses `Specification.ReferencedSpecifications`. This
+  is a **reference** relationship: a higher-level specification references other
+  specifications that exist in their own right and can be reused by many
+  specifications and components.
 
-### Future example
-
-The example describes a planned use case that has not yet been modelled in detail.
+In both cases the role of an object (top node vs. subordinate) is not a property
+of the object itself; it results from its position in the tree.
 
 ## Naming Conventions
 
-Example folders use lower-case names with hyphens.
-
-Example JSON files should use descriptive names, such as:
-
-- `componentMaster.json`
-- `componentMaster-with-materialSources.draft.json`
-- `componentMaster-with-specificationCustomization.json`
-
-The suffix `.draft.json` should be used when the example contains structures that are not yet part of the officially released schema.
+- Example folders use lower-case names with hyphens.
+- JSON files use descriptive names, for example `componentMaster.json` or
+  `componentMaster-with-color.json`.
 
 ## Modelling Principles
 
-The examples follow these general principles:
-
-- focus on one modelling topic per example
-- keep examples as simple as possible
-- avoid company-specific confidential information
-- use anonymized identifiers and specifications
-- explain important modelling decisions in the README
-- distinguish clearly between schema-based examples and draft modelling proposals
+- Focus on one modelling topic per example.
+- Keep examples as simple as possible while preserving the learning objective.
+- Use anonymized identifiers and fictional specifications.
+- Avoid company-specific confidential information.
+- Explain important modelling decisions in the example's README.
 
 ## Future Examples
 
-Potential future examples may include:
+Potential future examples include:
 
-- coating system with stack information
-- composite material
-- VDA 270 result
-- VDA 278 result
-- complete minimal TestingProject
-- test series with consolidated characteristic values
-- specification hierarchy and test method references
-
-
-## How to Create a VDA 231-301 Example
-
-Every example should contain the following sections:
-
-1. Business Scenario
-2. Objective
-3. Learning Goals
-4. Relevant Entities
-5. Relevant Attributes
-6. Modelling Decisions
-7. JSON Example
-8. Validation Status
-9. Related Examples
-10. Architectural References
-
-### General Principles
-
-Examples should:
-
-- focus on one modelling topic
-- be technically plausible
-- use anonymized information
-- avoid company confidential information
-- explain modelling decisions
-- distinguish clearly between released schema examples and draft proposals
-- use realistic automotive use cases where possible
-
-
-### Recommended File Structure
-
-```text
-example-name/
-├── README.md
-└── example.json
-```
-
-Example:
-
-```text
-simple-material-definition/
-├── README.md
-└── componentMaster.json
-```
-
-### Naming Conventions
-
-Folder names:
-
-- lower-case-with-hyphens
-
-JSON files:
-
-- componentMaster.json
-- componentMaster-with-materialSources.draft.json
-- componentMaster-with-specificationCustomization.json
-
-Draft examples should use the suffix:
-
-- .draft.json
+- layer-specific requirements
+- Topic-based examples (e.g. VDA 270 / VDA 278 results)
+- a complete minimal testing project
 

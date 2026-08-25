@@ -2,76 +2,93 @@
 
 ## Business Scenario
 
-An automotive supplier wants to exchange information about a material with an OEM using the VDA 231-301 data model.
+An automotive supplier exchanges information about a material with an OEM using
+the VDA 231-301 data model. The material shall be uniquely identified and linked
+to the applicable material specification.
 
-The material shall be uniquely identified and linked to the applicable material specification.
+This is the most basic example of the Example Library and serves as the starting
+point for understanding how a component and its material are represented.
 
 ## Objective
 
-This example demonstrates the minimum structure required to describe a material using VDA 231-301.
+This example demonstrates the minimum structure required to describe a component
+and its material using a `ComponentMaster`.
 
 ## Learning Goals
 
 After reviewing this example, the reader should understand:
 
-- how a material is represented
+- how a component and its material are represented using a `ComponentMaster`
 - how material identifiers are used
-- how specifications are referenced
-- how a simple VDA 231-301 example is structured
+- how a material specification is referenced
+- how a simple, valid VDA 231-301 example is structured
 
 ## Relevant Entities
 
 ### ComponentMaster
 
-The central entity used to describe the material and its associated metadata.
+The central entity used to describe the component, its material and the
+associated specification.
 
 ### Specification
 
-Reference to the applicable material specification.
-
-### Material Identifier
-
-Identifier used to uniquely identify the material within the business context.
+A reference to the applicable material specification.
 
 ## Relevant Attributes
 
 This example focuses on the following attributes:
 
-- ComponentMaster.MaterialName
-- ComponentMaster.MaterialIdentifiers
+- ComponentMaster.Designation
 - ComponentMaster.SupplierPartNumber
+- ComponentMaster.Version
+- ComponentMaster.MaterialName
 - ComponentMaster.OemIdentifier
+- ComponentMaster.MaterialIdentifiers
 - ComponentMaster.Specifications
+- Specification.Type
+- Specification.Number
+- Specification.IssueDate
 
 ## Modelling Decisions
 
 This example intentionally represents a simple material without:
 
-- coating systems
-- composite materials
-- multiple-source scenarios
-- customized requirements
+- colors
+- material sources
+- stacks
+- specification customizations
 - subcomponents
+- instances
 
-The objective is to provide the simplest possible example for new users.
+The objective is to provide the simplest possible valid example for new users.
+
+The `Version` attribute represents the version / change status of the component
+definition (for example the drawing status, known for example as ZGS). A
+component definition is only unambiguous together with its version, because the
+same part number can exist in several versions. It should therefore always be
+provided when describing a component.
+
+The `Specifications` property references the applicable specification. Each
+specification requires at least a `Type`, a `Number` and an `IssueDate`.
 
 ## JSON Example
 
-Draft example based on the current generic schema draft for the upcoming release.
+See `componentMaster.json`.
 
 ## Validation Status
 
-To be completed.
+Aligned with the generic schema v3.0.0. Validation against the released schema
+version should be performed before productive use.
 
 ## Related Examples
 
-Future related examples:
-
-- Composite Material
+- Color Definition
 - Multiple Source Material
-- Material with Customized Requirements
-- Multi-Layer Coating System
+- Material with Specification Customization
+- Component Instance Traceability
 
 ## Architectural References
 
-To be completed.
+- Entity: `ComponentMaster`
+- Referenced entity: `Specification` (Type, Number, IssueDate)
+

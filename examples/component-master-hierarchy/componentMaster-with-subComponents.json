@@ -1,0 +1,37 @@
+{
+  "_id": "a7a7a7a7-7777-4777-8777-777777777777",
+  "_type": "ComponentMaster",
+  "Designation": "Door Module",
+  "SupplierPartNumber": "SUP-DOOR-MODULE-001",
+  "OemIdentifier": "OEM",
+  "Version": "0001",
+  "Comment": "Top-level component (top node of the part tree). It contains sub-components, each of which is itself a ComponentMaster.",
+  "SubComponents": [
+    {
+      "_id": "b7b70000-1111-4111-8111-000000000001",
+      "_type": "ComponentMaster",
+      "Designation": "Door Trim Panel",
+      "SupplierPartNumber": "SUP-TRIM-001",
+      "MaterialName": "PP-GF30",
+      "OemIdentifier": "OEM",
+      "Version": "0001",
+      "MaterialIdentifiers": [
+        "MAT-PPGF30-001"
+      ],
+      "Comment": "Sub-component of the Door Module. Here the same ComponentMaster acts as a subcomponent."
+    },
+    {
+      "_id": "b7b70000-1111-4111-8111-000000000002",
+      "_type": "ComponentMaster",
+      "Designation": "Loudspeaker Grille",
+      "SupplierPartNumber": "SUP-GRILLE-001",
+      "MaterialName": "ABS",
+      "OemIdentifier": "OEM",
+      "Version": "0001",
+      "MaterialIdentifiers": [
+        "MAT-ABS-002"
+      ],
+      "Comment": "Sub-component of the Door Module."
+    }
+  ]
+}
