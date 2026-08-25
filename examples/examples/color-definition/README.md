@@ -59,6 +59,7 @@ color of the produced part by referencing one of the master's colors via
 This example focuses on the following attributes:
 
 - ComponentMaster.Designation
+- ComponentMaster.Version
 - ComponentMaster.MaterialName
 - ComponentMaster.MaterialIdentifiers
 - ComponentMaster.Colors
@@ -85,6 +86,10 @@ and avoids duplicating color definitions. A produced part does not invent a new
 color; it selects one of the colors that were defined and approved at master
 level. This makes the color of every delivered part consistent with the
 approved variant set.
+
+The `Version` attribute represents the version / change status of the component
+definition (for example the drawing status, known as ZGS) and
+should always be provided when describing a component.
 
 The color code is described together with its `CodeAuthority`, so that a code
 such as a RAL number can be interpreted unambiguously. The color name is
