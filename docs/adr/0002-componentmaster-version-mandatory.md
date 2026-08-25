@@ -1,5 +1,7 @@
 # ComponentMaster.Version (drawing / change status) is mandatory in component examples
 
+Status: accepted
+
 ## Context and Problem Statement
 
 A component definition is only unambiguous together with its version / change
