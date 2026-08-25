@@ -47,6 +47,13 @@ A specific manufactured instance of the component. It documents the actual
 color of the produced part by referencing one of the master's colors via
 `ColorID`.
 
+> Note: Within the `ComponentMaster`, the property that holds the instances is
+> named `Instances` (plural, in the context of the master). Each entry in this
+> list is an object of type `ComponentInstance`, indicated by its
+> `"_type": "ComponentInstance"`. The same convention applies to `Colors`
+> (property) with entries of type `Color`, and to `MaterialSources` (property)
+> with entries of type `MaterialSource`.
+
 ## Relevant Attributes
 
 This example focuses on the following attributes:
@@ -108,4 +115,5 @@ version should be performed before productive use.
 - Definition set: `ComponentMaster.Colors`
 - Reference: `ComponentInstance.ColorID`
 - Analogous pattern: `ComponentMaster.MaterialSources` / `ComponentInstance.MaterialSourceID`
+
 
