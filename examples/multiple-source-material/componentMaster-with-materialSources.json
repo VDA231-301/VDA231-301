@@ -1,0 +1,76 @@
+{
+  "_id": "a2a2a2a2-2222-4222-8222-222222222222",
+  "_type": "ComponentMaster",
+  "Designation": "Interior Trim Component",
+  "SupplierPartNumber": "SUP-TRIM-002",
+  "MaterialGroup": "Thermoplastics",
+  "MaterialClass": "Glass Fibre Reinforced Polymer",
+  "MaterialName": "PP-GF30",
+  "OemIdentifier": "OEM",
+  "MaterialIdentifiers": [
+    "MAT-PPGF30-001"
+  ],
+  "MaterialSources": [
+    {
+      "_id": "5a000000-1111-4111-8111-000000000001",
+      "_type": "MaterialSource",
+      "MaterialName": "PP-GF30",
+      "TradeName": "Example PP-GF30 A",
+      "Supplier": {
+        "_id": "5b000000-1111-4111-8111-000000000001",
+        "_type": "Location",
+        "Identification": [
+          {
+            "Identifier": "SUPPLIER-A",
+            "Type": "SupplierCode"
+          }
+        ],
+        "Name": "Supplier A"
+      },
+      "Specification": {
+        "Type": "MaterialSpecification",
+        "Number": "OEM-PP-GF30-SPEC-A",
+        "IssueDate": "2026-01"
+      }
+    },
+    {
+      "_id": "5a000000-1111-4111-8111-000000000002",
+      "_type": "MaterialSource",
+      "MaterialName": "PP-GF30",
+      "TradeName": "Example PP-GF30 B",
+      "Supplier": {
+        "_id": "5b000000-1111-4111-8111-000000000002",
+        "_type": "Location",
+        "Identification": [
+          {
+            "Identifier": "SUPPLIER-B",
+            "Type": "SupplierCode"
+          }
+        ],
+        "Name": "Supplier B"
+      },
+      "Specification": {
+        "Type": "MaterialSpecification",
+        "Number": "OEM-PP-GF30-SPEC-B",
+        "IssueDate": "2026-01"
+      }
+    }
+  ],
+  "Instances": [
+    {
+      "_id": "5c000000-2222-4222-8222-000000000001",
+      "_type": "ComponentInstance",
+      "SerialNumber": "TRIM-002-000001",
+      "ProductionBatchNumber": "BATCH-2026-0801-A",
+      "MaterialSourceID": "5a000000-1111-4111-8111-000000000001"
+    },
+    {
+      "_id": "5c000000-2222-4222-8222-000000000002",
+      "_type": "ComponentInstance",
+      "SerialNumber": "TRIM-002-000002",
+      "ProductionBatchNumber": "BATCH-2026-0801-B",
+      "MaterialSourceID": "5a000000-1111-4111-8111-000000000002"
+    }
+  ],
+  "Comment": "Example demonstrating how multiple approved material sources are defined at the ComponentMaster level and how each produced ComponentInstance references its actual material source via MaterialSourceID."
+}
