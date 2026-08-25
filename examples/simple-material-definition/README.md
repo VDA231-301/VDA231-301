@@ -39,10 +39,11 @@ A reference to the applicable material specification.
 This example focuses on the following attributes:
 
 - ComponentMaster.Designation
-- ComponentMaster.MaterialName
-- ComponentMaster.MaterialIdentifiers
 - ComponentMaster.SupplierPartNumber
+- ComponentMaster.Version
+- ComponentMaster.MaterialName
 - ComponentMaster.OemIdentifier
+- ComponentMaster.MaterialIdentifiers
 - ComponentMaster.Specifications
 - Specification.Type
 - Specification.Number
@@ -60,6 +61,12 @@ This example intentionally represents a simple material without:
 - instances
 
 The objective is to provide the simplest possible valid example for new users.
+
+The `Version` attribute represents the version / change status of the component
+definition (for example the drawing status, known for example as ZGS). A
+component definition is only unambiguous together with its version, because the
+same part number can exist in several versions. It should therefore always be
+provided when describing a component.
 
 The `Specifications` property references the applicable specification. Each
 specification requires at least a `Type`, a `Number` and an `IssueDate`.
