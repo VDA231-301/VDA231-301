@@ -1,16 +1,14 @@
 {
-  "_id": "99999999-9999-4999-8999-999999999999",
+  "_id": "a6a6a6a6-6666-4666-8666-666666666666",
   "_type": "ComponentMaster",
-
   "Designation": "Interior Trim Component",
-
+  "SupplierPartNumber": "SUP-TRIM-006",
   "MaterialName": "PP-GF30",
-
+  "OemIdentifier": "OEM",
+  "Version": "0001",
   "MaterialIdentifiers": [
     "MAT-PPGF30-001"
   ],
-
-  "NGIDPath": "$$NGID<chain>=\"COMPONENT_INSTANCE_UID\"\\0VehicleAssembly.asm;1;1001:\\0DoorTrim.asm;1;2001:\\0\\0",
-
-  "Comment": "Example demonstrating identification of a component occurrence within a CAD assembly by using NGIDPath."
+  "NGIDPath": "$$NGID<chain>=\"JT_PROP_NAME\"\\0DoorAssembly.asm;0;2:\\0DoorTrim.part;0;1:\\0\\0",
+  "Comment": "Example demonstrating how a component is located within the source CAD assembly structure by using an NGIDPath. The path uses the JT_PROP_NAME identifier with CADID-formatted node values (name.type;version;instanceId)."
 }
