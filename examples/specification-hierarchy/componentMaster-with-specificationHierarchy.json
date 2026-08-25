@@ -1,0 +1,41 @@
+{
+  "_id": "a8a8a8a8-8888-4888-8888-888888888888",
+  "_type": "ComponentMaster",
+  "Designation": "Interior Trim Component",
+  "SupplierPartNumber": "SUP-TRIM-008",
+  "MaterialName": "PP-GF30",
+  "OemIdentifier": "OEM",
+  "Version": "0001",
+  "MaterialIdentifiers": [
+    "MAT-PPGF30-001"
+  ],
+  "Specifications": [
+    {
+      "Type": "ProductSpecification",
+      "Number": "OEM-INT-TRIM-REQ-001",
+      "IssueDate": "2026-01",
+      "Title": "OEM interior trim component requirement specification",
+      "ReferencedSpecifications": [
+        {
+          "Type": "TestSpecification",
+          "Number": "VDA 270",
+          "IssueDate": "2022-06",
+          "Title": "Determination of the odor characteristics of trim materials"
+        },
+        {
+          "Type": "TestSpecification",
+          "Number": "VDA 278",
+          "IssueDate": "2016-10",
+          "Title": "Thermal desorption analysis of organic emissions"
+        },
+        {
+          "Type": "MaterialSpecification",
+          "Number": "OEM-PP-GF30-SPEC",
+          "IssueDate": "2026-01",
+          "Title": "Material specification for PP-GF30"
+        }
+      ]
+    }
+  ],
+  "Comment": "Example demonstrating a specification hierarchy: one product specification references several sub-specifications (test specifications and a material specification)."
+}
