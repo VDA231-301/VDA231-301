@@ -23,6 +23,40 @@ Each example contains:
 
 All examples are aligned with the generic schema v3.0.0.
 
+## Find the Right Example
+
+Use the following navigation guide to identify the example that best matches your use case.
+
+| If you want to... | Start with |
+|---|---|
+| Understand the basic structure of a material definition | ./simple-material-definition/ |
+| Add colour information to a component or material representation | ./color-definition/ |
+| Trace individual physical component instances using serial and production information | ./component-instance-traceability/ |
+| Represent a component hierarchy with subcomponents | ./component-master-hierarchy/ |
+| Apply a customized specification to a material or component | ./material-with-specification-customization/ |
+| Represent a multilayer material or coating stack | ./material-with-stack/ |
+| Represent material information from multiple sources | [Multiple--source-material/ |
+| Identify a component using an NGID path | ./ngid-identified-component/ |
+| Represent a hierarchy of referenced specifications | ./specification-hierarchy/ |
+
+## Example Overview
+
+The following matrix provides an overview of the available examples, their purpose and the main modelling concepts demonstrated.
+
+| Example | JSON file | Scenario | Key modelling concepts | Main entity |
+|---|---|---|---|---|
+| ./simple-material-definition/ | ./simple-material-definition/componentMaster.json | Basic definition of a material-related component | Component master data, material identification and version information | `ComponentMaster` |
+| ./color-definition/ | ./color-definition/componentMaster-with-color.json | Representation of colour information | Colour-related information within a component master | `ComponentMaster` |
+| ./component-instance-traceability/ | ./component-instance-traceability/componentInstance.json | Traceability of an individual physical component | Component instance, serial number and production traceability | `ComponentInstance` |
+| ./component-master-hierarchy/ | ./component-master-hierarchy/componentMaster-with-subComponents.json | Representation of a component structure containing subcomponents | Component hierarchy and subcomponent relationships | `ComponentMaster` |
+| ./material-with-specification-customization/ | ./material-with-specification-customization/componentMaster-with-specificationCustomization.json | Representation of a customized specification assignment | Specification customization and component-specific requirements | `ComponentMaster` |
+| ./material-with-stack/ | ./material-with-stack/componentMaster-with-stack.json | Representation of a multilayer material or coating system | Stack structure and layer ordering | `ComponentMaster` |
+| ./multiple-source-material/ | ./multiple-source-material/componentMaster-with-materialSources.json | Representation of material information from multiple sources | Multiple material sources within one component master | `ComponentMaster` |
+| ./ngid-identified-component/ | ./ngid-identified-component/componentMaster-with-ngid.json | Identification of a component within a source CAD assembly structure | NGID identifier and NGID path | `ComponentMaster` |
+| ./specification-hierarchy/ | ./specification-hierarchy/componentMaster-with-specificationHierarchy.json | Representation of referenced specifications in a hierarchical structure | Specification references and specification hierarchy | `ComponentMaster` |
+
+Each example folder contains a dedicated README with additional information about the scenario, modelling approach and example data.
+
 ## Available Examples
 
 ### simple-material-definition
