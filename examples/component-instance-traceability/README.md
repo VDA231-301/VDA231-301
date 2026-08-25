@@ -48,6 +48,7 @@ traceability information of one produced part.
 This example focuses on the following attributes:
 
 - ComponentMaster.Designation
+- ComponentMaster.Version
 - ComponentMaster.MaterialName
 - ComponentMaster.MaterialIdentifiers
 - ComponentInstance.SerialNumber
@@ -68,6 +69,10 @@ The example shows two produced parts of the same component. Both originate from
 the same production batch but were manufactured in different cavities. This
 demonstrates that each instance carries individual traceability information even
 when other production data is shared.
+
+The `Version` attribute represents the version / change status of the component
+definition (for example the drawing status, known as ZGS at Mercedes-Benz) and
+should always be provided when describing a component.
 
 The `ComponentInstance` objects are placed inside the `Instances` list of a
 `ComponentMaster`. This keeps the component definition reusable while allowing
