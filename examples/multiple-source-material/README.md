@@ -61,6 +61,7 @@ via `MaterialSourceID`.
 This example focuses on the following attributes:
 
 - ComponentMaster.Designation
+- ComponentMaster.Version
 - ComponentMaster.MaterialName
 - ComponentMaster.MaterialIdentifiers
 - ComponentMaster.MaterialSources
@@ -89,6 +90,10 @@ sources and avoids duplicating source definitions. A produced part does not
 introduce an uncontrolled source; it selects one of the sources that were
 defined and approved at master level. This makes the source of every delivered
 part consistent with the approved multiple-source set.
+
+The `Version` attribute represents the version / change status of the component
+definition (for example the drawing status, known as ZGS at Mercedes-Benz) and
+should always be provided when describing a component.
 
 The example intentionally describes approved alternative sources for the same
 material, not uncontrolled material substitutions.
@@ -119,4 +124,3 @@ released schema version should be performed before productive use.
 - Definition set: `ComponentMaster.MaterialSources`
 - Reference: `ComponentInstance.MaterialSourceID`
 - Analogous pattern: `ComponentMaster.Colors` / `ComponentInstance.ColorID`
-
