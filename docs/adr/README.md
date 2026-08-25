@@ -20,3 +20,4 @@ The records follow the MADR (Markdown Architectural Decision Records) format.
 |----|-------|--------|
 | 0001 | [Definition sets on ComponentMaster, concrete assignments on ComponentInstance](0001-definition-set-on-master-assignment-on-instance.md) | accepted |
 | 0002 | [ComponentMaster.Version (drawing / change status) is mandatory in component examples](0002-componentmaster-version-mandatory.md) | accepted |
+| 0003 | [Stack layer ordering starts at the substrate (layer 1 = bottom)](0003-stack-layer-ordering.md) | accepted |
