@@ -1,5 +1,7 @@
 # Definition sets on ComponentMaster, concrete assignments on ComponentInstance
 
+Status: accepted
+
 ## Context and Problem Statement
 
 Some information exists both as a set of approved options for a component and as
@@ -55,3 +57,4 @@ one entry of that set via its identifier.
 
 Related examples in the Example Library: `color-definition`,
 `multiple-source-material`, `component-instance-traceability`.
+
