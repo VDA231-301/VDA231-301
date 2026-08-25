@@ -71,7 +71,7 @@ demonstrates that each instance carries individual traceability information even
 when other production data is shared.
 
 The `Version` attribute represents the version / change status of the component
-definition (for example the drawing status, known as ZGS at Mercedes-Benz) and
+definition (for example the drawing status, known as ZGS) and
 should always be provided when describing a component.
 
 The `ComponentInstance` objects are placed inside the `Instances` list of a
