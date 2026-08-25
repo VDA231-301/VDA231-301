@@ -1,18 +1,61 @@
 {
-  "_id": "11111111-1111-4111-8111-111111111111",
-  "_type": "ComponentInstance",
-
-  "SerialNumber": "SN-2026-000001",
-
-  "ProductionBatchNumber": "BATCH-2026-0715",
-
-  "Tool": "TOOL-17",
-
-  "Cavity": "4",
-
-  "ProductionDate": {
-    "Date": "2026-07-15"
-  },
-
-  "Comment": "Example component instance used to demonstrate production traceability."
+  "_id": "a3a3a3a3-3333-4333-8333-333333333333",
+  "_type": "ComponentMaster",
+  "Designation": "Interior Trim Component",
+  "SupplierPartNumber": "SUP-TRIM-003",
+  "MaterialName": "PP-GF30",
+  "MaterialIdentifiers": [
+    "MAT-PPGF30-001"
+  ],
+  "Instances": [
+    {
+      "_id": "11111111-1111-4111-8111-111111111111",
+      "_type": "ComponentInstance",
+      "SerialNumber": "SN-2026-000001",
+      "ProductionBatchNumber": "BATCH-2026-0715",
+      "ProductionSite": {
+        "_id": "12000000-1111-4111-8111-000000000001",
+        "_type": "Location",
+        "Identification": [
+          {
+            "Identifier": "PLANT-A",
+            "Type": "ProductionSiteCode"
+          }
+        ],
+        "Name": "Supplier Plant A"
+      },
+      "Machine": "MACHINE-07",
+      "Tool": "TOOL-17",
+      "Cavity": "4",
+      "ProductionDate": {
+        "Date": "2026-07-15"
+      },
+      "Comment": "First produced part used to demonstrate production traceability."
+    },
+    {
+      "_id": "22222222-2222-4222-8222-222222222222",
+      "_type": "ComponentInstance",
+      "SerialNumber": "SN-2026-000002",
+      "ProductionBatchNumber": "BATCH-2026-0715",
+      "ProductionSite": {
+        "_id": "12000000-1111-4111-8111-000000000001",
+        "_type": "Location",
+        "Identification": [
+          {
+            "Identifier": "PLANT-A",
+            "Type": "ProductionSiteCode"
+          }
+        ],
+        "Name": "Supplier Plant A"
+      },
+      "Machine": "MACHINE-07",
+      "Tool": "TOOL-17",
+      "Cavity": "6",
+      "ProductionDate": {
+        "Date": "2026-07-15"
+      },
+      "Comment": "Second produced part from the same batch but a different cavity."
+    }
+  ],
+  "Comment": "Example demonstrating how several produced parts (ComponentInstances) of the same component carry individual production traceability information."
 }
