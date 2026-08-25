@@ -4,6 +4,8 @@
   "Designation": "Interior Trim Component",
   "SupplierPartNumber": "SUP-TRIM-003",
   "MaterialName": "PP-GF30",
+  "OemIdentifier": "OEM",
+  "Version": "0001",
   "MaterialIdentifiers": [
     "MAT-PPGF30-001"
   ],
@@ -59,3 +61,4 @@
   ],
   "Comment": "Example demonstrating how several produced parts (ComponentInstances) of the same component carry individual production traceability information."
 }
+
