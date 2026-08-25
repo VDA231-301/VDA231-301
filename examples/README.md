@@ -78,6 +78,24 @@ structure using `NGIDPath`, following the Siemens NGID specification.
 
 File: `componentMaster-with-ngid.json`
 
+### component-master-hierarchy
+
+Shows how a component hierarchy is modelled using `ComponentMaster.SubComponents`,
+where each subcomponent is itself a `ComponentMaster`. Demonstrates that a
+component can be a top-level node or a subcomponent depending on its position in
+the tree (containment relationship).
+
+File: `componentMaster-with-subComponents.json`
+
+### specification-hierarchy
+
+Shows how a specification can reference other specifications via
+`Specification.ReferencedSpecifications`, so that a higher-level specification
+references several sub-specifications (reference relationship). Complements the
+component hierarchy example by contrasting "reference" with "containment".
+
+File: `componentMaster-with-specificationHierarchy.json`
+
 ## Conventions
 
 The examples follow a set of shared conventions. Key architectural decisions are
@@ -91,6 +109,21 @@ documented as Architectural Decision Records (ADRs) in `docs/adr`:
 - Stack layers are numbered starting with 1 for the bottom (substrate) layer.
 - `NGIDPath` examples use the `JT_PROP_NAME` identifier with CADID-formatted node
   values.
+
+## Self-referencing structures
+
+Two examples illustrate self-referencing (recursive) structures, which are a
+common source of confusion:
+
+- `component-master-hierarchy` uses `ComponentMaster.SubComponents`. This is a
+  **containment** relationship: a parent component contains its subcomponents.
+- `specification-hierarchy` uses `Specification.ReferencedSpecifications`. This
+  is a **reference** relationship: a higher-level specification references other
+  specifications that exist in their own right and can be reused by many
+  specifications and components.
+
+In both cases the role of an object (top node vs. subordinate) is not a property
+of the object itself; it results from its position in the tree.
 
 ## Naming Conventions
 
@@ -110,7 +143,7 @@ documented as Architectural Decision Records (ADRs) in `docs/adr`:
 
 Potential future examples include:
 
-- specification hierarchies
 - layer-specific requirements
 - Topic-based examples (e.g. VDA 270 / VDA 278 results)
 - a complete minimal testing project
+
