@@ -7,6 +7,7 @@
   "MaterialClass": "Glass Fibre Reinforced Polymer",
   "MaterialName": "PP-GF30",
   "OemIdentifier": "OEM",
+  "Version": "0001",
   "MaterialIdentifiers": [
     "MAT-PPGF30-001"
   ],
