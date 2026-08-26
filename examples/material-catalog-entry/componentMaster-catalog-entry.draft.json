@@ -1,0 +1,45 @@
+{
+  "_id": "b2b2b2b2-2222-4222-8222-222222222222",
+  "_type": "ComponentMaster",
+  "Designation": "Door Module Base Material",
+  "MaterialGroup": "Thermoplastic",
+  "MaterialClass": "PP-GLF30",
+  "MaterialName": "PP-GLF30",
+  "OemIdentifier": "OEM",
+  "Version": "0001",
+  "MaterialIdentifiers": [
+    "MAT-PPGLF30-0001"
+  ],
+
+  "ApprovalStatus": "Listed",
+  "ApprovalProcess": "Listing",
+  "ListingId": "LISTING-PPGLF30-0001",
+  "ListingDate": {
+    "Date": "2026-01-15"
+  },
+
+  "MaterialProperties": {
+    "Density": {
+      "Value": 1.13,
+      "Unit": "g/cm^3"
+    },
+    "AshContent": {
+      "Value": 30.0,
+      "Unit": "%"
+    }
+  },
+
+  "Sustainability": {
+    "ShareVirgin": 100.0,
+    "ShareRecyclateMechanicalPIR": 0.0,
+    "ShareRecyclateMechanicalPCR": 0.0,
+    "ShareRecyclateChemical": 0.0,
+    "ShareBiocircular": 0.0,
+    "CarbonFootprint": {
+      "Value": 0.0,
+      "Unit": "kg CO2eq/kg"
+    }
+  },
+
+  "Comment": "DRAFT example. This file illustrates additional attributes that a real material catalog / approval list requires but that are NOT part of the released generic schema v3.0.0 (ApprovalStatus, ApprovalProcess, ListingId, ListingDate, MaterialProperties, Sustainability). It is a discussion basis for possible schema extensions, not a schema-conformant document."
+}
