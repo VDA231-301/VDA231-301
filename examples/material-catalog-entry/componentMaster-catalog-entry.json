@@ -1,0 +1,120 @@
+{
+  "_id": "b1b1b1b1-1111-4111-8111-111111111111",
+  "_type": "ComponentMaster",
+  "Designation": "Door Module Base Material",
+  "MaterialGroup": "Thermoplastic",
+  "MaterialClass": "PP-GLF30",
+  "MaterialName": "PP-GLF30",
+  "OemIdentifier": "OEM",
+  "Version": "0001",
+  "MaterialIdentifiers": [
+    "MAT-PPGLF30-0001"
+  ],
+  "Specifications": [
+    {
+      "Type": "MaterialStandard",
+      "Number": "OEM-POLYMER-STD-1000",
+      "SubNumber": "90",
+      "IssueDate": "2026-01",
+      "Title": "Example OEM material standard for thermoplastic interior materials, product version 90 (glass long fibre reinforced PP)"
+    }
+  ],
+  "Colors": [
+    {
+      "_id": "b1c00000-1111-4111-8111-000000000001",
+      "_type": "Color",
+      "Name": "Black",
+      "Code": "9005",
+      "CodeAuthority": "RAL"
+    }
+  ],
+  "MaterialSources": [
+    {
+      "_id": "b1a00000-1111-4111-8111-000000000001",
+      "_type": "MaterialSource",
+      "MaterialName": "PP-GLF30",
+      "TradeName": "Example PP-GLF30 Grade A",
+      "Supplier": {
+        "_id": "b1b00000-1111-4111-8111-000000000001",
+        "_type": "Location",
+        "Identification": [
+          {
+            "Identifier": "111111111",
+            "Type": "DUNS"
+          }
+        ],
+        "Name": "Supplier A"
+      },
+      "Specification": {
+        "Type": "MaterialStandard",
+        "Number": "OEM-POLYMER-STD-1000",
+        "SubNumber": "90",
+        "IssueDate": "2026-01"
+      },
+      "AdditionalInformation": {
+        "_id": "b1d00000-1111-4111-8111-000000000001",
+        "_type": "InformationSet",
+        "Designation": "Regional availability",
+        "Attributes": [
+          {
+            "Property": "RegionEMEA",
+            "ValueType": "Text",
+            "Value": "production"
+          },
+          {
+            "Property": "RegionNAFTA",
+            "ValueType": "Text",
+            "Value": "warehouse"
+          },
+          {
+            "Property": "RegionAPAC",
+            "ValueType": "Text",
+            "Value": "warehouse"
+          }
+        ]
+      }
+    },
+    {
+      "_id": "b1a00000-1111-4111-8111-000000000002",
+      "_type": "MaterialSource",
+      "MaterialName": "PP-GLF30",
+      "TradeName": "Example PP-GLF30 Grade B",
+      "Supplier": {
+        "_id": "b1b00000-1111-4111-8111-000000000002",
+        "_type": "Location",
+        "Identification": [
+          {
+            "Identifier": "222222222",
+            "Type": "DUNS"
+          }
+        ],
+        "Name": "Supplier B"
+      },
+      "Specification": {
+        "Type": "MaterialStandard",
+        "Number": "OEM-POLYMER-STD-1000", 
+        "SubNumber": "90",
+        "IssueDate": "2026-01"
+      },
+      "AdditionalInformation": {
+        "_id": "b1d00000-1111-4111-8111-000000000002",
+        "_type": "InformationSet",
+        "Designation": "Regional availability",
+        "Attributes": [
+          {
+            "Property": "RegionAPAC",
+            "ValueType": "Text",
+            "Value": "production"
+          }
+        ]
+      }
+    }
+  ],
+  "BusinessKeys": [
+    {
+      "Name": "MaterialCatalogId",
+      "Value": "CATALOG-PPGLF30-0001"
+    }
+  ],
+  "Comment": "Anonymized example of a material catalog entry: one approved material (PP-GLF30) with two approved material sources, a color and a referenced OEM material standard. All identifiers, suppliers and specifications are fictional."
+}
