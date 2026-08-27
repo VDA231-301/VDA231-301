@@ -1,0 +1,181 @@
+{
+  "_id": "bbbbbbbb-0002-4002-8002-000000000001",
+  "_type": "TestingProject",
+  "Title": "VDA 270 odor test - complete example",
+  "ClientOrderNumber": "CLIENT-ORDER-VDA270-001",
+  "LaboratoryOrderNumber": "LAB-ORDER-VDA270-001",
+  "OrderReference": "Odor evaluation of interior trim component",
+  "OrderDate": {
+    "Date": "2026-06-01"
+  },
+  "ReportDate": {
+    "Date": "2026-06-10"
+  },
+  "Signatory": "Example Signatory",
+  "Client": {
+    "_id": "bbbbbbbb-0002-4002-8002-0000000000c0",
+    "_type": "Location",
+    "Identification": [
+      {
+        "Identifier": "OEM-EXAMPLE",
+        "Type": "OrganizationCode"
+      }
+    ],
+    "Name": "Example OEM"
+  },
+  "ContractorID": "bbbbbbbb-0002-4002-8002-0000000000f0",
+  "TestingCenters": [
+    {
+      "_id": "bbbbbbbb-0002-4002-8002-0000000000f0",
+      "_type": "TestingCenter",
+      "Location": {
+        "_id": "bbbbbbbb-0002-4002-8002-0000000000f1",
+        "_type": "Location",
+        "Identification": [
+          {
+            "Identifier": "LAB-EXAMPLE",
+            "Type": "LaboratoryCode"
+          }
+        ],
+        "Name": "Example Testing Laboratory"
+      },
+      "TestingManager": {
+        "_id": "bbbbbbbb-0002-4002-8002-0000000000f2",
+        "_type": "Person",
+        "FirstName": "Example",
+        "LastName": "Manager"
+      }
+    }
+  ],
+  "ComponentMasters": [
+    {
+      "_id": "bbbbbbbb-0002-4002-8002-0000000000c1",
+      "_type": "ComponentMaster",
+      "Designation": "Door Trim Panel",
+      "MaterialName": "PP-GF30",
+      "OemIdentifier": "OEM",
+      "Version": "0001",
+      "MaterialIdentifiers": [
+        "MAT-PPGF30-001"
+      ],
+      "Instances": [
+        {
+          "_id": "bbbbbbbb-0002-4002-8002-0000000000d1",
+          "_type": "ComponentInstance",
+          "SerialNumber": "TRIM-VDA270-000001",
+          "ProductionBatchNumber": "BATCH-2026-0515"
+        }
+      ]
+    }
+  ],
+  "Topics": [
+    {
+      "_id": "bbbbbbbb-0002-4002-8002-0000000000e0",
+      "_type": "TestSeries",
+      "TestType": "Odor test VDA 270 C3",
+      "ComponentMasterID": "bbbbbbbb-0002-4002-8002-0000000000c1",
+      "TestingCenterID": "bbbbbbbb-0002-4002-8002-0000000000f0",
+      "NumberOfExecutions": 1,
+      "Specification": {
+        "Type": "TestStandard",
+        "Number": "VDA 270",
+        "IssueDate": "2022-05",
+        "Title": "Determination of the odour characteristics of trim materials in motor vehicles"
+      },
+      "Conditions": {
+        "Condition": "Specimen variant C, storage condition 3 (80 C, 2 h, without water)"
+      },
+      "TargetProperties": {
+        "_id": "bbbbbbbb-0002-4002-8002-0000000000a1",
+        "_type": "InformationSet",
+        "Designation": "Odor requirement",
+        "Attributes": [
+          {
+            "Property": "OdorRating",
+            "ValueType": "Range",
+            "Value": {
+              "maxValue": 3.5
+            }
+          }
+        ]
+      },
+      "Executions": [
+        {
+          "_id": "bbbbbbbb-0002-4002-8002-0000000000e1",
+          "_type": "TestExecution",
+          "Designation": "Odor panel assessment (3 assessors)",
+          "Numerator": 1,
+          "Tester": {
+            "_id": "bbbbbbbb-0002-4002-8002-0000000000f3",
+            "_type": "Person",
+            "FirstName": "Example",
+            "LastName": "Tester"
+          },
+          "StartTime": {
+            "Date": "2026-06-08"
+          },
+          "Specimen": {
+            "_id": "bbbbbbbb-0002-4002-8002-0000000000ab",
+            "_type": "Specimen",
+            "Designation": "Trim specimen for odor assessment",
+            "ComponentInstanceID": "bbbbbbbb-0002-4002-8002-0000000000d1"
+          },
+          "MeasurementSystems": [
+            {
+              "_id": "bbbbbbbb-0002-4002-8002-0000000000ac",
+              "_type": "MeasurementSystem",
+              "Designation": "Odor assessment panel",
+              "SystemType": "Sensory panel"
+            }
+          ],
+          "SingleResults": [
+            {
+              "_id": "bbbbbbbb-0002-4002-8002-0000000000ba",
+              "_type": "SingleResultPoint",
+              "Property": "OdorRating",
+              "ValueType": "Number",
+              "Value": 3.5,
+              "Comment": "Individual grade of assessor 1"
+            },
+            {
+              "_id": "bbbbbbbb-0002-4002-8002-0000000000bb",
+              "_type": "SingleResultPoint",
+              "Property": "OdorRating",
+              "ValueType": "Number",
+              "Value": 3.5,
+              "Comment": "Individual grade of assessor 2"
+            },
+            {
+              "_id": "bbbbbbbb-0002-4002-8002-0000000000bc",
+              "_type": "SingleResultPoint",
+              "Property": "OdorRating",
+              "ValueType": "Number",
+              "Value": 4.0,
+              "Comment": "Individual grade of assessor 3"
+            }
+          ]
+        }
+      ],
+      "ReportedProperties": [
+        {
+          "_id": "bbbbbbbb-0002-4002-8002-0000000000b1",
+          "_type": "ConsolidatedCharacteristicValue",
+          "Property": "OdorRating",
+          "ValueType": "Number",
+          "Value": 3.5,
+          "Aggregation": "Arithmetic mean",
+          "Rounding": "Rounded to nearest half grade (ties up)",
+          "RoundingAccuracy": 0.5,
+          "SingleResultIDs": [
+            "bbbbbbbb-0002-4002-8002-0000000000ba",
+            "bbbbbbbb-0002-4002-8002-0000000000bb",
+            "bbbbbbbb-0002-4002-8002-0000000000bc"
+          ],
+          "Comment": "Arithmetic mean of the individual grades = 11.0 / 3 = 3.67, rounded to half grade = 3.5 per VDA 270 section 9. Individual grades and mean are always reported."
+        }
+      ],
+      "Assessment": "Passed",
+      "Comment": "Complete example following VDA 270:2022 section 9. Three assessors grade the specimen (3.5, 3.5, 4.0). The individual grades differ by 0.5 (<= 2 grades), so three assessors are sufficient. The reported grade is the arithmetic mean rounded to half grades (3.5) and meets the requirement (max 3.5). All values are illustrative."
+    }
+  ]
+}
