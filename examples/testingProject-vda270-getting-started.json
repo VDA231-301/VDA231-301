@@ -1,0 +1,64 @@
+{
+  "_id": "aaaaaaaa-0001-4001-8001-000000000001",
+  "_type": "TestingProject",
+  "Title": "VDA 270 odor test - getting started",
+  "ComponentMasters": [
+    {
+      "_id": "aaaaaaaa-0001-4001-8001-0000000000c1",
+      "_type": "ComponentMaster",
+      "Designation": "Door Trim Panel",
+      "MaterialName": "PP-GF30",
+      "OemIdentifier": "OEM",
+      "Version": "0001",
+      "MaterialIdentifiers": [
+        "MAT-PPGF30-001"
+      ]
+    }
+  ],
+  "Topics": [
+    {
+      "_id": "aaaaaaaa-0001-4001-8001-0000000000e1",
+      "_type": "TestSeries",
+      "TestType": "Odor test VDA 270 C3",
+      "ComponentMasterID": "aaaaaaaa-0001-4001-8001-0000000000c1",
+      "Specification": {
+        "Type": "TestStandard",
+        "Number": "VDA 270",
+        "IssueDate": "2022-05",
+        "Title": "Determination of the odour characteristics of trim materials in motor vehicles"
+      },
+      "Conditions": {
+        "Condition": "Specimen variant C, storage condition 3 (80 C, 2 h, without water)"
+      },
+      "TargetProperties": {
+        "_id": "aaaaaaaa-0001-4001-8001-0000000000a1",
+        "_type": "InformationSet",
+        "Designation": "Odor requirement",
+        "Attributes": [
+          {
+            "Property": "OdorRating",
+            "ValueType": "Range",
+            "Value": {
+              "maxValue": 3.5
+            }
+          }
+        ]
+      },
+      "ReportedProperties": [
+        {
+          "_id": "aaaaaaaa-0001-4001-8001-0000000000b1",
+          "_type": "ConsolidatedCharacteristicValue",
+          "Property": "OdorRating",
+          "ValueType": "Number",
+          "Value": 3.5,
+          "Aggregation": "Arithmetic mean",
+          "Rounding": "Rounded to nearest half grade (ties up)",
+          "RoundingAccuracy": 0.5,
+          "Comment": "Reported odor grade per VDA 270 section 9: arithmetic mean of the individual grades, rounded to half grades. Requirement is max 3.5, reported result is 3.5, so the component passes. Values are illustrative."
+        }
+      ],
+      "Assessment": "Passed"
+    }
+  ]
+}
+
