@@ -1,14 +1,14 @@
 {
   "_id": "b1b1b1b1-1111-4111-8111-111111111111",
   "_type": "ComponentMaster",
-  "Designation": "Door Module Base Material",
+  "Designation": "Door Trim Panel",
   "MaterialGroup": "Thermoplastic",
-  "MaterialClass": "PP-GLF30",
-  "MaterialName": "PP-GLF30",
+  "MaterialClass": "PP-GF30",
+  "MaterialName": "PP-GF30",
   "OemIdentifier": "OEM",
   "Version": "0001",
   "MaterialIdentifiers": [
-    "MAT-PPGLF30-0001"
+    "MAT-PPGF30-001"
   ],
   "Specifications": [
     {
@@ -16,7 +16,7 @@
       "Number": "OEM-POLYMER-STD-1000",
       "SubNumber": "90",
       "IssueDate": "2026-01",
-      "Title": "Example OEM material standard for thermoplastic interior materials, product version 90 (glass long fibre reinforced PP)"
+      "Title": "Example OEM material standard for thermoplastic interior materials, product version 90 (glass fibre reinforced PP)"
     }
   ],
   "Colors": [
@@ -32,8 +32,8 @@
     {
       "_id": "b1a00000-1111-4111-8111-000000000001",
       "_type": "MaterialSource",
-      "MaterialName": "PP-GLF30",
-      "TradeName": "Example PP-GLF30 Grade A",
+      "MaterialName": "PP-GF30",
+      "TradeName": "Example PP-GF30 Grade A",
       "Supplier": {
         "_id": "b1b00000-1111-4111-8111-000000000001",
         "_type": "Location",
@@ -77,8 +77,8 @@
     {
       "_id": "b1a00000-1111-4111-8111-000000000002",
       "_type": "MaterialSource",
-      "MaterialName": "PP-GLF30",
-      "TradeName": "Example PP-GLF30 Grade B",
+      "MaterialName": "PP-GF30",
+      "TradeName": "Example PP-GF30 Grade B",
       "Supplier": {
         "_id": "b1b00000-1111-4111-8111-000000000002",
         "_type": "Location",
@@ -92,7 +92,7 @@
       },
       "Specification": {
         "Type": "MaterialStandard",
-        "Number": "OEM-POLYMER-STD-1000", 
+        "Number": "OEM-POLYMER-STD-1000",
         "SubNumber": "90",
         "IssueDate": "2026-01"
       },
@@ -113,8 +113,8 @@
   "BusinessKeys": [
     {
       "Name": "MaterialCatalogId",
-      "Value": "CATALOG-PPGLF30-0001"
+      "Value": "CATALOG-PPGF30-0001"
     }
   ],
-  "Comment": "Anonymized example of a material catalog entry: one approved material (PP-GLF30) with two approved material sources, a color and a referenced OEM material standard. All identifiers, suppliers and specifications are fictional."
+  "Comment": "Anonymized example of a material catalog entry: one material (PP-GF30) with two material sources, a color and a referenced OEM material standard. All identifiers, suppliers and specifications are fictional."
 }
