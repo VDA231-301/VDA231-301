@@ -20,7 +20,7 @@ different approval statuses, scopes and validity periods.
 
 This example illustrates how an independent approval entry could reference a
 specific material source from the related
-../material-catalog-entry/README.md.
+[material-catalog-entry/README.md](material-catalog-entry/README.md).
 
 All names, values, dates, identifiers, suppliers, locations, production lines
 and approval information are fictional and fully anonymized.
@@ -72,7 +72,7 @@ define or disclose a specific company-internal process.
 ## Referenced Material Source
 
 The approval entry refers to a material source in the related
-[material-catalog-entry/componentMaster-catalog-entry.json](../material-catalog-entry/componentMaster-catalog-entry.json).
+[material-catalog-entry/componentMaster-catalog-entry.json](material-catalog-entry/componentMaster-catalog-entry.json).
 
 The referenced material source is:
 
@@ -254,4 +254,197 @@ The proposed status values for discussion include:
 A general value such as `NotListed` is intentionally not used because it does
 not explain why no valid listing is available.
 
-These status values
+These status values are discussion proposals and are not part of the released
+generic schema v3.0.0.
+
+### Geographic and Production Scope
+
+Geographic applicability and production-specific applicability are modelled
+separately.
+
+The proposed geographic scope can represent, for example:
+
+- a world region
+- a country
+- another defined geographic area
+
+The proposed production scope can represent:
+
+- a production location
+- a production location and a specific production line
+
+A production location or production line is optional. These elements are used
+only when the approval decision is restricted to that production context.
+
+A listing can therefore apply:
+
+- to a geographic region without a specific production location
+- to one production location
+- to one production line at a specific location
+- to a combination of geographic and production scopes
+
+### Applicable Specification
+
+The approval entry references the material specification and product version to
+which the listing applies.
+
+The example uses:
+
+```text
+Standard: OEM-POLYMER-STD-1000
+Product version: 90
+Issue date: 2026-01
+```
+
+The specification reference is aligned with the specification assigned to
+`Example PP-GF30 Grade A` in the related material catalog entry.
+
+This prevents the listing from being interpreted as a general approval of the
+trade type for every possible requirement profile or application.
+
+### Time-Limited Validity
+
+The example contains a defined validity period:
+
+```json
+"ValidityPeriod": {
+  "ValidFrom": {
+    "Date": "2026-01-15"
+  },
+  "ValidUntil": {
+    "Date": "2028-01-14"
+  }
+}
+```
+
+`ValidUntil` should remain optional because not every approval entry necessarily
+has a predefined end date.
+
+The absence of `ValidUntil` does not mean that an approval remains valid under
+all circumstances. Approval-relevant changes may require a new approval
+decision.
+
+### Versioning
+
+The approval entry can carry its own version:
+
+```json
+"Version": "0001"
+```
+
+Versioning is proposed as an optional capability.
+
+The version of the approval entry is independent of:
+
+- the version of the material definition
+- the version of the applicable material specification
+- the version or change status of a component in a PLM system
+
+### Successor Relationships
+
+An existing approval entry is not overwritten when a relevant change requires a
+new approval decision.
+
+A later approval entry can refer to the previous entry using:
+
+```json
+"RelatedApprovalEntries": [
+  {
+    "ApprovalEntryID": "previous-approval-entry-id",
+    "RelationType": "Supersedes"
+  }
+]
+```
+
+The previous entry remains available with its original:
+
+- status history
+- approval scope
+- validity period
+- specification reference
+- supporting documents
+
+### No Evaluating Person
+
+The example does not include an `ApprovedBy`, `Evaluator` or similar
+person-related attribute.
+
+The current business scenario does not require the evaluating person to be
+documented.
+
+### Reference Documents
+
+The approval entry contains a reference to an illustrative listing document.
+
+The supporting document is referenced rather than embedded in the approval
+entry. This allows the approval object and the supporting document to remain
+independent while still being traceable.
+
+### Material Properties Remain Outside the Approval Entry
+
+Material properties and sustainability information are not duplicated in the
+approval entry.
+
+They remain associated with the related material catalog information. The
+approval entry references the applicable material source and specification.
+
+## JSON Example
+
+- approval-entry.draft.json
+  - independent approval and listing discussion draft
+  - refers to one material source from the related material catalog example
+  - uses the anonymized approval process `X`
+  - contains status history, approval scope, validity and document references
+  - intentionally not schema-conformant
+
+## Validation Status
+
+The file approval-entry.draft.json is intentionally
+not schema-conformant.
+
+`ApprovalEntry` and its related entities and attributes are discussion proposals
+for a possible future extension of the VDA 231-301 data model.
+
+The example must not be interpreted as:
+
+- an approved schema extension
+- a normative definition of an approval process
+- a complete model for all approval types
+- a declaration of an actual material approval or listing
+
+## Related Examples
+
+- [material-catalog-entry/README.md](material-catalog-entry/README.md)
+- [/material-catalog-entry/componentMaster-catalog-entry.json](material-catalog-entry/componentMaster-catalog-entry.json)
+- [material-catalog-entry/componentMaster-catalog-entry.draft.json](material-catalog-entry/componentMaster-catalog-entry.draft.json)
+
+## Architectural References
+
+- approval information represented as an independent business object
+- material source referenced using `SubjectMaterialSourceID`
+- approval lifecycle represented using `CurrentStatus` and `StatusHistory`
+- geographic and production scopes represented separately
+- time-limited validity represented using `ValidityPeriod`
+- previous and subsequent approval entries connected using
+  `RelatedApprovalEntries`
+- supporting documents referenced using `ReferenceDocuments`
+- material properties and sustainability information retained outside the
+  approval entry
+
+## Open Points
+
+The example identifies the following questions for further discussion:
+
+- Should `ApprovalEntry` provide a common base concept for different approval
+  types?
+- Should listings and other approval types use specialized entities?
+- Which approval statuses should be standardized?
+- Should status events include a reason or reason code?
+- Which geographic scope types, codes and code authorities are required?
+- How should production locations and production lines be identified?
+- Which changes require a new approval entry?
+- Should `Version` be optional or mandatory?
+- Can one approval entry refer to more than one applicable specification?
+- Which metadata are required for supporting reference documents?
+- How should another system determine which approval entry applies to a
+  particular material source, region and production context?
