@@ -29,19 +29,19 @@ This example demonstrates three aspects:
 
 1. Which elements of a material catalog entry can already be represented using
    the released generic schema v3.0.0
-   (see `componentMaster-catalog-entry.json`).
+   (see [Schema-oriented Material Catalog JSON](componentMaster-catalog-entry.json)).
 2. Which additional material property and sustainability information may be
    relevant for a material catalog but is not yet represented by the released
    generic schema v3.0.0
-   (see `componentMaster-catalog-entry.draft.json`).
+   (see [Material Catalog Draft](componentMaster-catalog-entry.draft.json)).
 3. Why formal approval and listing information should be represented as a
    separate, referencable business object rather than embedded directly in the
    material definition
-   (see `approval-entry.draft.json`).
+   (see ../approval-entry/README.md).
 
 ## What the released schema already covers
 
-The schema-oriented file `componentMaster-catalog-entry.json` represents:
+The schema-oriented file [componentMaster-catalog-entry.json](componentMaster-catalog-entry.json) represents:
 
 - the material definition via `MaterialName`, `MaterialGroup` and
   `MaterialClass`
@@ -66,7 +66,7 @@ information is handled separately in the discussion draft described below.
 
 ## Material Properties and Sustainability Data
 
-The draft file `componentMaster-catalog-entry.draft.json` adds information that
+The draft file [componentMaster-catalog-entry.draft.json](componentMaster-catalog-entry.draft.json) adds information that
 may be relevant for a real material catalog but is not represented by the
 released generic schema v3.0.0.
 
@@ -96,9 +96,12 @@ only to support the schema discussion.
 Formal approval and listing information is intentionally not embedded in the
 material catalog entry.
 
-The discussion draft `approval-entry.draft.json` introduces an independent and
-referencable `ApprovalEntry`. The entry refers to a specific `MaterialSource`
-using its identifier.
+The related
+[approval-entry.README.md](approval-entry/README.md)
+introduces an independent and referencable `ApprovalEntry`.
+
+Its proposed JSON structure is available in
+[approval-entry.json](approval-entry/approval-entry.draft.json)
 
 The approval draft illustrates:
 
@@ -148,8 +151,33 @@ type, production process, production location or production line changes.
 A subsequent approval entry can refer to the previous entry using a relationship
 such as:
 
-```json
-{
-  "ApprovalEntryID": "previous-approval-entry-id",
-  "RelationType": "Supersedes"
-}
+## JSON Examples
+
+- [Schema-oriented Material Catalog JSON](componentMaster-catalog-entry.json)
+  - material catalog entry using structures intended to align with the generic
+    schema v3.0.0
+
+- [Material Catalog Draft](componentMaster-catalog-entry.draft.json)
+  - adds proposed material properties and sustainability information
+  - intentionally not schema-conformant
+
+- ../approval-entry/README.md
+  - explains the independent approval and listing concept
+
+- ../approval-entry/approval-entry.draft.json
+  - refers to a specific `MaterialSource`
+  - contains approval process `X`, status history, scope, validity and document
+    references
+  - intentionally not schema-conformant
+ 
+## Validation Status
+
+The file
+[componentMaster-catalog-entry.json](componentMaster-catalog-entry.json)
+is intended to be aligned with the generic schema v3.0.0.
+
+The
+[Material Catalog Draft](componentMaster-catalog-entry.draft.json)
+and the related
+../approval-entry/approval-entry.draft.json
+are intentionally not schema-conformant.
