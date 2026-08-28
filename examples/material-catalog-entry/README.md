@@ -37,7 +37,7 @@ This example demonstrates three aspects:
 3. Why formal approval and listing information should be represented as a
    separate, referencable business object rather than embedded directly in the
    material definition
-   (see ../approval-entry/README.md).
+   (see [approval-entry/README.md](../approval-entry/README.md).
 
 ## What the released schema already covers
 
@@ -161,10 +161,10 @@ such as:
   - adds proposed material properties and sustainability information
   - intentionally not schema-conformant
 
-- ../approval-entry/README.md
+- [approval-entry/README.md](../approval-entry/README.md)
   - explains the independent approval and listing concept
 
-- ../approval-entry/approval-entry.draft.json
+- [approval-entry/approval-entry.draft.json](approval-entry/approval-entry.draft.json)
   - refers to a specific `MaterialSource`
   - contains approval process `X`, status history, scope, validity and document
     references
@@ -179,5 +179,5 @@ is intended to be aligned with the generic schema v3.0.0.
 The
 [Material Catalog Draft](componentMaster-catalog-entry.draft.json)
 and the related
-../approval-entry/approval-entry.draft.json
+[approval-entry/approval-entry.draft.json](approval-entry/approval-entry.draft.json)
 are intentionally not schema-conformant.
