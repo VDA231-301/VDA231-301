@@ -2,133 +2,154 @@
 
 ## Business Scenario
 
-An OEM maintains a catalog of approved polymer materials (a "material kit" /
-material construction set). For each approved material, the catalog records which
-material it is, which suppliers and trade names are approved for it, in which
-regions it is available, and which OEM material standard it fulfils. This
-information exists and must be documented independently of any specific produced
-part, purely at material level.
+An OEM maintains a catalog of standardized polymer materials, sometimes described
+as a material kit or material construction set. For each material definition, the
+catalog records the material identity, applicable material standard, available
+colors, possible material sources, supplier trade names and regional availability.
 
-This example shows how such a catalog entry can be represented with the
-VDA 231-301 data model. It uses a glass long fibre reinforced polypropylene
-(PP-GLF30) as an example material. All identifiers, suppliers, trade names and
-specifications are fictional and fully anonymized.
+The catalog information can be reused across applications and systems. The example
+uses an application-oriented designation but does not represent a specific produced
+component instance, serial number or production batch.
+
+This example shows how such a catalog entry can be represented using the
+VDA 231-301 data model. It uses glass fibre reinforced polypropylene
+(PP-GF30) in the context of a door trim panel. All identifiers, suppliers,
+trade names, specifications, properties and sustainability values are fictional
+and fully anonymized.
 
 > Important framing: VDA 231-301 is **not** the material catalog system itself.
-> It provides the standardized **data format** in which a catalog can describe
-> its materials. The catalog remains the OEM's own system; VDA 231-301 gives it
-> a common, machine-readable language.
+> It provides a standardized, machine-readable data structure that can be used
+> to describe and exchange material, source and related technical information.
+> The material catalog and its business rules remain within the responsible OEM
+> systems.
 
 ## Objective
 
-This example demonstrates two things:
+This example demonstrates three aspects:
 
-1. How much of a real material catalog entry can already be represented with the
-   released generic schema v3.0.0 (see `componentMaster-catalog-entry.json`).
-2. Which additional attributes a real approval list still requires and are not
-   yet part of the schema (see `componentMaster-catalog-entry.draft.json`).
+1. Which elements of a material catalog entry can already be represented using
+   the released generic schema v3.0.0
+   (see `componentMaster-catalog-entry.json`).
+2. Which additional material property and sustainability information may be
+   relevant for a material catalog but is not yet represented by the released
+   generic schema v3.0.0
+   (see `componentMaster-catalog-entry.draft.json`).
+3. Why formal approval and listing information should be represented as a
+   separate, referencable business object rather than embedded directly in the
+   material definition
+   (see `approval-entry.draft.json`).
 
 ## What the released schema already covers
 
-The schema-conformant file `componentMaster-catalog-entry.json` represents:
+The schema-oriented file `componentMaster-catalog-entry.json` represents:
 
-- the approved material via `MaterialName`, `MaterialGroup`, `MaterialClass`
-- the material identifier (catalog / material ID) via `MaterialIdentifiers`
+- the material definition via `MaterialName`, `MaterialGroup` and
+  `MaterialClass`
+- the material identifier via `MaterialIdentifiers`
+- the version or change status via `Version`
 - the applicable OEM material standard via `Specifications`
-- the approved color via `Colors`
-- the **approved material sources** via `MaterialSources`, each with its supplier
-  (as a `Location` including a DUNS identifier), its trade name and its
-  supplier-specific specification
-- the **regional availability** per source (production vs. warehouse) via
+- the color definition via `Colors`
+- potential material sources via `MaterialSources`
+- the supplier of each material source as a `Location`, including a DUNS
+  identifier
+- the supplier trade name and source-specific specification
+- regional availability information per material source via
   `MaterialSource.AdditionalInformation`
 - a stable catalog key via `BusinessKeys`
 
-This means the core of a material listing - "material X is approved and can be
-sourced from supplier A (trade name, DUNS, region) or alternatively from supplier
-B" - maps directly onto the existing `MaterialSources` pattern.
+The existing `MaterialSources` pattern can therefore describe that one material
+definition is available from multiple suppliers under different trade names.
 
-## What is still missing for a real catalog (draft extension)
+The existing schema elements do **not** state that a material, color, supplier or
+material source is formally approved or listed. Formal approval and listing
+information is handled separately in the discussion draft described below.
 
-The draft file `componentMaster-catalog-entry.draft.json` illustrates attributes
-that a real approval list uses but that are **not** part of the released generic
-schema v3.0.0. It is a discussion basis for possible schema extensions, not a
-schema-conformant document:
+## Material Properties and Sustainability Data
 
-- **Approval status / listing logic**: whether a material is listed, has a basic
-  material approval, or is in a transition period (`ApprovalStatus`,
-  `ApprovalProcess`).
-- **Listing metadata**: listing identifier and listing date (`ListingId`,
-  `ListingDate`).
-- **Base material properties**: density and ash content as material properties
-  (`MaterialProperties`).
-- **Sustainability data**: recyclate shares (mechanical PIR/PCR, chemical,
-  biocircular), mass balancing and carbon footprint (`Sustainability`).
+The draft file `componentMaster-catalog-entry.draft.json` adds information that
+may be relevant for a real material catalog but is not represented by the
+released generic schema v3.0.0.
 
-These gaps are the actual result of building this example: creating the catalog
-entry is at the same time a gap analysis of the schema. The approval status and
-the listing identifier in particular are strong candidates for a future schema
-extension, because they are central to any material catalog.
+The discussion fields include:
 
-## Relevant Entities
+- base material properties such as density and ash content via
+  `MaterialProperties`
+- virgin material share
+- mechanical pre-consumer recyclate share
+- mechanical post-consumer recyclate share
+- chemically recycled material share
+- biocircular material share
+- carbon footprint information via `Sustainability`
 
-- `ComponentMaster` - the material catalog entry
-- `MaterialSource` - an approved source (supplier + trade name + specification)
-- `Location` - the supplier, including its DUNS identifier
-- `Color` - the approved color
-- `Specification` - the applicable OEM material standard
+The carbon footprint in the draft includes:
 
-## Relevant Attributes
+- a value and unit
+- an illustrative calculation scope
+- a reference year
+- a data-quality statement
 
-- ComponentMaster.MaterialName
-- ComponentMaster.MaterialGroup
-- ComponentMaster.MaterialClass
-- ComponentMaster.Version
-- ComponentMaster.MaterialIdentifiers
-- ComponentMaster.Specifications
-- ComponentMaster.Colors
-- ComponentMaster.MaterialSources
-- MaterialSource.TradeName
-- MaterialSource.Supplier
-- MaterialSource.Specification
-- MaterialSource.AdditionalInformation
+All material property and sustainability values are fictional and are included
+only to support the schema discussion.
 
-## Modelling Decisions
+## Approval and Listing Information
 
-The catalog entry is modelled at material level on a `ComponentMaster`, without
-any `Instances`, because a catalog describes approved materials independently of
-produced parts. Approved sources are held as a definition set in
-`MaterialSources`, consistent with the "definition on the master" pattern also
-used for colors.
+Formal approval and listing information is intentionally not embedded in the
+material catalog entry.
 
-Regional availability is expressed per source via
-`MaterialSource.AdditionalInformation` as an `InformationSet`, since the released
-schema has no dedicated field for a region matrix.
+The discussion draft `approval-entry.draft.json` introduces an independent and
+referencable `ApprovalEntry`. The entry refers to a specific `MaterialSource`
+using its identifier.
 
-The `Version` attribute (drawing / change status, ZGS) is included, in line with
-the convention that every component example carries its version.
+The approval draft illustrates:
 
-## JSON Example
+- an anonymized approval process via `ApprovalProcess: "X"`
+- the approval type, for example `Listing`
+- an optional version or change status
+- a listing identifier
+- the current status
+- a complete status history
+- a reference to the applicable material specification
+- geographic scopes such as a world region
+- production-specific scopes such as a production location
+- an optional production line
+- a time-limited validity period
+- references to supporting documents
+- relationships to previous or subsequent approval entries
 
-- `componentMaster-catalog-entry.json` - schema-oriented, aligned with v3.0.0
-- `componentMaster-catalog-entry.draft.json` - draft with proposed catalog
-  extensions (not schema-conformant)
+The separation between `MaterialSource` and `ApprovalEntry` allows material
+master data and approval information to be maintained independently.
 
-## Validation Status
+A material source can exist without a corresponding listing entry. Different
+material sources for the same general material can also have different approval
+statuses, scopes and validity periods.
 
-The main file is aligned with the generic schema v3.0.0. The draft file is
-intentionally not schema-conformant and serves as a discussion basis for
-possible catalog-related schema extensions.
+## Status History
 
-## Related Examples
+The approval draft demonstrates that a single value such as `Listed` or
+`NotListed` is not sufficient for complete documentation.
 
-- Multiple Source Material
-- Color Definition
-- Simple Material Definition
+The proposed status history can distinguish states such as:
 
-## Architectural References
+- `Draft`
+- `Submitted`
+- `UnderEvaluation`
+- `Listed`
+- `Suspended`
+- `Expired`
+- `Withdrawn`
+- `Rejected`
 
-- Definition set on master: `ComponentMaster.MaterialSources`
-- Supplier as `Location` with DUNS identifier
-- Open point (proposed): material approval status, listing identifier, listing
-  date, base material properties and sustainability data as future schema
-  extensions for material catalog use cases
+These values are discussion proposals and are not part of the released generic
+schema v3.0.0.
+
+Existing approval entries should not be overwritten when the relevant trade
+type, production process, production location or production line changes.
+
+A subsequent approval entry can refer to the previous entry using a relationship
+such as:
+
+```json
+{
+  "ApprovalEntryID": "previous-approval-entry-id",
+  "RelationType": "Supersedes"
+}
