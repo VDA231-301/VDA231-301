@@ -110,11 +110,35 @@
       }
     }
   ],
+  "MaterialProperties": {
+    "Density": {
+      "Value": 1.13,
+      "Unit": "g/cm^3"
+    },
+    "AshContent": {
+      "Value": 30.0,
+      "Unit": "%"
+    }
+  },
+  "Sustainability": {
+    "ShareVirgin": 100.0,
+    "ShareRecyclateMechanicalPIR": 0.0,
+    "ShareRecyclateMechanicalPCR": 0.0,
+    "ShareRecyclateChemical": 0.0,
+    "ShareBiocircular": 0.0,
+    "CarbonFootprint": {
+      "Value": 2.35,
+      "Unit": "kg CO2eq/kg",
+      "Method": "Illustrative cradle-to-gate calculation",
+      "ReferenceYear": 2025,
+      "DataQuality": "Fictional example value for schema discussion only"
+    }
+  },
   "BusinessKeys": [
     {
       "Name": "MaterialCatalogId",
       "Value": "CATALOG-PPGF30-0001"
     }
   ],
-  "Comment": "Anonymized example of a material catalog entry: one material (PP-GF30) with two material sources, a color and a referenced OEM material standard. All identifiers, suppliers and specifications are fictional."
+  "Comment": "DRAFT example of an anonymized material catalog entry for PP-GF30. The entry describes one material definition with a material identifier, version, referenced material standard, color, two material sources and regional availability information. Approval and listing information are intentionally not embedded in this material catalog entry. Such information is represented by a separate draft ApprovalEntry that references the applicable MaterialSource by its identifier. MaterialProperties and Sustainability are discussion structures and are NOT represented by the released generic schema v3.0.0. The carbon footprint value of 2.35 kg CO2eq/kg and all other material properties, sustainability values, identifiers, suppliers and specifications are fictional and illustrative. This draft is not a schema-conformant document."
 }
