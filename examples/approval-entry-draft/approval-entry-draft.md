@@ -72,7 +72,7 @@ define or disclose a specific company-internal process.
 ## Referenced Material Source
 
 The approval entry refers to a material source in the related
-../material-catalog-entry/componentMaster-catalog-entry.json.
+[material-catalog-entry/componentMaster-catalog-entry.json](../material-catalog-entry/componentMaster-catalog-entry.json).
 
 The referenced material source is:
 
