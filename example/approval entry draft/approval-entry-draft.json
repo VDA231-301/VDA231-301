@@ -1,0 +1,111 @@
+{
+  "_id": "c3c3c3c3-3333-4333-8333-333333333333",
+  "_type": "ApprovalEntry",
+  "Designation": "Example listing entry for PP-GF30 Grade A",
+  "Version": "0001",
+  "ApprovalProcess": "X",
+  "ApprovalType": "Listing",
+  "Subject": {
+    "SubjectMaterialSourceID": "b1a00000-1111-4111-8111-000000000001",
+    "MaterialName": "PP-GF30",
+    "TradeName": "Example PP-GF30 Grade A",
+    "Supplier": {
+      "Identifier": "111111111",
+      "IdentifierType": "DUNS",
+      "Name": "Supplier A"
+    }
+  },
+  "ListingId": "LISTING-PPGF30-GRADE-A-0001",
+  "CurrentStatus": "Listed",
+  "StatusHistory": [
+    {
+      "_id": "c3d00000-3333-4333-8333-000000000001",
+      "_type": "ApprovalStatusEvent",
+      "Status": "Submitted",
+      "EffectiveFrom": {
+        "Date": "2025-11-10"
+      },
+      "Comment": "Illustrative submission date."
+    },
+    {
+      "_id": "c3d00000-3333-4333-8333-000000000002",
+      "_type": "ApprovalStatusEvent",
+      "Status": "UnderEvaluation",
+      "EffectiveFrom": {
+        "Date": "2025-12-01"
+      },
+      "Comment": "Illustrative start of evaluation."
+    },
+    {
+      "_id": "c3d00000-3333-4333-8333-000000000003",
+      "_type": "ApprovalStatusEvent",
+      "Status": "Listed",
+      "EffectiveFrom": {
+        "Date": "2026-01-15"
+      },
+      "Comment": "Illustrative date on which the listing became effective."
+    }
+  ],
+  "ApplicableSpecification": {
+    "Type": "MaterialStandard",
+    "Number": "OEM-POLYMER-STD-1000",
+    "SubNumber": "90",
+    "IssueDate": "2026-01",
+    "Title": "Example OEM material standard for thermoplastic interior materials, product version 90"
+  },
+  "ApprovalScope": {
+    "GeographicScopes": [
+      {
+        "_id": "c3e00000-3333-4333-8333-000000000001",
+        "_type": "GeographicScope",
+        "ScopeType": "WorldRegion",
+        "Code": "CHINA",
+        "Designation": "China",
+        "CodeAuthority": "OEM"
+      }
+    ],
+    "ProductionScopes": [
+      {
+        "_id": "c3f00000-3333-4333-8333-000000000001",
+        "_type": "ProductionScope",
+        "ProductionLocation": {
+          "_id": "c3f10000-3333-4333-8333-000000000001",
+          "_type": "Location",
+          "Identification": [
+            {
+              "Identifier": "PLANT-CHINA-01",
+              "Type": "PlantCode"
+            }
+          ],
+          "Name": "Example Production Site China"
+        },
+        "ProductionLine": {
+          "Identifier": "LINE-04",
+          "Designation": "Production Line 4"
+        }
+      }
+    ]
+  },
+  "ValidityPeriod": {
+    "ValidFrom": {
+      "Date": "2026-01-15"
+    },
+    "ValidUntil": {
+      "Date": "2028-01-14"
+    }
+  },
+  "RelatedApprovalEntries": [],
+  "ReferenceDocuments": [
+    {
+      "_id": "c3a00000-3333-4333-8333-000000000001",
+      "_type": "DocumentReference",
+      "DocumentType": "ListingDocument",
+      "DocumentIdentifier": "LIST-DOC-PPGF30-2026-001",
+      "Title": "Listing for PP-GF30 Grade A",
+      "IssueDate": {
+        "Date": "2026-01-15"
+      }
+    }
+  ],
+  "Comment": "DRAFT example of an anonymized listing entry using approval process X. The entry refers to one specific trade type and material source, a defined material standard product version, a world region, a production site and a production line. It contains an illustrative status history and a time-limited validity period. ApprovalEntry, ApprovalStatusEvent, ApprovalProcess, ApprovalType, Subject, ListingId, CurrentStatus, StatusHistory, ApprovalScope, GeographicScope, ProductionScope, ValidityPeriod, RelatedApprovalEntries and ReferenceDocuments are discussion structures and are NOT represented by the released generic schema v3.0.0. All names, values, dates, identifiers, suppliers, locations, production lines and approval information are fictional and illustrative. This draft is not a schema-conformant document."
+}
