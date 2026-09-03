@@ -1,7 +1,7 @@
 {
-  "$id": "https://vda231-301.github.io/schemas/generic/VDA_231-301_generic_v2.1.0.schema.json",
+  "$id": "https://vda231-301.github.io/schemas/generic/VDA_231-301_generic_v3.0.0.schema.json",
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "title": "VDA 231-301 TestingProject JSON schema",
+  "title": "VDA 231-301 Generic JSON schema",
   "type": "object",
   "additionalProperties": false,
   "description": "This is the Generic Schema which validates the structure of the file",
@@ -10,17 +10,24 @@
       "$ref": "#/$defs/Generic.Identifier"
     },
     "_type": {
-      "const": "TestingProject",
+      "enum": [
+        "TestingProject",
+        "SubstanceDeclaration",
+        "DigitalProductPassport"
+      ],
       "type": "string"
     },
     "_schemaVersion": {
-      "const": "2.1.0",
+      "const": "3.0.0",
       "description": "The generic schema version on which the structure of the testing project is based on."
     },
     "Title": {
       "$ref": "#/$defs/Generic.RestrictedString"
     },
     "Client": {
+      "$ref": "#/$defs/Generic.Location"
+    },
+    "Contractor": {
       "$ref": "#/$defs/Generic.Location"
     },
     "ClientOrderNumber": {
@@ -69,9 +76,9 @@
       "minItems": 1,
       "type": "array"
     },
-    "TestSeries": {
+    "Topics": {
       "items": {
-        "$ref": "#/$defs/Generic.TestSeries"
+        "$ref": "#/$defs/Generic.Topic"
       },
       "minItems": 1,
       "type": "array"
@@ -79,19 +86,7 @@
   },
   "required": [
     "_id",
-    "_type",
-    "_schemaVersion",
-    "ClientOrderNumber",
-    "LaboratoryOrderNumber",
-    "OrderReference",
-    "OrderDate",
-    "ReportDate",
-    "Signatory",
-    "Client",
-    "ContractorID",
-    "TestingCenters",
-    "ComponentMasters",
-    "TestSeries"
+    "_type"
   ],
   "$defs": {
     "Generic.ArraySpec": {
@@ -813,6 +808,14 @@
       ],
       "type": "object"
     },
+    "Generic.CharacteristicRequirement": {
+      "description": "A required value or permitted value range for a characteristic defined by a specification.",
+      "allOf": [
+        {
+          "$ref": "#/$defs/Generic.InformationPoint"
+        }
+      ]
+    },
     "Generic.InformationSet": {
       "additionalProperties": false,
       "properties": {
@@ -1075,6 +1078,13 @@
             "6/4"
           ]
         },
+        "CharacteristicRequirements": {
+          "description": "Requirements imposed by this specification on material or component characteristics.",
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Generic.CharacteristicRequirement"
+          }
+        },
         "DOI": {
           "type": "string"
         }
@@ -1159,7 +1169,7 @@
         "Attachment": {
           "$ref": "#/$defs/Generic.Attachment"
         },
-        "AdditionalProperties": {
+        "AdditionalInformation": {
           "$ref": "#/$defs/Generic.InformationSet"
         },
         "Extraction": {
@@ -1211,8 +1221,7 @@
         "_id",
         "_type",
         "Location",
-        "TestingManager",
-        "Certifications"
+        "TestingManager"
       ],
       "type": "object"
     },
@@ -1282,7 +1291,10 @@
         },
         "NGIDPath": {
           "type": "string",
-          "description": "A Siemens JT Next Generation Identifier (NGID) path locating this component's occurrence within the source CAD assembly structure, per the 'NGID Identifiers' specification (e.g. $$NGID<chain>=\"__CAD_INST_UID\"\\0AssemblyName.asm;version;instanceId:\\0PartName.asm;version;instanceId:\\0\\0)."
+          "description": "A Siemens JT Next Generation Identifier (NGID) path locating this component's occurrence within the source CAD assembly structure, per the 'NGID Identifiers' specification. Also: External element reference.",
+          "examples": [
+            "$$NGID<chain>=\"__CAD_INST_UID\"\\0AssemblyName.asm;version;instanceId:\\0PartName.asm;version;instanceId:\\0\\0"
+          ]
         },
         "CustomerPartNumber": {
           "$ref": "#/$defs/Generic.RestrictedString",
@@ -1292,28 +1304,27 @@
           "$ref": "#/$defs/Generic.RestrictedString",
           "description": "Tier-N part number"
         },
-        "Color": {
-          "$ref": "#/$defs/Generic.RestrictedString"
+        "Colors": {
+          "items": {
+            "$ref": "#/$defs/Generic.Color"
+          },
+          "type": "array"
+        },
+        "MaterialSources": {
+          "items": {
+            "$ref": "#/$defs/Generic.MaterialSource"
+          },
+          "type": "array"
         },
         "Mass": {
-          "type": "object",
-          "required": [
-            "Value",
-            "Unit"
-          ],
-          "properties": {
-            "Value": {
-              "type": "number",
-              "minimum": 0
-            },
-            "Unit": {
-              "$ref": "#/$defs/Generic.Unit"
-            }
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Generic.Mass"
           }
         },
         "NumberOfParts": {
           "type": "integer",
-          "description": "Number of parts that are represented by this component master. This can be used when multiple identical components are present.",
+          "description": "Number of parts that are represented by this component master. This can be used when multiple identical components are present, for example when modelling a flat bill of materials.",
           "minimum": 1
         },
         "MaterialGroup": {
@@ -1329,7 +1340,7 @@
         },
         "OemIdentifier": {
           "$ref": "#/$defs/Generic.RestrictedString",
-          "description": "Owner of the MaterialIdentifiers / SurfaceIdentifiers (e.g. which OEM company the identifiers refer to), if applicable.",
+          "description": "Owner of the MaterialIdentifiers / SurfaceIdentifiers (e.g. which OEM company the identifiers refer to) and version, if applicable.",
           "examples": [
             "BMW",
             "VW",
@@ -1346,6 +1357,14 @@
             "XYZ111ABC123",
             "QEV111BCD234",
             "8A1U76"
+          ]
+        },
+        "Version": {
+          "$ref": "#/$defs/Generic.RestrictedString",
+          "description": "Version of the Component Master, if applicable. For example the version of the drawing: ZGS",
+          "examples": [
+            "0001",
+            "0002"
           ]
         },
         "SurfaceIdentifiers": {
@@ -1394,6 +1413,67 @@
       "required": [
         "_id",
         "_type"
+      ],
+      "type": "object"
+    },
+    "Generic.Color": {
+      "additionalProperties": false,
+      "properties": {
+        "_id": {
+          "$ref": "#/$defs/Generic.Identifier"
+        },
+        "_type": {
+          "const": "Color",
+          "type": "string"
+        },
+        "Name": {
+          "$ref": "#/$defs/Generic.RestrictedString"
+        },
+        "Code": {
+          "$ref": "#/$defs/Generic.RestrictedString"
+        },
+        "CodeAuthority": {
+          "$ref": "#/$defs/Generic.RestrictedString"
+        },
+        "AdditionalInformation": {
+          "$ref": "#/$defs/Generic.InformationSet"
+        }
+      },
+      "required": [
+        "_type",
+        "_id"
+      ],
+      "type": "object"
+    },
+    "Generic.MaterialSource": {
+      "additionalProperties": false,
+      "properties": {
+        "_id": {
+          "$ref": "#/$defs/Generic.Identifier"
+        },
+        "_type": {
+          "const": "MaterialSource",
+          "type": "string"
+        },
+        "MaterialName": {
+          "$ref": "#/$defs/Generic.LongString"
+        },
+        "TradeName": {
+          "$ref": "#/$defs/Generic.LongString"
+        },
+        "Supplier": {
+          "$ref": "#/$defs/Generic.Location"
+        },
+        "Specification": {
+          "$ref": "#/$defs/Generic.Specification"
+        },
+        "AdditionalInformation": {
+          "$ref": "#/$defs/Generic.InformationSet"
+        }
+      },
+      "required": [
+        "_type",
+        "_id"
       ],
       "type": "object"
     },
@@ -1446,6 +1526,14 @@
             "$ref": "#/$defs/Generic.BusinessKey"
           },
           "type": "array"
+        },
+        "ColorID": {
+          "$ref": "#/$defs/Generic.Identifier",
+          "description": "Reference to the color used, expressed as its transmission-scoped identifier (_id) within this transmission file."
+        },
+        "MaterialSourceID": {
+          "$ref": "#/$defs/Generic.Identifier",
+          "description": "Reference to the material source used, expressed as its transmission-scoped identifier (_id) within this transmission file."
         }
       },
       "required": [
@@ -1454,14 +1542,18 @@
       ],
       "type": "object"
     },
-    "Generic.TestSeries": {
+    "Generic.Topic": {
       "additionalProperties": false,
       "properties": {
         "_id": {
           "$ref": "#/$defs/Generic.Identifier"
         },
         "_type": {
-          "const": "TestSeries",
+          "enum": [
+            "TestSeries",
+            "SubstanceDeclaration",
+            "Claims"
+          ],
           "type": "string"
         },
         "Specification": {
@@ -1474,12 +1566,23 @@
           "$ref": "#/$defs/Generic.Identifier",
           "description": "Reference to the component master used, expressed as its transmission-scoped identifier (_id) within this transmission file."
         },
+        "AlsoApplicableComponentMasterIDs": {
+          "description": "Other component masters this topic is also applicable to, e.g. because the parts are identical or mirrored. Does not include the primary ComponentMasterID.",
+          "items": {
+            "$ref": "#/$defs/Generic.Identifier"
+          },
+          "type": "array"
+        },
         "AdditionalInformation": {
           "$ref": "#/$defs/Generic.InformationSet"
         },
         "NumberOfExecutions": {
-          "minimum": 1,
-          "type": "integer"
+          "type": "integer",
+          "minimum": 1
+        },
+        "TestingCenterID": {
+          "$ref": "#/$defs/Generic.Identifier",
+          "description": "Reference to the testing center responsible for this test series, expressed as its transmission-scoped identifier (_id) within this transmission file."
         },
         "Assessment": {
           "type": "string"
@@ -1504,10 +1607,6 @@
             }
           ]
         },
-        "TestingCenterID": {
-          "$ref": "#/$defs/Generic.Identifier",
-          "description": "Reference to the TestingCenter responsible for this TestSeries, expressed as its transmission-scoped identifier (_id) within this transmission file."
-        },
         "Comment": {
           "$ref": "#/$defs/Generic.RestrictedText"
         },
@@ -1517,25 +1616,42 @@
           },
           "type": "array"
         },
-        "ConsolidatedCharacteristicValues": {
+        "ReportedProperties": {
           "$ref": "#/$defs/Generic.CharacteristicValues"
         },
-        "TargetCharacteristicValues": {
+        "TargetProperties": {
           "$ref": "#/$defs/Generic.CharacteristicValues"
+        },
+        "Conditions": {
+          "$ref": "#/$defs/Generic.Conditions"
+        },
+        "TestExecution": {
+          "items": {
+            "$ref": "#/$defs/Generic.TestExecution"
+          },
+          "type": "array"
         }
       },
       "required": [
         "_id",
-        "_type",
-        "Specification",
-        "NumberOfExecutions",
-        "PredecessorID",
-        "SuccessorID",
-        "TestingCenterID",
-        "ConsolidatedCharacteristicValues",
-        "ComponentMasterID"
+        "_type"
       ],
       "type": "object"
+    },
+    "Generic.Conditions": {
+      "$type": "object",
+      "properties": {
+        "Condition": {
+          "$ref": "#/$defs/Generic.LongString"
+        },
+        "BusinessKeys": {
+          "description": "A list of business keys providing unique identifiers for this condition across external systems.",
+          "items": {
+            "$ref": "#/$defs/Generic.BusinessKey"
+          },
+          "type": "array"
+        }
+      }
     },
     "Generic.RestrictedString": {
       "allOf": [
@@ -1682,6 +1798,25 @@
         "DeviatingValue"
       ],
       "type": "object"
+    },
+    "Generic.Mass": {
+      "type": "object",
+      "properties": {
+        "Value": {
+          "type": "number",
+          "minimum": 0
+        },
+        "Unit": {
+          "$ref": "#/$defs/Generic.Unit"
+        },
+        "DeterminationMethod": {
+          "enum": [
+            "Measured",
+            "Calculated",
+            "Predicted"
+          ]
+        }
+      }
     },
     "Generic.Stack.Material": {
       "properties": {
