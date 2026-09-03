@@ -808,6 +808,14 @@
       ],
       "type": "object"
     },
+    "Generic.CharacteristicRequirement": {
+      "description": "A required value or permitted value range for a characteristic defined by a specification.",
+      "allOf": [
+        {
+          "$ref": "#/$defs/Generic.InformationPoint"
+        }
+      ]
+    },
     "Generic.InformationSet": {
       "additionalProperties": false,
       "properties": {
@@ -1069,6 +1077,13 @@
             "R",
             "6/4"
           ]
+        },
+        "CharacteristicRequirements": {
+          "description": "Requirements imposed by this specification on material or component characteristics.",
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Generic.CharacteristicRequirement"
+          }
         },
         "DOI": {
           "type": "string"
