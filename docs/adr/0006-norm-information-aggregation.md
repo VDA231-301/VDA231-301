@@ -45,15 +45,23 @@ supports several regulations per material/surface, and reuses one consistent str
 both materials and surfaces.
 
 The generic schema v3.0.0 provides the `Specification` entity
-(`Type`, `Number`, `Subnumber`, `IssueDate`, `Title`, `FeatureText`, `FeatureList`, `DOI`,
-`ReferencedSpecifications`). Norm information is aggregated as follows:
+(`Type`, `Number`, `Subnumber`, `IssueDate`, `Title`, `FeatureText`, `FeatureList`,
+`CharacteristicRequirements`, `DOI`, `ReferencedSpecifications`). Norm information is
+aggregated as follows:
 
 * `MAT_02`/`SUR_02` (regulation type)    -> `Specification.Type`
 * `MAT_03`/`SUR_03` (regulation number)  -> `Specification.Number` (+ `Subnumber`)
 * `MAT_05`/`SUR_05` (issue date)         -> `Specification.IssueDate`
-* `MAT_06`/`SUR_06` (short name)          -> `Specification.Title`
-* `MAT_07`/`SUR_07` (features)            -> `Specification.FeatureText` / `FeatureList`
+* `MAT_06`/`SUR_06` (short name)          -> `ComponentMaster.MaterialClass` (see ADR 0008);
+  `Specification.Title` holds the title of the norm itself, not the material short name
+* `MAT_07`/`SUR_07` (features)            -> `Specification.FeatureText` / `FeatureList`;
+  quantitative or qualitative characteristics are read out to
+  `Specification.CharacteristicRequirements` (see ADR 0007)
 * `MAT_11`/`SUR_11` (further regulations) -> `Specification.ReferencedSpecifications`
+
+The `MAT_01`/`SUR_01` internal identifier is not part of the `Specification`; it is held on the
+`ComponentMaster` as a typed identifier (see ADR 0009), together with norm-defined identifiers
+such as the steel material number.
 
 The split of the combined source string into `Type` / `Number` / `Subnumber` follows the
 documented parsing rules (longest-known-prefix match; `.` = internal execution/issue status,
@@ -66,4 +74,16 @@ derived via a maintained lookup table. This keeps the reference lossless while a
 redundant, denormalized attribute.
 
 The pattern shall be applied consistently: any regulation-like reference (material or surface)
-is aggregated into `Specification`, and a material/surface that cites several regul
+is aggregated into `Specification`, and a material/surface that cites several regulations is
+represented by one primary `Specification` plus entries in `ReferencedSpecifications`.
+
+## Consequences
+
+* Good, because the regulation reference stays machine-readable and validatable
+  (type/number/subnumber/issue date), enabling downstream resolution and completeness checks.
+* Good, because several applicable regulations per material/surface are supported through
+  one reusable structure shared by materials and surfaces.
+* Good, because the derivation from the combined source string is reproducible and documented,
+  and all mandatory VDA 231-300 fields have a defined target.
+* Neutral, because a parsing/derivation step is required at import time; unknown prefixes must
+  be caught and reported rather than 
