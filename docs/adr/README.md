@@ -23,4 +23,4 @@ The records follow the MADR (Markdown Architectural Decision Records) format.
 | 0003 | [Stack layer ordering starts at the substrate (layer 1 = bottom)](0003-stack-layer-ordering.md) | accepted |
 | 0004 | [NGIDPath examples use JT_PROP_NAME with CADID-formatted node values](0004-ngid-path-representation.md) | accepted |
 | 0005 | [Hierarchies are modelled via self-reference (containment for components, reference for specifications)](0005-hierarchies-via-self-reference.md) | accepted |
-| 0006 | [Norm information is aggregated n.md | proposed |
+| 0006 | 0006-norm-information-aggregation.md | accepted | | 0007 | 0007-material-characteristics-read-out-logic.md | accepted | | 0008 | 0008-abbreviated-material-designation-to-materialclass.md | accepted | | 0009 | 0009-typed-material-identifiers-no-duplication.md | accepted |
