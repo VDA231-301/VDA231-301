@@ -4,14 +4,14 @@ Status: accepted
 
 ## Context and Problem Statement
 
-A material is designated by several identifiers of different provenance: the internal SRM
-identifier (VDA 231-300 `MAT_01`) and, for metals, a norm-defined material number
-("Werkstoffnummer", e.g. `1.1302`, `1.8159`) defined by EN 10027-2. The material number is not
-present in the current data model; it exists only inside the standard and, in the CAD material
+A material is designated by several identifiers of different provenance: the internal OEM
+material identifier (VDA 231-300 `MAT_01`, here typed as `OEMMATID`) and, for metals, a
+norm-defined material number ("Werkstoffnummer", e.g. `1.1302`, `1.8159`) defined by EN 10027-2. 
+The material number is not present in the current data model; it exists only inside the standard and, in the CAD material
 list, is associated with the material via the `MAT_01` row.
 
 The current `MaterialIdentifiers` is an untyped `array of String`, so consumers cannot tell
-whether an entry is an SRM key, a material number, or something else. Moreover, the same number
+whether an entry is an internal OEM key, a material number, or something else. Moreover, the same number
 could be documented both as an identifier and inside the `Specification`, raising the question
 how to avoid contradictory duplicates between the "norm world" and PLM.
 
@@ -42,7 +42,7 @@ standard:
 
 ```json
 "MaterialIdentifiers": [
-  { "IdentifierType": "SRM", "Value": "OEM123ABCR3N" },
+  { "IdentifierType": "QEMMATID", "Value": "OEM123ABCR3N" },
   { "IdentifierType": "MaterialNumber", "Value": "1.1302",
     "DefiningStandard": "EN 10027-2" }
 ]
@@ -60,7 +60,7 @@ fields holding the same value are not allowed.
 
 Ownership split between the norm world and PLM:
 
-* PLM owns the identity (the concrete material IS `1.1302` / this SRM) -> the value lives in
+* PLM owns the identity (the concrete material IS `1.1302` / this OEMMATID) -> the value lives in
   `MaterialIdentifiers`.
 * The norm world owns definitions (EN 10027-2 defines the number system; the product standard
   assigns the number) -> expressed via `Specification` and the `DefiningStandard` reference.
