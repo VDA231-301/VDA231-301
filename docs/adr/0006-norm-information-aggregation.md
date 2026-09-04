@@ -86,4 +86,11 @@ represented by one primary `Specification` plus entries in `ReferencedSpecificat
 * Good, because the derivation from the combined source string is reproducible and documented,
   and all mandatory VDA 231-300 fields have a defined target.
 * Neutral, because a parsing/derivation step is required at import time; unknown prefixes must
-  be caught and reported rather than 
+  be caught and reported rather than silently mapped, and the authority lookup must be maintained.
+
+## More Information
+
+Related: ADR 0005 (self-reference for `ReferencedSpecifications`), ADR 0007 (read-out of
+characteristics into `CharacteristicRequirements`), ADR 0008 (short name to `MaterialClass`),
+ADR 0009 (typed identifiers, no duplication), and the norm-string parsing rules
+(`Parsing-Regeln_Norm-Strings.md`).
