@@ -46,3 +46,44 @@ standard:
   { "IdentifierType": "MaterialNumber", "Value": "1.1302",
     "DefiningStandard": "EN 10027-2" }
 ]
+```
+
+Single source of truth: the identifier value is owned by the material (PLM) and stored exactly
+once, here. The `Specification` (e.g. DIN EN 10267) does NOT repeat the number. The fact that a
+number is defined/assigned by a norm is expressed as a reference (`DefiningStandard`, and
+optionally a pointer to the relevant `Specification`), not as a second copy of the value.
+
+Where a flat export (drawing / JT) cannot carry a reference and the value must physically appear
+in two places, the second occurrence is a derived copy, marked as derived and constrained by a
+validation rule `derived == source`; it is never independently editable. Two freely editable
+fields holding the same value are not allowed.
+
+Ownership split between the norm world and PLM:
+
+* PLM owns the identity (the concrete material IS `1.1302` / this SRM) -> the value lives in
+  `MaterialIdentifiers`.
+* The norm world owns definitions (EN 10027-2 defines the number system; the product standard
+  assigns the number) -> expressed via `Specification` and the `DefiningStandard` reference.
+
+The `OemIdentifier` field on the `ComponentMaster` continues to state the owner of the
+identifiers (e.g. which OEM the SRM keys refer to); the typed entries do not repeat this per
+item unless an entry has a different owner.
+
+## Consequences
+
+* Good, because every identifier is self-describing (type + provenance) and the metal material
+  number finally has a defined, optional home.
+* Good, because the value exists exactly once; the norm binding is a reference, so no drift
+  between PLM and the norm world is possible.
+* Good, because the reference enables later validation (does `1.1302` really belong to this
+  material per EN 10027?), which a plain copy could never support.
+* Neutral, because there is a slight asymmetry: the short name goes to `MaterialClass` (ADR 0008)
+  while numbers/keys go to `MaterialIdentifiers`.
+* Bad (breaking), because changing `MaterialIdentifiers` from `array of String` to a typed object
+  list is not backward-compatible; it requires a schema change, a PR and a migration note.
+
+## More Information
+
+Related: ADR 0006 (norm aggregation; `MAT_01` not part of `Specification`), ADR 0008 (short name
+to `MaterialClass`). Standards: EN 10027-1 (steel names), EN 10027-2 (steel numbers). The field
+names `IdentifierType` / `DefiningStandard` are proposals; the released schema takes precedence.
