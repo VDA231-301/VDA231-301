@@ -7,11 +7,15 @@
       "_id": "aaaaaaaa-0001-4001-8001-0000000000c1",
       "_type": "ComponentMaster",
       "Designation": "Door Trim Panel",
-      "MaterialName": "PP-GF30",
+      "MaterialName": "Glass fibre reinforced Polypropylene",
+      "MaterialClass": "PP-GF30",
       "OemIdentifier": "OEM",
       "Version": "0001",
       "MaterialIdentifiers": [
-        "MAT-PPGF30-001"
+        {
+          "IdentifierType": "OEMMATID",
+          "Value": "MAT-PPGF30-001"
+        }
       ]
     }
   ],
@@ -61,4 +65,3 @@
     }
   ]
 }
-
