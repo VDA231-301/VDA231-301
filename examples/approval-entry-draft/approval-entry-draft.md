@@ -20,7 +20,7 @@ different approval statuses, scopes and validity periods.
 
 This example illustrates how an independent approval entry could reference a
 specific material source from the related
-[material-catalog-entry/README.md](material-catalog-entry/README.md).
+material-catalog-entry/README.md.
 
 All names, values, dates, identifiers, suppliers, locations, production lines
 and approval information are fictional and fully anonymized.
@@ -55,7 +55,7 @@ The draft represents a listing entry for:
 
 | Information | Example value |
 |---|---|
-| Material | PP-GF30 |
+| Material (short name) | PP-GF30 |
 | Trade name | Example PP-GF30 Grade A |
 | Supplier | Supplier A |
 | Approval process | X |
@@ -72,7 +72,7 @@ define or disclose a specific company-internal process.
 ## Referenced Material Source
 
 The approval entry refers to a material source in the related
-[material-catalog-entry/componentMaster-catalog-entry.json](material-catalog-entry/componentMaster-catalog-entry.json).
+material-catalog-entry/componentMaster-catalog-entry.json.
 
 The referenced material source is:
 
@@ -80,7 +80,8 @@ The referenced material source is:
 {
   "_id": "b1a00000-1111-4111-8111-000000000001",
   "_type": "MaterialSource",
-  "MaterialName": "PP-GF30",
+  "MaterialName": "Glass fibre reinforced Polypropylene",
+  "MaterialClass": "PP-GF30",
   "TradeName": "Example PP-GF30 Grade A"
 }
 ```
@@ -140,6 +141,7 @@ schema v3.0.0.
 - `ApprovalEntry.Subject`
 - `Subject.SubjectMaterialSourceID`
 - `Subject.MaterialName`
+- `Subject.MaterialClass`
 - `Subject.TradeName`
 - `Subject.Supplier`
 
@@ -201,6 +203,19 @@ general material can have different:
 
 The existence of a `MaterialSource` does not by itself mean that the source is
 formally approved or listed.
+
+### Material Name and Material Class
+
+Following ADR 0008, the abbreviated material designation is carried in
+`MaterialClass`, while `MaterialName` holds the spoken-out material name:
+
+```json
+"MaterialName": "Glass fibre reinforced Polypropylene",
+"MaterialClass": "PP-GF30"
+```
+
+`TradeName` remains the supplier's commercial name for the material source and is
+distinct from both `MaterialName` and `MaterialClass`.
 
 ### Approval Process and Approval Type
 
@@ -414,9 +429,9 @@ The example must not be interpreted as:
 
 ## Related Examples
 
-- [material-catalog-entry/README.md](material-catalog-entry/README.md)
-- [/material-catalog-entry/componentMaster-catalog-entry.json](material-catalog-entry/componentMaster-catalog-entry.json)
-- [material-catalog-entry/componentMaster-catalog-entry.draft.json](material-catalog-entry/componentMaster-catalog-entry.draft.json)
+- material-catalog-entry/README.md
+- material-catalog-entry/componentMaster-catalog-entry.json
+- material-catalog-entry/componentMaster-catalog-entry.draft.json
 
 ## Architectural References
 
@@ -428,6 +443,7 @@ The example must not be interpreted as:
 - previous and subsequent approval entries connected using
   `RelatedApprovalEntries`
 - supporting documents referenced using `ReferenceDocuments`
+- material short name carried in `MaterialClass` per ADR 0008
 - material properties and sustainability information retained outside the
   approval entry
 
