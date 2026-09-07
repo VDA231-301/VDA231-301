@@ -9,12 +9,17 @@
   "OemIdentifier": "OEM",
   "Version": "0001",
   "MaterialIdentifiers": [
-    "MAT-PPGF30-001"
+    {
+      "IdentifierType": "OEMMATID",
+      "Value": "OEM111ALAHJD"
+    }
   ],
   "MaterialSources": [
     {
       "_id": "5a000000-1111-4111-8111-000000000001",
       "_type": "MaterialSource",
+      "MaterialGroup": "Thermoplastics",
+      "MaterialClass": "Glass Fibre Reinforced Polymer",
       "MaterialName": "PP-GF30",
       "TradeName": "Example PP-GF30 A",
       "Supplier": {
@@ -37,6 +42,8 @@
     {
       "_id": "5a000000-1111-4111-8111-000000000002",
       "_type": "MaterialSource",
+      "MaterialGroup": "Thermoplastics",
+      "MaterialClass": "Glass Fibre Reinforced Polymer",
       "MaterialName": "PP-GF30",
       "TradeName": "Example PP-GF30 B",
       "Supplier": {
