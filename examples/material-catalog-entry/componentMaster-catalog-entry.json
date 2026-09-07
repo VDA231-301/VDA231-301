@@ -2,9 +2,9 @@
   "_id": "b1b1b1b1-1111-4111-8111-111111111111",
   "_type": "ComponentMaster",
   "Designation": "Door Trim Panel",
-  "MaterialGroup": "Thermoplastic",
+  "MaterialGroup": "Thermoplast",
   "MaterialClass": "PP-GF30",
-  "MaterialName": "PP-GF30",
+  "MaterialName": "Glass fibre reinforced Polypropylene",
   "OemIdentifier": "OEM",
   "Version": "0001",
   "MaterialIdentifiers": [
@@ -35,7 +35,9 @@
     {
       "_id": "b1a00000-1111-4111-8111-000000000001",
       "_type": "MaterialSource",
-      "MaterialName": "PP-GF30",
+      "MaterialGroup": "Thermoplast",
+      "MaterialClass": "PP-GF30",
+      "MaterialName": "Glass fibre reinforced Polypropylene",
       "TradeName": "Example PP-GF30 Grade A",
       "Supplier": {
         "_id": "b1b00000-1111-4111-8111-000000000001",
@@ -80,7 +82,9 @@
     {
       "_id": "b1a00000-1111-4111-8111-000000000002",
       "_type": "MaterialSource",
-      "MaterialName": "PP-GF30",
+      "MaterialGroup": "Thermoplast",
+      "MaterialClass": "PP-GF30",
+      "MaterialName": "Glass fibre reinforced Polypropylene",
       "TradeName": "Example PP-GF30 Grade B",
       "Supplier": {
         "_id": "b1b00000-1111-4111-8111-000000000002",
