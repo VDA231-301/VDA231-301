@@ -60,6 +60,8 @@ This example focuses on the following attributes:
 
 - ComponentMaster.Designation
 - ComponentMaster.Version
+- ComponentMaster.MaterialGroup
+- ComponentMaster.MaterialClass
 - ComponentMaster.MaterialName
 - ComponentMaster.MaterialIdentifiers
 - ComponentMaster.Colors
@@ -86,6 +88,19 @@ and avoids duplicating color definitions. A produced part does not invent a new
 color; it selects one of the colors that were defined and approved at master
 level. This makes the color of every delivered part consistent with the
 approved variant set.
+
+The material is described on three distinct levels that must not be mixed:
+
+- `MaterialGroup` holds the material classification group (VDA 231-106), here
+  `Thermoplast`.
+- `MaterialClass` holds the abbreviated material designation (ADR 0008), here
+  `PP-GF30` (formed per ISO 1043).
+- `MaterialName` holds the human-readable material name, here
+  `Glass fibre reinforced Polypropylene`.
+
+Material identifiers are typed objects (ADR 0009): each entry carries an
+`IdentifierType` (e.g. `OEMMATID` for the internal OEM material key) and a
+`Value`, so keys of different provenance remain distinguishable.
 
 The `Version` attribute represents the version / change status of the component
 definition (for example the drawing status, known as ZGS) and
@@ -120,5 +135,5 @@ version should be performed before productive use.
 - Definition set: `ComponentMaster.Colors`
 - Reference: `ComponentInstance.ColorID`
 - Analogous pattern: `ComponentMaster.MaterialSources` / `ComponentInstance.MaterialSourceID`
-
-
+- ADR 0008 (abbreviated material designation to `MaterialClass`),
+  ADR 0009 (typed material identifiers)
