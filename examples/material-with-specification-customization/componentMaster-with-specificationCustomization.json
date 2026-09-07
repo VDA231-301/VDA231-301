@@ -9,7 +9,10 @@
   "OemIdentifier": "OEM",
   "Version": "0001",
   "MaterialIdentifiers": [
-    "MAT-PPGF30-001"
+    {
+      "IdentifierType": "OEMMATID",
+      "Value": "OEM111ALAHJD"
+    }
   ],
   "Specifications": [
     {
