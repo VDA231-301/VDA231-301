@@ -11,7 +11,7 @@
   "MaterialIdentifiers": [
      {
        "IdentifierType": "OEMMATID",
-        "Value": "OEM111ALAHJD"
+       "Value": "OEM111ALAHJD"
      }
    ],
   "NGIDPath": "$$NGID<chain>=\"JT_PROP_NAME\"\\0DoorAssembly.asm;0;2:\\0DoorTrim.part;0;1:\\0\\0",
