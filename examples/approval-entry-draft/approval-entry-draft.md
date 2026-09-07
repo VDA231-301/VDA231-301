@@ -93,7 +93,12 @@ The approval entry references this source through:
 ```
 
 The approval decision therefore applies to this specific material source and
-trade type. It does not automatically apply to:
+trade type. The approval entry additionally records the **generic material** it approves this source
+for, via `ApprovedForMaterial` (OEMMATID / QEV). The concrete source (`Subject`) and the
+generic material (`ApprovedForMaterial`) are two distinct levels; see ADR 0011 and the
+Material Identification Concepts document.
+
+It does not automatically apply to:
 
 - every PP-GF30 material
 - every trade type
@@ -482,3 +487,5 @@ The example identifies the following questions for further discussion:
 - Which metadata are required for supporting reference documents?
 - How should another system determine which approval entry applies to a
   particular material source, region and production context?
+  - Is `ApprovedForMaterial` the right name and structure for the link to the generic
+  material (OEMMATID / QEV)?
