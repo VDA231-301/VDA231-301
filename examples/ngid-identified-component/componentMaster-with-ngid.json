@@ -8,9 +8,12 @@
   "MaterialName": "Glass fibre reinforced Polypropylene",
   "OemIdentifier": "OEM",
   "Version": "0001",
-  "MaterialIdentifiers": [
-    "MAT-PPGF30-001"
-  ],
+   "MaterialIdentifiers": [
+      {
+        "IdentifierType": "OEMMATID",
+        "Value": "OEM111ALAHJD"
+      }
+   ],
   "NGIDPath": "$$NGID<chain>=\"JT_PROP_NAME\"\\0DoorAssembly.asm;0;2:\\0DoorTrim.part;0;1:\\0\\0",
   "Comment": "Example demonstrating how a component is located within the source CAD assembly structure by using an NGIDPath. The path uses the JT_PROP_NAME identifier with CADID-formatted node values (name.type;version;instanceId)."
 }
