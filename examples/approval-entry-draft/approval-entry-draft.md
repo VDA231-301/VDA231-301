@@ -136,6 +136,12 @@ schema v3.0.0.
 - `ApprovalEntry.ApprovalType`
 - `ApprovalEntry.ListingId`
 
+### Approved Material (generic)
+
+- `ApprovalEntry.ApprovedForMaterial`
+- `ApprovedForMaterial.IdentifierType`
+- `ApprovedForMaterial.Value`
+
 ### Approval Subject
 
 - `ApprovalEntry.Subject`
@@ -203,6 +209,18 @@ general material can have different:
 
 The existence of a `MaterialSource` does not by itself mean that the source is
 formally approved or listed.
+
+### Approval Links to the Generic Material (OEMMATID)
+
+In addition to the concrete `MaterialSource` (via `SubjectMaterialSourceID`), the approval
+entry links to the **generic material** it approves a source for, using the OEMMATID
+(at Mercedes-Benz the QEV number):
+
+```json
+"ApprovedForMaterial": {
+  "IdentifierType": "OEMMATID",
+  "Value": "OEM111ALAHJD"
+}
 
 ### Material Name and Material Class
 
