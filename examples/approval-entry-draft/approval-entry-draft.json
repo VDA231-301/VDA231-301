@@ -5,6 +5,10 @@
   "Version": "0001",
   "ApprovalProcess": "X",
   "ApprovalType": "Listing",
+  "ApprovedForMaterial": {
+    "IdentifierType": "OEMMATID",
+    "Value": "OEM111ALAHJD"
+  },
   "Subject": {
     "SubjectMaterialSourceID": "b1a00000-1111-4111-8111-000000000001",
     "MaterialName": "Glass fibre reinforced Polypropylene",
@@ -108,5 +112,5 @@
       }
     }
   ],
-  "Comment": "DRAFT example of an anonymized listing entry using approval process X. The entry refers to one specific trade type and material source, a defined material standard product version, a world region, a production site and a production line. It contains an illustrative status history and a time-limited validity period. ApprovalEntry, ApprovalStatusEvent, ApprovalProcess, ApprovalType, Subject, ListingId, CurrentStatus, StatusHistory, ApprovalScope, GeographicScope, ProductionScope, ValidityPeriod, RelatedApprovalEntries and ReferenceDocuments are discussion structures and are NOT represented by the released generic schema v3.0.0. All names, values, dates, identifiers, suppliers, locations, production lines and approval information are fictional and illustrative. This draft is not a schema-conformant document."
+  "Comment": "DRAFT example of an anonymized listing entry using approval process X. The entry links to the generic material via ApprovedForMaterial (OEMMATID) and refers to one specific trade type and material source, a defined material standard product version, a world region, a production site and a production line. It contains an illustrative status history and a time-limited validity period. ApprovalEntry, ApprovedForMaterial, ApprovalStatusEvent, ApprovalProcess, ApprovalType, Subject, ListingId, CurrentStatus, StatusHistory, ApprovalScope, GeographicScope, ProductionScope, ValidityPeriod, RelatedApprovalEntries and ReferenceDocuments are discussion structures and are NOT represented by the released generic schema v3.0.0. All names, values, dates, identifiers, suppliers, locations, production lines and approval information are fictional and illustrative. This draft is not a schema-conformant document."
 }
