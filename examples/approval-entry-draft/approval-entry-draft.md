@@ -219,13 +219,14 @@ formally approved or listed.
 
 In addition to the concrete `MaterialSource` (via `SubjectMaterialSourceID`), the approval
 entry links to the **generic material** it approves a source for, using the OEMMATID
-(at Mercedes-Benz the QEV number):
+(at OEM01 the PEW number):
 
 ```json
 "ApprovedForMaterial": {
   "IdentifierType": "OEMMATID",
   "Value": "OEM111ALAHJD"
 }
+```
 
 ### Material Name and Material Class
 
@@ -488,5 +489,5 @@ The example identifies the following questions for further discussion:
 - Which metadata are required for supporting reference documents?
 - How should another system determine which approval entry applies to a
   particular material source, region and production context?
-  - Is `ApprovedForMaterial` the right name and structure for the link to the generic
+- Is `ApprovedForMaterial` the right name and structure for the link to the generic
   material (OEMMATID / QEV)?
