@@ -469,6 +469,7 @@ The example must not be interpreted as:
 - material short name carried in `MaterialClass` per ADR 0008
 - material properties and sustainability information retained outside the
   approval entry
+- generic material referenced using `ApprovedForMaterial` (OEMMATID) per ADR 0011
 
 ## Open Points
 
