@@ -8,7 +8,7 @@ An `ApprovalEntry` (approval / listing) documents that a concrete supplier mater
 (a `MaterialSource`, described in its `Subject`: trade name, supplier, production site) is
 approved. In practice it is necessary to know **for which generic material** this concrete source
 is approved, i.e. the manufacturer-independent material specification identified by the OEMMATID
-(at Mercedes-Benz the QEV number).
+(at OEM01 the PEW number).
 
 Today the `ApprovalEntry` carries the concrete source (`Subject`, `SubjectMaterialSourceID`) but
 has no explicit link to the generic material. Without it, an approval cannot be related back to
@@ -49,7 +49,7 @@ its OEMMATID business key (not by copying editable fields, and not on the concre
 
 Level separation is preserved:
 
-* `ApprovedForMaterial` points to the generic material (OEMMATID / QEV, `ComponentMaster` level).
+* `ApprovedForMaterial` points to the generic material (OEMMATID / PEW, `ComponentMaster` level).
 * `Subject` continues to describe the concrete supplier material (trade name, supplier, plant).
 
 The reference uses the OEMMATID value as the business key, consistent with the single-source-of-
