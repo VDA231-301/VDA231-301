@@ -3,7 +3,9 @@
   "_type": "ComponentMaster",
   "Designation": "Interior Trim Component",
   "SupplierPartNumber": "SUP-TRIM-006",
-  "MaterialName": "PP-GF30",
+  "MaterialGroup": "Thermoplast",
+  "MaterialClass": "PP-GF30",
+  "MaterialName": "Glass fibre reinforced Polypropylene",
   "OemIdentifier": "OEM",
   "Version": "0001",
   "MaterialIdentifiers": [
