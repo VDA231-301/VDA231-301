@@ -16,8 +16,11 @@
       "OemIdentifier": "OEM",
       "Version": "0001",
       "MaterialIdentifiers": [
-        "MAT-PPGF30-001"
-      ],
+          {
+            "IdentifierType": "OEMMATID",
+            "Value": "OEM111ALAHJD"
+          }
+        ],
       "Comment": "Sub-component of the Door Module. Here the same ComponentMaster acts as a subcomponent."
     },
     {
@@ -29,7 +32,10 @@
       "OemIdentifier": "OEM",
       "Version": "0001",
       "MaterialIdentifiers": [
-        "MAT-ABS-002"
+      {
+        "IdentifierType": "OEMMATID",
+        "Value": "OEM222ALAHJX"
+      }
       ],
       "Comment": "Sub-component of the Door Module."
     }
