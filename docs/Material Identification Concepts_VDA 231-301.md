@@ -14,7 +14,7 @@ confused: the **generic material specification** and the **concrete supplier mat
 | **Manufacturer-dependent?** | No (several suppliers may fulfil it) | Yes (exactly one supplier product) |
 | **Who owns / assigns it** | The OEM | Exists at the supplier; the OEM lists/approves it |
 | **Model location** | `ComponentMaster.MaterialIdentifiers` | `ComponentMaster.MaterialSources` (entries of type `MaterialSource`) |
-| **Typical identifier** | OEM material key (e.g. OEM0001 PQW number) | Trade name + supplier + production location (and, if needed, a source id) |
+| **Typical identifier** | OEM material key (e.g. OEM01 PEW number) | Trade name + supplier + production location (and, if needed, a source id) |
 
 Key point: the generic specification is the **anchor**; the concrete supplier materials **hang
 off** it. One generic material can have several approved sources.
@@ -29,14 +29,13 @@ off** it. One generic material can have several approved sources.
   to a material specification.
 - It identifies the **generic material** (the target profile), not a specific supplier product.
 - It is **manufacturer-independent**: several supplier materials can satisfy the same OEMMATID.
-- **At OEM0001, the concrete value of the OEMMATID is the PQW number** (from the CAD
-  material list).
+- **At OEM01, the concrete value of the OEMMATID is the PEW number** (from the CAD material list).
 - Model location: an entry in `ComponentMaster.MaterialIdentifiers` with
   `IdentifierType = "OEMMATID"` (see ADR 0009).
 
 ```json
 "MaterialIdentifiers": [
-  { "IdentifierType": "OEMMATID", "Value": "PQW222ACRR1N" }
+  { "IdentifierType": "OEMMATID", "Value": "OEM111ACRR3N" }
 ]
 ```
 
@@ -79,7 +78,7 @@ off** it. One generic material can have several approved sources.
 ```
 ComponentMaster  (generic material specification)
   ├─ MaterialIdentifiers: [
-  │     { IdentifierType: "OEMMATID",       Value: "PQW222ACRR1N" },   // manufacturer-independent
+  │     { IdentifierType: "OEMMATID",       Value: "OEM111ACRR3N" },   // manufacturer-independent (OEM01 = PEW)
   │     { IdentifierType: "MaterialNumber", Value: "1.1302",           // norm-defined (metals)
   │       DefiningStandard: "EN 10027-2" }
   │  ]
@@ -94,11 +93,14 @@ ComponentMaster  (generic material specification)
 One OEMMATID (one generic material) may reference several MaterialSources (several approved
 supplier products / plants). This is exactly the multiple-source scenario.
 
+An `ApprovalEntry` links back to the generic material via `ApprovedForMaterial` (the OEMMATID /
+PEW), while its `Subject` describes the concrete source (see ADR 0011).
+
 ---
 
 ## Quick disambiguation for the project group
 
-- **OEMMATID / PQW** answers: *Which material (per specification)?* — identity of the target profile.
+- **OEMMATID / PEW** answers: *Which material (per specification)?* — identity of the target profile.
 - **MaterialClass** answers: *What is it called (standardized short name)?* — designation.
 - **MaterialSource** answers: *From whom, under which trade name, from which plant?* — identity of
   the real source.
@@ -112,4 +114,11 @@ not to the OEMMATID.
 
 - ADR 0008 — abbreviated material designation to `MaterialClass`.
 - ADR 0009 — typed `MaterialIdentifiers` (OEMMATID, norm-defined numbers), stored once.
+- ADR 0010 — typed identifiers on `MaterialSource` (concrete-material level).
+- ADR 0011 — `ApprovalEntry` links to the generic material via OEMMATID (`ApprovedForMaterial`).
 - Example: `multiple-source-material` (several approved sources for one material).
+
+---
+
+*Note on anonymization: `OEM01` is an anonymized OEM; `PEW` is the anonymized name of that OEM's
+internal material number (originally a company-specific key). All example values are fictional.*
