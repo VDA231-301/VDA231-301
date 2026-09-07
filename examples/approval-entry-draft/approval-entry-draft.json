@@ -7,7 +7,8 @@
   "ApprovalType": "Listing",
   "Subject": {
     "SubjectMaterialSourceID": "b1a00000-1111-4111-8111-000000000001",
-    "MaterialName": "PP-GF30",
+    "MaterialName": "Glass fibre reinforced Polypropylene",
+    "MaterialClass": "PP-GF30",
     "TradeName": "Example PP-GF30 Grade A",
     "Supplier": {
       "Identifier": "111111111",
