@@ -45,12 +45,12 @@ supports several regulations per material/surface, and reuses one consistent str
 both materials and surfaces.
 
 The generic schema v3.0.0 provides the `Specification` entity
-(`Type`, `Number`, `Subnumber`, `IssueDate`, `Title`, `FeatureText`, `FeatureList`,
+(`Type`, `Number`, `SubNumber`, `IssueDate`, `Title`, `FeatureText`, `FeatureList`,
 `CharacteristicRequirements`, `DOI`, `ReferencedSpecifications`). Norm information is
 aggregated as follows:
 
 * `MAT_02`/`SUR_02` (regulation type)    -> `Specification.Type`
-* `MAT_03`/`SUR_03` (regulation number)  -> `Specification.Number` (+ `Subnumber`)
+* `MAT_03`/`SUR_03` (regulation number)  -> `Specification.Number` (+ `SubNumber`)
 * `MAT_05`/`SUR_05` (issue date)         -> `Specification.IssueDate`
 * `MAT_06`/`SUR_06` (short name)          -> `ComponentMaster.MaterialClass` (see ADR 0008);
   `Specification.Title` holds the title of the norm itself, not the material short name
@@ -63,7 +63,7 @@ The `MAT_01`/`SUR_01` internal identifier is not part of the `Specification`; it
 `ComponentMaster` as a typed identifier (see ADR 0009), together with norm-defined identifiers
 such as the steel material number.
 
-The split of the combined source string into `Type` / `Number` / `Subnumber` follows the
+The split of the combined source string into `Type` / `Number` / `SubNumber` follows the
 documented parsing rules (longest-known-prefix match; `.` = internal execution/issue status,
 `-` = part of a DIN/EN standard). The issue date (`_05`) maps directly to the mandatory
 `Specification.IssueDate` field.
