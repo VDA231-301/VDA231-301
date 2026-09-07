@@ -85,5 +85,7 @@ item unless an entry has a different owner.
 ## More Information
 
 Related: ADR 0006 (norm aggregation; `MAT_01` not part of `Specification`), ADR 0008 (short name
-to `MaterialClass`). Standards: EN 10027-1 (steel names), EN 10027-2 (steel numbers). The field
-names `IdentifierType` / `DefiningStandard` are proposals; the released schema takes precedence.
+to `MaterialClass`), ADR 0010 (applies this typed-identifier pattern to `MaterialSource` for the
+concrete-material level). Standards: EN 10027-1 (steel names), EN 10027-2 (steel numbers). The
+field names `IdentifierType` / `DefiningStandard` and the value `OEMMATID` are proposals; the
+released schema takes precedence.
