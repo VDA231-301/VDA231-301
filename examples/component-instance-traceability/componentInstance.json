@@ -3,11 +3,16 @@
   "_type": "ComponentMaster",
   "Designation": "Interior Trim Component",
   "SupplierPartNumber": "SUP-TRIM-003",
-  "MaterialName": "PP-GF30",
+  "MaterialGroup": "Thermoplast",
+  "MaterialClass": "PP-GF30",
+  "MaterialName": "Glass fibre reinforced Polypropylene",
   "OemIdentifier": "OEM",
   "Version": "0001",
   "MaterialIdentifiers": [
-    "MAT-PPGF30-001"
+    {
+      "IdentifierType": "OEMMATID",
+      "Value": "OEM111ALAHJD"
+    }
   ],
   "Instances": [
     {
@@ -61,4 +66,3 @@
   ],
   "Comment": "Example demonstrating how several produced parts (ComponentInstances) of the same component carry individual production traceability information."
 }
-
