@@ -1,4 +1,4 @@
-# The abbreviated material designation is mapped to ComponentMaster.MaterialClass
+# The abbreviated material designation is mapped to MaterialClass (ComponentMaster and MaterialSource)
 
 Status: accepted
 
@@ -9,36 +9,49 @@ VDA 231-300 carries the abbreviated material designation ("Werkstoffkurzbezeichn
 `AlMg2Mn0,8`. In the CAD material list this is a dedicated column ("Werkstoffkurzbezeichnung").
 
 This designation is not the title of the norm, and it is not a unique key: many different
-materials (with different SRM identifiers) share the same short designation (e.g. several
-materials named `ABS`). It therefore does not belong to `Specification.Title` and is not, on
-its own, an identifier.
+materials (with different identifiers) share the same short designation (e.g. several materials
+named `ABS`). It therefore does not belong to `Specification.Title` and is not, on its own, an
+identifier.
+
+The abbreviated designation is needed not only on the `ComponentMaster` (the material being
+described) but also wherever a material is referenced as a source, e.g. in a `Subject` /
+`MaterialSource` structure (approval / listing / multiple-source scenarios). A single, consistent
+target field is required across these places.
 
 ## Decision Drivers
 
-* The abbreviated designation must have exactly one defined target on the `ComponentMaster`.
+* The abbreviated designation must have exactly one defined target field, used consistently
+  wherever a material is described or referenced (component master and material source).
 * The same field must carry both coarse (`ABS`) and fine (`CuZn37Mn3Al2PbSi`) designations.
 * The field definition must reference the family-specific designation standards so the value
   stays interpretable.
 * `Specification.Title` must remain reserved for the norm's own title.
-* The SRM identifier and the material number remain identifying keys (see ADR 0009) and must
-  not be conflated with the designation.
+* Identifiers (internal OEM key, material number, see ADR 0009) must not be conflated with the
+  designation, nor with the commercial `TradeName`.
 
 ## Considered Options
 
 * Map the abbreviated designation to `Specification.Title`.
-* Map it to `ComponentMaster.MaterialIdentifiers`.
-* Map it to `ComponentMaster.MaterialName`.
-* Map it to `ComponentMaster.MaterialClass`.
+* Map it to `MaterialIdentifiers`.
+* Map it to `MaterialName`.
+* Map it to `MaterialClass`, and use the same field on both `ComponentMaster` and
+  `Subject`/`MaterialSource`.
 
 ## Decision Outcome
 
-Chosen option: "Map the abbreviated material designation (`MAT_06_SHORT_NAME`) to
-`ComponentMaster.MaterialClass`".
+Chosen option: "Map the abbreviated material designation (`MAT_06_SHORT_NAME`) to `MaterialClass`,
+consistently on `ComponentMaster` and on `Subject`/`MaterialSource`".
 
 The field `MaterialClass` is hereby defined to contain exactly the abbreviated material
-designation as carried in VDA 231-300 `MAT_06_SHORT_NAME`. The previous reference to VDA 231-200
-on this field is removed: the content of `MaterialClass` is defined by this ADR, not by
-VDA 231-200.
+designation as carried in VDA 231-300 `MAT_06_SHORT_NAME`. It applies wherever a material is
+described or referenced:
+
+* `ComponentMaster.MaterialClass` — the material being described.
+* `Subject.MaterialClass` / `MaterialSource.MaterialClass` — a referenced/approved material
+  source (approval, listing, multiple-source scenarios).
+
+The previous reference to VDA 231-200 on this field is removed: the content of `MaterialClass`
+is defined by this ADR, not by VDA 231-200.
 
 The abbreviated designation is formed according to a family-specific designation standard:
 
@@ -57,20 +70,28 @@ The abbreviated designation is formed according to a family-specific designation
 Distinction from neighbouring fields:
 
 * `MaterialGroup` (VDA 231-106) holds the classification group (e.g. steel, thermoplast).
-* `MaterialIdentifiers` holds the identifying keys (SRM `MAT_01`, and norm-defined numbers such
-  as the steel material number per EN 10027-2); see ADR 0009.
+* `MaterialName` holds the descriptive, human-readable material name
+  (e.g. "Glass fibre reinforced Polypropylene").
+* `MaterialIdentifiers` holds the identifying keys (internal OEM key, and norm-defined numbers
+  such as the steel material number per EN 10027-2); see ADR 0009.
+* `TradeName` (on a material source) holds the commercial product name of a specific supplier
+  grade; it is not the abbreviated designation.
 * `Specification.Title` holds the title of the norm.
 * `MaterialClass` holds the abbreviated material designation as defined here.
 
 ## Consequences
 
 * Good, because the abbreviated designation has one defined target that works for both coarse
-  and fine values.
+  and fine values, and is identical on `ComponentMaster` and `MaterialSource`.
 * Good, because the designation standards are named explicitly, so the value stays interpretable
   and parseable per family (the family is available via `MaterialGroup`).
-* Good, because `Specification.Title` and `MaterialIdentifiers` keep clean semantics.
+* Good, because `MaterialName`, `TradeName`, `MaterialIdentifiers` and `Specification.Title` keep
+  clean, non-overlapping semantics.
 * Neutral, because `MaterialClass` no longer refers to VDA 231-200; its content is defined solely
   by this ADR. Consuming systems that expected a VDA 231-200 classification here must be adjusted.
+* Neutral, because adding `MaterialClass` to `Subject`/`MaterialSource` is a schema addition on
+  those structures; where they are still discussion drafts (e.g. approval entries), the field is
+  adopted as part of that ongoing work.
 
 ## More Information
 
