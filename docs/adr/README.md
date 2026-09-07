@@ -28,3 +28,4 @@ The records follow the MADR (Markdown Architectural Decision Records) format.
 | 0008 | [abbreviated-material-designation-to-materialclass](0008-abbreviated-material-designation-to-materialclass.md) | accepted | 
 | 0009 | [typed-material-identifiers-no-duplication](0009-typed-material-identifiers-no-duplication.md) | accepted |
 | 0010 | [materialsource-typed-identifiers](0010-materialsource-typed-identifiers.md) | proposed |
+| 0011 | [approvalentry-links-generic-material-oemmatid](0011-approvalentry-links-generic-material-oemmatid.md) | proposed |
