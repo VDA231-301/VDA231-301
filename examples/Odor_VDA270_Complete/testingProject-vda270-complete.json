@@ -52,8 +52,9 @@
       "_id": "bbbbbbbb-0002-4002-8002-0000000000c1",
       "_type": "ComponentMaster",
       "Designation": "Door Trim Panel",
-      "MaterialName": "Glas fiber reinforced Polypropylen x01",
+      "MaterialGroup": "Thermoplast",
       "MaterialClass": "PP-GF30",
+      "MaterialName": "Glass fibre reinforced Polypropylene",
       "OemIdentifier": "OEM",
       "Version": "0001",
       "MaterialIdentifiers": [
@@ -180,4 +181,6 @@
       ],
       "Assessment": "Passed",
       "Comment": "Complete example following VDA 270:2022 section 9. Three assessors grade the specimen (3.5, 3.5, 4.0). The individual grades differ by 0.5 (<= 2 grades), so three assessors are sufficient. The reported grade is the arithmetic mean rounded to half grades (3.5) and meets the requirement (max 3.5). All values are illustrative."
+    }
+  ]
 }
