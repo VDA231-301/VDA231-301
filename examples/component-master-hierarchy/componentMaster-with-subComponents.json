@@ -12,7 +12,9 @@
       "_type": "ComponentMaster",
       "Designation": "Door Trim Panel",
       "SupplierPartNumber": "SUP-TRIM-001",
-      "MaterialName": "PP-GF30",
+      "MaterialGroup": "Thermoplast",
+      "MaterialClass": "PP-GF30",
+      "MaterialName": "Glass fibre reinforced Polypropylene",
       "OemIdentifier": "OEM",
       "Version": "0001",
       "MaterialIdentifiers": [
@@ -28,7 +30,9 @@
       "_type": "ComponentMaster",
       "Designation": "Loudspeaker Grille",
       "SupplierPartNumber": "SUP-GRILLE-001",
-      "MaterialName": "ABS",
+      "MaterialGroup": "Thermoplast",
+      "MaterialClass": "ABS",
+      "MaterialName": "Acrylnitril-Butadien-Styrol-Copolymer",
       "OemIdentifier": "OEM",
       "Version": "0001",
       "MaterialIdentifiers": [
