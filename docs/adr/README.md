@@ -27,3 +27,4 @@ The records follow the MADR (Markdown Architectural Decision Records) format.
 | 0007 | [material-characteristics-read-out-logic](0007-material-characteristics-read-out-logic.md) | accepted | 
 | 0008 | [abbreviated-material-designation-to-materialclass](0008-abbreviated-material-designation-to-materialclass.md) | accepted | 
 | 0009 | [typed-material-identifiers-no-duplication](0009-typed-material-identifiers-no-duplication.md) | accepted |
+| 0010 | [materialsource-typed-identifiers](0010-materialsource-typed-identifiers.md) | proposed |
