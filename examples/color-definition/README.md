@@ -113,6 +113,14 @@ provided as a human-readable label.
 This example intentionally does not model color-dependent requirements. Its
 only purpose is the unambiguous definition and identification of colors.
 
+## Source of Truth and References
+
+- The approved color definitions are maintained in
+  `ComponentMaster.Colors`.
+- `ComponentInstance.ColorID` references the color actually used for a
+  produced part.
+- The `ComponentInstance` does not define or duplicate the color.
+
 ## JSON Example
 
 See `componentMaster-with-color.json`.
