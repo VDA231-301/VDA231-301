@@ -1,135 +1,114 @@
 # Approval Entry
 
+## Status
+
+Discussion proposal.
+
+`ApprovalEntry` and all approval-related structures used in this example are
+not part of the released VDA 231-301 generic schema v3.0.0. The JSON file is
+intentionally not schema-conformant.
+
+All names, values, dates, identifiers, suppliers, locations, production lines
+and approval information are fictional and illustrative.
+
 ## Business Scenario
 
 Material approval and listing information has its own lifecycle and must remain
 traceable independently of material master data and product data.
 
-An approval or listing does not necessarily apply to a general material such as
-PP-GF30 as a whole. It may apply to a specific trade type from a specific
-material source and may be restricted to:
+An approval does not necessarily apply to PP-GF30 as a whole. It can apply to a
+specific supplier material and can be restricted by:
 
-- a material specification or product version
-- a geographic region
-- a production location
-- a specific production line
-- a defined validity period
+- the applicable specification and product version
+- geographic scope
+- production location and production line
+- validity period
 
-Different material sources for the same general material can therefore have
-different approval statuses, scopes and validity periods.
-
-This example illustrates how an independent approval entry could reference a
-specific material source from the related
-material-catalog-entry/README.md.
-
-All names, values, dates, identifiers, suppliers, locations, production lines
-and approval information are fictional and fully anonymized.
-
-> **Important:** The structures shown in this example are discussion proposals.
-> `ApprovalEntry` and its related attributes are not part of the released
-> VDA 231-301 generic schema v3.0.0. The JSON file is intentionally not
-> schema-conformant.
+The example represents one listing decision for `Example PP-GF30 Grade A` from
+`Supplier A`.
 
 ## Objective
 
-This example demonstrates how approval and listing information could be
-represented as an independent and referencable business object.
+This example demonstrates how approval information could be represented as an
+independent and referencable business object.
 
-The proposed approach separates:
+The proposal separates:
 
-1. the reusable material definition
-2. the supplier- and trade-name-specific material source
-3. the approval or listing decision
-4. the use of the material in a PLM or product context
+- the generic material definition
+- the concrete supplier-specific `MaterialSource`
+- the approval or listing decision
+- the use of the material in a product or PLM context
 
-This separation allows material master data, approval information and product
-data to be maintained in separate systems while remaining connected through
-stable identifiers.
+## When to Use This Example
 
-The example focuses on one anonymized listing scenario. It does not define a
-complete approval model for all possible approval types.
+Use this example as a discussion basis when:
+
+- an approval or listing decision requires its own lifecycle
+- a decision applies to a concrete supplier material
+- the generic material must remain identifiable
+- current status and status history must be distinguished
+- geographic and production restrictions must be represented separately
+- a validity period and supporting documents are required
+
+Do not use this example as evidence that the proposed fields are available in
+the released generic schema v3.0.0.
+
+Use the **Material Catalog Entry** example for the generic material definition
+and its possible supplier-specific sources.
+
+Use the **Multiple Source Material** example when the primary concern is the
+source actually used for a produced part.
 
 ## Example Overview
 
-The draft represents a listing entry for:
+The draft JSON represents:
 
-| Information | Example value |
-|---|---|
-| Material (short name) | PP-GF30 |
-| Trade name | Example PP-GF30 Grade A |
-| Supplier | Supplier A |
-| Approval process | X |
-| Approval type | Listing |
-| Current status | Listed |
-| Applicable specification | OEM-POLYMER-STD-1000, product version 90 |
-| Geographic scope | China |
-| Production scope | Example Production Site China, Production Line 4 |
-| Validity | 2026-01-15 to 2028-01-14 |
+- approval type: `Listing`
+- approval process: `X`
+- current status: `Listed`
+- generic material reference: `OEMMATID` with value `OEM111ALAHJD`
+- concrete source reference: `b1a00000-1111-4111-8111-000000000001`
+- material class: `PP-GF30`
+- material name: `Glass fibre reinforced Polypropylene`
+- trade name: `Example PP-GF30 Grade A`
+- supplier: `Supplier A`, identified by DUNS `111111111`
+- applicable specification: `OEM-POLYMER-STD-1000`, product version `90`
+- geographic scope: China
+- production scope: Example Production Site China, Production Line 4
+- validity: 2026-01-15 to 2028-01-14
+- one supporting listing document
 
-The value `X` is an anonymized placeholder for the approval process. It does not
-define or disclose a specific company-internal process.
-
-## Referenced Material Source
-
-The approval entry refers to a material source in the related
-material-catalog-entry/componentMaster-catalog-entry.json.
-
-The referenced material source is:
-
-```json
-{
-  "_id": "b1a00000-1111-4111-8111-000000000001",
-  "_type": "MaterialSource",
-  "MaterialName": "Glass fibre reinforced Polypropylene",
-  "MaterialClass": "PP-GF30",
-  "TradeName": "Example PP-GF30 Grade A"
-}
-```
-
-The approval entry references this source through:
-
-```json
-"SubjectMaterialSourceID": "b1a00000-1111-4111-8111-000000000001"
-```
-
-The approval decision therefore applies to this specific material source and
-trade type. The approval entry additionally records the **generic material** it approves this source
-for, via `ApprovedForMaterial` (OEMMATID / QEV). The concrete source (`Subject`) and the
-generic material (`ApprovedForMaterial`) are two distinct levels; see ADR 0011 and the
-Material Identification Concepts document.
-
-It does not automatically apply to:
-
-- every PP-GF30 material
-- every trade type
-- every supplier
-- every production location
-- every specification or application
+The value `X` is an anonymized placeholder. It does not define a specific
+company-internal approval process.
 
 ## Relevant Entities
 
-The example proposes the following entities:
+### ApprovalEntry
 
-- `ApprovalEntry`
-  - an independent approval or listing record
+The independent approval or listing record and root object of the example.
 
-- `ApprovalStatusEvent`
-  - one documented status change in the approval lifecycle
+### ApprovalStatusEvent
 
-- `GeographicScope`
-  - the geographic applicability of the approval decision
+One event in the proposed approval lifecycle. The example contains three status
+events: `Submitted`, `UnderEvaluation` and `Listed`.
 
-- `ProductionScope`
-  - the production-specific applicability of the approval decision
+### GeographicScope
 
-- `Location`
-  - the relevant production location
+The geographic applicability of the approval. The example contains one scope of
+type `WorldRegion` with code `CHINA`.
 
-- `DocumentReference`
-  - a reference to a supporting approval or listing document
+### ProductionScope
 
-These entities are discussion proposals and are not part of the released generic
-schema v3.0.0.
+The production-specific applicability of the approval. The example contains one
+production location and one production line.
+
+### Location
+
+The production location to which the approval applies.
+
+### DocumentReference
+
+A reference to a supporting listing document.
 
 ## Relevant Attributes
 
@@ -141,308 +120,236 @@ schema v3.0.0.
 - `ApprovalEntry.ApprovalType`
 - `ApprovalEntry.ListingId`
 
-### Approved Material (generic)
+### Generic Material Reference
 
 - `ApprovalEntry.ApprovedForMaterial`
-- `ApprovedForMaterial.IdentifierType`
-- `ApprovedForMaterial.Value`
+- `ApprovalEntry.ApprovedForMaterial.IdentifierType`
+- `ApprovalEntry.ApprovedForMaterial.Value`
 
-### Approval Subject
+### Concrete Approval Subject
 
 - `ApprovalEntry.Subject`
-- `Subject.SubjectMaterialSourceID`
-- `Subject.MaterialName`
-- `Subject.MaterialClass`
-- `Subject.TradeName`
-- `Subject.Supplier`
+- `ApprovalEntry.Subject.SubjectMaterialSourceID`
+- `ApprovalEntry.Subject.MaterialName`
+- `ApprovalEntry.Subject.MaterialClass`
+- `ApprovalEntry.Subject.TradeName`
+- `ApprovalEntry.Subject.Supplier.Identifier`
+- `ApprovalEntry.Subject.Supplier.IdentifierType`
+- `ApprovalEntry.Subject.Supplier.Name`
 
 ### Status and Lifecycle
 
 - `ApprovalEntry.CurrentStatus`
-- `ApprovalEntry.StatusHistory`
-- `ApprovalStatusEvent.Status`
-- `ApprovalStatusEvent.EffectiveFrom`
-- `ApprovalStatusEvent.Comment`
+- `ApprovalEntry.StatusHistory[]`
+- `ApprovalEntry.StatusHistory[].Status`
+- `ApprovalEntry.StatusHistory[].EffectiveFrom`
+- `ApprovalEntry.StatusHistory[].Comment`
 
 ### Applicability
 
 - `ApprovalEntry.ApplicableSpecification`
 - `ApprovalEntry.ApprovalScope`
-- `ApprovalScope.GeographicScopes`
-- `ApprovalScope.ProductionScopes`
-- `ProductionScope.ProductionLocation`
-- `ProductionScope.ProductionLine`
+- `ApprovalEntry.ApprovalScope.GeographicScopes[]`
+- `ApprovalEntry.ApprovalScope.GeographicScopes[].ScopeType`
+- `ApprovalEntry.ApprovalScope.GeographicScopes[].Code`
+- `ApprovalEntry.ApprovalScope.GeographicScopes[].Designation`
+- `ApprovalEntry.ApprovalScope.GeographicScopes[].CodeAuthority`
+- `ApprovalEntry.ApprovalScope.ProductionScopes[]`
+- `ApprovalEntry.ApprovalScope.ProductionScopes[].ProductionLocation`
+- `ApprovalEntry.ApprovalScope.ProductionScopes[].ProductionLine`
 
 ### Validity and Traceability
 
 - `ApprovalEntry.ValidityPeriod`
-- `ValidityPeriod.ValidFrom`
-- `ValidityPeriod.ValidUntil`
-- `ApprovalEntry.RelatedApprovalEntries`
-- `ApprovalEntry.ReferenceDocuments`
+- `ApprovalEntry.ValidityPeriod.ValidFrom`
+- `ApprovalEntry.ValidityPeriod.ValidUntil`
+- `ApprovalEntry.RelatedApprovalEntries[]`
+- `ApprovalEntry.ReferenceDocuments[]`
+
+## JSON Structure Confirmed by This Example
+
+The JSON contains:
+
+- one `ApprovedForMaterial` object
+- one `Subject` object
+- three entries in `StatusHistory[]`
+- one `ApplicableSpecification`
+- one entry in `GeographicScopes[]`
+- one entry in `ProductionScopes[]`
+- one `ValidityPeriod`
+- an empty `RelatedApprovalEntries[]` list
+- one entry in `ReferenceDocuments[]`
+
+The empty `RelatedApprovalEntries[]` list demonstrates the proposed property,
+but not a concrete predecessor or successor relationship.
 
 ## Modelling Decisions
 
 ### Independent Approval Object
 
-The approval entry is modelled as an independent business object rather than as
-an embedded attribute of `ComponentMaster` or `MaterialSource`.
+The approval is represented as an independent `ApprovalEntry`, not as approval
+fields embedded in `ComponentMaster` or `MaterialSource`.
 
-This supports separate ownership and lifecycle management for:
+This allows material master data, approval lifecycle data and product data to be
+maintained independently.
 
-- material master data
-- approval and listing information
-- product and application data
+### Generic Material and Concrete Source Remain Separate
 
-A material database can maintain the material definition and its possible
-sources. An approval system can maintain the approval lifecycle. A PLM system
-can reference the material source and the applicable approval entry without
-owning the complete approval history.
-
-### Approval Refers to a Material Source
-
-The approval entry refers to a specific `MaterialSource`.
-
-This is necessary because different trade types or suppliers for the same
-general material can have different:
-
-- approval statuses
-- geographic scopes
-- production scopes
-- validity periods
-- applicable specifications
-
-The existence of a `MaterialSource` does not by itself mean that the source is
-formally approved or listed.
-
-### Approval Links to the Generic Material (OEMMATID)
-
-In addition to the concrete `MaterialSource` (via `SubjectMaterialSourceID`), the approval
-entry links to the **generic material** it approves a source for, using the OEMMATID
-(at OEM01 the PEW number):
-
-```json
-"ApprovedForMaterial": {
-  "IdentifierType": "OEMMATID",
-  "Value": "OEM111ALAHJD"
-}
-```
-
-### Material Name and Material Class
-
-Following ADR 0008, the abbreviated material designation is carried in
-`MaterialClass`, while `MaterialName` holds the spoken-out material name:
-
-```json
-"MaterialName": "Glass fibre reinforced Polypropylene",
-"MaterialClass": "PP-GF30"
-```
-
-`TradeName` remains the supplier's commercial name for the material source and is
-distinct from both `MaterialName` and `MaterialClass`.
-
-### Approval Process and Approval Type
-
-The example separates the approval process from the approval type:
-
-```json
-"ApprovalProcess": "X",
-"ApprovalType": "Listing"
-```
-
-`ApprovalProcess` identifies the applicable process using an anonymized value.
-
-`ApprovalType` identifies the kind of approval record represented by the
-example.
-
-The example does not decide whether all future approval types should use the
-same `ApprovalEntry` entity or specialized entities based on a common approval
-concept.
-
-### Complete Status History
-
-The example distinguishes the current status from the complete status history.
-
-The current status is:
-
-```json
-"CurrentStatus": "Listed"
-```
-
-The path to the current status is documented through:
-
-```text
-Submitted
-    ↓
-UnderEvaluation
-    ↓
-Listed
-```
-
-The proposed status values for discussion include:
-
-- `Draft`
-- `Submitted`
-- `UnderEvaluation`
-- `Listed`
-- `Suspended`
-- `Expired`
-- `Withdrawn`
-- `Rejected`
-
-A general value such as `NotListed` is intentionally not used because it does
-not explain why no valid listing is available.
-
-These status values are discussion proposals and are not part of the released
-generic schema v3.0.0.
-
-### Geographic and Production Scope
-
-Geographic applicability and production-specific applicability are modelled
-separately.
-
-The proposed geographic scope can represent, for example:
-
-- a world region
-- a country
-- another defined geographic area
-
-The proposed production scope can represent:
-
-- a production location
-- a production location and a specific production line
-
-A production location or production line is optional. These elements are used
-only when the approval decision is restricted to that production context.
-
-A listing can therefore apply:
-
-- to a geographic region without a specific production location
-- to one production location
-- to one production line at a specific location
-- to a combination of geographic and production scopes
-
-### Applicable Specification
-
-The approval entry references the material specification and product version to
-which the listing applies.
+`ApprovalEntry.ApprovedForMaterial` references the generic material through its
+`OEMMATID` business key.
 
 The example uses:
 
-```text
-Standard: OEM-POLYMER-STD-1000
-Product version: 90
-Issue date: 2026-01
-```
+- `IdentifierType`: `OEMMATID`
+- `Value`: `OEM111ALAHJD`
 
-The specification reference is aligned with the specification assigned to
-`Example PP-GF30 Grade A` in the related material catalog entry.
+The `OEMMATID` is owned by the generic material on `ComponentMaster`. The
+`ApprovalEntry` references it and does not become a second editable source.
 
-This prevents the listing from being interpreted as a general approval of the
-trade type for every possible requirement profile or application.
+`ApprovalEntry.Subject.SubjectMaterialSourceID` references the concrete
+supplier-specific material source.
+
+The proposal therefore preserves two levels:
+
+- generic material: referenced by `ApprovedForMaterial`
+- concrete supplier material: referenced by `SubjectMaterialSourceID`
+
+At OEM01, the `OEMMATID` is called the PEW number.
+
+The field name and structure of `ApprovedForMaterial` are first proposals and
+can change. A future released schema takes precedence.
+
+### Material Name, Material Class and Trade Name
+
+Following ADR 0008:
+
+- `MaterialClass` contains `PP-GF30`
+- `MaterialName` contains `Glass fibre reinforced Polypropylene`
+- `TradeName` contains `Example PP-GF30 Grade A`
+
+These concepts must not be used interchangeably.
+
+### Current Status and Status History
+
+`ApprovalEntry.CurrentStatus` contains the current status `Listed`.
+
+`ApprovalEntry.StatusHistory[]` contains the sequence:
+
+1. `Submitted`, effective 2025-11-10
+2. `UnderEvaluation`, effective 2025-12-01
+3. `Listed`, effective 2026-01-15
+
+The listed status values are discussion values, not a released controlled
+vocabulary.
+
+### Applicable Specification
+
+The approval applies to:
+
+- type: `MaterialStandard`
+- number: `OEM-POLYMER-STD-1000`
+- subnumber: `90`
+- issue date: `2026-01`
+
+This prevents the listing from being interpreted as approval for every possible
+specification or application.
+
+### Geographic and Production Scope
+
+The geographic scope is modelled separately from the production scope.
+
+The current JSON contains:
+
+- geographic scope type: `WorldRegion`
+- geographic code: `CHINA`
+- geographic designation: `China`
+- code authority: `OEM`
+- production location: `Example Production Site China`
+- production line identifier: `LINE-04`
+- production line designation: `Production Line 4`
 
 ### Time-Limited Validity
 
-The example contains a defined validity period:
+The validity period contains:
 
-```json
-"ValidityPeriod": {
-  "ValidFrom": {
-    "Date": "2026-01-15"
-  },
-  "ValidUntil": {
-    "Date": "2028-01-14"
-  }
-}
-```
+- `ValidFrom`: 2026-01-15
+- `ValidUntil`: 2028-01-14
 
-`ValidUntil` should remain optional because not every approval entry necessarily
-has a predefined end date.
-
-The absence of `ValidUntil` does not mean that an approval remains valid under
-all circumstances. Approval-relevant changes may require a new approval
-decision.
+The example does not decide whether `ValidUntil` must be mandatory in a future
+schema.
 
 ### Versioning
 
-The approval entry can carry its own version:
+The `ApprovalEntry` has its own proposed version, `0001`.
 
-```json
-"Version": "0001"
-```
+This version is independent of:
 
-Versioning is proposed as an optional capability.
-
-The version of the approval entry is independent of:
-
-- the version of the material definition
-- the version of the applicable material specification
+- the version of the generic material definition
+- the version of the applicable specification
 - the version or change status of a component in a PLM system
 
-### Successor Relationships
+### Related Approval Entries
 
-An existing approval entry is not overwritten when a relevant change requires a
-new approval decision.
+`ApprovalEntry.RelatedApprovalEntries` is empty in the current JSON.
 
-A later approval entry can refer to the previous entry using:
+The property is intended to support predecessor or successor relationships, but
+this JSON does not demonstrate such a relationship.
 
-```json
-"RelatedApprovalEntries": [
-  {
-    "ApprovalEntryID": "previous-approval-entry-id",
-    "RelationType": "Supersedes"
-  }
-]
-```
+### Reference Document
 
-The previous entry remains available with its original:
+The current JSON contains one `DocumentReference`:
 
-- status history
-- approval scope
-- validity period
-- specification reference
-- supporting documents
+- document type: `ListingDocument`
+- document identifier: `LIST-DOC-PPGF30-2026-001`
+- title: `Listing for PP-GF30 Grade A`
+- issue date: 2026-01-15
 
-### No Evaluating Person
-
-The example does not include an `ApprovedBy`, `Evaluator` or similar
-person-related attribute.
-
-The current business scenario does not require the evaluating person to be
-documented.
-
-### Reference Documents
-
-The approval entry contains a reference to an illustrative listing document.
-
-The supporting document is referenced rather than embedded in the approval
-entry. This allows the approval object and the supporting document to remain
-independent while still being traceable.
+The document is referenced rather than embedded.
 
 ### Material Properties Remain Outside the Approval Entry
 
-Material properties and sustainability information are not duplicated in the
-approval entry.
+The JSON does not duplicate material properties or sustainability information
+in the `ApprovalEntry`.
 
-They remain associated with the related material catalog information. The
-approval entry references the applicable material source and specification.
+Those data remain associated with the related material catalog information.
+
+## Source of Truth and References
+
+- The generic material definition and its `OEMMATID` are maintained on the
+  related `ComponentMaster`.
+- `ApprovalEntry.ApprovedForMaterial` references the generic material through
+  its `OEMMATID`.
+- The concrete supplier material is maintained as a `MaterialSource` in the
+  related material catalog information.
+- `ApprovalEntry.Subject.SubjectMaterialSourceID` references the concrete
+  `MaterialSource` to which the approval applies.
+- `ApprovalEntry.Subject` contains the descriptive subject data used by this
+  draft.
+- The independent approval decision is maintained in `ApprovalEntry`.
+- The current state is maintained in `ApprovalEntry.CurrentStatus`.
+- The lifecycle history is maintained in `ApprovalEntry.StatusHistory[]`.
+- The applicable requirement profile is maintained in
+  `ApprovalEntry.ApplicableSpecification`.
+- Geographic and production applicability are maintained in
+  `ApprovalEntry.ApprovalScope`.
+- Temporal applicability is maintained in `ApprovalEntry.ValidityPeriod`.
+- Supporting document references are maintained in
+  `ApprovalEntry.ReferenceDocuments[]`.
+- Material properties and sustainability information remain outside the
+  `ApprovalEntry`.
 
 ## JSON Example
 
-- approval-entry.draft.json
-  - independent approval and listing discussion draft
-  - refers to one material source from the related material catalog example
-  - uses the anonymized approval process `X`
-  - contains status history, approval scope, validity and document references
-  - intentionally not schema-conformant
+See `approval-entry.draft.json`.
 
 ## Validation Status
 
-The file approval-entry.draft.json is intentionally
-not schema-conformant.
+`approval-entry.draft.json` is syntactically well-formed JSON, based on the
+content provided for this review.
 
-`ApprovalEntry` and its related entities and attributes are discussion proposals
-for a possible future extension of the VDA 231-301 data model.
+It is intentionally not schema-conformant because `ApprovalEntry` and its
+related entities and attributes are discussion proposals outside the released
+VDA 231-301 generic schema v3.0.0.
 
 The example must not be interpreted as:
 
@@ -451,30 +358,47 @@ The example must not be interpreted as:
 - a complete model for all approval types
 - a declaration of an actual material approval or listing
 
+The JSON file remains the technical reference for the proposed field paths,
+cardinalities and values.
+
 ## Related Examples
 
-- material-catalog-entry/README.md
-- material-catalog-entry/componentMaster-catalog-entry.json
-- material-catalog-entry/componentMaster-catalog-entry.draft.json
+- **Material Catalog Entry**  
+  Use this example for the generic material definition, possible material
+  sources, regional availability and material catalog business key.
+
+- **Multiple Source Material**  
+  Use this example when possible material sources and the source actually used
+  for a produced part have to be represented.
+
+- **Odor Test with Concrete Material Source**  
+  Use this draft example when a complete odor test must be linked to a concrete
+  supplier material and proposed material-source identifiers.
 
 ## Architectural References
 
-- approval information represented as an independent business object
-- material source referenced using `SubjectMaterialSourceID`
-- approval lifecycle represented using `CurrentStatus` and `StatusHistory`
-- geographic and production scopes represented separately
-- time-limited validity represented using `ValidityPeriod`
-- previous and subsequent approval entries connected using
-  `RelatedApprovalEntries`
-- supporting documents referenced using `ReferenceDocuments`
-- material short name carried in `MaterialClass` per ADR 0008
-- material properties and sustainability information retained outside the
-  approval entry
-- generic material referenced using `ApprovedForMaterial` (OEMMATID) per ADR 0011
+- Independent approval object: `ApprovalEntry`
+- Generic material reference: `ApprovalEntry.ApprovedForMaterial`
+- Generic material identifier type: `OEMMATID`
+- Concrete source reference:
+  `ApprovalEntry.Subject.SubjectMaterialSourceID`
+- Current state: `ApprovalEntry.CurrentStatus`
+- Complete lifecycle: `ApprovalEntry.StatusHistory[]`
+- Applicable specification: `ApprovalEntry.ApplicableSpecification`
+- Geographic and production scopes: `ApprovalEntry.ApprovalScope`
+- Time-limited validity: `ApprovalEntry.ValidityPeriod`
+- Proposed successor relationships: `ApprovalEntry.RelatedApprovalEntries[]`
+- Supporting documents: `ApprovalEntry.ReferenceDocuments[]`
+- ADR 0008: the abbreviated material designation is maintained in
+  `MaterialClass`
+- ADR 0009: the generic `OEMMATID` is owned by the generic material and is
+  referenced without creating a second editable source
+- ADR 0010: own identifiers of a concrete `MaterialSource` are a separate
+  proposed concept
+- ADR 0011: `ApprovedForMaterial` is proposed as the reference from an
+  `ApprovalEntry` to the generic material through `OEMMATID`
 
 ## Open Points
-
-The example identifies the following questions for further discussion:
 
 - Should `ApprovalEntry` provide a common base concept for different approval
   types?
@@ -489,5 +413,5 @@ The example identifies the following questions for further discussion:
 - Which metadata are required for supporting reference documents?
 - How should another system determine which approval entry applies to a
   particular material source, region and production context?
-- Is `ApprovedForMaterial` the right name and structure for the link to the generic
-  material (OEMMATID / QEV)?
+- Is `ApprovedForMaterial` the right name and structure for the link to the
+  generic material through `OEMMATID`?
