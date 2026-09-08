@@ -87,6 +87,8 @@ This example focuses on the following attributes:
 - `ComponentMaster.Designation`
 - `ComponentMaster.Version`
 - `ComponentMaster.MaterialName`
+- `ComponentMaster.MaterialGroup`
+- `ComponentMaster.MaterialClass`
 - `ComponentMaster.MaterialIdentifiers`
 - `ComponentMaster.Instances`
 - `ComponentInstance.SerialNumber`
@@ -189,7 +191,7 @@ before productive use.
 ## Architectural References
 
 - Entity: `ComponentMaster`
-- Entity: `ComponentInstance`
+- Entity: `ComponentInstance` (SerialNumber, ProductionBatchNumber, ProductionSite, Machine, Tool, Cavity, ProductionDate)
 - Container: `ComponentMaster.Instances`
 - Individual part identifier: `ComponentInstance.SerialNumber`
 - Batch reference: `ComponentInstance.ProductionBatchNumber`
@@ -200,3 +202,5 @@ before productive use.
   `ComponentInstance.Cavity` and
   `ComponentInstance.ProductionDate`
 - ADR 0002: `ComponentMaster.Version` is mandatory in component examples
+- ADR 0008 (abbreviated material designation to MaterialClass)
+- ADR 0009 (typed material identifiers)
