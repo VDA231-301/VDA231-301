@@ -77,13 +77,13 @@
     {
       "_id": "bbbbbbbb-0002-4002-8002-0000000000e0",
       "_type": "TestSeries",
-      "TestType": "Odor test VDA 270 C3",
+      "TestType": "Odor test",
       "ComponentMasterID": "bbbbbbbb-0002-4002-8002-0000000000c1",
       "TestingCenterID": "bbbbbbbb-0002-4002-8002-0000000000f0",
       "NumberOfExecutions": 1,
       "Specification": {
-        "Type": "TestStandard",
-        "Number": "VDA 270",
+        "Type": "VDA",
+        "Number": "270",
         "IssueDate": "2022-05",
         "Title": "Determination of the odour characteristics of trim materials in motor vehicles"
       },
