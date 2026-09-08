@@ -102,9 +102,9 @@ Material identifiers are typed objects (ADR 0009): each entry carries an
 `IdentifierType` (e.g. `OEMMATID` for the internal OEM material key) and a
 `Value`, so keys of different provenance remain distinguishable.
 
-The `Version` attribute represents the version / change status of the component
-definition (for example the drawing status, known as ZGS) and
-should always be provided when describing a component.
+The Version attribute represents the version of the component definition,
+known as a drawing or change status in an OEM PLM system, and should always
+be provided when describing a component.
 
 The color code is described together with its `CodeAuthority`, so that a code
 such as a RAL number can be interpreted unambiguously. The color name is
@@ -129,11 +129,16 @@ version should be performed before productive use.
 - Component Instance Traceability
 - Multiple Source Material
 
-## Architectural References
+### Architectural References
 
-- Entity: `Color` (Name, Code, CodeAuthority, AdditionalInformation)
-- Definition set: `ComponentMaster.Colors`
-- Reference: `ComponentInstance.ColorID`
-- Analogous pattern: `ComponentMaster.MaterialSources` / `ComponentInstance.MaterialSourceID`
-- ADR 0008 (abbreviated material designation to `MaterialClass`),
-  ADR 0009 (typed material identifiers)
+- Entity: Color (Name, Code, CodeAuthority, AdditionalInformation)
+- Definition set: ComponentMaster.Colors
+- Reference: ComponentInstance.ColorID
+- Analogous pattern: ComponentMaster.MaterialSources /
+  ComponentInstance.MaterialSourceID
+- ADR 0001 (definition sets on ComponentMaster, concrete assignments on
+  ComponentInstance)
+- ADR 0002 (ComponentMaster version mandatory)
+- ADR 0008 (abbreviated material designation to MaterialClass)
+- ADR 0009 (typed material identifiers)
+
