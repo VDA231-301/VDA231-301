@@ -20,7 +20,7 @@ This example demonstrates how approved colors are defined once at the
 `ComponentMaster` level using the `Color` entity, and how each produced
 `ComponentInstance` references its actual color via `ColorID`.
 
-### When to Use This Example
+## When to Use This Example
 
 Use this example when approved color variants for a component and the actual
 color of a specific produced part have to be represented.
@@ -67,19 +67,19 @@ color of the produced part by referencing one of the master's colors via
 
 This example focuses on the following attributes:
 
-- ComponentMaster.Designation
-- ComponentMaster.Version
-- ComponentMaster.MaterialGroup
-- ComponentMaster.MaterialClass
-- ComponentMaster.MaterialName
-- ComponentMaster.MaterialIdentifiers
-- ComponentMaster.Colors
-- Color.Name
-- Color.Code
-- Color.CodeAuthority
-- ComponentInstance.SerialNumber
-- ComponentInstance.ProductionBatchNumber
-- ComponentInstance.ColorID
+- `ComponentMaster.Designation`
+- `ComponentMaster.Version`
+- `ComponentMaster.MaterialGroup`
+- `ComponentMaster.MaterialClass`
+- `ComponentMaster.MaterialName`
+- `ComponentMaster.MaterialIdentifiers`
+- `ComponentMaster.Colors`
+- `Color.Name`
+- `Color.Code`
+- `Color.CodeAuthority`
+- `ComponentInstance.SerialNumber`
+- `ComponentInstance.ProductionBatchNumber`
+- `ComponentInstance.ColorID`
 
 ## Modelling Decisions
 
@@ -93,7 +93,7 @@ generic schema (v3.0.0) explicitly supports this:
   referencing one of the master's colors via `ColorID`.
 
 This separation keeps the `ComponentMaster` reusable across all color variants
-and avoids duplicating color definitions. A produced part does not invent a new
+and avoids duplicating color definitions. A produced part does not introduce a new
 color; it selects one of the colors that were defined and approved at master
 level. This makes the color of every delivered part consistent with the
 approved variant set.
@@ -128,8 +128,9 @@ only purpose is the unambiguous definition and identification of colors.
   `ComponentMaster.Colors`.
 - `ComponentInstance.ColorID` references the color actually used for a
   produced part.
-- The `ComponentInstance` does not define or duplicate the color.
-
+- The `ComponentInstance` does not define or duplicate the color. It references
+  one of the color definitions maintained on the related `ComponentMaster`.
+  
 ## JSON Example
 
 See `componentMaster-with-color.json`.
@@ -146,7 +147,7 @@ version should be performed before productive use.
 - Component Instance Traceability
 - Multiple Source Material
 
-### Architectural References
+## Architectural References
 
 - Entity: Color (Name, Code, CodeAuthority, AdditionalInformation)
 - Definition set: ComponentMaster.Colors
