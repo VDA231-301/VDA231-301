@@ -20,6 +20,15 @@ This example demonstrates how approved colors are defined once at the
 `ComponentMaster` level using the `Color` entity, and how each produced
 `ComponentInstance` references its actual color via `ColorID`.
 
+### When to Use This Example
+
+Use this example when approved color variants for a component and the actual
+color of a specific produced part have to be represented.
+
+Do not use this example to model color-dependent technical requirements. It
+only demonstrates the definition and identification of colors and the
+assignment of an approved color to a produced part.
+
 ## Learning Goals
 
 After reviewing this example, the reader should understand:
