@@ -2,106 +2,85 @@
 
 ## Business Scenario
 
-A component is used within a CAD assembly. To link the material and testing
-information to the exact occurrence of the component in the source CAD assembly
-structure, a stable reference is required. The Siemens JT Next Generation
-Identifier (NGID) provides such a reference through an `NGIDPath`.
+A component is used within a source CAD assembly.
 
-This allows the OEM and downstream systems to relate the VDA 231-301 data of a
-component to its position within the CAD assembly.
+To link material and testing information to the exact occurrence of the
+component in that assembly structure, a stable and machine-readable reference
+is required.
+
+The Siemens JT Next Generation Identifier, NGID, provides such a reference
+through an `NGIDPath`.
+
+The `NGIDPath` enables an OEM and downstream systems to relate the
+VDA 231-301 data of a component to its occurrence within the source CAD
+assembly structure.
 
 ## Objective
 
-This example demonstrates how a `ComponentMaster` is linked to its occurrence in
-a CAD assembly structure using `NGIDPath`.
+This example demonstrates how a `ComponentMaster` is linked to its occurrence
+in a source CAD assembly structure using `ComponentMaster.NGIDPath`.
+
+## When to Use This Example
+
+Use this example when:
+
+- a component must be related to its exact occurrence in a source CAD assembly
+- material or testing information must be linked to a CAD assembly occurrence
+- the same component definition can occur more than once in an assembly
+- the position of the component in the CAD structure must remain traceable
+- an NGID-compliant reference is available from the source CAD or JT data
+
+Do not use this example as the primary representation of:
+
+- a component hierarchy
+- a bill-of-material-like containment structure
+- individually produced parts
+- production traceability information
+- a material source assignment
+
+Use the **Component Master Hierarchy** example when a component structure has
+to be represented through `ComponentMaster.SubComponents`.
+
+Use the **Component Instance Traceability** example when production-related
+information for an individually manufactured part has to be represented through
+a `ComponentInstance`.
+
+An `NGIDPath` identifies an occurrence in the source CAD assembly structure.
+It does not replace the component hierarchy or the identity of an individually
+produced part.
 
 ## Learning Goals
 
 After reviewing this example, the reader should understand:
 
-- the purpose of `NGIDPath`
+- the purpose of `ComponentMaster.NGIDPath`
 - how an NGID path is structured
-- how a component is located within a CAD assembly structure
-- how NGID supports traceability between CAD data and material / testing data
+- which parts of the NGID path are fixed syntax
+- which parts contain values from the actual CAD assembly
+- how a component occurrence is located within a source CAD assembly
+- how NGID supports traceability between CAD data and VDA 231-301 material or
+  testing data
+- why `JT_PROP_NAME` is written literally and must not be treated as a
+  placeholder
 
 ## Relevant Entities
 
 ### ComponentMaster
 
-The component being described, including its reference to the CAD assembly
-occurrence via `NGIDPath`.
+The `ComponentMaster` represents the component being described.
+
+Its `NGIDPath` property contains the reference to the occurrence of the
+component within the source CAD assembly structure.
+
+The component identity and the CAD occurrence reference are different pieces
+of information:
+
+- the component is described by the `ComponentMaster`
+- the component occurrence in the CAD assembly is referenced by
+  `ComponentMaster.NGIDPath`
 
 ## Relevant Attributes
 
 This example focuses on the following attributes:
 
-- ComponentMaster.Designation
-- ComponentMaster.Version
-- ComponentMaster.MaterialName
-- ComponentMaster.MaterialIdentifiers
-- ComponentMaster.NGIDPath
-
-## Understanding the NGID path
-
-The value used in this example is:
-
-```
-$$NGID<chain>="JT_PROP_NAME"\0DoorAssembly.asm;0;2:\0DoorTrim.part;0;1:\0\0
-```
-
-It is built according to the Siemens "NGID Identifiers" specification:
-
-- `$$NGID<chain>="JT_PROP_NAME"` starts a path tier and selects the identifier
-  by which the nodes are named. `JT_PROP_NAME` is a fixed, reserved identifier
-  name from the NGID specification and is written literally (it is not a
-  placeholder to be replaced).
-- `\0` is the delimiter between the components of the path.
-- `DoorAssembly.asm;0;2:` and `DoorTrim.part;0;1:` are the node values in CADID
-  format: `name.type;version;instanceId`. The version field is optional; the
-  instance id is locally unique relative to the parent.
-- `\0\0` (a double delimiter) terminates the path.
-
-The node values (the CADID strings) are the parts that describe the actual CAD
-structure and are replaced with real values in productive data. The identifier
-name in quotes (`"JT_PROP_NAME"`) and the delimiters are part of the fixed
-syntax.
-
-## Modelling Decisions
-
-The `NGIDPath` follows the Siemens JT Next Generation Identifier (NGID)
-specification. This example uses the `JT_PROP_NAME` identifier with
-CADID-formatted node values, which matches the reference example provided by
-Siemens for a JT Open Toolkit generated NGID path.
-
-The specific node names, versions and instance ids used here are illustrative
-and only intended to demonstrate the structure, not to describe a specific real
-CAD assembly.
-
-The `Version` attribute represents the version / change status of the component
-definition (for example the drawing status, known as ZGS at Mercedes-Benz) and
-should always be provided when describing a component.
-
-## JSON Example
-
-See `componentMaster-with-ngid.json`.
-
-## Validation Status
-
-Aligned with the generic schema v3.0.0, in which `ComponentMaster.NGIDPath` is
-defined. The path structure follows the Siemens "NGID Identifiers"
-specification. Validation against the released schema version should be
-performed before productive use.
-
-## Related Examples
-
-- Simple Material Definition
-- Component Instance Traceability
-- Color Definition
-
-## Architectural References
-
-- Property: `ComponentMaster.NGIDPath`
-- Reference: Siemens JT Next Generation Identifier (NGID) specification
-- Path syntax: `$$NGID<chain>="identifier_name"\0<node values>\0\0`
-- Node value (CADID) format: `name.type;version;instanceId`
-
+- `ComponentMaster.
