@@ -73,9 +73,21 @@ The read-out logic is applied per token in this fixed order (first match wins):
 4. Otherwise a pure functional term -> Type E (preferably from a controlled list).
 5. Remaining, unclassifiable content -> `MAT_08` / `AdditionalInformation`, flagged as "not classified".
 
-For a requirement narrower than the value range of the product standard, the
-`CustomizedPropertyOfObjectSpecification` (OriginalValue / DeviationValue) is used instead of a
-plain `CharacteristicRequirements` entry.
+If an application-specific requirement deviates from the requirement defined
+by the referenced specification, the deviation is represented through the
+specification-customization structure provided by the released generic schema.
+
+The original requirement remains part of the referenced specification. The
+customization records both the original and the deviating requirement value so
+that the relationship remains traceable.
+
+This applies independently of whether the application-specific requirement is
+more restrictive or less restrictive than the original requirement.
+
+The exact entity and property names are determined by the released generic
+schema. An application-specific deviation is not represented as an independent
+plain `CharacteristicRequirements` entry if doing so would lose the explicit
+relationship to the original requirement.
 
 ## Consequences
 
