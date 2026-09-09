@@ -1,31 +1,27 @@
 {
   "_id": "77777777-7777-4777-8777-777777777777",
   "_type": "ComponentMaster",
-
-  "Designation": "Simple PP-GF30 Material Example",
-
+  "Designation": "Interior Trim Component",
   "SupplierPartNumber": "SUP-PPGF30-001",
-
-  "MaterialGroup": "Thermoplastics",
-
-  "MaterialClass": "Glass Fibre Reinforced Polypropylene",
-
-  "MaterialName": "PP-GF30",
-
+  "MaterialGroup": "Thermoplast",
+  "MaterialClass": "PP-GF30",
+  "MaterialName": "Glass fibre reinforced Polypropylene",
   "OemIdentifier": "OEM",
-
+  "Version": "0001",
   "MaterialIdentifiers": [
-    "MAT-PPGF30-001"
-  ],
-
+     {
+       "IdentifierType": "OEMMATID",
+       "Value": "OEM111ALAHJD"
+     }
+   ],
   "Specifications": [
     {
       "Type": "MaterialSpecification",
       "Number": "OEM-PP-GF30-SPEC",
       "IssueDate": "2026-01",
-      "Title": "Example OEM specification"
+      "Title": "Example OEM material specification for PP-GF30"
     }
   ],
-
-  "Comment": "Example material used for VDA 231-301 documentation."
+  "Comment": "Simple example material used to demonstrate the minimum structure of a ComponentMaster."
 }
+

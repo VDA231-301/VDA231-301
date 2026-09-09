@@ -1,0 +1,151 @@
+{
+  "_id": "b1b1b1b1-1111-4111-8111-111111111111",
+  "_type": "ComponentMaster",
+  "Designation": "Door Trim Panel",
+  "MaterialGroup": "Thermoplast",
+  "MaterialClass": "PP-GF30",
+  "MaterialName": "Glass fibre reinforced Polypropylene",
+  "OemIdentifier": "OEM",
+  "Version": "0001",
+  "MaterialIdentifiers": [
+    {
+      "IdentifierType": "OEMMATID",
+      "Value": "OEM111ALAHJD"
+    }
+  ],
+  "Specifications": [
+    {
+      "Type": "MaterialStandard",
+      "Number": "OEM-POLYMER-STD-1000",
+      "SubNumber": "90",
+      "IssueDate": "2026-01",
+      "Title": "Example OEM material standard for thermoplastic interior materials, product version 90 (glass fibre reinforced PP)"
+    }
+  ],
+  "Colors": [
+    {
+      "_id": "b1c00000-1111-4111-8111-000000000001",
+      "_type": "Color",
+      "Name": "Black",
+      "Code": "9005",
+      "CodeAuthority": "RAL"
+    }
+  ],
+  "MaterialSources": [
+    {
+      "_id": "b1a00000-1111-4111-8111-000000000001",
+      "_type": "MaterialSource",
+      "MaterialGroup": "Thermoplast",
+      "MaterialClass": "PP-GF30",
+      "MaterialName": "Glass fibre reinforced Polypropylene",
+      "TradeName": "Example PP-GF30 Grade A",
+      "Supplier": {
+        "_id": "b1b00000-1111-4111-8111-000000000001",
+        "_type": "Location",
+        "Identification": [
+          {
+            "Identifier": "111111111",
+            "Type": "DUNS"
+          }
+        ],
+        "Name": "Supplier A"
+      },
+      "Specification": {
+        "Type": "MaterialStandard",
+        "Number": "OEM-POLYMER-STD-1000",
+        "SubNumber": "90",
+        "IssueDate": "2026-01"
+      },
+      "AdditionalInformation": {
+        "_id": "b1d00000-1111-4111-8111-000000000001",
+        "_type": "InformationSet",
+        "Designation": "Regional availability",
+        "Attributes": [
+          {
+            "Property": "RegionEMEA",
+            "ValueType": "Text",
+            "Value": "production"
+          },
+          {
+            "Property": "RegionNAFTA",
+            "ValueType": "Text",
+            "Value": "warehouse"
+          },
+          {
+            "Property": "RegionAPAC",
+            "ValueType": "Text",
+            "Value": "warehouse"
+          }
+        ]
+      }
+    },
+    {
+      "_id": "b1a00000-1111-4111-8111-000000000002",
+      "_type": "MaterialSource",
+      "MaterialGroup": "Thermoplast",
+      "MaterialClass": "PP-GF30",
+      "MaterialName": "Glass fibre reinforced Polypropylene",
+      "TradeName": "Example PP-GF30 Grade B",
+      "Supplier": {
+        "_id": "b1b00000-1111-4111-8111-000000000002",
+        "_type": "Location",
+        "Identification": [
+          {
+            "Identifier": "222222222",
+            "Type": "DUNS"
+          }
+        ],
+        "Name": "Supplier B"
+      },
+      "Specification": {
+        "Type": "MaterialStandard",
+        "Number": "OEM-POLYMER-STD-1000",
+        "SubNumber": "90",
+        "IssueDate": "2026-01"
+      },
+      "AdditionalInformation": {
+        "_id": "b1d00000-1111-4111-8111-000000000002",
+        "_type": "InformationSet",
+        "Designation": "Regional availability",
+        "Attributes": [
+          {
+            "Property": "RegionAPAC",
+            "ValueType": "Text",
+            "Value": "production"
+          }
+        ]
+      }
+    }
+  ],
+  "MaterialProperties": {
+    "Density": {
+      "Value": 1.13,
+      "Unit": "g/cm^3"
+    },
+    "AshContent": {
+      "Value": 30.0,
+      "Unit": "%"
+    }
+  },
+  "Sustainability": {
+    "ShareVirgin": 100.0,
+    "ShareRecyclateMechanicalPIR": 0.0,
+    "ShareRecyclateMechanicalPCR": 0.0,
+    "ShareRecyclateChemical": 0.0,
+    "ShareBiocircular": 0.0,
+    "CarbonFootprint": {
+      "Value": 2.35,
+      "Unit": "kg CO2eq/kg",
+      "Method": "Illustrative cradle-to-gate calculation",
+      "ReferenceYear": 2025,
+      "DataQuality": "Fictional example value for schema discussion only"
+    }
+  },
+  "BusinessKeys": [
+    {
+      "Name": "MaterialCatalogId",
+      "Value": "CATALOG-PPGF30-0001"
+    }
+  ],
+  "Comment": "DRAFT example of an anonymized material catalog entry for PP-GF30. The entry describes one material definition with a material identifier, version, referenced material standard, color, two material sources and regional availability information. Approval and listing information are intentionally not embedded in this material catalog entry. Such information is represented by a separate draft ApprovalEntry that references the applicable MaterialSource by its identifier. MaterialProperties and Sustainability are discussion structures and are NOT represented by the released generic schema v3.0.0. The carbon footprint value of 2.35 kg CO2eq/kg and all other material properties, sustainability values, identifiers, suppliers and specifications are fictional and illustrative. This draft is not a schema-conformant document."
+}
