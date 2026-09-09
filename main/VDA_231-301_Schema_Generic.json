@@ -18,8 +18,9 @@
       "type": "string"
     },
     "_schemaVersion": {
-      "const": "3.0.0",
-      "description": "The generic schema version on which the structure of the testing project is based on."
+      "type": "string",
+      "pattern": "^3\\.[0-9]+\\.[0-9]+$",
+      "description": "The generic schema version on which the structure of the testing project is based. The major version must be 3."
     },
     "Title": {
       "$ref": "#/$defs/Generic.RestrictedString"
@@ -677,8 +678,9 @@
         "SingleResults": {
           "$ref": "#/$defs/Generic.SingleResults"
         },
-        "Specimen": {
-          "$ref": "#/$defs/Generic.Specimen"
+        "SpecimenID": {
+          "$ref": "#/$defs/Generic.Identifier",
+          "description": "Reference to the specimen used for this execution, expressed as the transmission-scoped identifier (_id) of a specimen in the containing topic's Specimens collection."
         },
         "TestParameters": {
           "$ref": "#/$defs/Generic.InformationSet"
@@ -689,7 +691,7 @@
         "_type",
         "Designation",
         "Numerator",
-        "Specimen",
+        "SpecimenID",
         "MeasurementSystems",
         "SingleResults"
       ],
@@ -1613,6 +1615,13 @@
         "Executions": {
           "items": {
             "$ref": "#/$defs/Generic.TestExecution"
+          },
+          "type": "array"
+        },
+        "Specimens": {
+          "description": "Specimens shared by the executions in this topic. Executions reference these objects through SpecimenID, allowing the same physical specimen to be used by more than one execution without duplicating it.",
+          "items": {
+            "$ref": "#/$defs/Generic.Specimen"
           },
           "type": "array"
         },
