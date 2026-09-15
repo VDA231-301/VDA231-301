@@ -1087,6 +1087,13 @@
             "$ref": "#/$defs/Generic.CharacteristicRequirement"
           }
         },
+        "ReferencedSpecifications": {
+          "description": "Other specifications referenced by this specification.",
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Generic.Specification"
+          }
+        },
         "DOI": {
           "type": "string"
         }
@@ -1351,19 +1358,28 @@
         },
         "MaterialIdentifiers": {
           "items": {
-            "$ref": "#/$defs/Generic.RestrictedString"
+            "$ref": "#/$defs/Generic.MaterialIdentifier"
           },
           "type": "array",
-          "description": "According to VDA 231-300",
+          "minItems": 1,
+          "description": "Typed identifiers of the material. This includes the VDA 231-300 MAT_01 specification identifier, represented as OEMMATID, and norm-defined identifiers such as a steel material number according to EN 10027-2. Each identifier value is stored once in this collection.",
           "examples": [
-            "XYZ111ABC123",
-            "QEV111BCD234",
-            "8A1U76"
+            [
+              {
+                "IdentifierType": "OEMMATID",
+                "Value": "OEM123ABCR3N"
+              },
+              {
+                "IdentifierType": "MaterialNumber",
+                "Value": "1.1302",
+                "DefiningStandard": "EN 10027-2"
+              }
+            ]
           ]
         },
-        "Version": {
+        "Revision": {
           "$ref": "#/$defs/Generic.RestrictedString",
-          "description": "Version of the Component Master, if applicable. For example the version of the drawing: ZGS",
+          "description": "Revision of the component master, if applicable. For example, the drawing revision (ZGS).",
           "examples": [
             "0001",
             "0002"
@@ -1415,6 +1431,38 @@
       "required": [
         "_id",
         "_type"
+      ],
+      "type": "object"
+    },
+    "Generic.MaterialIdentifier": {
+      "additionalProperties": false,
+      "properties": {
+        "IdentifierType": {
+          "enum": [
+            "OEMMATID",
+            "MaterialNumber"
+          ],
+          "type": "string",
+          "description": "Controlled type of the material identifier. OEMMATID represents the VDA 231-300 MAT_01 specification identifier; MaterialNumber represents a norm-defined material number.",
+          "examples": [
+            "OEMMATID",
+            "MaterialNumber"
+          ]
+        },
+        "Value": {
+          "$ref": "#/$defs/Generic.RestrictedString"
+        },
+        "DefiningStandard": {
+          "$ref": "#/$defs/Generic.RestrictedString",
+          "description": "Standard that defines the identifier system, for example EN 10027-2. Use only for norm-defined identifiers.",
+          "examples": [
+            "EN 10027-2"
+          ]
+        }
+      },
+      "required": [
+        "IdentifierType",
+        "Value"
       ],
       "type": "object"
     },
@@ -1648,7 +1696,7 @@
       "type": "object"
     },
     "Generic.Conditions": {
-      "$type": "object",
+      "type": "object",
       "properties": {
         "Condition": {
           "$ref": "#/$defs/Generic.LongString"

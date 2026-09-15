@@ -488,7 +488,7 @@ ColorID<y:LabelModel><y:ErdAttributesNodeLabelModel/></y:LabelModel><y:ModelPara
           <y:Fill color="#FFFFFF" transparent="false"/>
           <y:BorderStyle color="#000000" type="line" width="1.0"/>
           <y:NodeLabel alignment="center" autoSizePolicy="content" backgroundColor="#EDEDED" configuration="com.yworks.entityRelationship.label.name" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasLineColor="false" height="18.701171875" horizontalTextPosition="center" iconTextGap="4" modelName="internal" modelPosition="t" textColor="#000000" verticalTextPosition="bottom" visible="true" width="102.712890625" x="110.71484375" xml:space="preserve" y="4.0">ComponentMaster</y:NodeLabel>
-          <y:NodeLabel alignment="left" autoSizePolicy="content" configuration="com.yworks.entityRelationship.label.attributes" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="298.0234375" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="top" visible="true" width="314.142578125" x="2.0" xml:space="preserve" y="30.701171875">ID*
+          <y:NodeLabel alignment="left" autoSizePolicy="content" configuration="com.yworks.entityRelationship.label.attributes" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="298.0234375" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="top" visible="true" width="324.126953125" x="2.0" xml:space="preserve" y="30.701171875">ID*
 Designation
 CustomerPartNumber
 SupplierPartNumber
@@ -496,8 +496,8 @@ MaterialGroup (VDA 231-106)
 MaterialClass (VDA 231-200)
 MaterialName
 OemIdentifier
-OemVersion
-MaterialIdentifiers (VDA 231-300) (List of String)
+Revision
+MaterialIdentifiers (VDA 231-300) (List of [MaterialIdentifier])
 SurfaceIdentifiers (VDA 231-300) (List of String)
 Specifications (List of [Specification])
 Stack [Stack]
@@ -717,11 +717,12 @@ DeviatingValue [InformationPoint]<y:LabelModel><y:ErdAttributesNodeLabelModel/><
     <node id="n36">
       <data key="d5">
         <y:GenericNode configuration="com.yworks.entityRelationship.big_entity">
-          <y:Geometry height="179.712890625" width="177.25550308522133" x="1205.930476624293" y="1313.7192367518846"/>
+          <y:Geometry height="194.4140625" width="177.25550308522133" x="1205.930476624293" y="1306.3686508143846"/>
           <y:Fill color="#FFFFFF" transparent="false"/>
           <y:BorderStyle color="#000000" type="line" width="1.0"/>
           <y:NodeLabel alignment="center" autoSizePolicy="content" backgroundColor="#EDEDED" configuration="com.yworks.entityRelationship.label.name" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasLineColor="false" height="18.701171875" horizontalTextPosition="center" iconTextGap="4" modelName="internal" modelPosition="t" textColor="#000000" verticalTextPosition="bottom" visible="true" width="78.70703125" x="49.27423591761067" xml:space="preserve" y="4.0">[Specification]</y:NodeLabel>
-          <y:NodeLabel alignment="left" autoSizePolicy="content" configuration="com.yworks.entityRelationship.label.attributes" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="151.01171875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="top" visible="true" width="161.39453125" x="2.0" xml:space="preserve" y="30.701171875">Type*
+          <y:NodeLabel alignment="left" autoSizePolicy="content" configuration="com.yworks.entityRelationship.label.attributes" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="165.712890625" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="top" visible="true" width="161.39453125" x="2.0" xml:space="preserve" y="30.701171875">Authority
+Type*
 Number*
 Subnumber
 IssueDate*
@@ -987,6 +988,22 @@ BusinessKeys ListOf [BusinessKey]<y:LabelModel><y:ErdAttributesNodeLabelModel/><
           <y:NodeLabel alignment="left" autoSizePolicy="content" configuration="com.yworks.entityRelationship.label.attributes" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="48.103515625" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="top" visible="true" width="118.7265625" x="2.0" xml:space="preserve" y="30.701171875">Value
 Unit
 DeterminationMethod<y:LabelModel><y:ErdAttributesNodeLabelModel/></y:LabelModel><y:ModelParameter><y:ErdAttributesNodeLabelModelParameter/></y:ModelParameter></y:NodeLabel>
+          <y:StyleProperties>
+            <y:Property class="java.lang.Boolean" name="y.view.ShadowNodePainter.SHADOW_PAINTING" value="true"/>
+          </y:StyleProperties>
+        </y:GenericNode>
+      </data>
+    </node>
+    <node id="n51">
+      <data key="d5">
+        <y:GenericNode configuration="com.yworks.entityRelationship.big_entity">
+          <y:Geometry height="84.8046875" width="145.0" x="981.0126767132188" y="2205.8408746869436"/>
+          <y:Fill color="#FFFFFF" transparent="false"/>
+          <y:BorderStyle color="#000000" type="line" width="1.0"/>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" backgroundColor="#EDEDED" configuration="com.yworks.entityRelationship.label.name" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasLineColor="false" height="18.701171875" horizontalTextPosition="center" iconTextGap="4" modelName="internal" modelPosition="t" textColor="#000000" verticalTextPosition="bottom" visible="true" width="92.705078125" x="26.1474609375" xml:space="preserve" y="4.0">MaterialIdentifier</y:NodeLabel>
+          <y:NodeLabel alignment="left" autoSizePolicy="content" configuration="com.yworks.entityRelationship.label.attributes" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="48.103515625" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="top" visible="true" width="96.73046875" x="2.0" xml:space="preserve" y="30.701171875">IdentifierType*
+Value*
+DefiningStandard<y:LabelModel><y:ErdAttributesNodeLabelModel/></y:LabelModel><y:ModelParameter><y:ErdAttributesNodeLabelModelParameter/></y:ModelParameter></y:NodeLabel>
           <y:StyleProperties>
             <y:Property class="java.lang.Boolean" name="y.view.ShadowNodePainter.SHADOW_PAINTING" value="true"/>
           </y:StyleProperties>
@@ -1548,7 +1565,6 @@ DeterminationMethod<y:LabelModel><y:ErdAttributesNodeLabelModel/></y:LabelModel>
       </data>
     </edge>
     <edge id="e51" source="n23" target="n1">
-      <data key="d8"/>
       <data key="d9">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -1559,7 +1575,6 @@ DeterminationMethod<y:LabelModel><y:ErdAttributesNodeLabelModel/></y:LabelModel>
       </data>
     </edge>
     <edge id="e52" source="n4" target="n1">
-      <data key="d8"/>
       <data key="d9">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -1570,7 +1585,6 @@ DeterminationMethod<y:LabelModel><y:ErdAttributesNodeLabelModel/></y:LabelModel>
       </data>
     </edge>
     <edge id="e53" source="n45" target="n4">
-      <data key="d8"/>
       <data key="d9">
         <y:PolyLineEdge>
           <y:Path sx="-31.713704199598624" sy="-4.129563495566117" tx="-36.838227175240604" ty="104.60754652271788">
