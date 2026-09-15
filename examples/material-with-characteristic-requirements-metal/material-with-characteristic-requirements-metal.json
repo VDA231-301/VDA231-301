@@ -1,0 +1,65 @@
+{
+  "_id": "10000000-1111-4111-8111-000000000001",
+  "_type": "TestingProject",
+  "_schemaVersion": "3.0.0",
+  "Title": "Metal material with characteristic requirements",
+  "ComponentMasters": [
+    {
+      "_id": "10000000-1111-4111-8111-000000000002",
+      "_type": "ComponentMaster",
+      "Designation": "Cold-rolled steel sheet material definition",
+      "Version": "0001",
+      "MaterialGroup": "Steel",
+      "MaterialClass": "DC04",
+      "MaterialName": "Cold-rolled low-carbon steel sheet",
+      "OemIdentifier": "OEM01",
+      "MaterialIdentifiers": [
+        {
+          "IdentifierType": "OEMMATID",
+          "Value": "PEW000000001"
+        }
+      ],
+      "Specifications": [
+        {
+          "Authority": "OEM01",
+          "Type": "MaterialRequirementSpecification",
+          "Number": "M-STEEL-001",
+          "IssueDate": "2026-09",
+          "Title": "Cold-rolled steel sheet requirements",
+          "CharacteristicRequirements": [
+            {
+              "Property": "Yield strength",
+              "Symbol": "Rp0.2",
+              "Unit": "MPa",
+              "ValueType": "Range",
+              "Value": {
+                "minValue": 220,
+                "maxValue": 280
+              }
+            },
+            {
+              "Property": "Vickers hardness",
+              "Symbol": "HV",
+              "Unit": "HV",
+              "ValueType": "NumberWithTolerance",
+              "Value": [
+                160,
+                {
+                  "MinTolerance": -10,
+                  "MaxTolerance": 10
+                }
+              ]
+            },
+            {
+              "Property": "Surface condition",
+              "ValueType": "List",
+              "Value": [
+                "oiled"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

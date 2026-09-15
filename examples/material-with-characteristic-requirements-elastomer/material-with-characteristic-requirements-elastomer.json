@@ -1,0 +1,57 @@
+{
+  "_id": "30000000-3333-4333-8333-000000000001",
+  "_type": "TestingProject",
+  "_schemaVersion": "3.0.0",
+  "Title": "Elastomer material characteristic requirements",
+  "ComponentMasters": [
+    {
+      "_id": "30000000-3333-4333-8333-000000000002",
+      "_type": "ComponentMaster",
+      "Designation": "EPDM sealing material definition",
+      "Version": "0001",
+      "MaterialGroup": "Elastomer",
+      "MaterialClass": "EPDM",
+      "MaterialName": "Ethylene propylene diene rubber",
+      "OemIdentifier": "OEM01",
+      "MaterialIdentifiers": [
+        {
+          "IdentifierType": "OEMMATID",
+          "Value": "PEW000000002"
+        }
+      ],
+      "Specifications": [
+        {
+          "Authority": "OEM01",
+          "Type": "MaterialRequirementSpecification",
+          "Number": "M-ELASTOMER-001",
+          "IssueDate": "2026-09",
+          "Title": "EPDM sealing material requirements",
+          "CharacteristicRequirements": [
+            {
+              "Property": "Shore A hardness",
+              "Symbol": "Shore A",
+              "Unit": "Shore A",
+              "ValueType": "NumberWithTolerance",
+              "Value": [
+                70,
+                {
+                  "MinTolerance": -5,
+                  "MaxTolerance": 5
+                }
+              ]
+            },
+            {
+              "Property": "Tensile strength",
+              "Symbol": "Rm",
+              "Unit": "MPa",
+              "ValueType": "Range",
+              "Value": {
+                "minValue": 8
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
