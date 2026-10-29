@@ -41,6 +41,7 @@ your use case.
 | Add color information to a component or material representation | [Color definition](./color-definition/) |
 | Trace individual physical component instances using serial and production information | [Component instance traceability](./component-instance-traceability/) |
 | Represent a component hierarchy with subcomponents | [Component master hierarchy](./component-master-hierarchy/) |
+| Connect a complete assembly and example tests to supplied CAD exports | [Toggle Clamp](./clamp/) |
 | Apply a customized specification to a material or component | [Material with specification customization](./material-with-specification-customization/) |
 | Represent a multilayer material or coating stack | [Material with stack](./material-with-stack/) |
 | Represent material information from multiple sources | [Multiple-source material](./multiple-source-material/) |
@@ -62,6 +63,7 @@ related Architectural Decision Records.
 
 | Example | Scenario | Demonstrated modelling concept | Main entities used | Validation status | Related ADRs |
 |---|---|---|---|---|---|
+| [Toggle Clamp](./clamp/) | Assembly, CAD exports and material tests. | Recursive components, typed material IDs, specimen references and source-derived NGID paths. | `TestingProject`, `ComponentMaster`, `TestSeries`, `Specimen` | Validated against repository main development schema (declared 3.0.0); CAD/source limitations in README | ADR-0004, ADR-0005, ADR-0008, ADR-0009; revision exception to ADR-0002 |
 | [Simple material definition](./simple-material-definition/) | Define a basic material-related component. | Material identification and specification references on a reusable component definition. | `ComponentMaster`, `Specification`, `MaterialIdentifier` | Aligned with generic schema v3.0.0 | [ADR-0002](../docs/adr/0002-componentmaster-version-mandatory.md) |
 | [Color definition](./color-definition/) | Add approved colors and record the color used by a produced part. | Definition sets on the master and concrete assignments on instances. | `ComponentMaster`, `ComponentInstance`, `Color` | Aligned with generic schema v3.0.0 | [ADR-0001](../docs/adr/0001-definition-set-on-master-assignment-on-instance.md) <br> [ADR-0002](../docs/adr/0002-componentmaster-version-mandatory.md) <br> [ADR-0008](../docs/adr/0008-abbreviated-material-designation-to-materialclass.md) <br> [ADR-0009](../docs/adr/0009-typed-material-identifiers-no-duplication.md) |
 | [Component instance traceability](./component-instance-traceability/) | Trace physical parts using serial and production information. | Separation of a reusable component definition from individually produced instances. | `ComponentMaster`, `ComponentInstance`, `Location` | Aligned with generic schema v3.0.0 | [ADR-0001](../docs/adr/0001-definition-set-on-master-assignment-on-instance.md) |
