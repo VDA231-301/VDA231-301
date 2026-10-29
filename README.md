@@ -102,6 +102,9 @@ Changes are managed with the goal to:
 
 Versioning information is documented within the repository.
 
+### Release Checklist
+See the [release checklist](docs/release-checklist.md) for detailed instructions on releasing both the subschema and the generic schema.
+
 ---
 
 ## Governance and Standardization Context

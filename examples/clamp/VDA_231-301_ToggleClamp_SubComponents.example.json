@@ -1,7 +1,7 @@
 {
   "_id": "a1b2c3d4-0001-4000-8000-000000000001",
   "_type": "TestingProject",
-  "_schemaVersion": "2.1.0",
+  "_schemaVersion": "3.0.0",
   "Title": "Toggle Clamp Assembly - Material Testing",
   "Signatory": "Dr. Klaus Mueller",
   "Client": {
@@ -37,10 +37,12 @@
           "_id": "a1b2c3d4-0011-4000-8000-000000000001",
           "_type": "ComponentMaster",
           "SupplierPartNumber": "TC-BP-001",
-          "MaterialName": "X5CrNi18-10",
           "OemIdentifier": "MB",
           "MaterialIdentifiers": [
-            "MAT 123456"
+            {
+              "IdentifierType": "OEMMATID",
+              "Value": "MAT 123456"
+            }
           ],
           "SurfaceIdentifiers": [
             "SUR#78910"
@@ -63,16 +65,19 @@
               "SerialNumber": "BP-001",
               "ProductionBatchNumber": "PB-2025-Q1-BP"
             }
-          ]
+          ],
+          "MaterialClass": "X5CrNi18-10"
         },
         {
           "_id": "a1b2c3d4-0026-4000-8000-000000000001",
           "_type": "ComponentMaster",
           "SupplierPartNumber": "TC-BP-001",
-          "MaterialName": "X5CrNi18-10",
           "OemIdentifier": "MB",
           "MaterialIdentifiers": [
-            "MAT 123456"
+            {
+              "IdentifierType": "OEMMATID",
+              "Value": "MAT 123456"
+            }
           ],
           "SurfaceIdentifiers": [
             "SUR#78910"
@@ -87,7 +92,8 @@
               "IssueDate": "2010-01",
               "Title": "Stainless steels - Technical delivery cond. for flat products"
             }
-          ]
+          ],
+          "MaterialClass": "X5CrNi18-10"
         },
         {
           "_id": "a1b2c3d4-0012-4000-8000-000000000001",
@@ -100,10 +106,12 @@
               "_id": "a1b2c3d4-0013-4000-8000-000000000001",
               "_type": "ComponentMaster",
               "SupplierPartNumber": "TC-FCA-001",
-              "MaterialName": "AISI 1008",
               "OemIdentifier": "MB",
               "MaterialIdentifiers": [
-                "MAT 969696"
+                {
+                  "IdentifierType": "OEMMATID",
+                  "Value": "MAT 969696"
+                }
               ],
               "NGIDPath": "$$NGID<chain>=\"__CAD_INST_UID\"\\0Clamping_Arm-ASM.asm;56;47:\\0Forked_Clamping _Arm.asm;52;71:\\0CLAMPING_ARM_GEO.part;41;7412:\\0\\0",
               "Designation": "Forked Clamping Arm (offener Spannarm)",
@@ -127,23 +135,26 @@
                   "_type": "ComponentInstance",
                   "SerialNumber": "FCA-002"
                 }
-              ]
+              ],
+              "MaterialClass": "AISI 1008"
             },
             {
               "_id": "a1b2c3d4-0014-4000-8000-000000000001",
               "_type": "ComponentMaster",
               "SupplierPartNumber": "TC-CS-001",
               "NGIDPath": "$$NGID<chain>=\"__CAD_INST_UID\"\\0Clamping_Arm-ASM.asm;56;47:\\0Clamping_Screw.asm;55;69:\\0\\0",
-              "Designation": "Clamping Screw Assembly (Andrueckschraube) with rubber thrust pad",
+              "Designation": "Clamping Screw Assembly (Andrueckschraube)",
               "SubComponents": [
                 {
                   "_id": "a1b2c3d4-0015-4000-8000-000000000001",
                   "_type": "ComponentMaster",
                   "SupplierPartNumber": "TC-CSC-001",
-                  "MaterialName": "Schraube FK 8.8",
                   "OemIdentifier": "MB",
                   "MaterialIdentifiers": [
-                    "SDR 221100"
+                    {
+                      "IdentifierType": "OEMMATID",
+                      "Value": "SDR 221100"
+                    }
                   ],
                   "SurfaceIdentifiers": [
                     "SUR#2323"
@@ -158,16 +169,19 @@
                       "IssueDate": "2023-05",
                       "Title": "Mechanical properties of fasteners - carbon and alloy steel"
                     }
-                  ]
+                  ],
+                  "MaterialClass": "Schraube FK 8.8"
                 },
                 {
                   "_id": "a1b2c3d4-0016-4000-8000-000000000001",
                   "_type": "ComponentMaster",
                   "SupplierPartNumber": "TC-RTP-001",
-                  "MaterialName": "EPDM",
                   "OemIdentifier": "MB",
                   "MaterialIdentifiers": [
-                    "MAT 4545454"
+                    {
+                      "IdentifierType": "OEMMATID",
+                      "Value": "MAT 4545454"
+                    }
                   ],
                   "NGIDPath": "$$NGID<chain>=\"__CAD_INST_UID\"\\0Clamping_Arm-ASM.asm;56;47:\\0Clamping_Screw.asm;55;69:\\0RUBBER_THRUST_PAD_GEO.part;41;7046:\\0\\0",
                   "Designation": "Rubber Thrust Pad",
@@ -179,9 +193,11 @@
                       "IssueDate": "2024-09",
                       "Title": "Rubber thrust pad material specification"
                     }
-                  ]
+                  ],
+                  "MaterialClass": "EPDM"
                 }
-              ]
+              ],
+              "Comment": "Clamping Screw Assembly (Andrueckschraube) with rubber thrust pad."
             },
             {
               "_id": "a1b2c3d4-0017-4000-8000-000000000001",
@@ -195,10 +211,12 @@
                   "_id": "a1b2c3d4-0018-4000-8000-000000000001",
                   "_type": "ComponentMaster",
                   "SupplierPartNumber": "TC-FW-001",
-                  "MaterialName": "DC04",
                   "OemIdentifier": "MB",
                   "MaterialIdentifiers": [
-                    "MAT 858585"
+                    {
+                      "IdentifierType": "OEMMATID",
+                      "Value": "MAT 858585"
+                    }
                   ],
                   "NGIDPath": "$$NGID<chain>=\"__CAD_INST_UID\"\\0Clamping_Arm-ASM.asm;56;47:\\0Clamping_Srew_Holder-ASM.asm;50;139:\\0Flanged_Washer.asm;50;141:\\0FLANGED_WASHER_GEO.part;46;10355:\\0\\0",
                   "Designation": "Flanged Washer (Flankenscheibe)",
@@ -210,16 +228,19 @@
                       "IssueDate": "2017-06",
                       "Title": "Electrolytically zinc coated cold rolled steel flat products"
                     }
-                  ]
+                  ],
+                  "MaterialClass": "DC04"
                 },
                 {
                   "_id": "a1b2c3d4-0019-4000-8000-000000000001",
                   "_type": "ComponentMaster",
                   "SupplierPartNumber": "TC-HN-001",
-                  "MaterialName": "19MnB4 FK8",
                   "OemIdentifier": "MB",
                   "MaterialIdentifiers": [
-                    "MAT 656564"
+                    {
+                      "IdentifierType": "OEMMATID",
+                      "Value": "MAT 656564"
+                    }
                   ],
                   "SurfaceIdentifiers": [
                     "SUR#636363"
@@ -234,7 +255,9 @@
                       "IssueDate": "2014-02",
                       "Title": "Steels for fasteners with elevated temperature properties"
                     }
-                  ]
+                  ],
+                  "MaterialClass": "19MnB4 Mutter FK 8",
+                  "MaterialName": "19MnB4 FK8"
                 }
               ]
             },
@@ -250,10 +273,12 @@
                   "_id": "a1b2c3d4-0028-4000-8000-000000000001",
                   "_type": "ComponentMaster",
                   "SupplierPartNumber": "TC-FW-001",
-                  "MaterialName": "DC04",
                   "OemIdentifier": "MB",
                   "MaterialIdentifiers": [
-                    "MAT 858585"
+                    {
+                      "IdentifierType": "OEMMATID",
+                      "Value": "MAT 858585"
+                    }
                   ],
                   "NGIDPath": "$$NGID<chain>=\"__CAD_INST_UID\"\\0Clamping_Arm-ASM.asm;56;47:\\0Clamping_Srew_Holder-ASM.asm;50;52:\\0Flanged_Washer.asm;50;119:\\0FLANGED_WASHER_GEO.part;46;10355:\\0\\0",
                   "Designation": "Flanged Washer (Flankenscheibe)",
@@ -265,16 +290,19 @@
                       "IssueDate": "2017-06",
                       "Title": "Electrolytically zinc coated cold rolled steel flat products"
                     }
-                  ]
+                  ],
+                  "MaterialClass": "DC04"
                 },
                 {
                   "_id": "a1b2c3d4-0029-4000-8000-000000000001",
                   "_type": "ComponentMaster",
                   "SupplierPartNumber": "TC-HN-001",
-                  "MaterialName": "19MnB4 FK8",
                   "OemIdentifier": "MB",
                   "MaterialIdentifiers": [
-                    "MAT 656564"
+                    {
+                      "IdentifierType": "OEMMATID",
+                      "Value": "MAT 656564"
+                    }
                   ],
                   "SurfaceIdentifiers": [
                     "SUR#636363"
@@ -289,7 +317,9 @@
                       "IssueDate": "2014-02",
                       "Title": "Steels for fasteners with elevated temperature properties"
                     }
-                  ]
+                  ],
+                  "MaterialClass": "19MnB4 Mutter FK 8",
+                  "MaterialName": "19MnB4 FK8"
                 }
               ]
             }
@@ -307,10 +337,12 @@
               "_id": "a1b2c3d4-0021-4000-8000-000000000001",
               "_type": "ComponentMaster",
               "SupplierPartNumber": "TC-BAR-001",
-              "MaterialName": "HX260LAD",
               "OemIdentifier": "MB",
               "MaterialIdentifiers": [
-                "MAT 123456"
+                {
+                  "IdentifierType": "OEMMATID",
+                  "Value": "MAT 123456"
+                }
               ],
               "NGIDPath": "$$NGID<chain>=\"__CAD_INST_UID\"\\0Lever_Bar.asm;55;42:\\0BAR_GEO.part;41;10155:\\0\\0",
               "Designation": "Lever Bar steel body",
@@ -322,16 +354,19 @@
                   "IssueDate": "2015-10",
                   "Title": "Continuously hot-dip coated steel flat products for cold forming"
                 }
-              ]
+              ],
+              "MaterialClass": "HX260LAD"
             },
             {
               "_id": "a1b2c3d4-0022-4000-8000-000000000001",
               "_type": "ComponentMaster",
               "SupplierPartNumber": "TC-HG-001",
-              "MaterialName": "TPE",
               "OemIdentifier": "MB",
               "MaterialIdentifiers": [
-                "MAT 656565"
+                {
+                  "IdentifierType": "OEMMATID",
+                  "Value": "MAT 656565"
+                }
               ],
               "NGIDPath": "$$NGID<chain>=\"__CAD_INST_UID\"\\0Lever_Bar.asm;55;42:\\0HAND_GRIP_GEO.part;41;7046:\\0\\0",
               "Designation": "Hand Grip",
@@ -343,7 +378,8 @@
                   "IssueDate": "2013-12",
                   "Title": "Hand grip thermoplastic elastomer material specification"
                 }
-              ]
+              ],
+              "MaterialClass": "TPE"
             }
           ]
         },
@@ -351,10 +387,12 @@
           "_id": "a1b2c3d4-0023-4000-8000-000000000001",
           "_type": "ComponentMaster",
           "SupplierPartNumber": "TC-TL-001",
-          "MaterialName": "AISI 1008",
           "OemIdentifier": "MB",
           "MaterialIdentifiers": [
-            "MAT 969696"
+            {
+              "IdentifierType": "OEMMATID",
+              "Value": "MAT 969696"
+            }
           ],
           "NGIDPath": "$$NGID<chain>=\"__CAD_INST_UID\"\\0Toggle_Lever.asm;53;37:\\0TOGGLE_LEVER_GEO.part;41;7037:\\0\\0",
           "Designation": "Toggle Lever (Kipphebel)",
@@ -366,7 +404,8 @@
               "IssueDate": "2024-02",
               "Title": "Steel, Sheet, Cold-Rolled, Carbon, Structural"
             }
-          ]
+          ],
+          "MaterialClass": "AISI 1008"
         },
         {
           "_id": "a1b2c3d4-0024-4000-8000-000000000001",
@@ -379,10 +418,12 @@
               "_id": "a1b2c3d4-0025-4000-8000-000000000001",
               "_type": "ComponentMaster",
               "SupplierPartNumber": "TC-BB-001",
-              "MaterialName": "AISI 1008",
               "OemIdentifier": "MB",
               "MaterialIdentifiers": [
-                "MAT 969696"
+                {
+                  "IdentifierType": "OEMMATID",
+                  "Value": "MAT 969696"
+                }
               ],
               "SurfaceIdentifiers": [
                 "SUR#141414"
@@ -397,16 +438,19 @@
                   "IssueDate": "2024-02",
                   "Title": "Steel, Sheet, Cold-Rolled, Carbon, Structural"
                 }
-              ]
+              ],
+              "MaterialClass": "AISI 1008"
             },
             {
               "_id": "a1b2c3d4-0032-4000-8000-000000000001",
               "_type": "ComponentMaster",
               "SupplierPartNumber": "TC-BP-001",
-              "MaterialName": "X5CrNi18-10",
               "OemIdentifier": "MB",
               "MaterialIdentifiers": [
-                "MAT 123456"
+                {
+                  "IdentifierType": "OEMMATID",
+                  "Value": "MAT 123456"
+                }
               ],
               "SurfaceIdentifiers": [
                 "SUR#78910"
@@ -421,16 +465,19 @@
                   "IssueDate": "2010-01",
                   "Title": "Stainless steels - Technical delivery cond. for flat products"
                 }
-              ]
+              ],
+              "MaterialClass": "X5CrNi18-10"
             },
             {
               "_id": "a1b2c3d4-0033-4000-8000-000000000001",
               "_type": "ComponentMaster",
               "SupplierPartNumber": "TC-BB-001",
-              "MaterialName": "AISI 1008",
               "OemIdentifier": "MB",
               "MaterialIdentifiers": [
-                "MAT 969696"
+                {
+                  "IdentifierType": "OEMMATID",
+                  "Value": "MAT 969696"
+                }
               ],
               "SurfaceIdentifiers": [
                 "SUR#141414"
@@ -445,16 +492,19 @@
                   "IssueDate": "2024-02",
                   "Title": "Steel, Sheet, Cold-Rolled, Carbon, Structural"
                 }
-              ]
+              ],
+              "MaterialClass": "AISI 1008"
             },
             {
               "_id": "a1b2c3d4-0034-4000-8000-000000000001",
               "_type": "ComponentMaster",
               "SupplierPartNumber": "TC-BP-001",
-              "MaterialName": "X5CrNi18-10",
               "OemIdentifier": "MB",
               "MaterialIdentifiers": [
-                "MAT 123456"
+                {
+                  "IdentifierType": "OEMMATID",
+                  "Value": "MAT 123456"
+                }
               ],
               "SurfaceIdentifiers": [
                 "SUR#78910"
@@ -469,14 +519,57 @@
                   "IssueDate": "2010-01",
                   "Title": "Stainless steels - Technical delivery cond. for flat products"
                 }
-              ]
+              ],
+              "MaterialClass": "X5CrNi18-10"
             }
           ]
         }
       ]
     }
   ],
-  "TestSeries": [
+  "TestingCenters": [
+    {
+      "_id": "a1b2c3d4-0003-4000-8000-000000000001",
+      "_type": "TestingCenter",
+      "Location": {
+        "_id": "a1b2c3d4-0003-4000-8000-000000000002",
+        "_type": "Location",
+        "Identification": [
+          {
+            "Identifier": "987654321",
+            "Type": "DUNS"
+          }
+        ],
+        "Name": "Materialpruefanstalt Stuttgart"
+      },
+      "TestingManager": {
+        "_id": "a1b2c3d4-0003-4000-8000-000000000003",
+        "_type": "Person",
+        "FirstName": "Anna",
+        "LastName": "Weber",
+        "Title": "Dr."
+      },
+      "Certifications": [
+        {
+          "_id": "a1b2c3d4-0003-4000-8000-000000000004",
+          "_type": "Certification",
+          "Specification": {
+            "Type": "DIN",
+            "Number": "EN ISO/IEC 17025",
+            "IssueDate": "2018-03",
+            "Title": "General requirements for competence of testing laboratories"
+          },
+          "AccreditationDate": {
+            "Date": "2023-06-15"
+          },
+          "ValidUntil": {
+            "Date": "2028-06-14"
+          }
+        }
+      ]
+    }
+  ],
+  "Topics": [
     {
       "_id": "a1b2c3d4-0030-4000-8000-000000000001",
       "_type": "TestSeries",
@@ -499,12 +592,6 @@
           "_type": "TestExecution",
           "Designation": "Tensile test execution 1 (specimen FCA-001)",
           "Numerator": 1,
-          "Specimen": {
-            "_id": "a1b2c3d4-0030-4000-8000-000000000011",
-            "_type": "Specimen",
-            "Designation": "Forked Clamping Arm specimen FCA-001",
-            "ComponentInstanceID": "a1b2c3d4-0013-4000-8000-000000000002"
-          },
           "MeasurementSystems": [
             {
               "_id": "a1b2c3d4-0030-4000-8000-000000000012",
@@ -545,19 +632,14 @@
               "Value": "Pass",
               "ValueType": "Text"
             }
-          ]
+          ],
+          "SpecimenID": "a1b2c3d4-0030-4000-8000-000000000011"
         },
         {
           "_id": "a1b2c3d4-0030-4000-8000-000000000020",
           "_type": "TestExecution",
           "Designation": "Tensile test execution 2 (specimen FCA-002)",
           "Numerator": 2,
-          "Specimen": {
-            "_id": "a1b2c3d4-0030-4000-8000-000000000021",
-            "_type": "Specimen",
-            "Designation": "Forked Clamping Arm specimen FCA-002",
-            "ComponentInstanceID": "a1b2c3d4-0013-4000-8000-000000000003"
-          },
           "MeasurementSystems": [
             {
               "_id": "a1b2c3d4-0030-4000-8000-000000000022",
@@ -598,10 +680,11 @@
               "Value": "Pass",
               "ValueType": "Text"
             }
-          ]
+          ],
+          "SpecimenID": "a1b2c3d4-0030-4000-8000-000000000021"
         }
       ],
-      "ConsolidatedCharacteristicValues": {
+      "ReportedProperties": {
         "_id": "a1b2c3d4-0030-4000-8000-000000000002",
         "_type": "InformationSet",
         "ArraySpec": [
@@ -640,7 +723,21 @@
             "Pass"
           ]
         ]
-      }
+      },
+      "Specimens": [
+        {
+          "_id": "a1b2c3d4-0030-4000-8000-000000000011",
+          "_type": "Specimen",
+          "Designation": "Forked Clamping Arm specimen FCA-001",
+          "ComponentInstanceID": "a1b2c3d4-0013-4000-8000-000000000002"
+        },
+        {
+          "_id": "a1b2c3d4-0030-4000-8000-000000000021",
+          "_type": "Specimen",
+          "Designation": "Forked Clamping Arm specimen FCA-002",
+          "ComponentInstanceID": "a1b2c3d4-0013-4000-8000-000000000003"
+        }
+      ]
     },
     {
       "_id": "a1b2c3d4-0031-4000-8000-000000000001",
@@ -669,12 +766,6 @@
           "_type": "TestExecution",
           "Designation": "Brinell hardness measurement (specimen BP-001)",
           "Numerator": 1,
-          "Specimen": {
-            "_id": "a1b2c3d4-0031-4000-8000-000000000011",
-            "_type": "Specimen",
-            "Designation": "Bearing Pin specimen BP-001",
-            "ComponentInstanceID": "a1b2c3d4-0011-4000-8000-000000000002"
-          },
           "MeasurementSystems": [
             {
               "_id": "a1b2c3d4-0031-4000-8000-000000000012",
@@ -728,10 +819,11 @@
               "Value": "Pass",
               "ValueType": "Text"
             }
-          ]
+          ],
+          "SpecimenID": "a1b2c3d4-0031-4000-8000-000000000011"
         }
       ],
-      "ConsolidatedCharacteristicValues": {
+      "ReportedProperties": {
         "_id": "a1b2c3d4-0031-4000-8000-000000000002",
         "_type": "InformationSet",
         "ArraySpec": [
@@ -749,47 +841,13 @@
             "Pass"
           ]
         ]
-      }
-    }
-  ],
-  "TestingCenters": [
-    {
-      "_id": "a1b2c3d4-0003-4000-8000-000000000001",
-      "_type": "TestingCenter",
-      "Location": {
-        "_id": "a1b2c3d4-0003-4000-8000-000000000002",
-        "_type": "Location",
-        "Identification": [
-          {
-            "Identifier": "987654321",
-            "Type": "DUNS"
-          }
-        ],
-        "Name": "Materialpruefanstalt Stuttgart"
       },
-      "TestingManager": {
-        "_id": "a1b2c3d4-0003-4000-8000-000000000003",
-        "_type": "Person",
-        "FirstName": "Anna",
-        "LastName": "Weber",
-        "Title": "Dr."
-      },
-      "Certifications": [
+      "Specimens": [
         {
-          "_id": "a1b2c3d4-0003-4000-8000-000000000004",
-          "_type": "Certification",
-          "Specification": {
-            "Type": "DIN",
-            "Number": "EN ISO/IEC 17025",
-            "IssueDate": "2018-03",
-            "Title": "General requirements for competence of testing laboratories"
-          },
-          "AccreditationDate": {
-            "Date": "2023-06-15"
-          },
-          "ValidUntil": {
-            "Date": "2028-06-14"
-          }
+          "_id": "a1b2c3d4-0031-4000-8000-000000000011",
+          "_type": "Specimen",
+          "Designation": "Bearing Pin specimen BP-001",
+          "ComponentInstanceID": "a1b2c3d4-0011-4000-8000-000000000002"
         }
       ]
     }

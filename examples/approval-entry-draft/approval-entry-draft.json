@@ -1,0 +1,84 @@
+{
+  "_id": "c1c1c1c1-3333-4333-8333-333333333333",
+  "_type": "ApprovalEntry",
+  "Designation": "Listing PP-GF30 Grade A (Supplier A, China)",
+  "Version": "0001",
+  "ApprovalType": "Listing",
+  "ApprovalProcess": "X",
+  "ListingId": "LISTING-PPGF30-0001",
+  "ApprovedForMaterial": {
+    "IdentifierType": "OEMMATID",
+    "Value": "OEM111ALAHJD"
+  },
+  "Subject": {
+    "SubjectMaterialSourceID": "b1a00000-1111-4111-8111-000000000001",
+    "MaterialClass": "PP-GF30",
+    "MaterialName": "Glass fibre reinforced Polypropylene",
+    "TradeName": "Example PP-GF30 Grade A",
+    "Supplier": {
+      "IdentifierType": "DUNS",
+      "Identifier": "111111111",
+      "Name": "Supplier A"
+    }
+  },
+  "CurrentStatus": "Listed",
+  "StatusHistory": [
+    {
+      "Status": "Submitted",
+      "EffectiveFrom": "2025-11-10",
+      "Comment": "Approval request submitted."
+    },
+    {
+      "Status": "UnderEvaluation",
+      "EffectiveFrom": "2025-12-01",
+      "Comment": "Technical evaluation in progress."
+    },
+    {
+      "Status": "Listed",
+      "EffectiveFrom": "2026-01-15",
+      "Comment": "Material listed for the defined scope."
+    }
+  ],
+  "ApplicableSpecification": {
+    "Type": "MaterialStandard",
+    "Number": "OEM-POLYMER-STD-1000",
+    "SubNumber": "90",
+    "IssueDate": "2026-01"
+  },
+  "ApprovalScope": {
+    "GeographicScopes": [
+      {
+        "ScopeType": "WorldRegion",
+        "Code": "CHINA",
+        "Designation": "China",
+        "CodeAuthority": "OEM"
+      }
+    ],
+    "ProductionScopes": [
+      {
+        "ProductionLocation": {
+          "_id": "d1d1d1d1-4444-4444-8444-000000000001",
+          "_type": "Location",
+          "Name": "Example Production Site China"
+        },
+        "ProductionLine": {
+          "Identifier": "LINE-04",
+          "Designation": "Production Line 4"
+        }
+      }
+    ]
+  },
+  "ValidityPeriod": {
+    "ValidFrom": "2026-01-15",
+    "ValidUntil": "2028-01-14"
+  },
+  "RelatedApprovalEntries": [],
+  "ReferenceDocuments": [
+    {
+      "DocumentType": "ListingDocument",
+      "Identifier": "LIST-DOC-PPGF30-2026-001",
+      "Title": "Listing for PP-GF30 Grade A",
+      "IssueDate": "2026-01-15"
+    }
+  ]
+}

@@ -274,7 +274,6 @@
           <Geometry numLods="2">
             <Geom_Stats numTriangles="424 176 " numTristrips="13 9 " />
           </Geometry>
-          </AdvPrimSet>
         </Part>
       </Assembly>
       <Instance name="Bearing_Pin" id="488" version="54">
@@ -561,7 +560,6 @@
               <Geometry numLods="2">
                 <Geom_Stats numTriangles="166 118 " numTristrips="13 13 " />
               </Geometry>
-              </AdvPrimSet>
             </Part>
           </Assembly>
           <Assembly name="Hexagon_Nut" id="140" version="48">
@@ -697,7 +695,6 @@
               <Geometry numLods="2">
                 <Geom_Stats numTriangles="204 134 " numTristrips="23 23 " />
               </Geometry>
-              </AdvPrimSet>
             </Part>
           </Assembly>
         </Assembly>
@@ -830,7 +827,6 @@
             <Geometry numLods="2">
               <Geom_Stats numTriangles="324 236 " numTristrips="30 31 " />
             </Geometry>
-            </AdvPrimSet>
           </Part>
         </Assembly>
         <Assembly name="Clamping_Screw" id="69" version="55">
@@ -965,7 +961,6 @@
             <Geometry numLods="2">
               <Geom_Stats numTriangles="84 54 " numTristrips="4 4 " />
             </Geometry>
-            </AdvPrimSet>
           </Part>
           <Part name="RUBBER_THRUST_PAD_GEO" id="7046" version="41" component="true">
             <BBox xmin="30" ymin="-7.956175327301025" zmin="-8" xmax="44" ymax="7.956175327301025"
@@ -1040,7 +1035,6 @@
             <Geometry numLods="2">
               <Geom_Stats numTriangles="122 80 " numTristrips="4 4 " />
             </Geometry>
-            </AdvPrimSet>
           </Part>
         </Assembly>
         <Assembly name="Clamping_Srew_Holder-ASM" id="52" version="50">
@@ -1287,7 +1281,6 @@
           <Geometry numLods="2">
             <Geom_Stats numTriangles="780 428 " numTristrips="53 46 " />
           </Geometry>
-          </AdvPrimSet>
         </Part>
         <Part name="HAND_GRIP_GEO" id="7046" version="41" component="true">
           <BBox xmin="-8.866395950317383" ymin="10.01532363891602" zmin="-58.08711624145508"
@@ -1362,7 +1355,6 @@
           <Geometry numLods="2">
             <Geom_Stats numTriangles="194 88 " numTristrips="14 14 " />
           </Geometry>
-          </AdvPrimSet>
         </Part>
       </Assembly>
       <Assembly name="Toggle_Lever" id="37" version="53">
@@ -1498,7 +1490,6 @@
           <Geometry numLods="2">
             <Geom_Stats numTriangles="180 124 " numTristrips="10 10 " />
           </Geometry>
-          </AdvPrimSet>
         </Part>
       </Assembly>
       <Assembly name="Mounting_Base-ASM" id="22" version="51">
@@ -1697,7 +1688,6 @@
             <Geometry numLods="2">
               <Geom_Stats numTriangles="412 288 " numTristrips="30 29 " />
             </Geometry>
-            </AdvPrimSet>
           </Part>
         </Assembly>
         <Instance name="Bearing_Pin" id="117" version="54">
