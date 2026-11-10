@@ -1,0 +1,188 @@
+{
+  "_id": "c0000000-0000-4000-8000-000000000001",
+  "_type": "TestingProject",
+  "Title": "Illustrative CR5 design and production profiles",
+  "EngineeringMaterials": [
+    {
+      "_id": "c0000000-0000-4000-8000-000000000002",
+      "_type": "EngineeringMaterial",
+      "MaterialClass": "Low-carbon steel",
+      "MaterialName": "CR5",
+      "MaterialDefinitionLevel": "Design",
+      "ApplicableComponentClassifications": [
+        {
+          "_id": "c0000000-0000-4000-8000-000000000020",
+          "_type": "ComponentClassification",
+          "ClassificationSystem": "Illustrative component classes",
+          "LevelType": "Family",
+          "Code": "SHEET",
+          "Designation": "Sheet components",
+          "SubClassifications": [
+            {
+              "_id": "c0000000-0000-4000-8000-000000000021",
+              "_type": "ComponentClassification",
+              "ClassificationSystem": "Illustrative component classes",
+              "LevelType": "Type",
+              "Code": "BRACKET",
+              "ParentClassificationID": "c0000000-0000-4000-8000-000000000020"
+            }
+          ]
+        }
+      ],
+      "MaterialSpecificationIdentifier": {
+        "IdentifierType": "OEMMATID",
+        "Value": "EXAMPLE-CR5-DESIGN"
+      },
+      "Specification": {
+        "Type": "MaterialRequirementSpecification",
+        "Number": "EXAMPLE-DESIGN-001",
+        "IssueDate": "2026-11",
+        "Title": "Fictional design requirements"
+      },
+      "MaterialGroup": "Steel"
+    },
+    {
+      "_id": "c0000000-0000-4000-8000-000000000003",
+      "_type": "EngineeringMaterial",
+      "MaterialClass": "Low-carbon steel",
+      "MaterialName": "CR5",
+      "MaterialDefinitionLevel": "Production",
+      "DerivedFromMaterialID": "c0000000-0000-4000-8000-000000000002",
+      "MaterialSpecificationIdentifier": {
+        "IdentifierType": "OEMMATID",
+        "Value": "EXAMPLE-CR5-PRODUCTION"
+      },
+      "Specification": {
+        "Type": "MaterialRequirementSpecification",
+        "Number": "EXAMPLE-PRODUCTION-001",
+        "IssueDate": "2026-11",
+        "Title": "Explicit fictional production requirements"
+      },
+      "MaterialSources": [
+        {
+          "_id": "c0000000-0000-4000-8000-000000000004",
+          "_type": "MaterialSource",
+          "TradeName": "Example supplier sheet",
+          "MaterialIdentifiers": [
+            {
+              "IdentifierType": "OEMMATID",
+              "Value": "EXAMPLE-SUPPLIER-001"
+            }
+          ],
+          "ProductionSite": {
+            "_id": "c0000000-0000-4000-8000-000000000005",
+            "_type": "Location",
+            "Identification": [
+              {
+                "Identifier": "EXAMPLE-PLANT",
+                "Type": "Internal"
+              }
+            ],
+            "Name": "Example supplier plant"
+          },
+          "Specification": {
+            "Type": "Datasheet",
+            "Number": "EXAMPLE-DATASHEET-001",
+            "IssueDate": "2026-11"
+          }
+        }
+      ],
+      "Colors": [
+        {
+          "_id": "c0000000-0000-4000-8000-000000000006",
+          "_type": "Color",
+          "Name": "Example finish"
+        }
+      ],
+      "MaterialGroup": "Steel"
+    },
+    {
+      "_id": "c0000000-0000-4000-8000-000000000007",
+      "_type": "EngineeringMaterial",
+      "MaterialName": "Example coating",
+      "MaterialGroup": "Coating",
+      "MaterialClass": "Coating"
+    }
+  ],
+  "ComponentMasters": [
+    {
+      "_id": "c0000000-0000-4000-8000-000000000008",
+      "_type": "ComponentMaster",
+      "Designation": "Example bracket",
+      "CustomerPartNumber": "EXAMPLE-BRACKET-001",
+      "Revision": "0001",
+      "Decomposable": false,
+      "MaterialSpecificationIdentifier": {
+        "IdentifierType": "OEMMATID",
+        "Value": "EXAMPLE-CR5-PRODUCTION"
+      },
+      "MaterialAssignments": [
+        {
+          "EngineeringMaterialID": "c0000000-0000-4000-8000-000000000003",
+          "MaterialRole": "Base",
+          "GeographicScope": "Example region",
+          "MaterialName": "CR5"
+        },
+        {
+          "MaterialRole": "Coating",
+          "Stack": {
+            "_id": "c0000000-0000-4000-8000-000000000009",
+            "_type": "Stack",
+            "Designation": "Example layer system",
+            "ComponentAreaReference": "Example outer face",
+            "ExternalElementReference": "EXAMPLE-FACE-001",
+            "Layers": [
+              {
+                "_id": "c0000000-0000-4000-8000-000000000010",
+                "_type": "StackLayer",
+                "LayerNumber": 1,
+                "EngineeringMaterialID": "c0000000-0000-4000-8000-000000000003",
+                "Thickness": 1.0,
+                "Mass": {
+                  "Value": 100,
+                  "Unit": "g"
+                }
+              },
+              {
+                "_id": "c0000000-0000-4000-8000-000000000011",
+                "_type": "StackLayer",
+                "LayerNumber": 2,
+                "EngineeringMaterialID": "c0000000-0000-4000-8000-000000000007",
+                "Thickness": 0.01
+              }
+            ]
+          }
+        }
+      ],
+      "Instances": [
+        {
+          "_id": "c0000000-0000-4000-8000-000000000012",
+          "_type": "ComponentInstance",
+          "SerialNumber": "EXAMPLE-001",
+          "MaterialSourceID": "c0000000-0000-4000-8000-000000000004",
+          "ColorID": "c0000000-0000-4000-8000-000000000006"
+        }
+      ]
+    },
+    {
+      "_id": "c0000000-0000-4000-8000-000000000013",
+      "_type": "ComponentMaster",
+      "Designation": "Another part using the same profile",
+      "MaterialAssignments": [
+        {
+          "EngineeringMaterialID": "c0000000-0000-4000-8000-000000000003",
+          "MaterialRole": "Base",
+          "MaterialName": "CR5"
+        }
+      ]
+    }
+  ],
+  "Topics": [
+    {
+      "_id": "c0000000-0000-4000-8000-000000000014",
+      "_type": "Claims",
+      "EngineeringMaterialID": "c0000000-0000-4000-8000-000000000003",
+      "Comment": "Illustrative material-level topic without a mandatory component reference."
+    }
+  ]
+}

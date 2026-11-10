@@ -4,7 +4,7 @@
   "title": "VDA 231-301 Generic JSON schema",
   "type": "object",
   "additionalProperties": false,
-  "description": "This is the Generic Schema which validates the structure of the file",
+  "description": "This is the Generic Schema which validates the structure of the file. Development draft: material separation follows ERM Arbeitsstand 8; see docs/engineering-material-migration.md for compatibility and semantic validation rules.",
   "properties": {
     "_id": {
       "$ref": "#/$defs/Generic.Identifier"
@@ -83,6 +83,14 @@
       },
       "minItems": 1,
       "type": "array"
+    },
+    "EngineeringMaterials": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/Generic.EngineeringMaterial"
+      },
+      "description": "Reusable engineering material definitions referenced by component material assignments, stack layers and topics.",
+      "minItems": 1
     }
   },
   "required": [
@@ -1313,18 +1321,6 @@
           "$ref": "#/$defs/Generic.RestrictedString",
           "description": "Tier-N part number"
         },
-        "Colors": {
-          "items": {
-            "$ref": "#/$defs/Generic.Color"
-          },
-          "type": "array"
-        },
-        "MaterialSources": {
-          "items": {
-            "$ref": "#/$defs/Generic.MaterialSource"
-          },
-          "type": "array"
-        },
         "Mass": {
           "type": "array",
           "items": {
@@ -1336,45 +1332,13 @@
           "description": "Number of parts that are represented by this component master. This can be used when multiple identical components are present, for example when modelling a flat bill of materials.",
           "minimum": 1
         },
-        "MaterialGroup": {
-          "$ref": "#/$defs/Generic.RestrictedString",
-          "description": "According to VDA 231-106. IMDS calls this 'Material Classification'."
-        },
-        "MaterialClass": {
-          "$ref": "#/$defs/Generic.RestrictedString",
-          "description": "According to VDA 231-200"
-        },
-        "MaterialName": {
-          "$ref": "#/$defs/Generic.RestrictedString"
-        },
         "OemIdentifier": {
           "$ref": "#/$defs/Generic.RestrictedString",
-          "description": "Owner of the MaterialIdentifiers / SurfaceIdentifiers (e.g. which OEM company the identifiers refer to) and version, if applicable.",
+          "description": "Owner of the component material and surface specification identifiers (e.g. the OEM company) and version, if applicable.",
           "examples": [
             "BMW",
             "VW",
             "MB"
-          ]
-        },
-        "MaterialIdentifiers": {
-          "items": {
-            "$ref": "#/$defs/Generic.MaterialIdentifier"
-          },
-          "type": "array",
-          "minItems": 1,
-          "description": "Typed identifiers of the material. This includes the VDA 231-300 MAT_01 specification identifier, represented as OEMMATID, and norm-defined identifiers such as a steel material number according to EN 10027-2. Each identifier value is stored once in this collection.",
-          "examples": [
-            [
-              {
-                "IdentifierType": "OEMMATID",
-                "Value": "OEM123ABCR3N"
-              },
-              {
-                "IdentifierType": "MaterialNumber",
-                "Value": "1.1302",
-                "DefiningStandard": "EN 10027-2"
-              }
-            ]
           ]
         },
         "Revision": {
@@ -1385,26 +1349,12 @@
             "0002"
           ]
         },
-        "SurfaceIdentifiers": {
-          "items": {
-            "$ref": "#/$defs/Generic.RestrictedString"
-          },
-          "type": "array",
-          "description": "According to VDA 231-300",
-          "examples": [
-            "SUR111ABC123",
-            "SUR111BCD234"
-          ]
-        },
         "Specifications": {
           "items": {
             "$ref": "#/$defs/Generic.Specification"
           },
           "type": "array",
           "description": "A list of associated specifications regarding this component."
-        },
-        "Stack": {
-          "$ref": "#/$defs/Generic.Stack"
         },
         "Attachments": {
           "items": {
@@ -1426,13 +1376,36 @@
             "$ref": "#/$defs/Generic.BusinessKey"
           },
           "type": "array"
+        },
+        "ComponentClassification": {
+          "$ref": "#/$defs/Generic.ComponentClassification"
+        },
+        "Decomposable": {
+          "type": "boolean"
+        },
+        "MaterialSpecificationIdentifier": {
+          "$ref": "#/$defs/Generic.MaterialIdentifier",
+          "description": "Component-specific material specification identifier per VDA 231-300."
+        },
+        "SurfaceSpecificationIdentifier": {
+          "$ref": "#/$defs/Generic.MaterialIdentifier",
+          "description": "Component-specific surface specification identifier per VDA 231-300."
+        },
+        "MaterialAssignments": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Generic.ComponentMaterialAssignment"
+          },
+          "description": "Material assignments for this component, optionally with a role, stack and geographic scope."
         }
       },
       "required": [
         "_id",
         "_type"
       ],
-      "type": "object"
+      "type": "object",
+      "additionalProperties": false,
+      "description": "Reusable component definition. Material definitions are declared separately in EngineeringMaterials and linked through MaterialAssignments."
     },
     "Generic.MaterialIdentifier": {
       "additionalProperties": false,
@@ -1519,6 +1492,21 @@
         },
         "AdditionalInformation": {
           "$ref": "#/$defs/Generic.InformationSet"
+        },
+        "MaterialIdentifiers": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Generic.MaterialIdentifier"
+          }
+        },
+        "ProductionSite": {
+          "$ref": "#/$defs/Generic.Location"
+        },
+        "BusinessKeys": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Generic.BusinessKey"
+          }
         }
       },
       "required": [
@@ -1687,6 +1675,10 @@
             "$ref": "#/$defs/Generic.TestExecution"
           },
           "type": "array"
+        },
+        "EngineeringMaterialID": {
+          "$ref": "#/$defs/Generic.Identifier",
+          "description": "Transmission-scoped _id of the EngineeringMaterial this topic concerns. May be provided independently of ComponentMasterID; neither reference is made mandatory by this field."
         }
       },
       "required": [
@@ -1875,129 +1867,228 @@
         }
       }
     },
-    "Generic.Stack.Material": {
-      "properties": {
-        "Property": {
-          "const": "Material"
-        }
-      },
-      "required": [
-        "Property"
-      ],
-      "type": "object"
-    },
-    "Generic.Stack.MaterialValue": {
-      "$ref": "#/$defs/Generic.RestrictedString"
-    },
-    "Generic.Stack.LayerNumber": {
-      "properties": {
-        "Property": {
-          "const": "LayerNumber"
-        }
-      },
-      "required": [
-        "Property"
-      ],
+    "Generic.Stack": {
       "type": "object",
-      "description": "The layer number of the stack, starting with 1 for the bottom layer."
-    },
-    "Generic.Stack.LayerNumberValue": {
-      "type": "integer",
-      "minimum": 1,
-      "description": "The layer number of the stack, starting with 1 for the bottom layer."
-    },
-    "Generic.Stack.Mass": {
+      "additionalProperties": false,
       "properties": {
-        "Property": {
-          "const": "Mass"
+        "_id": {
+          "$ref": "#/$defs/Generic.Identifier"
         },
-        "Unit": {
-          "$ref": "#/$defs/Generic.Unit"
+        "_type": {
+          "const": "Stack",
+          "type": "string"
+        },
+        "Designation": {
+          "$ref": "#/$defs/Generic.RestrictedString"
+        },
+        "ComponentAreaReference": {
+          "$ref": "#/$defs/Generic.RestrictedString"
+        },
+        "ExternalElementReference": {
+          "$ref": "#/$defs/Generic.RestrictedString"
+        },
+        "Layers": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Generic.StackLayer"
+          },
+          "description": "Layers numbered from 1 for the bottom (substrate) layer. Layer numbers must be unique within the stack.",
+          "minItems": 1
         }
       },
       "required": [
-        "Property"
-      ],
-      "type": "object"
-    },
-    "Generic.Stack.MassValue": {
-      "type": "number",
-      "description": "The mass of the layer. The unit is defined in the corresponding Stack.Mass entry."
-    },
-    "Generic.Stack.Thickness": {
-      "properties": {
-        "Property": {
-          "const": "Thickness"
-        },
-        "Unit": {
-          "$ref": "#/$defs/Generic.Unit"
-        }
-      },
-      "required": [
-        "Property"
-      ],
-      "type": "object"
-    },
-    "Generic.Stack.ThicknessValue": {
-      "type": "number",
-      "description": "The thickness of the layer. The unit is defined in the corresponding Stack.Thickness entry."
-    },
-    "Generic.Stack.ArraySpec": {
-      "description": "Specification of a stack array, which defines the properties of each layer in the stack.",
-      "prefixItems": [
-        {
-          "$ref": "#/$defs/Generic.Stack.LayerNumber"
-        },
-        {
-          "$ref": "#/$defs/Generic.Stack.Material"
-        },
-        {
-          "$ref": "#/$defs/Generic.Stack.Mass"
-        },
-        {
-          "$ref": "#/$defs/Generic.Stack.Thickness"
-        }
-      ],
-      "type": "array"
-    },
-    "Generic.Stack.ArrayValue": {
-      "type": "array",
-      "description": "An array value for a stack, which contains the values for each layer in the stack according to the defined ArraySpec.",
-      "prefixItems": [
-        {
-          "$ref": "#/$defs/Generic.Stack.LayerNumberValue"
-        },
-        {
-          "$ref": "#/$defs/Generic.Stack.MaterialValue"
-        },
-        {
-          "$ref": "#/$defs/Generic.Stack.MassValue"
-        },
-        {
-          "$ref": "#/$defs/Generic.Stack.ThicknessValue"
-        }
+        "_id",
+        "_type",
+        "Layers"
       ]
     },
-    "Generic.Stack": {
-      "allOf": [
-        {
+    "Generic.EngineeringMaterial": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "_id": {
+          "$ref": "#/$defs/Generic.Identifier"
+        },
+        "_type": {
+          "const": "EngineeringMaterial",
+          "type": "string"
+        },
+        "MaterialGroup": {
+          "$ref": "#/$defs/Generic.RestrictedString",
+          "description": "Material group, for example according to VDA 231-106."
+        },
+        "MaterialClass": {
+          "$ref": "#/$defs/Generic.RestrictedString",
+          "description": "Descriptive material category, for example Stainless steel. The specific material designation belongs in MaterialName."
+        },
+        "MaterialName": {
+          "$ref": "#/$defs/Generic.RestrictedString",
+          "description": "Specific material designation, for example 1.4301-X5CrNi18-10. May combine a material number and an abbreviated designation where available."
+        },
+        "MaterialDefinitionLevel": {
+          "type": "string",
+          "enum": [
+            "Design",
+            "Supplier",
+            "Production",
+            "Unspecified"
+          ],
+          "description": "Optional company-specific definition level. Design denotes a design material profile; Production denotes a narrower manufacturing-related requirement profile of the same material. Unspecified explicitly leaves the level unspecified. Omit this field when the distinction is not used. No default or dependency on DerivedFromMaterialID is imposed."
+        },
+        "DerivedFromMaterialID": {
+          "$ref": "#/$defs/Generic.Identifier",
+          "description": "Optional reference (0..1) from a production material profile to the design EngineeringMaterial from which it is derived, using its transmission-scoped _id in this file, not a business material identifier. Requirements are not inherited. The reference must resolve to another EngineeringMaterial; self-references and cycles are prohibited. Referential integrity and acyclicity require semantic validation outside JSON Schema."
+        },
+        "ApplicableComponentClassifications": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Generic.ComponentClassification"
+          }
+        },
+        "MaterialSpecificationIdentifier": {
+          "$ref": "#/$defs/Generic.MaterialIdentifier",
+          "description": "Material specification identifier per VDA 231-200/300."
+        },
+        "SurfaceSpecificationIdentifier": {
+          "$ref": "#/$defs/Generic.MaterialIdentifier",
+          "description": "Surface specification identifier per VDA 231-200/300."
+        },
+        "Specification": {
+          "$ref": "#/$defs/Generic.Specification"
+        },
+        "MaterialSources": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Generic.MaterialSource"
+          },
+          "description": "Supplier-specific sources for this engineering material."
+        },
+        "Colors": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Generic.Color"
+          },
+          "description": "Colors defined for this engineering material; instances reference the actual color via ColorID."
+        },
+        "AdditionalInformation": {
           "$ref": "#/$defs/Generic.InformationSet"
         },
-        {
-          "properties": {
-            "ArraySpec": {
-              "$ref": "#/$defs/Generic.Stack.ArraySpec"
-            },
-            "ArrayValue": {
-              "type": "array",
-              "items": {
-                "$ref": "#/$defs/Generic.Stack.ArrayValue"
-              }
-            }
+        "AdditionalInformationText": {
+          "$ref": "#/$defs/Generic.RestrictedText",
+          "description": "Additional material information according to VDA 231-200."
+        }
+      },
+      "required": [
+        "_id",
+        "_type",
+        "MaterialGroup",
+        "MaterialClass",
+        "MaterialName"
+      ],
+      "description": "In VDA 231-301, EngineeringMaterial generally denotes the technically defined material of a component. Depending on company terminology, it may correspond to a design material or a production material. A production material is a narrower manufacturing-related requirement profile of the same material, not a separate material kind."
+    },
+    "Generic.ComponentMaterialAssignment": {
+      "type": "object",
+      "additionalProperties": false,
+      "description": "Assignment of an engineering material or a layer stack to a component, with an optional material name for readability. All fields are optional; no exclusive choice is imposed.",
+      "properties": {
+        "EngineeringMaterialID": {
+          "$ref": "#/$defs/Generic.Identifier",
+          "description": "Transmission-scoped _id of an EngineeringMaterial declared in this file."
+        },
+        "MaterialName": {
+          "$ref": "#/$defs/Generic.RestrictedString",
+          "description": "Optional readable copy of the referenced EngineeringMaterial.MaterialName. Keep this label aligned with the referenced definition; EngineeringMaterialID identifies the material."
+        },
+        "MaterialRole": {
+          "$ref": "#/$defs/Generic.RestrictedString",
+          "description": "Role of the material, for example Base, Coating, Adhesive or Insert. These examples are not a closed code list."
+        },
+        "Stack": {
+          "$ref": "#/$defs/Generic.Stack"
+        },
+        "GeographicScope": {
+          "$ref": "#/$defs/Generic.RestrictedString",
+          "description": "Geographic scope of this assignment; no classification system is prescribed."
+        }
+      }
+    },
+    "Generic.ComponentClassification": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "_id": {
+          "$ref": "#/$defs/Generic.Identifier"
+        },
+        "_type": {
+          "const": "ComponentClassification",
+          "type": "string"
+        },
+        "ClassificationSystem": {
+          "$ref": "#/$defs/Generic.RestrictedString"
+        },
+        "LevelType": {
+          "$ref": "#/$defs/Generic.RestrictedString"
+        },
+        "Code": {
+          "$ref": "#/$defs/Generic.RestrictedString"
+        },
+        "Designation": {
+          "$ref": "#/$defs/Generic.RestrictedString"
+        },
+        "ParentClassificationID": {
+          "$ref": "#/$defs/Generic.Identifier",
+          "description": "Transmission-scoped _id of the parent ComponentClassification in this file."
+        },
+        "SubClassifications": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Generic.ComponentClassification"
           }
         }
-      ],
-      "type": "object"
+      },
+      "required": [
+        "_id",
+        "_type",
+        "ClassificationSystem",
+        "LevelType",
+        "Code"
+      ]
+    },
+    "Generic.StackLayer": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "_id": {
+          "$ref": "#/$defs/Generic.Identifier"
+        },
+        "_type": {
+          "const": "StackLayer",
+          "type": "string"
+        },
+        "LayerNumber": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "EngineeringMaterialID": {
+          "$ref": "#/$defs/Generic.Identifier",
+          "description": "Transmission-scoped _id of the EngineeringMaterial used for this layer."
+        },
+        "Thickness": {
+          "$ref": "#/$defs/Generic.Value"
+        },
+        "Mass": {
+          "$ref": "#/$defs/Generic.Mass"
+        },
+        "Comment": {
+          "$ref": "#/$defs/Generic.RestrictedText"
+        }
+      },
+      "required": [
+        "_id",
+        "_type",
+        "LayerNumber"
+      ]
     }
   }
 }

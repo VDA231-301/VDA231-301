@@ -30,6 +30,11 @@ Schema-oriented examples currently target generic schema **v3.0.0**. The exact t
 version is stated per example in the "Validation status" column and in each
 example's README.
 
+The [engineering material example](./engineering-material/) and the Toggle Clamp
+example target the repository-main **development model (ERM Arbeitsstand 8)**,
+which separates materials from components. Other examples retain the targets
+stated below. See the [migration notes](../docs/engineering-material-migration.md).
+
 ## Find the Right Example
 
 Use the following navigation guide to identify the example that best matches
@@ -37,6 +42,7 @@ your use case.
 
 | If you want to... | Start with |
 |---|---|
+| Separate reusable design and production materials from components | [Engineering material](./engineering-material/) |
 | Understand the basic structure of a material definition | [Simple material definition](./simple-material-definition/) |
 | Add color information to a component or material representation | [Color definition](./color-definition/) |
 | Trace individual physical component instances using serial and production information | [Component instance traceability](./component-instance-traceability/) |

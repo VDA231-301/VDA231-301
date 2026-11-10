@@ -38,26 +38,9 @@
           "_type": "ComponentMaster",
           "SupplierPartNumber": "TC-BP-001",
           "OemIdentifier": "MB",
-          "MaterialIdentifiers": [
-            {
-              "IdentifierType": "OEMMATID",
-              "Value": "MAT 123456"
-            }
-          ],
-          "SurfaceIdentifiers": [
-            "SUR#78910"
-          ],
           "NGIDPath": "$$NGID<chain>=\"__CAD_INST_UID\"\\0Bearing_Pin.asm;54;492:\\0BEARING_PIN_GEO.part;47;11139:\\0\\0",
           "Designation": "Bearing Pin (Lagerbolzen)",
           "Comment": "CAD Stable Body UID: 11139. 1st of 4 Bearing Pin occurrences in source CAD (root level).",
-          "Specifications": [
-            {
-              "Type": "DIN EN",
-              "Number": "10088-4",
-              "IssueDate": "2010-01",
-              "Title": "Stainless steels - Technical delivery cond. for flat products"
-            }
-          ],
           "Instances": [
             {
               "_id": "a1b2c3d4-0011-4000-8000-000000000002",
@@ -66,34 +49,45 @@
               "ProductionBatchNumber": "PB-2025-Q1-BP"
             }
           ],
-          "MaterialClass": "X5CrNi18-10"
+          "MaterialSpecificationIdentifier": {
+            "IdentifierType": "OEMMATID",
+            "Value": "MAT 123456"
+          },
+          "SurfaceSpecificationIdentifier": {
+            "IdentifierType": "OEMMATID",
+            "Value": "SUR#78910"
+          },
+          "MaterialAssignments": [
+            {
+              "EngineeringMaterialID": "b1b2c3d4-0011-4000-8000-000000000001",
+              "MaterialRole": "Base",
+              "MaterialName": "1.4301-X5CrNi18-10"
+            }
+          ]
         },
         {
           "_id": "a1b2c3d4-0026-4000-8000-000000000001",
           "_type": "ComponentMaster",
           "SupplierPartNumber": "TC-BP-001",
           "OemIdentifier": "MB",
-          "MaterialIdentifiers": [
-            {
-              "IdentifierType": "OEMMATID",
-              "Value": "MAT 123456"
-            }
-          ],
-          "SurfaceIdentifiers": [
-            "SUR#78910"
-          ],
           "NGIDPath": "$$NGID<chain>=\"__CAD_INST_UID\"\\0Bearing_Pin.asm;54;488:\\0BEARING_PIN_GEO.part;47;11139:\\0\\0",
           "Designation": "Bearing Pin (Lagerbolzen)",
           "Comment": "CAD Stable Body UID: 11139. 2nd of 4 Bearing Pin occurrences in source CAD (root level).",
-          "Specifications": [
+          "MaterialSpecificationIdentifier": {
+            "IdentifierType": "OEMMATID",
+            "Value": "MAT 123456"
+          },
+          "SurfaceSpecificationIdentifier": {
+            "IdentifierType": "OEMMATID",
+            "Value": "SUR#78910"
+          },
+          "MaterialAssignments": [
             {
-              "Type": "DIN EN",
-              "Number": "10088-4",
-              "IssueDate": "2010-01",
-              "Title": "Stainless steels - Technical delivery cond. for flat products"
+              "EngineeringMaterialID": "b1b2c3d4-0011-4000-8000-000000000001",
+              "MaterialRole": "Base",
+              "MaterialName": "1.4301-X5CrNi18-10"
             }
-          ],
-          "MaterialClass": "X5CrNi18-10"
+          ]
         },
         {
           "_id": "a1b2c3d4-0012-4000-8000-000000000001",
@@ -107,36 +101,36 @@
               "_type": "ComponentMaster",
               "SupplierPartNumber": "TC-FCA-001",
               "OemIdentifier": "MB",
-              "MaterialIdentifiers": [
-                {
-                  "IdentifierType": "OEMMATID",
-                  "Value": "MAT 969696"
-                }
-              ],
               "NGIDPath": "$$NGID<chain>=\"__CAD_INST_UID\"\\0Clamping_Arm-ASM.asm;56;47:\\0Forked_Clamping _Arm.asm;52;71:\\0CLAMPING_ARM_GEO.part;41;7412:\\0\\0",
               "Designation": "Forked Clamping Arm (offener Spannarm)",
               "Comment": "CAD Stable Body UID: 7412",
-              "Specifications": [
-                {
-                  "Type": "ASTM",
-                  "Number": "A1008",
-                  "IssueDate": "2024-02",
-                  "Title": "Steel, Sheet, Cold-Rolled, Carbon, Structural"
-                }
-              ],
               "Instances": [
                 {
                   "_id": "a1b2c3d4-0013-4000-8000-000000000002",
                   "_type": "ComponentInstance",
-                  "SerialNumber": "FCA-001"
+                  "SerialNumber": "FCA-001",
+                  "MaterialSourceID": "d1b2c3d4-0030-4000-8000-000000000001",
+                  "ColorID": "d1b2c3d4-0036-4000-8000-000000000001"
                 },
                 {
                   "_id": "a1b2c3d4-0013-4000-8000-000000000003",
                   "_type": "ComponentInstance",
-                  "SerialNumber": "FCA-002"
+                  "SerialNumber": "FCA-002",
+                  "MaterialSourceID": "d1b2c3d4-0033-4000-8000-000000000001",
+                  "ColorID": "d1b2c3d4-0037-4000-8000-000000000001"
                 }
               ],
-              "MaterialClass": "AISI 1008"
+              "MaterialSpecificationIdentifier": {
+                "IdentifierType": "OEMMATID",
+                "Value": "MAT 969696"
+              },
+              "MaterialAssignments": [
+                {
+                  "EngineeringMaterialID": "b1b2c3d4-0013-4000-8000-000000000001",
+                  "MaterialRole": "Base",
+                  "MaterialName": "AISI 1008"
+                }
+              ]
             },
             {
               "_id": "a1b2c3d4-0014-4000-8000-000000000001",
@@ -150,51 +144,44 @@
                   "_type": "ComponentMaster",
                   "SupplierPartNumber": "TC-CSC-001",
                   "OemIdentifier": "MB",
-                  "MaterialIdentifiers": [
-                    {
-                      "IdentifierType": "OEMMATID",
-                      "Value": "SDR 221100"
-                    }
-                  ],
-                  "SurfaceIdentifiers": [
-                    "SUR#2323"
-                  ],
                   "NGIDPath": "$$NGID<chain>=\"__CAD_INST_UID\"\\0Clamping_Arm-ASM.asm;56;47:\\0Clamping_Screw.asm;55;69:\\0SCREW_GEO.part;42;10224:\\0\\0",
                   "Designation": "Clamping Screw M8x45 Torx flange",
                   "Comment": "CAD Stable Body UID: 10224.",
-                  "Specifications": [
+                  "MaterialSpecificationIdentifier": {
+                    "IdentifierType": "OEMMATID",
+                    "Value": "SDR 221100"
+                  },
+                  "SurfaceSpecificationIdentifier": {
+                    "IdentifierType": "OEMMATID",
+                    "Value": "SUR#2323"
+                  },
+                  "MaterialAssignments": [
                     {
-                      "Type": "DIN EN ISO",
-                      "Number": "898-1",
-                      "IssueDate": "2023-05",
-                      "Title": "Mechanical properties of fasteners - carbon and alloy steel"
+                      "EngineeringMaterialID": "b1b2c3d4-0015-4000-8000-000000000001",
+                      "MaterialRole": "Base",
+                      "MaterialName": "Schraube FK 8.8"
                     }
-                  ],
-                  "MaterialClass": "Schraube FK 8.8"
+                  ]
                 },
                 {
                   "_id": "a1b2c3d4-0016-4000-8000-000000000001",
                   "_type": "ComponentMaster",
                   "SupplierPartNumber": "TC-RTP-001",
                   "OemIdentifier": "MB",
-                  "MaterialIdentifiers": [
-                    {
-                      "IdentifierType": "OEMMATID",
-                      "Value": "MAT 4545454"
-                    }
-                  ],
                   "NGIDPath": "$$NGID<chain>=\"__CAD_INST_UID\"\\0Clamping_Arm-ASM.asm;56;47:\\0Clamping_Screw.asm;55;69:\\0RUBBER_THRUST_PAD_GEO.part;41;7046:\\0\\0",
                   "Designation": "Rubber Thrust Pad",
                   "Comment": "Shore A 45+/-5; CAD Stable Body UID: 7046.",
-                  "Specifications": [
+                  "MaterialSpecificationIdentifier": {
+                    "IdentifierType": "OEMMATID",
+                    "Value": "MAT 4545454"
+                  },
+                  "MaterialAssignments": [
                     {
-                      "Type": "Company X",
-                      "Number": "2301",
-                      "IssueDate": "2024-09",
-                      "Title": "Rubber thrust pad material specification"
+                      "EngineeringMaterialID": "b1b2c3d4-0016-4000-8000-000000000001",
+                      "MaterialRole": "Base",
+                      "MaterialName": "EPDM"
                     }
-                  ],
-                  "MaterialClass": "EPDM"
+                  ]
                 }
               ],
               "Comment": "Clamping Screw Assembly (Andrueckschraube) with rubber thrust pad."
@@ -212,52 +199,44 @@
                   "_type": "ComponentMaster",
                   "SupplierPartNumber": "TC-FW-001",
                   "OemIdentifier": "MB",
-                  "MaterialIdentifiers": [
-                    {
-                      "IdentifierType": "OEMMATID",
-                      "Value": "MAT 858585"
-                    }
-                  ],
                   "NGIDPath": "$$NGID<chain>=\"__CAD_INST_UID\"\\0Clamping_Arm-ASM.asm;56;47:\\0Clamping_Srew_Holder-ASM.asm;50;139:\\0Flanged_Washer.asm;50;141:\\0FLANGED_WASHER_GEO.part;46;10355:\\0\\0",
                   "Designation": "Flanged Washer (Flankenscheibe)",
                   "Comment": "CAD Stable Body UID: 10355",
-                  "Specifications": [
+                  "MaterialSpecificationIdentifier": {
+                    "IdentifierType": "OEMMATID",
+                    "Value": "MAT 858585"
+                  },
+                  "MaterialAssignments": [
                     {
-                      "Type": "DIN EN",
-                      "Number": "10152",
-                      "IssueDate": "2017-06",
-                      "Title": "Electrolytically zinc coated cold rolled steel flat products"
+                      "EngineeringMaterialID": "b1b2c3d4-0018-4000-8000-000000000001",
+                      "MaterialRole": "Base",
+                      "MaterialName": "DC04"
                     }
-                  ],
-                  "MaterialClass": "DC04"
+                  ]
                 },
                 {
                   "_id": "a1b2c3d4-0019-4000-8000-000000000001",
                   "_type": "ComponentMaster",
                   "SupplierPartNumber": "TC-HN-001",
                   "OemIdentifier": "MB",
-                  "MaterialIdentifiers": [
-                    {
-                      "IdentifierType": "OEMMATID",
-                      "Value": "MAT 656564"
-                    }
-                  ],
-                  "SurfaceIdentifiers": [
-                    "SUR#636363"
-                  ],
                   "NGIDPath": "$$NGID<chain>=\"__CAD_INST_UID\"\\0Clamping_Arm-ASM.asm;56;47:\\0Clamping_Srew_Holder-ASM.asm;50;139:\\0Hexagon_Nut.asm;48;140:\\0HEXAGON_NUT_GEO.part;44;11449:\\0\\0",
                   "Designation": "Hexagon Nut M8 (Sechskantmutter)",
                   "Comment": "ZnNi coated; CAD Stable Body UID: 11449",
-                  "Specifications": [
+                  "MaterialSpecificationIdentifier": {
+                    "IdentifierType": "OEMMATID",
+                    "Value": "MAT 656564"
+                  },
+                  "SurfaceSpecificationIdentifier": {
+                    "IdentifierType": "OEMMATID",
+                    "Value": "SUR#636363"
+                  },
+                  "MaterialAssignments": [
                     {
-                      "Type": "DIN EN",
-                      "Number": "10269",
-                      "IssueDate": "2014-02",
-                      "Title": "Steels for fasteners with elevated temperature properties"
+                      "EngineeringMaterialID": "b1b2c3d4-0019-4000-8000-000000000001",
+                      "MaterialRole": "Base",
+                      "MaterialName": "19MnB4 Mutter FK 8"
                     }
-                  ],
-                  "MaterialClass": "19MnB4 Mutter FK 8",
-                  "MaterialName": "19MnB4 FK8"
+                  ]
                 }
               ]
             },
@@ -274,52 +253,44 @@
                   "_type": "ComponentMaster",
                   "SupplierPartNumber": "TC-FW-001",
                   "OemIdentifier": "MB",
-                  "MaterialIdentifiers": [
-                    {
-                      "IdentifierType": "OEMMATID",
-                      "Value": "MAT 858585"
-                    }
-                  ],
                   "NGIDPath": "$$NGID<chain>=\"__CAD_INST_UID\"\\0Clamping_Arm-ASM.asm;56;47:\\0Clamping_Srew_Holder-ASM.asm;50;52:\\0Flanged_Washer.asm;50;119:\\0FLANGED_WASHER_GEO.part;46;10355:\\0\\0",
                   "Designation": "Flanged Washer (Flankenscheibe)",
                   "Comment": "CAD Stable Body UID: 10355. 2nd of 2 Flanged Washer occurrences in source CAD.",
-                  "Specifications": [
+                  "MaterialSpecificationIdentifier": {
+                    "IdentifierType": "OEMMATID",
+                    "Value": "MAT 858585"
+                  },
+                  "MaterialAssignments": [
                     {
-                      "Type": "DIN EN",
-                      "Number": "10152",
-                      "IssueDate": "2017-06",
-                      "Title": "Electrolytically zinc coated cold rolled steel flat products"
+                      "EngineeringMaterialID": "b1b2c3d4-0018-4000-8000-000000000001",
+                      "MaterialRole": "Base",
+                      "MaterialName": "DC04"
                     }
-                  ],
-                  "MaterialClass": "DC04"
+                  ]
                 },
                 {
                   "_id": "a1b2c3d4-0029-4000-8000-000000000001",
                   "_type": "ComponentMaster",
                   "SupplierPartNumber": "TC-HN-001",
                   "OemIdentifier": "MB",
-                  "MaterialIdentifiers": [
-                    {
-                      "IdentifierType": "OEMMATID",
-                      "Value": "MAT 656564"
-                    }
-                  ],
-                  "SurfaceIdentifiers": [
-                    "SUR#636363"
-                  ],
                   "NGIDPath": "$$NGID<chain>=\"__CAD_INST_UID\"\\0Clamping_Arm-ASM.asm;56;47:\\0Clamping_Srew_Holder-ASM.asm;50;52:\\0Hexagon_Nut.asm;48;122:\\0HEXAGON_NUT_GEO.part;44;11449:\\0\\0",
                   "Designation": "Hexagon Nut M8 (Sechskantmutter)",
                   "Comment": "ZnNi coated; CAD Stable Body UID: 11449. 2nd of 2 Hexagon Nut occurrences in source CAD.",
-                  "Specifications": [
+                  "MaterialSpecificationIdentifier": {
+                    "IdentifierType": "OEMMATID",
+                    "Value": "MAT 656564"
+                  },
+                  "SurfaceSpecificationIdentifier": {
+                    "IdentifierType": "OEMMATID",
+                    "Value": "SUR#636363"
+                  },
+                  "MaterialAssignments": [
                     {
-                      "Type": "DIN EN",
-                      "Number": "10269",
-                      "IssueDate": "2014-02",
-                      "Title": "Steels for fasteners with elevated temperature properties"
+                      "EngineeringMaterialID": "b1b2c3d4-0019-4000-8000-000000000001",
+                      "MaterialRole": "Base",
+                      "MaterialName": "19MnB4 Mutter FK 8"
                     }
-                  ],
-                  "MaterialClass": "19MnB4 Mutter FK 8",
-                  "MaterialName": "19MnB4 FK8"
+                  ]
                 }
               ]
             }
@@ -338,48 +309,40 @@
               "_type": "ComponentMaster",
               "SupplierPartNumber": "TC-BAR-001",
               "OemIdentifier": "MB",
-              "MaterialIdentifiers": [
-                {
-                  "IdentifierType": "OEMMATID",
-                  "Value": "MAT 123456"
-                }
-              ],
               "NGIDPath": "$$NGID<chain>=\"__CAD_INST_UID\"\\0Lever_Bar.asm;55;42:\\0BAR_GEO.part;41;10155:\\0\\0",
               "Designation": "Lever Bar steel body",
               "Comment": "Hot-dip galvanized; CAD Stable Body UID: 10155.",
-              "Specifications": [
+              "MaterialSpecificationIdentifier": {
+                "IdentifierType": "OEMMATID",
+                "Value": "MAT 123456"
+              },
+              "MaterialAssignments": [
                 {
-                  "Type": "DIN EN",
-                  "Number": "10346",
-                  "IssueDate": "2015-10",
-                  "Title": "Continuously hot-dip coated steel flat products for cold forming"
+                  "EngineeringMaterialID": "b1b2c3d4-0021-4000-8000-000000000001",
+                  "MaterialRole": "Base",
+                  "MaterialName": "HX260LAD"
                 }
-              ],
-              "MaterialClass": "HX260LAD"
+              ]
             },
             {
               "_id": "a1b2c3d4-0022-4000-8000-000000000001",
               "_type": "ComponentMaster",
               "SupplierPartNumber": "TC-HG-001",
               "OemIdentifier": "MB",
-              "MaterialIdentifiers": [
-                {
-                  "IdentifierType": "OEMMATID",
-                  "Value": "MAT 656565"
-                }
-              ],
               "NGIDPath": "$$NGID<chain>=\"__CAD_INST_UID\"\\0Lever_Bar.asm;55;42:\\0HAND_GRIP_GEO.part;41;7046:\\0\\0",
               "Designation": "Hand Grip",
               "Comment": "Shore A max 60; CAD Stable Body UID: 7046.",
-              "Specifications": [
+              "MaterialSpecificationIdentifier": {
+                "IdentifierType": "OEMMATID",
+                "Value": "MAT 656565"
+              },
+              "MaterialAssignments": [
                 {
-                  "Type": "Company X",
-                  "Number": "6673",
-                  "IssueDate": "2013-12",
-                  "Title": "Hand grip thermoplastic elastomer material specification"
+                  "EngineeringMaterialID": "b1b2c3d4-0022-4000-8000-000000000001",
+                  "MaterialRole": "Base",
+                  "MaterialName": "TPE"
                 }
-              ],
-              "MaterialClass": "TPE"
+              ]
             }
           ]
         },
@@ -388,24 +351,20 @@
           "_type": "ComponentMaster",
           "SupplierPartNumber": "TC-TL-001",
           "OemIdentifier": "MB",
-          "MaterialIdentifiers": [
-            {
-              "IdentifierType": "OEMMATID",
-              "Value": "MAT 969696"
-            }
-          ],
           "NGIDPath": "$$NGID<chain>=\"__CAD_INST_UID\"\\0Toggle_Lever.asm;53;37:\\0TOGGLE_LEVER_GEO.part;41;7037:\\0\\0",
           "Designation": "Toggle Lever (Kipphebel)",
           "Comment": "CAD Stable Body UID: 7037",
-          "Specifications": [
+          "MaterialSpecificationIdentifier": {
+            "IdentifierType": "OEMMATID",
+            "Value": "MAT 969696"
+          },
+          "MaterialAssignments": [
             {
-              "Type": "ASTM",
-              "Number": "A1008",
-              "IssueDate": "2024-02",
-              "Title": "Steel, Sheet, Cold-Rolled, Carbon, Structural"
+              "EngineeringMaterialID": "b1b2c3d4-0013-4000-8000-000000000001",
+              "MaterialRole": "Base",
+              "MaterialName": "AISI 1008"
             }
-          ],
-          "MaterialClass": "AISI 1008"
+          ]
         },
         {
           "_id": "a1b2c3d4-0024-4000-8000-000000000001",
@@ -419,108 +378,96 @@
               "_type": "ComponentMaster",
               "SupplierPartNumber": "TC-BB-001",
               "OemIdentifier": "MB",
-              "MaterialIdentifiers": [
-                {
-                  "IdentifierType": "OEMMATID",
-                  "Value": "MAT 969696"
-                }
-              ],
-              "SurfaceIdentifiers": [
-                "SUR#141414"
-              ],
               "NGIDPath": "$$NGID<chain>=\"__CAD_INST_UID\"\\0Mounting_Base-ASM.asm;51;22:\\0Base_Braket.asm;51;118:\\0BASE_BRAKET_GEO.part;41;7045:\\0\\0",
               "Designation": "Base Bracket (Basishalterung)",
               "Comment": "Powder coated; CAD Stable Body UID: 7045. 1st of 2 Base Bracket occurrences in source CAD.",
-              "Specifications": [
+              "MaterialSpecificationIdentifier": {
+                "IdentifierType": "OEMMATID",
+                "Value": "MAT 969696"
+              },
+              "SurfaceSpecificationIdentifier": {
+                "IdentifierType": "OEMMATID",
+                "Value": "SUR#141414"
+              },
+              "MaterialAssignments": [
                 {
-                  "Type": "ASTM",
-                  "Number": "A1008",
-                  "IssueDate": "2024-02",
-                  "Title": "Steel, Sheet, Cold-Rolled, Carbon, Structural"
+                  "EngineeringMaterialID": "b1b2c3d4-0025-4000-8000-000000000001",
+                  "MaterialRole": "Base",
+                  "MaterialName": "AISI 1008"
                 }
-              ],
-              "MaterialClass": "AISI 1008"
+              ]
             },
             {
               "_id": "a1b2c3d4-0032-4000-8000-000000000001",
               "_type": "ComponentMaster",
               "SupplierPartNumber": "TC-BP-001",
               "OemIdentifier": "MB",
-              "MaterialIdentifiers": [
-                {
-                  "IdentifierType": "OEMMATID",
-                  "Value": "MAT 123456"
-                }
-              ],
-              "SurfaceIdentifiers": [
-                "SUR#78910"
-              ],
               "NGIDPath": "$$NGID<chain>=\"__CAD_INST_UID\"\\0Mounting_Base-ASM.asm;51;22:\\0Bearing_Pin.asm;54;117:\\0BEARING_PIN_GEO.part;47;11139:\\0\\0",
               "Designation": "Bearing Pin (Lagerbolzen)",
               "Comment": "CAD Stable Body UID: 11139. 3rd of 4 Bearing Pin occurrences in source CAD (under Mounting Base Assembly).",
-              "Specifications": [
+              "MaterialSpecificationIdentifier": {
+                "IdentifierType": "OEMMATID",
+                "Value": "MAT 123456"
+              },
+              "SurfaceSpecificationIdentifier": {
+                "IdentifierType": "OEMMATID",
+                "Value": "SUR#78910"
+              },
+              "MaterialAssignments": [
                 {
-                  "Type": "DIN EN",
-                  "Number": "10088-4",
-                  "IssueDate": "2010-01",
-                  "Title": "Stainless steels - Technical delivery cond. for flat products"
+                  "EngineeringMaterialID": "b1b2c3d4-0011-4000-8000-000000000001",
+                  "MaterialRole": "Base",
+                  "MaterialName": "1.4301-X5CrNi18-10"
                 }
-              ],
-              "MaterialClass": "X5CrNi18-10"
+              ]
             },
             {
               "_id": "a1b2c3d4-0033-4000-8000-000000000001",
               "_type": "ComponentMaster",
               "SupplierPartNumber": "TC-BB-001",
               "OemIdentifier": "MB",
-              "MaterialIdentifiers": [
-                {
-                  "IdentifierType": "OEMMATID",
-                  "Value": "MAT 969696"
-                }
-              ],
-              "SurfaceIdentifiers": [
-                "SUR#141414"
-              ],
               "NGIDPath": "$$NGID<chain>=\"__CAD_INST_UID\"\\0Mounting_Base-ASM.asm;51;22:\\0Base_Braket.asm;51;32:\\0BASE_BRAKET_GEO.part;41;7045:\\0\\0",
               "Designation": "Base Bracket (Basishalterung)",
               "Comment": "Powder coated; CAD Stable Body UID: 7045. 2nd of 2 Base Bracket occurrences in source CAD.",
-              "Specifications": [
+              "MaterialSpecificationIdentifier": {
+                "IdentifierType": "OEMMATID",
+                "Value": "MAT 969696"
+              },
+              "SurfaceSpecificationIdentifier": {
+                "IdentifierType": "OEMMATID",
+                "Value": "SUR#141414"
+              },
+              "MaterialAssignments": [
                 {
-                  "Type": "ASTM",
-                  "Number": "A1008",
-                  "IssueDate": "2024-02",
-                  "Title": "Steel, Sheet, Cold-Rolled, Carbon, Structural"
+                  "EngineeringMaterialID": "b1b2c3d4-0025-4000-8000-000000000001",
+                  "MaterialRole": "Base",
+                  "MaterialName": "AISI 1008"
                 }
-              ],
-              "MaterialClass": "AISI 1008"
+              ]
             },
             {
               "_id": "a1b2c3d4-0034-4000-8000-000000000001",
               "_type": "ComponentMaster",
               "SupplierPartNumber": "TC-BP-001",
               "OemIdentifier": "MB",
-              "MaterialIdentifiers": [
-                {
-                  "IdentifierType": "OEMMATID",
-                  "Value": "MAT 123456"
-                }
-              ],
-              "SurfaceIdentifiers": [
-                "SUR#78910"
-              ],
               "NGIDPath": "$$NGID<chain>=\"__CAD_INST_UID\"\\0Mounting_Base-ASM.asm;51;22:\\0Bearing_Pin.asm;54;30:\\0BEARING_PIN_GEO.part;47;11139:\\0\\0",
               "Designation": "Bearing Pin (Lagerbolzen)",
               "Comment": "CAD Stable Body UID: 11139. 4th of 4 Bearing Pin occurrences in source CAD (under Mounting Base Assembly).",
-              "Specifications": [
+              "MaterialSpecificationIdentifier": {
+                "IdentifierType": "OEMMATID",
+                "Value": "MAT 123456"
+              },
+              "SurfaceSpecificationIdentifier": {
+                "IdentifierType": "OEMMATID",
+                "Value": "SUR#78910"
+              },
+              "MaterialAssignments": [
                 {
-                  "Type": "DIN EN",
-                  "Number": "10088-4",
-                  "IssueDate": "2010-01",
-                  "Title": "Stainless steels - Technical delivery cond. for flat products"
+                  "EngineeringMaterialID": "b1b2c3d4-0011-4000-8000-000000000001",
+                  "MaterialRole": "Base",
+                  "MaterialName": "1.4301-X5CrNi18-10"
                 }
-              ],
-              "MaterialClass": "X5CrNi18-10"
+              ]
             }
           ]
         }
@@ -850,6 +797,261 @@
           "ComponentInstanceID": "a1b2c3d4-0011-4000-8000-000000000002"
         }
       ]
+    }
+  ],
+  "EngineeringMaterials": [
+    {
+      "_type": "EngineeringMaterial",
+      "MaterialClass": "Stainless steel",
+      "MaterialSpecificationIdentifier": {
+        "IdentifierType": "OEMMATID",
+        "Value": "MAT 123456"
+      },
+      "SurfaceSpecificationIdentifier": {
+        "IdentifierType": "OEMMATID",
+        "Value": "SUR#78910"
+      },
+      "Specification": {
+        "Type": "DIN EN",
+        "Number": "10088-4",
+        "IssueDate": "2010-01",
+        "Title": "Stainless steels - Technical delivery cond. for flat products"
+      },
+      "_id": "b1b2c3d4-0011-4000-8000-000000000001",
+      "MaterialGroup": "Steel",
+      "MaterialName": "1.4301-X5CrNi18-10"
+    },
+    {
+      "_type": "EngineeringMaterial",
+      "MaterialClass": "Low-carbon steel",
+      "MaterialSpecificationIdentifier": {
+        "IdentifierType": "OEMMATID",
+        "Value": "MAT 969696"
+      },
+      "Specification": {
+        "Type": "ASTM",
+        "Number": "A1008",
+        "IssueDate": "2024-02",
+        "Title": "Steel, Sheet, Cold-Rolled, Carbon, Structural"
+      },
+      "_id": "b1b2c3d4-0013-4000-8000-000000000001",
+      "MaterialGroup": "Steel",
+      "MaterialName": "AISI 1008",
+      "MaterialSources": [
+        {
+          "_id": "d1b2c3d4-0030-4000-8000-000000000001",
+          "_type": "MaterialSource",
+          "MaterialName": "Illustrative AISI 1008 sheet from supplier A",
+          "TradeName": "Example clamping-arm sheet A",
+          "Supplier": {
+            "_id": "d1b2c3d4-0031-4000-8000-000000000001",
+            "_type": "Location",
+            "Identification": [
+              {
+                "Identifier": "EXAMPLE-CLAMP-SUPPLIER-A",
+                "Type": "Internal"
+              }
+            ],
+            "Name": "Example steel supplier A"
+          },
+          "ProductionSite": {
+            "_id": "d1b2c3d4-0032-4000-8000-000000000001",
+            "_type": "Location",
+            "Identification": [
+              {
+                "Identifier": "EXAMPLE-CLAMP-PLANT-A",
+                "Type": "Internal"
+              }
+            ],
+            "Name": "Example steel supplier A plant"
+          },
+          "Specification": {
+            "Type": "Datasheet",
+            "Number": "EXAMPLE-CLAMP-SHEET-A",
+            "IssueDate": "2026-11"
+          }
+        },
+        {
+          "_id": "d1b2c3d4-0033-4000-8000-000000000001",
+          "_type": "MaterialSource",
+          "MaterialName": "Illustrative AISI 1008 sheet from supplier B",
+          "TradeName": "Example clamping-arm sheet B",
+          "Supplier": {
+            "_id": "d1b2c3d4-0034-4000-8000-000000000001",
+            "_type": "Location",
+            "Identification": [
+              {
+                "Identifier": "EXAMPLE-CLAMP-SUPPLIER-B",
+                "Type": "Internal"
+              }
+            ],
+            "Name": "Example steel supplier B"
+          },
+          "ProductionSite": {
+            "_id": "d1b2c3d4-0035-4000-8000-000000000001",
+            "_type": "Location",
+            "Identification": [
+              {
+                "Identifier": "EXAMPLE-CLAMP-PLANT-B",
+                "Type": "Internal"
+              }
+            ],
+            "Name": "Example steel supplier B plant"
+          },
+          "Specification": {
+            "Type": "Datasheet",
+            "Number": "EXAMPLE-CLAMP-SHEET-B",
+            "IssueDate": "2026-11"
+          }
+        }
+      ],
+      "Colors": [
+        {
+          "_id": "d1b2c3d4-0036-4000-8000-000000000001",
+          "_type": "Color",
+          "Name": "Example grey",
+          "Code": "GREY",
+          "CodeAuthority": "Example palette"
+        },
+        {
+          "_id": "d1b2c3d4-0037-4000-8000-000000000001",
+          "_type": "Color",
+          "Name": "Example black",
+          "Code": "BLACK",
+          "CodeAuthority": "Example palette"
+        }
+      ]
+    },
+    {
+      "_type": "EngineeringMaterial",
+      "MaterialClass": "Steel for fasteners",
+      "MaterialSpecificationIdentifier": {
+        "IdentifierType": "OEMMATID",
+        "Value": "SDR 221100"
+      },
+      "SurfaceSpecificationIdentifier": {
+        "IdentifierType": "OEMMATID",
+        "Value": "SUR#2323"
+      },
+      "Specification": {
+        "Type": "DIN EN ISO",
+        "Number": "898-1",
+        "IssueDate": "2023-05",
+        "Title": "Mechanical properties of fasteners - carbon and alloy steel"
+      },
+      "_id": "b1b2c3d4-0015-4000-8000-000000000001",
+      "MaterialGroup": "Steel",
+      "MaterialName": "Schraube FK 8.8"
+    },
+    {
+      "_type": "EngineeringMaterial",
+      "MaterialClass": "Ethylene propylene diene rubber",
+      "MaterialSpecificationIdentifier": {
+        "IdentifierType": "OEMMATID",
+        "Value": "MAT 4545454"
+      },
+      "Specification": {
+        "Type": "Company X",
+        "Number": "2301",
+        "IssueDate": "2024-09",
+        "Title": "Rubber thrust pad material specification"
+      },
+      "_id": "b1b2c3d4-0016-4000-8000-000000000001",
+      "MaterialGroup": "Elastomer",
+      "MaterialName": "EPDM"
+    },
+    {
+      "_type": "EngineeringMaterial",
+      "MaterialClass": "Cold-rolled steel",
+      "MaterialSpecificationIdentifier": {
+        "IdentifierType": "OEMMATID",
+        "Value": "MAT 858585"
+      },
+      "Specification": {
+        "Type": "DIN EN",
+        "Number": "10152",
+        "IssueDate": "2017-06",
+        "Title": "Electrolytically zinc coated cold rolled steel flat products"
+      },
+      "_id": "b1b2c3d4-0018-4000-8000-000000000001",
+      "MaterialGroup": "Steel",
+      "MaterialName": "DC04"
+    },
+    {
+      "_type": "EngineeringMaterial",
+      "MaterialClass": "Steel for fasteners",
+      "MaterialName": "19MnB4 Mutter FK 8",
+      "MaterialSpecificationIdentifier": {
+        "IdentifierType": "OEMMATID",
+        "Value": "MAT 656564"
+      },
+      "SurfaceSpecificationIdentifier": {
+        "IdentifierType": "OEMMATID",
+        "Value": "SUR#636363"
+      },
+      "Specification": {
+        "Type": "DIN EN",
+        "Number": "10269",
+        "IssueDate": "2014-02",
+        "Title": "Steels for fasteners with elevated temperature properties"
+      },
+      "_id": "b1b2c3d4-0019-4000-8000-000000000001",
+      "MaterialGroup": "Steel"
+    },
+    {
+      "_type": "EngineeringMaterial",
+      "MaterialClass": "Coated low-alloy steel sheet",
+      "MaterialSpecificationIdentifier": {
+        "IdentifierType": "OEMMATID",
+        "Value": "MAT 123456"
+      },
+      "Specification": {
+        "Type": "DIN EN",
+        "Number": "10346",
+        "IssueDate": "2015-10",
+        "Title": "Continuously hot-dip coated steel flat products for cold forming"
+      },
+      "_id": "b1b2c3d4-0021-4000-8000-000000000001",
+      "MaterialGroup": "Steel",
+      "MaterialName": "HX260LAD"
+    },
+    {
+      "_type": "EngineeringMaterial",
+      "MaterialClass": "Thermoplastic elastomer",
+      "MaterialSpecificationIdentifier": {
+        "IdentifierType": "OEMMATID",
+        "Value": "MAT 656565"
+      },
+      "Specification": {
+        "Type": "Company X",
+        "Number": "6673",
+        "IssueDate": "2013-12",
+        "Title": "Hand grip thermoplastic elastomer material specification"
+      },
+      "_id": "b1b2c3d4-0022-4000-8000-000000000001",
+      "MaterialGroup": "Thermoplastic elastomer",
+      "MaterialName": "TPE"
+    },
+    {
+      "_type": "EngineeringMaterial",
+      "MaterialClass": "Low-carbon steel",
+      "MaterialSpecificationIdentifier": {
+        "IdentifierType": "OEMMATID",
+        "Value": "MAT 969696"
+      },
+      "SurfaceSpecificationIdentifier": {
+        "IdentifierType": "OEMMATID",
+        "Value": "SUR#141414"
+      },
+      "Specification": {
+        "Type": "ASTM",
+        "Number": "A1008",
+        "IssueDate": "2024-02",
+        "Title": "Steel, Sheet, Cold-Rolled, Carbon, Structural"
+      },
+      "_id": "b1b2c3d4-0025-4000-8000-000000000001",
+      "MaterialGroup": "Steel",
+      "MaterialName": "AISI 1008"
     }
   ]
 }
