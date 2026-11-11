@@ -1670,12 +1670,6 @@
         "Conditions": {
           "$ref": "#/$defs/Generic.Conditions"
         },
-        "TestExecution": {
-          "items": {
-            "$ref": "#/$defs/Generic.TestExecution"
-          },
-          "type": "array"
-        },
         "EngineeringMaterialID": {
           "$ref": "#/$defs/Generic.Identifier",
           "description": "Transmission-scoped _id of the EngineeringMaterial this topic concerns. May be provided independently of ComponentMasterID; neither reference is made mandatory by this field."
