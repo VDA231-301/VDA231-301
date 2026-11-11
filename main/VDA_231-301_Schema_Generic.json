@@ -1929,7 +1929,6 @@
           "type": "string",
           "enum": [
             "Design",
-            "Supplier",
             "Production",
             "Unspecified"
           ],
