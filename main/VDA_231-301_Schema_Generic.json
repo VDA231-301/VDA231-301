@@ -2009,7 +2009,19 @@
           "$ref": "#/$defs/Generic.RestrictedString",
           "description": "Geographic scope of this assignment; no classification system is prescribed."
         }
-      }
+      },
+      "anyOf": [
+        {
+          "required": [
+            "EngineeringMaterialID"
+          ]
+        },
+        {
+          "required": [
+            "Stack"
+          ]
+        }
+      ]
     },
     "Generic.ComponentClassification": {
       "type": "object",
@@ -2085,7 +2097,8 @@
       "required": [
         "_id",
         "_type",
-        "LayerNumber"
+        "LayerNumber",
+        "EngineeringMaterialID"
       ]
     }
   }
