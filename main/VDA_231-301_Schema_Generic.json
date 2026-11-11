@@ -1570,9 +1570,12 @@
           "description": "Reference to the color used, expressed as its transmission-scoped identifier (_id) within this transmission file."
         },
         "MaterialSourceID": {
-          "$ref": "#/$defs/Generic.Identifier",
-          "description": "Reference to the material source used, expressed as its transmission-scoped identifier (_id) within this transmission file."
-        }
+          "type": "array",
+          "items": {
+          "$ref": "#/$defs/Generic.Identifier"
+          },
+          "description": "References to the material sources actually used for this component instance, expressed as their transmission-scoped identifiers (_id) within this transmission file."
+          }
       },
       "required": [
         "_id",
