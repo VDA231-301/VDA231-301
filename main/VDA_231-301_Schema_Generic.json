@@ -1929,14 +1929,13 @@
           "type": "string",
           "enum": [
             "Design",
-            "Production",
-            "Unspecified"
+            "Production"
           ],
-          "description": "Optional company-specific definition level. Design denotes a design material profile; Production denotes a narrower manufacturing-related requirement profile of the same material. Unspecified explicitly leaves the level unspecified. Omit this field when the distinction is not used. No default or dependency on DerivedFromMaterialID is imposed."
+          "description": "Optional company-specific definition level. Design denotes a design material profile; Production denotes a narrower manufacturing-related requirement profile of the same material. Omit this field when the distinction is not used. If DerivedFromEngineeringMaterialID is used, the referencing EngineeringMaterial must have MaterialDefinitionLevel 'Production' and the referenced EngineeringMaterial must have MaterialDefinitionLevel 'Design'. This semantic consistency is not enforced by JSON Schema."
         },
         "DerivedFromEngineeringMaterialID": {
           "$ref": "#/$defs/Generic.Identifier",
-          "description": "Optional reference (0..1) from a production material profile to the design EngineeringMaterial from which it is derived, using its transmission-scoped _id in this file, not a business material identifier. Requirements are not inherited. The reference must resolve to another EngineeringMaterial; self-references and cycles are prohibited. Referential integrity and acyclicity require semantic validation outside JSON Schema."
+          "description": "Optional reference (0..1) from a Production EngineeringMaterial to the Design EngineeringMaterial from which it is derived, using its transmission-scoped _id in this file, not a business material identifier. Requirements are not inherited. The reference must resolve to another EngineeringMaterial. Self-references and cycles are prohibited. Referential integrity, acyclicity, and consistency with MaterialDefinitionLevel require semantic validation outside JSON Schema."
         },
         "ApplicableComponentClassifications": {
           "type": "array",
@@ -1960,7 +1959,7 @@
           "items": {
             "$ref": "#/$defs/Generic.MaterialSource"
           },
-          "description": "Supplier-specific sources for this engineering material."
+          "description": "Supplier-specific products or sources associated with this EngineeringMaterial. A MaterialSource identifies a concrete supplier offering, optionally including a trade name and production site; it does not represent the Design or Production definition level of the EngineeringMaterial."
         },
         "Colors": {
           "type": "array",
@@ -1984,12 +1983,12 @@
         "MaterialClass",
         "MaterialName"
       ],
-      "description": "In VDA 231-301, EngineeringMaterial generally denotes the technically defined material of a component. Depending on company terminology, it may correspond to a design material or a production material. A production material is a narrower manufacturing-related requirement profile of the same material, not a separate material kind."
+      "description": "In VDA 231-301, EngineeringMaterial denotes the technically defined material of a component. Depending on company terminology, it may represent a design material profile or a narrower production material profile of the same material. A production EngineeringMaterial is not a supplier-specific product or source. Supplier-specific products and production sites are represented by MaterialSource."
     },
     "Generic.ComponentMaterialAssignment": {
       "type": "object",
       "additionalProperties": false,
-      "description": "Assignment of an engineering material or a layer stack to a component, with an optional material name for readability. All fields are optional; no exclusive choice is imposed.",
+      "description": "Assignment of an engineering material or a layer stack to a component, with optional role, geographic scope and material name for readability. At least EngineeringMaterialID or Stack must be provided; both may be provided.",
       "properties": {
         "EngineeringMaterialID": {
           "$ref": "#/$defs/Generic.Identifier",
