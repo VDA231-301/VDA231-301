@@ -1935,7 +1935,7 @@
           ],
           "description": "Optional company-specific definition level. Design denotes a design material profile; Production denotes a narrower manufacturing-related requirement profile of the same material. Unspecified explicitly leaves the level unspecified. Omit this field when the distinction is not used. No default or dependency on DerivedFromMaterialID is imposed."
         },
-        "DerivedFromMaterialID": {
+        "DerivedFromEngineeringMaterialID": {
           "$ref": "#/$defs/Generic.Identifier",
           "description": "Optional reference (0..1) from a production material profile to the design EngineeringMaterial from which it is derived, using its transmission-scoped _id in this file, not a business material identifier. Requirements are not inherited. The reference must resolve to another EngineeringMaterial; self-references and cycles are prohibited. Referential integrity and acyclicity require semantic validation outside JSON Schema."
         },
