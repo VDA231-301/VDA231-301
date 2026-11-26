@@ -431,8 +431,8 @@ cardinalities, identifiers and values.
 - ADR 0001: definition sets are maintained on `ComponentMaster`, while concrete
   assignments are maintained on `ComponentInstance`
 - ADR 0002: `ComponentMaster.Version` is mandatory in component examples
-- ADR 0008: the abbreviated material designation is maintained in
-  `MaterialClass`
+- This example uses the earlier short-name field `MaterialClass`. ADR 0008 maps
+  the short name to `EngineeringMaterial.MaterialName` in the current schema.
 - ADR 0009: material identifiers are typed and stored without uncontrolled
   duplication
 - ADR 0010: own identifiers of a concrete `MaterialSource` are proposed and are

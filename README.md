@@ -93,6 +93,9 @@ This approach ensures a consistent overall data model while allowing flexibility
 
 ## Versioning and Compatibility
 
+The development schema separates `EngineeringMaterial` from `ComponentMaster`.
+See the [engineering material example](examples/engineering-material/).
+
 The Generic Schema follows a controlled versioning approach.
 
 Changes are managed with the goal to:

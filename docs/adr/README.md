@@ -25,7 +25,7 @@ The records follow the MADR (Markdown Architectural Decision Records) format.
 | 0005 | [Hierarchies are modelled via self-reference (containment for components, reference for specifications)](0005-hierarchies-via-self-reference.md) | accepted |
 | 0006 | [norm-information-aggregation](0006-norm-information-aggregation.md) | accepted |
 | 0007 | [material-characteristics-read-out-logic](0007-material-characteristics-read-out-logic.md) | accepted |
-| 0008 | [abbreviated-material-designation-to-materialclass](0008-abbreviated-material-designation-to-materialclass.md) | accepted |
+| 0008 | [Map the abbreviated material designation to EngineeringMaterial.MaterialName](0008-abbreviated-material-designation-to-materialclass.md) | accepted |
 | 0009 | [typed-material-identifiers-no-duplication](0009-typed-material-identifiers-no-duplication.md) | accepted |
 | 0010 | [materialsource-typed-identifiers](0010-materialsource-typed-identifiers.md) | proposed |
 | 0011 | [approvalentry-links-generic-material-oemmatid](0011-approvalentry-links-generic-material-oemmatid.md) | proposed |

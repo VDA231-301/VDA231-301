@@ -102,7 +102,7 @@ The material is described on three distinct levels that must not be mixed:
 
 - `MaterialGroup` holds the material classification group (VDA 231-106), here
   `Thermoplast`.
-- `MaterialClass` holds the abbreviated material designation (ADR 0008), here
+- In this earlier model, `MaterialClass` holds the abbreviated designation, here
   `PP-GF30` (formed per ISO 1043).
 - `MaterialName` holds the human-readable material name, here
   `Glass fibre reinforced Polypropylene`.
@@ -158,5 +158,5 @@ use.
 - ADR 0001 (definition sets on ComponentMaster, concrete assignments on
   ComponentInstance)
 - ADR 0002 (ComponentMaster version mandatory)
-- ADR 0008 (abbreviated material designation to MaterialClass)
+- ADR 0008 (current mapping of the short name to `EngineeringMaterial.MaterialName`)
 - ADR 0009 (typed material identifiers)

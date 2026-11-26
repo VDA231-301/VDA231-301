@@ -2,7 +2,7 @@
 
 ## Status
 
-Schema-oriented example for VDA 231-301 generic schema v3.0.0.
+This example uses the earlier ComponentMaster material fields in VDA 231-301 v3.0.0.
 The values and the OEM material requirement specification used in this example
 are illustrative and do not reproduce a normative material standard.
 

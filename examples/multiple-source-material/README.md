@@ -169,8 +169,7 @@ The material description uses distinct fields with non-overlapping meanings:
 
 - `MaterialGroup` holds the material classification group according to
   VDA 231-106, here `Thermoplast`.
-- `MaterialClass` holds the abbreviated material designation according to
-  ADR 0008, here `PP-GF30`.
+- In this earlier model, `MaterialClass` holds the short name `PP-GF30`.
 - `MaterialName` holds the human-readable material name, here
   `Glass fibre reinforced Polypropylene`.
 - `TradeName` holds the commercial product name of a concrete supplier
@@ -276,6 +275,6 @@ not part of this schema-oriented example.
 - ADR 0001: Definition sets on `ComponentMaster`, concrete assignments on
   `ComponentInstance`
 - ADR 0002: `ComponentMaster.Version` is mandatory in component examples
-- ADR 0008: Abbreviated material designation to `MaterialClass`
+- ADR 0008 (current mapping of the short name to `EngineeringMaterial.MaterialName`)
 - ADR 0009: Typed material identifiers without duplication
 - ADR 0010: Typed identifiers on `MaterialSource`, proposed

@@ -18,12 +18,8 @@ are illustrative data, not a certified test report.
 
 ## Schema and validation
 
-The JSON declares `_schemaVersion: "3.0.0"` and targets the schema included in
-this repository at
-[`main/VDA_231-301_Schema_Generic.json`](../../main/VDA_231-301_Schema_Generic.json).
-The validator reads that local file; it does not download the schema from its
-`$id` URL. Validation against the repository schema does not establish
-compatibility with a separately published schema carrying the same version.
+The example declares `_schemaVersion: "3.0.0"`. The validator checks it against
+the [JSON schema in this repository](../../main/VDA_231-301_Schema_Generic.json).
 
 Run from the repository root with Python installed:
 
@@ -34,7 +30,7 @@ python examples/clamp/validate.py
 
 The validator checks:
 
-- JSON Schema Draft 2020-12 structure and formats.
+- Structure and formats defined by the schema (JSON Schema 2020-12).
 - Unique UUID v4 identifiers and internal references to the expected object types.
 - Topic, specimen and component-instance relationships, execution counts and
   result-table widths.
@@ -94,12 +90,16 @@ and each specimen references a physical component instance through
 
 ## Identifiers and materials
 
+The top-level `EngineeringMaterials` collection defines each material's name,
+classification and requirements. Components reference these definitions through
+`MaterialAssignments[].EngineeringMaterialID`.
+
 `_id` is the stable internal transmission identifier. `ComponentMasterID`,
 `ComponentInstanceID`, `SpecimenID`, `TestingCenterID` and other reference fields
 resolve to objects of the corresponding types within the JSON file. These IDs
 are independent of CAD node IDs and supplier part numbers.
 
-`MaterialIdentifiers` maps the CAD property `MAT_01_SPECIFICATION_IDENTIFIER`
+`MaterialSpecificationIdentifier` maps the CAD property `MAT_01_SPECIFICATION_IDENTIFIER`
 to a typed identifier:
 
 ```json
@@ -108,9 +108,47 @@ to a typed identifier:
 
 The source property determines this mapping, regardless of the value's prefix;
 no norm-defined material number is inferred. `OemIdentifier` is `MB`.
-`MaterialClass` copies the CAD property `MAT_06_SHORT_NAME`. For example, the
-nuts have `MaterialName` set to `19MnB4 FK8` and `MaterialClass` set to the exact
-CAD text `19MnB4 Mutter FK 8`.
+`MaterialClass` holds the descriptive material category; `MaterialName` holds
+the specific material designation. For the bearing-pin material:
+
+```json
+"MaterialGroup": "Steel",
+"MaterialClass": "Stainless steel",
+"MaterialName": "1.4301-X5CrNi18-10"
+```
+
+`MaterialName` uses the CAD property `MAT_06_SHORT_NAME`. Where
+`MAT_08_ADDITIONAL INFORMATION` contains only a material number, the number is
+prepended with a hyphen. Both `1.4301` and `X5CrNi18-10` occur in the source.
+Other additional-information text is not treated as a material number. The nuts
+retain the source designation `19MnB4 Mutter FK 8` as their `MaterialName` and
+use `Steel for fasteners` as their `MaterialClass`.
+
+Every engineering material supplies the required `MaterialGroup`, `MaterialClass`
+and `MaterialName`. Group and category labels are illustrative descriptions,
+not validated VDA classification codes or verbatim classifications supplied by
+the CAD export. The source-token check validates the specific material name,
+not the descriptive class label.
+
+Each `MaterialAssignments` entry also includes the referenced material's
+`MaterialName` for readability. This optional label repeats the definition's name;
+`EngineeringMaterialID` remains the reference to the material definition.
+
+## Multiple material sources and colors
+
+The forked clamping arm's engineering material (`AISI 1008`) lists two supplier
+products and two colors. Each tested instance records its supplier product in the
+`MaterialSourceID` array and its color in `ColorID`.
+
+| Instance serial number | Material source | Color |
+|---|---|---|
+| FCA-001 | Example clamping-arm sheet A, supplier A plant | Example grey (GREY) |
+| FCA-002 | Example clamping-arm sheet B, supplier B plant | Example black (BLACK) |
+
+Both instances use the same component and engineering material definitions.
+Supplier sources and colors are illustrative additions, not taken from the CAD
+exports or laboratory records. The two selections demonstrate instance traceability;
+they do not limit which source/color combinations can be used.
 
 ## CAD occurrence paths
 

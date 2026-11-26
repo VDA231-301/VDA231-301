@@ -121,7 +121,7 @@ These attributes have different meanings and must not be used interchangeably.
 
 `MaterialGroup` contains the material classification group.
 
-`MaterialClass` contains the abbreviated material designation.
+In this ComponentMaster example, `MaterialClass` contains the abbreviated designation.
 
 `MaterialName` contains the human-readable material name.
 
@@ -271,7 +271,7 @@ cardinalities and values used by this example.
 - Generic material identity: `ComponentMaster.MaterialIdentifiers[]`
 - Applicable specification: `ComponentMaster.Specifications[]`
 - ADR 0002: `ComponentMaster.Version` is mandatory in component examples
-- ADR 0008: the abbreviated material designation is maintained in
-  `MaterialClass`
+- This example uses the earlier short-name field `MaterialClass`. ADR 0008 maps
+  the short name to `EngineeringMaterial.MaterialName` in the current schema.
 - ADR 0009: material identifiers are typed and stored without uncontrolled
   duplication

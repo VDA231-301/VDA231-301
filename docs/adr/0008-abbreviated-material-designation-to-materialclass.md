@@ -1,100 +1,61 @@
-# The abbreviated material designation is mapped to MaterialClass (ComponentMaster and MaterialSource)
+# Map the abbreviated material designation to EngineeringMaterial.MaterialName
 
 Status: accepted
 
 ## Context and Problem Statement
 
-VDA 231-300 carries the abbreviated material designation ("Werkstoffkurzbezeichnung",
-`MAT_06_SHORT_NAME`), e.g. `ABS`, `ABS-I`, `PP-GF30`, `42CrMoS4`, `CuZn37Mn3Al2PbSi`,
-`AlMg2Mn0,8`. In the CAD material list this is a dedicated column ("Werkstoffkurzbezeichnung").
-
-This designation is not the title of the norm, and it is not a unique key: many different
-materials (with different identifiers) share the same short designation (e.g. several materials
-named `ABS`). It therefore does not belong to `Specification.Title` and is not, on its own, an
-identifier.
-
-The abbreviated designation is needed not only on the `ComponentMaster` (the material being
-described) but also wherever a material is referenced as a source, e.g. in a `Subject` /
-`MaterialSource` structure (approval / listing / multiple-source scenarios). A single, consistent
-target field is required across these places.
-
-## Decision Drivers
-
-* The abbreviated designation must have exactly one defined target field, used consistently
-  wherever a material is described or referenced (component master and material source).
-* The same field must carry both coarse (`ABS`) and fine (`CuZn37Mn3Al2PbSi`) designations.
-* The field definition must reference the family-specific designation standards so the value
-  stays interpretable.
-* `Specification.Title` must remain reserved for the norm's own title.
-* Identifiers (internal OEM key, material number, see ADR 0009) must not be conflated with the
-  designation, nor with the commercial `TradeName`.
-
-## Considered Options
-
-* Map the abbreviated designation to `Specification.Title`.
-* Map it to `MaterialIdentifiers`.
-* Map it to `MaterialName`.
-* Map it to `MaterialClass`, and use the same field on both `ComponentMaster` and
-  `Subject`/`MaterialSource`.
+VDA 231-300 supplies the abbreviated material designation (Werkstoffkurzbezeichnung)
+in `MAT_06_SHORT_NAME`. The earlier ComponentMaster-based model mapped this value
+to `MaterialClass` and proposed the same mapping for a referenced material source.
+Several grades belong to the class `Stainless steel`, while the short name
+`X5CrNi18-10` designates a particular grade within that class.
 
 ## Decision Outcome
 
-Chosen option: "Map the abbreviated material designation (`MAT_06_SHORT_NAME`) to `MaterialClass`,
-consistently on `ComponentMaster` and on `Subject`/`MaterialSource`".
+Map `MAT_06_SHORT_NAME` to `EngineeringMaterial.MaterialName`. The short name
+can stand alone. When the source also provides a material number, the name may
+combine the number and the short name.
 
-The field `MaterialClass` is hereby defined to contain exactly the abbreviated material
-designation as carried in VDA 231-300 `MAT_06_SHORT_NAME`. It applies wherever a material is
-described or referenced:
+The three required fields on `EngineeringMaterial` have distinct meanings.
+The bearing pin in the [toggle-clamp example](../../examples/clamp/README.md)
+illustrates all three.
 
-* `ComponentMaster.MaterialClass` — the material being described.
-* `Subject.MaterialClass` / `MaterialSource.MaterialClass` — a referenced/approved material
-  source (approval, listing, multiple-source scenarios).
+| Field | Meaning | Bearing-pin material |
+|-------|---------|----------------------|
+| `MaterialGroup` | Broad classification group, for example according to VDA 231-106 | `Steel` |
+| `MaterialClass` | Descriptive category within the group | `Stainless steel` |
+| `MaterialName` | Specific material designation | `1.4301-X5CrNi18-10` |
 
-The previous reference to VDA 231-200 on this field is removed: the content of `MaterialClass`
-is defined by this ADR, not by VDA 231-200.
-
-The abbreviated designation is formed according to a family-specific designation standard:
-
-| Material family | Designation standard | Examples |
-|-----------------|----------------------|----------|
-| Plastics - basic polymers | ISO 1043-1 | `ABS`, `PP`, `PC`, `PMMA`, `PA6` |
-| Plastics - fillers / reinforcements | ISO 1043-2 | `GF30`, `MD40` (in `PP-GF30`, `PA6-(MD40+GF20)`) |
-| Plastics - plasticizers / flame retardants | ISO 1043-3 / ISO 1043-4 | additive symbols |
-| Rubber / elastomers | ISO 1629 | `FKM`, `VMQ`, `EPDM` |
-| Thermoplastic elastomers (TPE) | ISO 18064 | `TPE-O`, `TPE-U` |
-| Steel - names (Kurznamen) | EN 10027-1 | `42CrMoS4`, `X46Cr13`, `10B21` |
-| Aluminium | EN 573 (-1..-4) | `AlMg2Mn0,8`, `EN AW-...` |
-| Copper and copper alloys | chemical symbol per EN; numbers per EN 1412 | `CuSn8`, `CuZn37Mn3Al2PbSi`, `CW453K` |
-| Japanese steels (special case) | JIS (e.g. JIS G 4053) | `SCr420H` |
-
-Distinction from neighbouring fields:
-
-* `MaterialGroup` (VDA 231-106) holds the classification group (e.g. steel, thermoplast).
-* `MaterialName` holds the descriptive, human-readable material name
-  (e.g. "Glass fibre reinforced Polypropylene").
-* `MaterialIdentifiers` holds the identifying keys (internal OEM key, and norm-defined numbers
-  such as the steel material number per EN 10027-2); see ADR 0009.
-* `TradeName` (on a material source) holds the commercial product name of a specific supplier
-  grade; it is not the abbreviated designation.
-* `Specification.Title` holds the title of the norm.
-* `MaterialClass` holds the abbreviated material designation as defined here.
+In this example, `X5CrNi18-10` comes from `MAT_06_SHORT_NAME` and `1.4301`
+comes from `MAT_08_ADDITIONAL INFORMATION`, which contains only the material
+number for the bearing pin. The group and class are descriptive labels supplied
+in the example. The [CR5 example](../../examples/engineering-material/engineering-material.json)
+shows a short name used on its own, with `MaterialClass` set to `Low-carbon steel`
+and `MaterialName` set to `CR5`.
 
 ## Consequences
 
-* Good, because the abbreviated designation has one defined target that works for both coarse
-  and fine values, and is identical on `ComponentMaster` and `MaterialSource`.
-* Good, because the designation standards are named explicitly, so the value stays interpretable
-  and parseable per family (the family is available via `MaterialGroup`).
-* Good, because `MaterialName`, `TradeName`, `MaterialIdentifiers` and `Specification.Title` keep
-  clean, non-overlapping semantics.
-* Neutral, because `MaterialClass` no longer refers to VDA 231-200; its content is defined solely
-  by this ADR. Consuming systems that expected a VDA 231-200 classification here must be adjusted.
-* Neutral, because adding `MaterialClass` to `Subject`/`MaterialSource` is a schema addition on
-  those structures; where they are still discussion drafts (e.g. approval entries), the field is
-  adopted as part of that ongoing work.
+* When migrating an older record that used `MaterialClass` for the short name,
+  carry the designation into `EngineeringMaterial.MaterialName` and supply the
+  descriptive class separately.
+* Several material definitions can share a designation. A component assignment
+  references the definition by `EngineeringMaterialID`. Its optional
+  `MaterialName` is a readable copy of the referenced name.
+* `MaterialSpecificationIdentifier` carries the material specification key
+  (for example the OEM key from `MAT_01`). `Specification.Title` carries the
+  title of the specification. A supplier's commercial product name belongs in
+  `MaterialSource.TradeName`.
 
-## More Information
+## Designation standards
 
-Related: ADR 0006 (norm aggregation; `MAT_06` therefore not on `Specification.Title`), ADR 0007
-(Type A short-name parts), ADR 0009 (identifiers). Designation standards: ISO 1043-1/-2/-3/-4,
-ISO 1629, ISO 18064, EN 10027-1, EN 573, EN 1412, JIS.
+The short name follows the designation system of its material family.
+
+| Material family | Designation standard | Examples |
+|-----------------|----------------------|----------|
+| Plastics | ISO 1043-1 (basic polymers), ISO 1043-2 (fillers and reinforcements), ISO 1043-3/-4 (plasticizers and flame retardants) | `ABS`, `PP-GF30` |
+| Rubber and elastomers | ISO 1629 | `FKM`, `VMQ`, `EPDM` |
+| Thermoplastic elastomers | ISO 18064 | `TPE-O`, `TPE-U` |
+| Steel | EN 10027-1 | `X5CrNi18-10`, `42CrMoS4` |
+| Aluminium | EN 573 series | `AlMg2Mn0,8` |
+| Copper and copper alloys | EN chemical-symbol designations | `CuSn8`, `CuZn37Mn3Al2PbSi` |
+| Japanese steels | JIS designation standards | `SCr420H` |

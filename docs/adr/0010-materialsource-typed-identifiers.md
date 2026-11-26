@@ -80,7 +80,7 @@ The value is stored once; where a database ID is defined by an external registry
 ## More Information
 
 Related: ADR 0009 (typed `MaterialIdentifiers`; `Generic.MaterialIdentifier`), ADR 0008
-(abbreviated designation to `MaterialClass`, incl. its scope on `MaterialSource`), the Material
+(abbreviated designation to `EngineeringMaterial.MaterialName`), the Material
 Identification Concepts document (two-level distinction), and the `multiple-source-material`
 example. Field name `Identifiers` and the `IdentifierType` values are proposals; the released
 schema takes precedence.

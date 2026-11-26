@@ -30,6 +30,10 @@ Schema-oriented examples currently target generic schema **v3.0.0**. The exact t
 version is stated per example in the "Validation status" column and in each
 example's README.
 
+The [CR5](./engineering-material/) and [toggle-clamp](./clamp/) examples use
+the [repository schema](../main/VDA_231-301_Schema_Generic.json). Earlier
+ComponentMaster examples keep the field names of their stated schema version.
+
 ## Find the Right Example
 
 Use the following navigation guide to identify the example that best matches
@@ -37,6 +41,7 @@ your use case.
 
 | If you want to... | Start with |
 |---|---|
+| Separate reusable design and production materials from components | [Engineering material](./engineering-material/) |
 | Understand the basic structure of a material definition | [Simple material definition](./simple-material-definition/) |
 | Add color information to a component or material representation | [Color definition](./color-definition/) |
 | Trace individual physical component instances using serial and production information | [Component instance traceability](./component-instance-traceability/) |
@@ -105,9 +110,8 @@ File: `componentMaster-with-color.json`
 
 Shows how approved material sources are defined at `ComponentMaster` level via
 `MaterialSources` and how each produced `ComponentInstance` references its
-actual source via `MaterialSourceID`. Following ADR 0008, `MaterialClass` holds
-the abbreviated material designation and `MaterialName` the readable name,
-consistently on master and sources.
+actual source via `MaterialSourceID`. This earlier model stores the short name in
+`MaterialClass` on the master and sources.
 
 File: `componentMaster-with-materialSources.json`
 
@@ -139,8 +143,8 @@ File: `componentMaster-with-specificationCustomization.json`
 
 Shows how characteristic requirements for a metal material are read out into
 `Specification.CharacteristicRequirements` following the classification logic of
-ADR 0007. `MaterialClass` carries the abbreviated designation (e.g. a steel
-name per EN 10027-1, ADR 0008) and `MaterialIdentifiers` uses the typed form
+ADR 0007. In this earlier model, `MaterialClass` carries the abbreviated steel
+designation (EN 10027-1) and `MaterialIdentifiers` uses the typed form
 (ADR 0009). The values and the OEM material requirement specification are
 illustrative and do not reproduce a normative material standard.
 
@@ -150,8 +154,8 @@ File: `material-with-characteristic-requirements-metal.json`
 
 Shows how characteristic requirements for an elastomer material are read out
 into `Specification.CharacteristicRequirements` following the classification
-logic of ADR 0007. `MaterialClass` carries the abbreviated designation
-(e.g. an elastomer symbol per ISO 1629, ADR 0008) and `MaterialIdentifiers`
+logic of ADR 0007. In this earlier model, `MaterialClass` carries the elastomer
+symbol (ISO 1629) and `MaterialIdentifiers`
 uses the typed form (ADR 0009). The values and the OEM material requirement
 specification are illustrative and do not reproduce a normative material
 standard.
@@ -222,19 +226,20 @@ example; consult the folder README before use.
 
 ## Conventions
 
-The examples follow a set of shared conventions. Key architectural decisions are
-documented as Architectural Decision Records (ADRs) in `docs/adr`:
+The ComponentMaster examples use the following conventions. The CR5 and clamp
+examples use the engineering-material model described above.
 
 - Definition sets are held on the `ComponentMaster`, concrete assignments on the
   `ComponentInstance` (e.g. `Colors` / `ColorID`, `MaterialSources` /
   `MaterialSourceID`).
-- `ComponentMaster.Version` (drawing / change status, ZGS) is included in every
-  component example.
+- Earlier component examples record the drawing or change status in
+  `ComponentMaster.Version` (ADR 0002).
 - Stack layers are numbered starting with 1 for the bottom (substrate) layer.
 - `NGIDPath` examples use the `JT_PROP_NAME` identifier with CADID-formatted
   node values.
-- The abbreviated material designation is held in `MaterialClass`, the readable
-  name in `MaterialName` (ADR 0008).
+- In `EngineeringMaterial`, `MaterialName` holds the specific designation and
+  `MaterialClass` the descriptive category (ADR 0008). Earlier ComponentMaster
+  examples use `MaterialClass` for the short name.
 - Material identifiers are modelled as typed objects and stored once (ADR 0009,
   and ADR 0010 for `MaterialSource`).
 

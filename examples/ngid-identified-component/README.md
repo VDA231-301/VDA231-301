@@ -21,8 +21,7 @@ This example focuses on the following attributes:
   It uses the `JT_PROP_NAME` identifier with CADID-formatted node values in the
   form `name.type;version;instanceId` (see ADR-0004).
 - `MaterialGroup` – the classification group (here `Thermoplast`).
-- `MaterialClass` – the abbreviated material designation (`PP-GF30`), per
-  ADR-0008.
+- `MaterialClass` – the short designation (`PP-GF30`) in this earlier model.
 - `MaterialName` – the readable material name (`Glass fibre reinforced
   Polypropylene`).
 - `MaterialIdentifiers` – the typed material identifier(s); here an `OEMMATID`
@@ -56,9 +55,7 @@ Each node value follows the CADID format `name.type;version;instanceId`. The
   `ComponentMaster`, not by duplicating the assembly structure itself.
 - The path is a single, machine-readable string following the NGID / CADID
   conventions, so it can be parsed and resolved by downstream systems.
-- Material identity follows the shared conventions: abbreviated designation in
-  `MaterialClass` (ADR-0008), typed identifiers in `MaterialIdentifiers`
-  (ADR-0009).
+- The example uses typed `MaterialIdentifiers` (ADR-0009).
 
 ## Validation status
 
@@ -68,5 +65,5 @@ Aligned with generic schema v3.0.0.
 
 - [ADR-0002: ComponentMaster version mandatory](../../docs/adr/0002-componentmaster-version-mandatory.md)
 - [ADR-0004: NGID path representation](../../docs/adr/0004-ngid-path-representation.md)
-- [ADR-0008: Abbreviated material designation to MaterialClass](../../docs/adr/0008-abbreviated-material-designation-to-materialclass.md)
+- [ADR-0008: Short designation on EngineeringMaterial.MaterialName](../../docs/adr/0008-abbreviated-material-designation-to-materialclass.md)
 - [ADR-0009: Typed material identifiers, no duplication](../../docs/adr/0009-typed-material-identifiers-no-duplication.md)

@@ -160,9 +160,9 @@ This differs from the relationship used in a component hierarchy:
 The role of a `Specification` is determined by its position in the hierarchy.
 A separate entity type such as `SubSpecification` is not required.
 
-`Specification.Title` contains the title of the specification itself. It must
-not be used for a material short name. According to ADR 0008, the abbreviated
-material designation is maintained in `MaterialClass`.
+`Specification.Title` contains the title of the specification. This earlier example
+stores the material short name in `MaterialClass`. ADR 0008 maps the short name
+to `EngineeringMaterial.MaterialName` in the current schema.
 
 Where several regulations apply to a material or surface, a primary
 `Specification` can reference further applicable specifications through
@@ -246,5 +246,4 @@ productive use.
   for components and references for specifications
 - ADR 0006: Norm information is aggregated into `Specification`, with further
   applicable regulations represented through `ReferencedSpecifications`
-- ADR 0008: The abbreviated material designation is maintained in
-  `MaterialClass`, not in `Specification.Title`
+- ADR 0008 (current mapping of the short name to `EngineeringMaterial.MaterialName`)

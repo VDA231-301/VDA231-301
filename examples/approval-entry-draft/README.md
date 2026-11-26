@@ -221,7 +221,7 @@ can change. A future released schema takes precedence.
 
 ### Material Name, Material Class and Trade Name
 
-Following ADR 0008:
+This example uses the earlier material fields.
 
 - `MaterialClass` contains `PP-GF30`
 - `MaterialName` contains `Glass fibre reinforced Polypropylene`
@@ -389,8 +389,8 @@ cardinalities and values.
 - Time-limited validity: `ApprovalEntry.ValidityPeriod`
 - Proposed successor relationships: `ApprovalEntry.RelatedApprovalEntries[]`
 - Supporting documents: `ApprovalEntry.ReferenceDocuments[]`
-- ADR 0008: the abbreviated material designation is maintained in
-  `MaterialClass`
+- This example uses the earlier short-name field `MaterialClass`. ADR 0008 maps
+  the short name to `EngineeringMaterial.MaterialName` in the current schema.
 - ADR 0009: the generic `OEMMATID` is owned by the generic material and is
   referenced without creating a second editable source
 - ADR 0010: own identifiers of a concrete `MaterialSource` are a separate

@@ -46,7 +46,7 @@ Each characteristic token is classified into exactly one of five types:
 
 | Type | Meaning | Examples | Target in VDA 231-301 |
 |------|---------|----------|-----------------------|
-| A | Abbreviated material designation (MAT_06 short name), formed per the family-specific designation standard | `PP-GF30`, `CuSn8`, `ABS-I`, `42CrMoS4` | `ComponentMaster.MaterialClass` (see ADR 0008), NOT `Specification.Title` |
+| A | Abbreviated material designation (MAT_06 short name), formed per the family-specific designation standard | `PP-GF30`, `CuSn8`, `ABS-I`, `42CrMoS4` | `EngineeringMaterial.MaterialName` (see ADR 0008) |
 | B | Standardized treatment / delivery condition | `+P`, `+QT`, `+C`, `R600` | `Specification.FeatureText` / `FeatureList` |
 | C | Cross-reference to a further regulation / zone | `OEM01 ZONE 1`, `OEM02.02` | `Specification.FeatureText` / `FeatureList`; the zone selector goes to `CharacteristicRequirements` (see below) |
 | D | Quantitative property target (value/tolerance/range) | `G-MODUL < 1 MPA`, `65 +/- 10 SHORE OO`, `VST 105 +/-5 °C` | `CharacteristicRequirements` entry, `ValueType` = `Range` / `NumberWithTolerance` |
@@ -104,6 +104,6 @@ relationship to the original requirement.
 
 ## More Information
 
-Related: ADR 0006 (norm aggregation), ADR 0008 (short name to `MaterialClass`; designation
+Related: ADR 0006 (norm aggregation), ADR 0008 (material short name and designation
 standards), ADR 0005 (self-reference), the parsing rules, and the classified Example Library
 (`Beispielsammlung_Merkmale_Ausleselogik_ADR0007.xlsx`).
