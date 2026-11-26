@@ -4,7 +4,7 @@
   "title": "VDA 231-301 Generic JSON schema",
   "type": "object",
   "additionalProperties": false,
-  "description": "This is the Generic Schema which validates the structure of the file. Development draft: material separation follows ERM Arbeitsstand 8; see docs/engineering-material-migration.md for compatibility and semantic validation rules.",
+  "description": "Development draft of the VDA 231-301 generic schema. Material separation follows ERM Arbeitsstand 8.",
   "properties": {
     "_id": {
       "$ref": "#/$defs/Generic.Identifier"

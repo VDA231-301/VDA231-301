@@ -51,15 +51,16 @@ The norm information is aggregated as follows:
 - MAT\_03/SUR\_03 (regulation number)  -\> Specification.Number (+ SubNumber)
 - MAT\_04/SUR\_04 (legal authority)    -\> Specification.Authority (optional; see below)
 - MAT\_05/SUR\_05 (issue date)         -\> Specification.IssueDate
-- MAT\_06/SUR\_06 (short name)          -\> ComponentMaster.MaterialClass (see ADR 0008);
-Specification.Title holds the title of the norm itself, not the material short name
+- MAT\_06 (material short name)         -\> EngineeringMaterial.MaterialName (see ADR 0008)
+- SUR\_06 (surface short name) used ComponentMaster.MaterialClass in the earlier model.
+  Specification.Title holds the title of the norm.
 - MAT\_07/SUR\_07 (features)            -\> Specification.FeatureText / FeatureList;
 quantitative or qualitative characteristics are read out to
 Specification.CharacteristicRequirements (see ADR 0007)
 - MAT\_11/SUR\_11 (further regulations) -\> Specification.ReferencedSpecifications  
-The MAT\_01/SUR\_01 internal identifier is not part of the Specification; it is held on the
-ComponentMaster as a typed identifier (see ADR 0009), together with norm-defined identifiers
-such as the steel material number.  
+
+`MaterialSpecificationIdentifier` and `SurfaceSpecificationIdentifier` carry the typed
+MAT\_01 and SUR\_01 keys on the material or component definition (see ADR 0009).
 The split of the combined source string into Type / Number / SubNumber follows the
 documented parsing rules (longest-known-prefix match; . = internal execution/issue status,
 \- = part of a DIN/EN standard). The issue date (\_05) maps directly to the mandatory
@@ -95,6 +96,6 @@ for the fallback case.
 ### More Information
 
 Related: ADR 0005 (self-reference for ReferencedSpecifications), ADR 0007 (read-out of
-characteristics into CharacteristicRequirements), ADR 0008 (short name to MaterialClass),
+characteristics into CharacteristicRequirements), ADR 0008 (material short name to EngineeringMaterial.MaterialName),
 ADR 0009 (typed identifiers, no duplication), and the norm-string parsing rules
 (Parsing-Regeln\_Norm-Strings.md).

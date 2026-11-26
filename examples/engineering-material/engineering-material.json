@@ -47,7 +47,7 @@
       "MaterialClass": "Low-carbon steel",
       "MaterialName": "CR5",
       "MaterialDefinitionLevel": "Production",
-      "DerivedFromMaterialID": "c0000000-0000-4000-8000-000000000002",
+      "DerivedFromEngineeringMaterialID": "c0000000-0000-4000-8000-000000000002",
       "MaterialSpecificationIdentifier": {
         "IdentifierType": "OEMMATID",
         "Value": "EXAMPLE-CR5-PRODUCTION"
@@ -159,7 +159,9 @@
           "_id": "c0000000-0000-4000-8000-000000000012",
           "_type": "ComponentInstance",
           "SerialNumber": "EXAMPLE-001",
-          "MaterialSourceID": "c0000000-0000-4000-8000-000000000004",
+          "MaterialSourceID": [
+            "c0000000-0000-4000-8000-000000000004"
+          ],
           "ColorID": "c0000000-0000-4000-8000-000000000006"
         }
       ]

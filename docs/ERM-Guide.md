@@ -2,7 +2,7 @@
 
 ## 1. Purpose and document status
 
-This guide explains the material and component area of the VDA 231-301 entity-relationship model (ERM). It complements [Context.md](Context.md): Context.md defines terminology; this guide explains how the concepts work together and why the relationships exist.
+This guide explains the material and component area of the VDA 231-301 entity-relationship model (ERM). It complements the [glossary](CONTEXT.md) and the [JSON schema](../main/VDA_231-301_Schema_Generic.json).
 
 **Status: Initial ERM-oriented working draft for review.**
 
@@ -21,7 +21,7 @@ The material and component area answers different questions:
 | Which concrete supplier material is being considered? | `MaterialSource` |
 | What is the approval status of that supplier material for a particular material definition? | `MaterialApproval` |
 | Which physical component was produced or received? | `ComponentInstance` |
-| Which supplier materials and colour are recorded for that physical component? | `MaterialSourceIDs` and `ColorID` on `ComponentInstance` in the supplied ERM |
+| Which supplier materials and colour are recorded for that physical component? | `ComponentInstance.MaterialSourceID` (array) and `ComponentInstance.ColorID` in JSON |
 
 These questions must remain separate. A material definition is not a supplier product. A supplier product is not an approval. A reusable component definition is not a physical component.
 
@@ -93,13 +93,15 @@ The reference alone does not establish automatic inheritance, requirement mergin
 
 ### 4.3 Names, classes and identifiers
 
-The terminology supplied in Context.md distinguishes:
+An engineering material has three required descriptive fields.
 
-- `MaterialClass`: a descriptive category, such as Stainless steel.
-- `MaterialName`: a specific designation, such as 1.4301-X5CrNi18-10.
-- Material identifiers: identifying information, distinct from descriptive names and categories.
+| Field | Bearing-pin example |
+|-------|---------------------|
+| `MaterialGroup` | `Steel` |
+| `MaterialClass` | `Stainless steel` |
+| `MaterialName` | `1.4301-X5CrNi18-10` |
 
-These meanings follow the supplied Context.md. They must be checked against the current branch before publication; older documentation must not silently replace them with a different naming convention.
+The OEM specification key belongs in `MaterialSpecificationIdentifier`. See the [material identification guide](<Material Identification Concepts_VDA 231-301.md>).
 
 ## 5. MaterialSource: the concrete supplier material
 
@@ -119,7 +121,7 @@ The supplied ERM also shows source identifiers, production site, business keys a
 
 `MaterialApproval` records the approval-process status of a concrete supplier material for a particular engineering-material definition.
 
-The supplied ERM shows references to both objects, together with approval type, current status, geographic scope, validity dates and status history.
+The ERM records `EngineeringMaterialID` and shows the supplier product through an association to `MaterialSource`. It also shows the approval type, status, scope, validity dates and status history.
 
 An approval record can describe an ongoing process. The presence of a record does not mean approval has already been granted.
 
@@ -136,20 +138,9 @@ These are fictional labels and plain-language statuses, not JSON payloads or pre
 
 A statement such as “Supplier material A is approved” would be incomplete. It would not identify which material definition the approval applies to.
 
-Each record therefore answers two questions:
+A source-specific approval in the ERM concerns both the supplier product and the engineering material. The repository JSON schema does not define `MaterialApproval`.
 
-- `MaterialSourceID`: **Which supplier material is being considered?**
-- `EngineeringMaterialID`: **For which material definition is it being evaluated or approved?**
-
-An approval attached only to `MaterialSource` would not distinguish the two cases. An approval attached only to `EngineeringMaterial` would not identify the supplier material concerned.
-
-### 6.3 Mandatory references: intended ERM clarification
-
-For the source-specific approval case described here, both references are intended to be mandatory in the ERM. The author will add the mandatory marker to `MaterialSourceID` in the diagram.
-
-This statement does not assert that the current branch schema already requires both properties. That must be checked separately.
-
-### 6.4 Assignment, approval and actual use are different
+### 6.3 Assignment, approval and actual use are different
 
 - **Association:** a supplier material is associated with a material definition.
 - **Approval:** a record documents its approval-process status for that definition.
@@ -163,7 +154,7 @@ None of these statements automatically proves the other two. In particular, reco
 
 `ComponentInstance` represents a physical component separately from its reusable definition. The supplied ERM includes production and traceability information such as production site, machine, tool, cavity, serial number, batch number and dates.
 
-It also shows `MaterialSourceIDs` and `ColorID`.
+The diagram labels the source list `MaterialSourceIDs`. The JSON property is `MaterialSourceID`, an array of `MaterialSource` identifiers, even when only one source was used. `ColorID` holds a single colour identifier.
 
 **Example.** A produced housing records the supplier material actually used and its colour, while its `ComponentMaster` describes the reusable housing definition.
 

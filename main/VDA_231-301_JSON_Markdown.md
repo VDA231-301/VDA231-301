@@ -1,5 +1,8 @@
 # VDA 231-301 TestReport JSON schema
 
+> This reference describes the earlier ComponentMaster-based model. The
+> [development schema](VDA_231-301_Schema_Generic.json) defines `EngineeringMaterial`.
+
 - [1. Property `_id`](#id)
 - [2. Property `_type`](#type)
 - [3. Property `_schemaVersion`](#schemaVersion)

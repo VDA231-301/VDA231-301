@@ -109,14 +109,18 @@
                   "_id": "a1b2c3d4-0013-4000-8000-000000000002",
                   "_type": "ComponentInstance",
                   "SerialNumber": "FCA-001",
-                  "MaterialSourceID": "d1b2c3d4-0030-4000-8000-000000000001",
+                  "MaterialSourceID": [
+                    "d1b2c3d4-0030-4000-8000-000000000001"
+                  ],
                   "ColorID": "d1b2c3d4-0036-4000-8000-000000000001"
                 },
                 {
                   "_id": "a1b2c3d4-0013-4000-8000-000000000003",
                   "_type": "ComponentInstance",
                   "SerialNumber": "FCA-002",
-                  "MaterialSourceID": "d1b2c3d4-0033-4000-8000-000000000001",
+                  "MaterialSourceID": [
+                    "d1b2c3d4-0033-4000-8000-000000000001"
+                  ],
                   "ColorID": "d1b2c3d4-0037-4000-8000-000000000001"
                 }
               ],

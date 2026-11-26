@@ -45,6 +45,8 @@ def validate():
         "ContractorID": "TestingCenter", "TestingCenterID": "TestingCenter",
         "ComponentMasterID": "ComponentMaster", "AlsoApplicableComponentMasterIDs": "ComponentMaster",
         "ComponentInstanceID": "ComponentInstance", "SpecimenID": "Specimen",
+        "EngineeringMaterialID": "EngineeringMaterial",
+        "MaterialSourceID": "MaterialSource", "ColorID": "Color",
         "PredecessorID": "TestSeries", "SuccessorID": "TestSeries",
     }
     references = 0
@@ -113,10 +115,15 @@ def validate():
         if body:
             check(body in parts, f"Part token missing from XML text: {body}")
             source = parts[body]
-            check(master["MaterialClass"] == source["MAT_06_SHORT_NAME::"], "Material class differs from CAD")
-            check(master["MaterialIdentifiers"] == [
-                {"IdentifierType": "OEMMATID", "Value": source["MAT_01_SPECIFICATION_IDENTIFIER::"]}
-            ], "Material identifier differs from CAD")
+            material = ids[master["MaterialAssignments"][0]["EngineeringMaterialID"]]
+            expected_name = source["MAT_06_SHORT_NAME::"]
+            additional = source.get("MAT_08_ADDITIONAL INFORMATION::", "")
+            if re.fullmatch(r"[0-9]\.[0-9]{4}", additional):
+                expected_name = f"{additional}-{expected_name}"
+            check(material["MaterialName"] == expected_name, "Material name differs from CAD")
+            check(material["MaterialSpecificationIdentifier"] ==
+                  {"IdentifierType": "OEMMATID", "Value": source["MAT_01_SPECIFICATION_IDENTIFIER::"]},
+                  "Material identifier differs from CAD")
     check(len(paths) == len(set(paths)), "Duplicate NGID occurrence path")
     print(f"PASS: schema; {len(ids)} unique UUIDs; {references} typed references; topic/specimen consistency")
     print(f"PASS: {len(masters)} component masters; {len(paths)} unique NGID paths; CAD assembly chains and material tokens")

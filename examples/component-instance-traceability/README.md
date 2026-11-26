@@ -202,5 +202,5 @@ before productive use.
   `ComponentInstance.Cavity` and
   `ComponentInstance.ProductionDate`
 - ADR 0002: `ComponentMaster.Version` is mandatory in component examples
-- ADR 0008 (abbreviated material designation to MaterialClass)
+- ADR 0008 (current mapping of the short name to `EngineeringMaterial.MaterialName`)
 - ADR 0009 (typed material identifiers)

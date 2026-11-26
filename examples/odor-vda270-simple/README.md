@@ -277,7 +277,7 @@ field values.
 - Evaluation information in the reported result:
   `Aggregation`, `Rounding` and `RoundingAccuracy`
 - ADR 0002: `ComponentMaster.Version` is mandatory in component examples
-- ADR 0008: the abbreviated material designation is maintained in
-  `MaterialClass`
+- This example uses the earlier short-name field `MaterialClass`. ADR 0008 maps
+  the short name to `EngineeringMaterial.MaterialName` in the current schema.
 - ADR 0009: material identifiers are typed and stored without uncontrolled
   duplication

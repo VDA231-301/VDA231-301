@@ -78,15 +78,15 @@ item unless an entry has a different owner.
   between PLM and the norm world is possible.
 * Good, because the reference enables later validation (does `1.1302` really belong to this
   material per EN 10027?), which a plain copy could never support.
-* Neutral, because there is a slight asymmetry: the short name goes to `MaterialClass` (ADR 0008)
-  while numbers/keys go to `MaterialIdentifiers`.
+* ADR 0008 maps the short name to `EngineeringMaterial.MaterialName`. The OEM
+  specification key is a typed `MaterialSpecificationIdentifier`.
 * Bad (breaking), because changing `MaterialIdentifiers` from `array of String` to a typed object
   list is not backward-compatible; it requires a schema change, a PR and a migration note.
 
 ## More Information
 
 Related: ADR 0006 (norm aggregation; `MAT_01` not part of `Specification`), ADR 0008 (short name
-to `MaterialClass`), ADR 0010 (applies this typed-identifier pattern to `MaterialSource` for the
+to `EngineeringMaterial.MaterialName`), ADR 0010 (applies this typed-identifier pattern to `MaterialSource` for the
 concrete-material level). Standards: EN 10027-1 (steel names), EN 10027-2 (steel numbers). The
 field names `IdentifierType` / `DefiningStandard` and the value `OEMMATID` are proposals; the
 released schema takes precedence.

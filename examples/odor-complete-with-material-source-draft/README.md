@@ -355,8 +355,8 @@ values used by this draft.
 - ADR 0001: definition sets on `ComponentMaster` and concrete assignments on
   `ComponentInstance`
 - ADR 0002: `ComponentMaster.Version` is mandatory in component examples
-- ADR 0008: the abbreviated material designation is maintained in
-  `MaterialClass`
+- This example uses the earlier short-name field `MaterialClass`. ADR 0008 maps
+  the short name to `EngineeringMaterial.MaterialName` in the current schema.
 - ADR 0009: the generic `OEMMATID` is maintained on the generic material without
   uncontrolled duplication
 - ADR 0010: own typed identifiers of a concrete `MaterialSource` are proposed
